@@ -1,10 +1,10 @@
 # AdVirC
 
-[![Status: Pre-Alpha](https://img.shields.io/badge/Status-Pre--Alpha-black.svg?style=for-the-badge)]()
+[![Status: Pre-Alpha](https://img.shields.io/badge/Status-Pre--Alpha-black.svg?style=for-the-badge)](https://sites.google.com/view/advirc)
 <!--
-[![Status: Alpha](https://img.shields.io/badge/Status-Alpha-red.svg?style=for-the-badge)]()
-[![Status: Beta](https://img.shields.io/badge/Status-Beta-yellow.svg?style=for-the-badge)]()
-[![Status: Release](https://img.shields.io/badge/Status-Release-green.svg?style=for-the-badge)]()
+[![Status: Alpha](https://img.shields.io/badge/Status-Alpha-red.svg?style=for-the-badge)](https://sites.google.com/view/advirc)
+[![Status: Beta](https://img.shields.io/badge/Status-Beta-yellow.svg?style=for-the-badge)](https://sites.google.com/view/advirc)
+[![Status: Release](https://img.shields.io/badge/Status-Release-green.svg?style=for-the-badge)](https://sites.google.com/view/advirc)
 -->
 
 [![Latest Release](https://img.shields.io/badge/Latest-Release-blue.svg?style=for-the-badge)](https://sites.google.com/view/advirc)
