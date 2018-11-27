@@ -1,9 +1,15 @@
 # AdVirC
 
-<!--[![Build Status](https://travis-ci.org/MikronT/AdVirC.svg?branch=master)](https://travis-ci.org/MikronT/AdVirC)-->
-<!--[![Releases](https://img.shields.io/github/release/MikronT/AdVirC.svg)](https://github.com/MikronT/AdVirC/releases/latest)-->
-<!--[![Slack](https://img.shields.io/badge/slack-join-e01563.svg)](http://rebrand.ly/AdVirC)-->
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Status: Pre-Alpha](https://img.shields.io/badge/Status-Pre--Alpha-black.svg?style=for-the-badge)]
+<!--
+[![Status: Alpha](https://img.shields.io/badge/Status-Alpha-red.svg?style=for-the-badge)]
+[![Status: Beta](https://img.shields.io/badge/Status-Beta-yellow.svg?style=for-the-badge)]
+[![Status: Release](https://img.shields.io/badge/Status-Release-green.svg?style=for-the-badge)]
+-->
+
+[![Latest Release](https://img.shields.io/badge/Latest-Release-blue.svg?style=for-the-badge)](https://sites.google.com/view/advirc)
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-black.svg?style=for-the-badge)](https://www.gnu.org/licenses/gpl-3.0)
 
 AdVirC is a free **open source** console utility for cleaning PCs from Adware, Malware, Trojans, Miners and rubbish.
 
