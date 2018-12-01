@@ -4,7 +4,7 @@ if %errorLevel% GEQ 1 goto :startAsAdmin
 
 
 
-for /f "tokens=1,* delims=:" %%i in ("%~dp0") do %%i:
+%~d0
 cd "%~dp0"
 
 
