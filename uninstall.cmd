@@ -1,4 +1,6 @@
+for /f "tokens=1,* delims=:" %%i in ("%~dp0") do %%i:
 cd %~dp0
+
 call design\mainLogo.cmd
 
 

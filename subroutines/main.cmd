@@ -92,13 +92,16 @@ echo.chcp 65001>>%reboot%
 
 
 :language
-if exist preferences\language for /f "delims=" %%i in (preferences\language) do (
-  if "%%i" == "english" set lang=0
-  if "%%i" == "russian" set lang=1
-  if "%%i" == "ukrainian" set lang=2
-  goto :languageImport
+if exist preferences\language (
+  for /f "delims=" %%i in (preferences\language) do (
+    if "%%i" == "english" ( set lang=0 ) else (
+      if "%%i" == "russian" ( set lang=1 ) else (
+        if "%%i" == "ukrainian" ( set lang=2 ) else call :languageMenu
+      )
+    )
+    call :languageImport
+  )
 )
-call :languageMenu
 %loadingUpdate% 1
 
 
@@ -164,10 +167,12 @@ call echo.%lang-processorArchitecture%
 echo.>>%log%
 echo.>>%log%
 echo.>>%log%
->nul timeout /nobreak /t 2
+%moduleSleep% 2
 %loadingUpdate% 1
->nul timeout /nobreak /t 1
+%moduleSleep% 1
 goto :mainMenu
+
+
 
 
 
@@ -184,6 +189,11 @@ echo. ║                                                             ║
 echo. ╠═════════════════════════════════════════════════════════════╝
 echo. ║
 set /p lang=^(^>^) Language number ^> 
+exit /b
+
+
+
+
 
 :languageImport
 if %lang% == 0 (

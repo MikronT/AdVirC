@@ -15,5 +15,5 @@ echo.>>%log%
 echo.>>%log%
 echo.>>%log%
 
->nul timeout /nobreak /t 3
+%moduleSleep% 3
 exit

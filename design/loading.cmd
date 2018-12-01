@@ -2,7 +2,7 @@
 color 0b
 chcp 65001
 mode con:cols=62 lines=7
-set /a percents=0
+set percents=0
 
 
 

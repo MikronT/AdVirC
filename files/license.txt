@@ -1,7 +1,0 @@
-By downloading the utility, <b>you agree to the terms of use.</b>
-<hr>
-<ol>
-  <li><b>We are not liable for any damage to your computer.</b></li>
-  <li><b>Everything that removes the utility is considered to be viral and adware.</b> If you need it, upload again. We are not responsible for any lost files or data.</li>
-  <li><b>Utility is in "Beta-period"</b>, so there may be false positives and program errors.</li>
-</ol>

@@ -15,3 +15,6 @@ AdVirC is a free **open source** console utility for cleaning PCs from Adware, M
 *If you have ads, third-party programs or your computer live your life, we may be able to help you.*
 
 - We can not guarantee 100% treatment. We must "catch" the virus, and only after the research the virus enters the database. It takes time.
+- We are not responsible for any damage to your computer. Everything that removes the utility is considered to be viral and adware. If you need it, download again. *We are not responsible for any lost files or data.*
+- Utility is in Pre-Alpha-period, so there may be false positives and program errors. You must be patient.
+- It is my hobby, not work.

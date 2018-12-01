@@ -14,7 +14,7 @@ set loadingNumber=0
 set loadingUpdate=call design\loadingUpdate.cmd
 set logo=call design\mainLogo.cmd
 set moduleSleep=subroutines\modules\sleep.exe
-set version=2.0.001 Beta
+set version=2.0 Pre-Alpha
 set versionName=[ADSI] %appName% (Version %version% Windows10)
 
 for /f "eol=# skip=10 delims=" %%i in (languages\english.lang) do set lang-%%i

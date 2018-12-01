@@ -15,7 +15,7 @@ if %importBasesBoolean% == 1 (
 
 %loadingUpdate% 10
 %moduleWget% --no-check-certificate --quiet --tries=1 --output-document=temp\avcDatabases.zip "https://drive.google.com/uc?export=download&id=1Q_cNXPk-PjybPLDTBpAylvjP_C_UbX_x"
->nul timeout /nobreak /t 1
+%moduleSleep% 1
 %loadingUpdate% 15
 
 
@@ -23,12 +23,12 @@ if %importBasesBoolean% == 1 (
 :unzip
 %loadingUpdate% 4
 rd /s /q files\databases>nul 2>>%debugLog%
->nul timeout /nobreak /t 1
+%moduleSleep% 1
 %loadingUpdate% 4
 %moduleUnZip% -qq -o temp\avcDatabases.zip -d files
 del /q temp\avcDatabases.zip
 %loadingUpdate% 4
->nul timeout /nobreak /t 1
+%moduleSleep% 1
 %loadingUpdate% 4
 if not exist files\databases\5-heuristic goto :error
 
@@ -43,7 +43,7 @@ for /f "delims=" %%i in (files\databases\dbFolderList.db) do md files\databases\
 if not exist files\databases\5-heuristic\rewrited goto :error
 %loadingUpdate% 5
 echo %lang-dataBasesUpdated%
->nul timeout /nobreak /t 3
+%moduleSleep% 3
 exit /b
 
 
@@ -51,5 +51,5 @@ exit /b
 :error
 %loadingReset%
 echo %lang-dataBasesUpdateError%
->nul timeout /nobreak /t 3
+%moduleSleep% 3
 exit /b
