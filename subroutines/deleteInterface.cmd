@@ -65,51 +65,7 @@ call :heuristic
 
 
 
-echo.reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Group Policy\State\Machine\Scripts\Shutdown" /f>>%reboot%
-echo.reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Group Policy\State\Machine\Scripts\Startup" /f>>%reboot%
-echo.del /s /q "%WinDir%\System32\GroupPolicy\Machine\Scripts\Shutdown\avcReboot.cmd">>%reboot%
-echo.del /s /q "%WinDir%\System32\GroupPolicy\Machine\Scripts\Startup\avcReboot.cmd">>%reboot%
-echo.rd /s /q "%WinDir%\System32\GroupPolicy">>%reboot%
-echo.exit>>%reboot%
-
-
-
-set GPScripts=%WinDir%\System32\GroupPolicy\Machine\Scripts
-
-rd /s /q "%WinDir%\System32\GroupPolicy"
-reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Group Policy\State\Machine\Scripts" /f
-
-md "%GPScripts%\Shutdown"
-md "%GPScripts%\Startup"
-
-copy /y "D:\00. My Computer\Desktop\123.cmd" "%GPScripts%\Shutdown"
-copy /y "D:\00. My Computer\Desktop\234.cmd" "%GPScripts%\Startup"
-
-
-
-echo.[Shutdown]>>%GPScripts%\scripts.ini
-echo.0CmdLine=%WinDir%\System32\cmd.exe>>%GPScripts%\scripts.ini
-echo.0Parameters=/c %GPScripts%\Shutdown\123.cmd>>%GPScripts%\scripts.ini
-
-echo.[Startup]>>%GPScripts%\scripts.ini
-echo.0CmdLine=%WinDir%\System32\cmd.exe>>%GPScripts%\scripts.ini
-echo.0Parameters=/c %GPScripts%\Startup\234.cmd>>%GPScripts%\scripts.ini
-
-echo.[General]>>%WinDir%\System32\GroupPolicy\gpt.ini
-
-
-
-reg import "D:\03. Vlad Ivanov\06. Other\Projects\[GitHub Repositories]\AdVirC\files\rebootGPScripts.reg"
-
-
-
-rem gpupdate /force
-
-
-
-
-
-copy /y "D:\00. My Computer\Desktop\123.cmd" "%Temp%\avcReboot.cmd"
+copy /y "%reboot%" "%Temp%\avcReboot.cmd"
 schtasks /create /tn avcReboot /xml "files\rebootTask.xml" /f
 
 
