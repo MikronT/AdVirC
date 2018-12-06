@@ -14,7 +14,7 @@ set log=nul
 set moduleShortcut=subroutines\modules\shortcut.exe
 set moduleUnZip=subroutines\modules\unzip.exe
 set moduleWget=subroutines\modules\wget.exe
-set reboot=temp\reboot.cmd
+set reboot=temp\rebootScript.cmd
 
 
 
@@ -47,22 +47,14 @@ for /f "delims=" %%i in (preferences\logging) do if "%%i" == "true" set log="fil
 
 
 
-if exist %log% (
-  echo.======================================================================================================================>>%log%
-  echo.======================================================================================================================>>%log%
-  echo.======================================================================================================================>>%log%
-)
+if exist %log% call :logLineAppend %log% 3
 echo.Log ^| %versionName% ^| %logDate%>>%log%
 echo.>>%log%
-echo.======================================================================================================================>>%log%
+call :logLineAppend %log% 1
 
 
 
-if exist %debugLog% (
-  echo.======================================================================================================================>>%debugLog%
-  echo.======================================================================================================================>>%debugLog%
-  echo.======================================================================================================================>>%debugLog%
-)
+if exist %debugLog% call :logLineAppend %debugLog% 3
 echo.Debug Log ^| %versionName% ^| %logDate%>>%debugLog%
 echo.>>%debugLog%
 echo.Operating System: %OS%>>%debugLog%
@@ -72,12 +64,12 @@ echo.User Profile Directory: %userProfile%>>%debugLog%
 echo.Desktop Location: %desktopLocation%>>%debugLog%
 echo.Processor Architecture: %PROCESSOR_ARCHITECTURE%>>%debugLog%
 echo.>>%debugLog%
-echo.======================================================================================================================>>%debugLog%
+call :logLineAppend %debugLog% 1
 echo.Running tasks:>>%debugLog%
 echo.>>%debugLog%
 tasklist>>%debugLog%
 echo.>>%debugLog%
-echo.======================================================================================================================>>%debugLog%
+call :logLineAppend %debugLog% 1
 
 
 
@@ -341,6 +333,14 @@ goto :deleteMenu
 :deleteMenuCommand
 set deleteLevel=%command%
 call subroutines\deleteInterface.cmd
+exit /b
+
+
+
+
+
+:logLineAppend
+for /l %%z in (%2,-1,1) do echo.======================================================================================================================>>%1
 exit /b
 
 

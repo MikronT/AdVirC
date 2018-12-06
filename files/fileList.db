@@ -7,8 +7,6 @@ design\logos.cmd
 design\mainLogo.cmd
 
 files\fileList.db
-files\license.txt
-files\rebootGPScripts.reg
 files\rebootTask.xml
 
 languages\english.lang
@@ -26,6 +24,7 @@ subroutines\deleting\tasks.cmd
 subroutines\deleting\temp.cmd
 
 subroutines\modules\shortcut.exe
+subroutines\modules\sleep.exe
 subroutines\modules\unzip.exe
 subroutines\modules\wget.exe
 
@@ -33,4 +32,6 @@ subroutines\databasesUpdate.cmd
 subroutines\deleteInterface.cmd
 subroutines\main.cmd
 
+license.txt
 starter.cmd
+uninstall.cmd
