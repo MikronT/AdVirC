@@ -100,8 +100,8 @@ if %deleteLevel% GEQ 5 (
 
 
 
-copy /y "%reboot%" "%Temp%\%appName%Reboot.cmd"
-schtasks /create /tn %appName%Reboot /xml "files\rebootTask.xml" /f
+rem copy /y "%reboot%" "%Temp%\%appName%Reboot.cmd"
+rem schtasks /create /tn %appName%Reboot /xml "files\rebootTask.xml" /f
 
 
 

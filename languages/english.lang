@@ -40,7 +40,7 @@ dataBasesUpdateError=^(!^) Check your Internet connection! Maybe, databases or A
 
 
 
-importMenu1=^(i^) To import databases into the program, upload them in to the root of C: drive.
+importMenu1=^(i^) To import databases into the program, upload them in to the root of %SystemDrive% drive.
 importMenu2=^(1^) Run import                                                ^(0^) Cancel
 importError=^(!^) Error! No databases or they are corrupted!
 

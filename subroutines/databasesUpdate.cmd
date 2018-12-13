@@ -5,7 +5,7 @@ echo.Updating virus databases>>%log%
 
 
 if %importBasesBoolean% == 1 (
-  copy /y "C:\avcDatabases.zip" temp>>%debugLog%
+  copy /y "%SystemDrive%:\avcDatabases.zip" temp>>%debugLog%
   set importBasesBoolean=0
   %loadingUpdate% 15
   goto :unzip

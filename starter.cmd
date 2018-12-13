@@ -17,7 +17,7 @@ set moduleSleep=subroutines\modules\sleep.exe
 set version=2.0 Pre-Alpha
 set versionName=[ADSI] %appName% (Version %version% Windows10)
 
-for /f "eol=# skip=10 delims=" %%i in (languages\english.lang) do set lang-%%i
+for /f "eol=# delims=" %%i in (languages\english.lang) do set lang-%%i
 for /f "tokens=2*" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI /v lastLoggedOnUserSID') do set lastLoggedOnUserSID=%%j
 
 
@@ -25,10 +25,7 @@ for /f "tokens=2*" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVer
 md files\backups\registry>nul 2>nul
 md temp>nul 2>nul
 
-
-
-if exist     temp\loadingProgress del /q temp\loadingProgress
-if not exist temp\loadingProgress echo.0>temp\loadingProgress
+echo.0>temp\loadingProgress
 
 
 
