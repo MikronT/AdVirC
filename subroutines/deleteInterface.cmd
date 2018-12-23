@@ -4,6 +4,7 @@ if not exist files\databases (
   %moduleSleep% 3
   exit /b
 )
+set k=0
 
 
 
@@ -100,6 +101,8 @@ if %deleteLevel% GEQ 5 (
 
 
 
+for /f "delims=" %%i in (%filesToDelete%) do %moduleMoveFile% /accepteula "%%i" ""
+
 rem copy /y "%reboot%" "%Temp%\%appName%Reboot.cmd"
 rem schtasks /create /tn %appName%Reboot /xml "files\rebootTask.xml" /f
 
@@ -127,7 +130,5 @@ pause>nul
 
 echo %lang-restart4%
 
-reg import files\backups\registry\HKUConsoleCMD_Backup.reg
-shutdown /r /t 1
-taskkill /f /im cmd.exe /t
-exit
+echo.>temp\rebootNow
+exit /b

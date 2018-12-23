@@ -23,6 +23,7 @@ subroutines\deleting\services.cmd
 subroutines\deleting\tasks.cmd
 subroutines\deleting\temp.cmd
 
+subroutines\modules\movefile.exe
 subroutines\modules\shortcut.exe
 subroutines\modules\sleep.exe
 subroutines\modules\unzip.exe

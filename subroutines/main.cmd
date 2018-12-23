@@ -7,9 +7,9 @@ echo.%lang-initialization%
 set debugLog=nul
 set importBasesBoolean=0
 set importError=0
-set k=0
 set loadingReset=call design\loadingReset.cmd
 set log=nul
+set moduleMoveFile=subroutines\modules\movefile.exe
 set moduleShortcut=subroutines\modules\shortcut.exe
 set moduleUnZip=subroutines\modules\unzip.exe
 set moduleWget=subroutines\modules\wget.exe
@@ -218,6 +218,8 @@ echo. ║                                                             ║
 echo.%lang-mainMenu2%
 echo. ║                                                             ║
 echo.%lang-mainMenu3%
+echo. ║
+echo.%lang-mainMenu4%
 echo. ║                                                             ║
 echo. ╠═════════════════════════════════════════════════════════════╝
 echo. ║
@@ -242,6 +244,8 @@ if "%command%" == "2" call subroutines\databasesUpdate.cmd
 if "%command%" == "3" call :importDatabasesMenu
 if "%command%" == "4" call :settingsMenu
 if "%command%" == "5" call uninstall.cmd
+
+if exist temp\rebootNow goto :exit reboot
 goto :mainMenu
 
 
@@ -393,6 +397,8 @@ echo.logging=%setting-logging%>>settings.ini
 echo.updateChannel=%setting-updateChannel%>>settings.ini
 
 reg import files\backups\registry\HKUConsoleCMD_Backup.reg
+
+if "%1" == "reboot" shutdown /r /t 0
 
 taskkill /f /im cmd.exe /t
 exit

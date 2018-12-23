@@ -15,12 +15,14 @@ set loadingUpdate=call design\loadingUpdate.cmd
 set logo=call design\mainLogo.cmd
 set moduleSleep=subroutines\modules\sleep.exe
 set version=2.0 Pre-Alpha
-set versionName=[ADSI] %appName% (Version %version% Windows10)
+set versionName=%appName% (Version %version% Windows10) [MikronT]
 
 for /f "eol=# delims=" %%i in (languages\english.lang) do set lang-%%i
 for /f "tokens=2*" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI /v lastLoggedOnUserSID') do set lastLoggedOnUserSID=%%j
 
 
+
+if exist temp rd /s /q temp
 
 md files\backups\registry>nul 2>nul
 md temp>nul 2>nul
