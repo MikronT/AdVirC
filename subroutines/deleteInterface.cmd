@@ -1,6 +1,6 @@
 %logo%
 if not exist files\databases (
-  echo %lang-updateVirusDataBasesMessage%
+  echo %lang-noVirusDataBasesError%
   %moduleSleep% 3
   exit /b
 )
@@ -32,14 +32,14 @@ if %deleteLevel% GEQ 4 (
   start /wait subroutines\deleting\services.cmd
   %moduleSleep% 1
 
-  ::Processes-4-Full
-  echo %lang-processesDeleting%
-  start /wait subroutines\deleting\processes.cmd
-  %moduleSleep% 1
-
   ::Tasks-4-Full
   echo %lang-tasksDeleting%
   start /wait subroutines\deleting\tasks.cmd
+  %moduleSleep% 1
+
+  ::Processes-4-Full
+  echo %lang-processesDeleting%
+  start /wait subroutines\deleting\processes.cmd
   %moduleSleep% 1
 )
 
@@ -123,12 +123,12 @@ echo.===========================================================================
 
 
 
-echo %lang-restart1%
-echo %lang-restart2%
-echo %lang-restart3%
+echo %lang-restartMessage01%
+echo %lang-restartMessage02%
+echo %lang-restartMessage03%
 pause>nul
 
-echo %lang-restart4%
-
+echo %lang-restartMessage04%
+%moduleSleep% 5
 echo.>temp\rebootNow
 exit /b

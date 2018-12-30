@@ -5,8 +5,6 @@ echo.%lang-initialization%
 
 
 set debugLog=nul
-set importBasesBoolean=0
-set importError=0
 set loadingReset=call design\loadingReset.cmd
 set log=nul
 set moduleMoveFile=subroutines\modules\movefile.exe
@@ -165,6 +163,21 @@ goto :mainMenu
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :languageMenu
 set command=command
 %logo%
@@ -179,18 +192,20 @@ echo. ║
 set /p command=^(^>^) Language number ^> 
 
 
-%logo%
-if "%command%" == "0" goto :languageMenuCommand
-if "%command%" == "1" goto :languageMenuCommand
-if "%command%" == "2" goto :languageMenuCommand
+
+if "%command%" == "0" (
+  set setting-lang=english
+  exit /b
+)
+if "%command%" == "1" (
+  set setting-lang=russian
+  exit /b
+)
+if "%command%" == "2" (
+  set setting-lang=ukrainian
+  exit /b
+)
 goto :languageMenu
-
-
-:languageMenuCommand
-if "%command%" == "0" set setting-lang=english
-if "%command%" == "1" set setting-lang=russian
-if "%command%" == "2" set setting-lang=ukrainian
-exit /b
 
 
 
@@ -210,40 +225,46 @@ exit /b
 
 
 :mainMenu
-%loadingReset%
 set command=command
 %logo%
-echo.%lang-mainMenu1%
-echo. ║                                                             ║
-echo.%lang-mainMenu2%
-echo. ║                                                             ║
-echo.%lang-mainMenu3%
-echo. ║
-echo.%lang-mainMenu4%
-echo. ║                                                             ║
-echo. ╠═════════════════════════════════════════════════════════════╝
-echo. ║
-
+%loadingReset%
+echo.%lang-mainMenu01%
+echo.%lang-mainMenu02%
+echo.%lang-mainMenu03%
+echo.%lang-mainMenu04%
+echo.%lang-mainMenu05%
+echo.%lang-mainMenu06%
+echo.%lang-mainMenu07%
+echo.%lang-mainMenu08%
+echo.%lang-mainMenu09%
+echo.
+echo.
+echo.
 if "%setting-firstRun%" == "true" (
-  echo.%lang-firstRunMenuNotification1%
-  echo.%lang-firstRunMenuNotification2%
-  echo.%lang-firstRunMenuNotification3%
-  echo.%lang-firstRunMenuNotification4%
-  echo. ║
-  echo. ║
-  echo. ║
+  echo.%lang-firstRunMenuNotification01%
+  echo.%lang-firstRunMenuNotification02%
+  echo.%lang-firstRunMenuNotification03%
+  echo.%lang-firstRunMenuNotification04%
+  echo.
+  echo.
+  echo.
   set setting-firstRun=false
 )
-set /p command=%lang-enterCommand% 
+set /p command=%lang-enterCommand%
 
 
-%logo%
-if "%command%" == "0" call :exit
+
 if "%command%" == "1" call :deleteMenu
-if "%command%" == "2" call subroutines\databasesUpdate.cmd
-if "%command%" == "3" call :importDatabasesMenu
-if "%command%" == "4" call :settingsMenu
-if "%command%" == "5" call uninstall.cmd
+rem if "%command%" == "2" call :exceptionsMenu
+if "%command%" == "3" call subroutines\databasesUpdate.cmd
+if "%command%" == "4" call :importMenu
+rem if "%command%" == "5" call :helpMenu
+rem if "%command%" == "6" call :report
+rem if "%command%" == "7" call :about
+if "%command%" == "8" call :settingsMenu
+rem if "%command%" == "9" call :clearTemp
+if "%command%" == "0" call :exit
+if "%command%" == "#" call uninstall.cmd
 
 if exist temp\rebootNow goto :exit reboot
 goto :mainMenu
@@ -257,7 +278,6 @@ goto :mainMenu
 :deleteMenu
 set command=command
 %logo%
-echo.%lang-selectDeleteMode%
 echo.%lang-deleteMenu01%
 echo.%lang-deleteMenu02%
 echo.%lang-deleteMenu03%
@@ -279,41 +299,37 @@ echo.%lang-deleteMenu18%
 echo.%lang-deleteMenu19%
 echo.%lang-deleteMenu20%
 echo.%lang-deleteMenu21%
-echo. ║
-set /p command=%lang-enterCommand% 
+echo.%lang-deleteMenu22%
+echo.%lang-deleteMenu23%
+echo.%lang-deleteMenu24%
+set /p command=%lang-enterCommand%
 
 
-%logo%
+
 if "%command%" == "0" exit /b
-if "%command%" == "1" goto :deleteMenuCommand
-if "%command%" == "2" goto :deleteMenuCommand
-if "%command%" == "3" goto :deleteMenuCommand
-if "%command%" == "4" goto :deleteMenuCommand
-if "%command%" == "5" goto :deleteMenuCommand
+for /l %%i in (1,1,5) do if "%command%" == "%%i" (
+  set deleteLevel=%command%
+  call subroutines\deleteInterface.cmd
+  exit /b
+)
 goto :deleteMenu
 
 
-:deleteMenuCommand
-set deleteLevel=%command%
-call subroutines\deleteInterface.cmd
-exit /b
 
 
 
 
 
-
-
-:importDatabasesMenu
+:importMenu
 set command=command
 %logo%
-echo.%lang-importMenu1%
+echo.%lang-importMenu01%
 echo. ║
-echo.%lang-importMenu2%
+echo.%lang-importMenu02%
 echo. ║                                                             ║
 echo. ╠═════════════════════════════════════════════════════════════╝
 echo. ║
-if %importError% == 1 (
+if "%importError%" == "1" (
   color c
   set importError=0
   echo.%lang-importError%
@@ -321,24 +337,22 @@ if %importError% == 1 (
   echo. ║
   echo. ║
 )
-set /p command=%lang-enterCommand% 
+set /p command=%lang-enterCommand%
 
 
-%logo%
+
 if "%command%" == "0" exit /b
-if "%command%" == "1" goto :importDatabasesMenuCommand
-goto :importDatabasesMenu
-
-
-:importDatabasesMenuCommand
-if not exist %SystemDrive%:\avcDatabases.zip (
-  set importError=1
-  goto :importDatabasesMenu
+if "%command%" == "1" (
+  if not exist %SystemDrive%:\avcDatabases.zip (
+    set importError=1
+    goto :importMenu
+  )
+  %loadingUpdate% 10
+  set importReturnCode=1
+  call subroutines\databasesUpdate.cmd
+  exit /b
 )
-%loadingUpdate% 10
-set importBasesBoolean=1
-call subroutines\databasesUpdate.cmd
-exit /b
+goto :importMenu
 
 
 
@@ -349,7 +363,8 @@ exit /b
 :settingsMenu
 set command=command
 %logo%
-set /p command=%lang-enterCommand% 
+echo.%lang-settingsMenu01%
+set /p command=%lang-enterCommand%
 exit /b
 
 
@@ -398,7 +413,7 @@ echo.updateChannel=%setting-updateChannel%>>settings.ini
 
 reg import files\backups\registry\HKUConsoleCMD_Backup.reg
 
-if "%1" == "reboot" shutdown /r /t 0
+if "%1" == "reboot" ( shutdown /r /t 0 ) else if exist temp rd /s /q temp
 
 taskkill /f /im cmd.exe /t
 exit
