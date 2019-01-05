@@ -22,5 +22,5 @@ echo.>>%log%
 echo.>>%log%
 echo.>>%log%
 
-%moduleSleep% 3
+%module-sleep% 3
 exit

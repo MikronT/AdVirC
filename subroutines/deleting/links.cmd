@@ -24,7 +24,7 @@ for /f "tokens=1,2,3,4* delims=;" %%i in (files\databases\2-main\rewrited\browse
     if not exist "files\reports\shortcuts\%%i-%shortcutNameToken%.lnk" (
       copy "%%j" files\reports\shortcuts\%%i-%shortcutNameToken%.lnk /y
       del /q "%%j"
-      %moduleShortcut% /f:"%%j" /t:"%%k" /a:c /i:"%%k" /w:"%%l"
+      %module-shortcut% /f:"%%j" /t:"%%k" /a:c /i:"%%k" /w:"%%l"
       echo.Owerrided %%i>>%log%
     ) else (
       set /a shortcutNameToken+=1
@@ -38,5 +38,5 @@ echo.>>%log%
 echo.>>%log%
 echo.>>%log%
 
-%moduleSleep% 3
+%module-sleep% 3
 exit

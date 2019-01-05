@@ -78,7 +78,7 @@ goto :checkLoadingProgress
 
 
 :checkLoadingProgress
-%moduleSleep% -m 250
+%module-sleep% -m 250
 for /f "tokens=1,2* delims=" %%n in (temp\loadingProgress) do set /a loadingNumber=%%n
 if "%lastLoadingNumber%" NEQ "%loadingNumber%" goto :loadingCycle
 goto :checkLoadingProgress

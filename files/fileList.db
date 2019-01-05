@@ -7,7 +7,7 @@ design\logos.cmd
 design\mainLogo.cmd
 
 files\fileList.db
-files\rebootTask.xml
+files\userShellFolders.db
 
 languages\english.lang
 languages\russian.lang

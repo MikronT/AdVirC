@@ -13,7 +13,7 @@ set appName=AdVirC
 set loadingNumber=0
 set loadingUpdate=call design\loadingUpdate.cmd
 set logo=call design\mainLogo.cmd
-set moduleSleep=subroutines\modules\sleep.exe
+set module-sleep=subroutines\modules\sleep.exe
 set version=2.0 Pre-Alpha
 set versionName=%appName% (Version %version% Windows10) [MikronT]
 

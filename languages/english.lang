@@ -82,7 +82,7 @@ dataBasesUpdated=^(!^) Virus databases updated!
 
 
 
-importMenu01=^(i^) To import databases into the program, upload them in to the root of %SystemDrive% drive.
+importMenu01=^(i^) To import databases into the program, upload them on to your desktop.
 importMenu02=^(1^) Run import                                                ^(0^) Cancel
 
 

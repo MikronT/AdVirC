@@ -6,9 +6,11 @@ echo.%lang-updatingDataBases%
 
 
 
+
+
 if "%importReturnCode%" == "1" (
   set importReturnCode=0
-  copy /y "%SystemDrive%:\avcDatabases.zip" temp>>%debugLog%
+  copy /y "%desktopLocation%\adVirCDatabases.zip" temp>>%debugLog%
   %loadingUpdate% 25
   goto :unzip
 )
@@ -17,13 +19,17 @@ if "%importReturnCode%" == "1" (
 
 
 
+
+
 %loadingUpdate% 10
 
-%moduleWget% --no-check-certificate --quiet --tries=1 --output-document=temp\avcDatabases.zip "https://drive.google.com/uc?export=download&id=1Q_cNXPk-PjybPLDTBpAylvjP_C_UbX_x"
-if not exist temp\avcDatabases.zip goto :error wgetDownloadError
+%module-wget% --no-check-certificate --quiet --tries=1 --output-document=temp\adVirCDatabases.zip "https://drive.google.com/uc?export=download&id=1Q_cNXPk-PjybPLDTBpAylvjP_C_UbX_x"
+if not exist temp\adVirCDatabases.zip goto :error wgetDownloadError
 
-%moduleSleep% 1
+%module-sleep% 1
 %loadingUpdate% 15
+
+
 
 
 
@@ -34,16 +40,17 @@ if not exist temp\avcDatabases.zip goto :error wgetDownloadError
 
 rd /s /q files\databases>nul 2>>%debugLog%
 
-%moduleSleep% 1
+%module-sleep% 1
 %loadingUpdate% 4
 
-%moduleUnZip% -qq -o temp\avcDatabases.zip -d files
-if not exist files\databases goto :error
+md files\databases\original>nul 2>>%debugLog%
+%module-unZip% -qq -o temp\adVirCDatabases.zip -d files\databases\original
+if not exist files\databases\original\license.txt goto :error
 
 %loadingUpdate% 4
-%moduleSleep% 1
+%module-sleep% 1
 
-del /q temp\avcDatabases.zip
+del /q temp\adVirCDatabases.zip
 
 %loadingUpdate% 4
 
@@ -51,10 +58,15 @@ del /q temp\avcDatabases.zip
 
 
 
-for /f "delims=" %%i in (files\databases\dbFolderList.db) do md files\databases\%%i\rewrited
+
+
+for /f "delims=" %%i in ('dir /a:d /b files\databases\original') do md files\databases\rewrited\%%i>nul 2>>%debugLog%
 %loadingUpdate% 1
-(for /f "delims=" %%x in (files\databases\dbFolderList.db) do for /f "delims=" %%y in (files\databases\dbFileList.db) do if exist files\databases\%%x\%%y for /f "delims=" %%z in (files\databases\%%x\%%y) do call echo.%%z>>files\databases\%%x\rewrited\%%y)>>%debugLog%
+
+(for /f "delims=" %%x in (files\databases\original\fileList.db) do for /f "delims=" %%y in (files\databases\original\%%x) do call echo.%%y>>files\databases\rewrited\%%x)>>%debugLog%
 %loadingUpdate% 3
+
+
 
 
 
@@ -62,8 +74,10 @@ for /f "delims=" %%i in (files\databases\dbFolderList.db) do md files\databases\
 
 %loadingUpdate% 5
 echo.%lang-dataBasesUpdated%
-%moduleSleep% 3
+%module-sleep% 3
 exit /b
+
+
 
 
 
@@ -71,5 +85,5 @@ exit /b
 
 :error
 echo.%lang-dataBasesUpdateError%
-%moduleSleep% 3
+%module-sleep% 3
 exit /b

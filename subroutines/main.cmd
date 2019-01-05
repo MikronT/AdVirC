@@ -7,10 +7,10 @@ echo.%lang-initialization%
 set debugLog=nul
 set loadingReset=call design\loadingReset.cmd
 set log=nul
-set moduleMoveFile=subroutines\modules\movefile.exe
-set moduleShortcut=subroutines\modules\shortcut.exe
-set moduleUnZip=subroutines\modules\unzip.exe
-set moduleWget=subroutines\modules\wget.exe
+set module-moveFile=subroutines\modules\movefile.exe
+set module-shortcut=subroutines\modules\shortcut.exe
+set module-unZip=subroutines\modules\unzip.exe
+set module-wget=subroutines\modules\wget.exe
 set reboot=temp\rebootScript.cmd
 set setting-autoUpdate=false
 set setting-debug=false
@@ -22,14 +22,20 @@ set settings=settings.ini
 
 
 
-for /f "tokens=1,2,*" %%i in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v Desktop') do set desktopLocation=%%k
+for /f "tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
+  set %%iLocation=%%k
+  for /f "tokens=1,2,*" %%l in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v %%j') do set %%iLocation=%%n
+)
+
+
+
 for /f "tokens=1,2,* delims=." %%i in ("%date%") do set currentDate=%%k.%%j.%%i
 if exist settings.ini for /f "eol=# delims=" %%i in (settings.ini) do set setting-%%i
+%loadingUpdate% 5
 
 
 
 md files\reports\shortcuts>nul 2>nul
-%loadingUpdate% 5
 
 
 
@@ -62,7 +68,6 @@ echo.Operating System: %OS%>>%debugLog%
 echo.Current Directory: %cd%>>%debugLog%
 echo.Current File Directory: %~dp0>>%debugLog%
 echo.User Profile Directory: %userProfile%>>%debugLog%
-echo.Desktop Location: %desktopLocation%>>%debugLog%
 echo.Processor Architecture: %PROCESSOR_ARCHITECTURE%>>%debugLog%
 echo.>>%debugLog%
 call :logLineAppend %debugLog% 1
@@ -71,6 +76,9 @@ echo.>>%debugLog%
 tasklist>>%debugLog%
 echo.>>%debugLog%
 call :logLineAppend %debugLog% 1
+
+echo.User Shell Folders:>>%debugLog%
+for /f "tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do echo.%%i Location: %%%iLocation%>>%debugLog%
 
 
 
@@ -116,16 +124,16 @@ if "%setting-firstRun%" == "true" (
   %loadingUpdate% 2
 
   echo.%lang-creatingRegistryBackup%
-  REM reg export HKLM files\backups\registry\HKLM.reg>>%debug_log%
-  %loadingUpdate% 3
-  reg export HKCU files\backups\registry\HKCU.reg>>%debug_log%
-  %loadingUpdate% 3
-  REM reg export HKCR files\backups\registry\HKCR.reg>>%debug_log%
-  %loadingUpdate% 3
-  REM reg export HKU  files\backups\registry\HKU.reg >>%debug_log%
-  %loadingUpdate% 3
-  REM reg export HKCC files\backups\registry\HKCC.reg>>%debug_log%
-  %loadingUpdate% 3
+  rem reg export HKCR files\backups\registry\HKCR.reg>>%debug_log%
+  %loadingUpdate% 2
+  rem reg export HKCU files\backups\registry\HKCU.reg>>%debug_log%
+  %loadingUpdate% 2
+  rem reg export HKLM files\backups\registry\HKLM.reg>>%debug_log%
+  %loadingUpdate% 6
+  rem reg export HKU  files\backups\registry\HKU.reg >>%debug_log%
+  %loadingUpdate% 4
+  reg export HKCC files\backups\registry\HKCC.reg>>%debug_log%
+  %loadingUpdate% 1
   echo.%lang-registryBackupCreated%
 ) else (
   for /f "delims=" %%i in (files\reports\mozillaFirefoxUserProfile.rpt) do set mozillaFirefoxUserProfile=%%i
@@ -149,9 +157,9 @@ call echo.%lang-processorArchitecture%
 echo.>>%log%
 echo.>>%log%
 echo.>>%log%
-%moduleSleep% 2
+%module-sleep% 2
 %loadingUpdate% 1
-%moduleSleep% 1
+%module-sleep% 1
 goto :mainMenu
 
 
@@ -343,7 +351,7 @@ set /p command=%lang-enterCommand%
 
 if "%command%" == "0" exit /b
 if "%command%" == "1" (
-  if not exist %SystemDrive%:\avcDatabases.zip (
+  if not exist %desktopLocation%\adVirCDatabases.zip (
     set importError=1
     goto :importMenu
   )

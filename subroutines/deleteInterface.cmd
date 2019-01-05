@@ -1,7 +1,7 @@
 %logo%
 if not exist files\databases (
   echo %lang-noVirusDataBasesError%
-  %moduleSleep% 3
+  %module-sleep% 3
   exit /b
 )
 set k=0
@@ -16,12 +16,12 @@ if %deleteLevel% LSS 2 (
   ::Dirs-1-Superficial
   echo %lang-dirsDeleting%
   start /wait subroutines\deleting\dirs.cmd
-  %moduleSleep% 1
+  %module-sleep% 1
 
   ::Files-1-Superficial
   echo %lang-filesDeleting%
   start /wait subroutines\deleting\files.cmd
-  %moduleSleep% 1
+  %module-sleep% 1
 )
 
 
@@ -30,17 +30,17 @@ if %deleteLevel% GEQ 4 (
   ::Services-4-Full
   echo %lang-servicesDeleting%
   start /wait subroutines\deleting\services.cmd
-  %moduleSleep% 1
+  %module-sleep% 1
 
   ::Tasks-4-Full
   echo %lang-tasksDeleting%
   start /wait subroutines\deleting\tasks.cmd
-  %moduleSleep% 1
+  %module-sleep% 1
 
   ::Processes-4-Full
   echo %lang-processesDeleting%
   start /wait subroutines\deleting\processes.cmd
-  %moduleSleep% 1
+  %module-sleep% 1
 )
 
 
@@ -49,7 +49,7 @@ if %deleteLevel% GEQ 3 (
   ::Registry-3-Deep
   echo %lang-registryDeleting%
   start /wait subroutines\deleting\registry.cmd
-  %moduleSleep% 1
+  %module-sleep% 1
 )
 
 
@@ -58,7 +58,7 @@ if %deleteLevel% GEQ 4 (
   ::Temp-4-Full
   echo %lang-tempDeleting%
   start /wait subroutines\deleting\temp.cmd
-  %moduleSleep% 1
+  %module-sleep% 1
 )
 
 
@@ -69,22 +69,22 @@ if %deleteLevel% GEQ 2 (
   ::Dirs-2-Main
   echo %lang-dirsDeleting%
   start /wait subroutines\deleting\dirs.cmd
-  %moduleSleep% 1
+  %module-sleep% 1
 
   ::Files-2-Main
   echo %lang-filesDeleting%
   start /wait subroutines\deleting\files.cmd
-  %moduleSleep% 1
+  %module-sleep% 1
 
   ::Links-2-Main
   echo %lang-linksDeleting%
   start /wait subroutines\deleting\links.cmd
-  %moduleSleep% 1
+  %module-sleep% 1
 
   ::Extensions-2-Main
   echo %lang-extensionsDeleting%
   start /wait subroutines\deleting\extensions.cmd
-  %moduleSleep% 1
+  %module-sleep% 1
 )
 
 
@@ -119,7 +119,7 @@ echo.>>%log%
 echo.>>%log%
 echo.========================================================================================================================>>%log%
 
-%moduleSleep% 3
+%module-sleep% 3
 
 
 
@@ -129,6 +129,6 @@ echo %lang-restartMessage03%
 pause>nul
 
 echo %lang-restartMessage04%
-%moduleSleep% 5
+%module-sleep% 5
 echo.>temp\rebootNow
 exit /b

@@ -1,11 +1,13 @@
 %~d0
 cd %~dp0
 
+
+
 call design\mainLogo.cmd
-
-
-
 echo.Current Directory: %cd%
+
+
+
 if exist files\backups\registry\HKUConsoleCMD_Backup.reg reg import files\backups\registry\HKUConsoleCMD_Backup.reg
 
 for /f "tokens=1,2,*" %%i in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v Desktop') do set desktopLocation=%%k
