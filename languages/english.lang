@@ -13,7 +13,6 @@
 
 initialization=^(!^) Initialization...
 initializationRun=^(!^) Initialization run...
-selectedLanguage=^(i^) Language: English
 
 enterCommand=^(^>^) Enter the number of command ^> 
 
@@ -27,6 +26,13 @@ mozillaFirefoxUserProfile=^(i^) Mozilla Firefox Profile id: %mozillaFirefoxUserP
 
 creatingRegistryBackup=^(!^) Creating a backup copy of the Windows registry...
 registryBackupCreated=^(!^) Backup copy of the Windows registry is succesfully created!
+
+
+
+
+
+languageMenu01=Language
+selectedLanguage=^(i^) Language: English
 
 
 
@@ -75,15 +81,33 @@ deleteMenu24= ║
 
 
 
-updatingDataBases=^(!^) Updating virus databases. Please wait...
-dataBasesUpdated=^(!^) Virus databases updated!
+updatingDataBases=^(i^) Updating virus databases. Please wait...
+dataBasesUpdated=^(i^) Virus databases updated!
 
 
 
 
 
-importMenu01=^(i^) To import databases into the program, upload them on to your desktop.
-importMenu02=^(1^) Run import                                                ^(0^) Cancel
+importMenu01=To import databases into the program, upload them on to your desktop.
+importMenu02=^(1^) Run import
+importMenu03=^(0^) Cancel
+
+
+
+
+
+settingsMenu01=Settings
+settingsMenu02=^(1^) Language:
+settingsMenu03=^(2^) Logging:
+settingsMenu04=^(3^) Debug:
+settingsMenu05=Update
+settingsMenu06=^(4^) Update channel:
+settingsMenu07=^(5^) Autoupdate %appName%:
+settingsMenu08=^(6^) Autoupdate databases:
+settingsMenu09=^(7^) Remind for %appName% updates:
+settingsMenu10=^(8^) Remind for databases updates:
+settingDisabled=disabled
+settingEnabled=enabled
 
 
 
@@ -95,17 +119,19 @@ uninstalling=^(!^) Deleting - %cd%...
 
 
 
-servicesDeleting=Stop and removal services
-processesDeleting=Stop and removal processes
-dirsDeleting=Deleting dirs
-filesDeleting=Deleting files
-linksDeleting=Deleting links
-extensionsDeleting=Deleting extensions
-registryDeleting=Cleaning registry
-tasksDeleting=Deleting tasks
-tempDeleting=Deleting temps
+cleaningServices=Stopping and removing services...
+cleaningTasks=Stopping and removing schleduled tasks...
+cleaningProcesses=Stopping and removing processes...
+cleaningRegistry=Cleaning registry...
+cleaningTemp=Cleaning temps...
+cleaningFolders=Deleting directories...
+cleaningFiles=Deleting files...
+cleaningLinks=Removing links...
+cleaningExtensions=Removing extensions...
+cleaningHeuristic=Applying heuristic rules...
+cleaningExperimental=Applying experimental rules...
 
-securityDangersDeletedMessage=Deleted: %k%.
+deletedObjects=Objects deleted: %counter-deletedObjects%.
 
 
 
@@ -123,8 +149,10 @@ restartMessage04=^(!^) The computer will restart after 5 seconds...
 
 
 noVirusDataBasesError=^(i^) First of all update the virus databases!
-dataBasesUpdateError=^(!^) Check your Internet connection or, maybe, databases or AdVirC are corrupted!
-importError=^(!^) Error! No databases or they are corrupted!
+dataBasesUpdateError=^(!^) Databases are not updated!
+wgetError=^(!^) Download error! Check your Internet connection!
+unZipError=^(!^) Extract error! Please, reload %appName%!
+importError=^(!^) Error! No databases!
 
 
 

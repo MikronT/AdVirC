@@ -5,37 +5,23 @@ echo.%lang-initialization%
 
 
 set debugLog=nul
-set loadingReset=call design\loadingReset.cmd
+set deleteScript=temp\deleteScript.cmd
 set log=nul
 set module-moveFile=subroutines\modules\movefile.exe
 set module-shortcut=subroutines\modules\shortcut.exe
 set module-unZip=subroutines\modules\unzip.exe
 set module-wget=subroutines\modules\wget.exe
-set reboot=temp\rebootScript.cmd
-set setting-autoUpdate=false
+set rebootScript=temp\rebootScript.cmd
+set setting-autoUpdateDatabases=true
+set setting-autoUpdateProgram=false
 set setting-debug=false
 set setting-firstRun=true
 set setting-lang=lang
 set setting-logging=true
+set setting-remindDatabasesUpdates=true
+set setting-remindProgramUpdates=true
 set setting-updateChannel=stable
 set settings=settings.ini
-
-
-
-for /f "tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
-  set %%iLocation=%%k
-  for /f "tokens=1,2,*" %%l in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v %%j') do set %%iLocation=%%n
-)
-
-
-
-for /f "tokens=1,2,* delims=." %%i in ("%date%") do set currentDate=%%k.%%j.%%i
-if exist settings.ini for /f "eol=# delims=" %%i in (settings.ini) do set setting-%%i
-%loadingUpdate% 5
-
-
-
-md files\reports\shortcuts>nul 2>nul
 
 
 
@@ -45,10 +31,24 @@ for /f "delims=" %%i in (files\fileList.db) do if not exist "%%i" goto :corrupte
 
 
 
+for /f "tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
+  set %%iLocation=%%k
+  for /f "skip=1 tokens=1,2,*" %%l in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v %%j') do set %%iLocation=%%n
+)
+for /f "tokens=1,2,* delims=." %%i in ("%date%") do set currentDate=%%k.%%j.%%i
+if exist %settings% for /f "eol=# delims=" %%i in (%settings%) do set setting-%%i
+%loadingUpdate% 5
+
+
+
+md files\reports\shortcuts>nul 2>nul
+
+
+
 if "%setting-logging%" == "true" (
   md files\logs>nul 2>nul
-  set log="files\logs\AdVirC_log_%currentDate%.log"
-  if "%setting-debug%" == "true" set debugLog="files\logs\AdVirC_debugLog_%currentDate%.log"
+  set log="files\logs\%appName%_log_%currentDate%.log"
+  if "%setting-debug%" == "true" set debugLog="files\logs\%appName%_debugLog_%currentDate%.log"
 )
 %loadingUpdate% 4
 
@@ -78,12 +78,14 @@ echo.>>%debugLog%
 call :logLineAppend %debugLog% 1
 
 echo.User Shell Folders:>>%debugLog%
-for /f "tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do echo.%%i Location: %%%iLocation%>>%debugLog%
+for /f "tokens=1,* delims=;" %%i in (files\userShellFolders.db) do echo.%%i Location: %%%iLocation%>>%debugLog%
 
 
 
-echo.@echo off>%reboot%
-echo.chcp 65001>>%reboot%
+echo.>%deleteScript%
+
+echo.@echo off>%rebootScript%
+echo.chcp 65001>>%rebootScript%
 
 
 
@@ -92,7 +94,6 @@ echo.chcp 65001>>%reboot%
 
 
 
-:language
 if "%setting-lang%" NEQ "english" if "%setting-lang%" NEQ "russian" if "%setting-lang%" NEQ "ukrainian" call :languageMenu
 call :languageImport
 %loadingUpdate% 1
@@ -125,13 +126,11 @@ if "%setting-firstRun%" == "true" (
 
   echo.%lang-creatingRegistryBackup%
   rem reg export HKCR files\backups\registry\HKCR.reg>>%debug_log%
-  %loadingUpdate% 2
-  rem reg export HKCU files\backups\registry\HKCU.reg>>%debug_log%
-  %loadingUpdate% 2
+  %loadingUpdate% 3
   rem reg export HKLM files\backups\registry\HKLM.reg>>%debug_log%
-  %loadingUpdate% 6
+  %loadingUpdate% 5
   rem reg export HKU  files\backups\registry\HKU.reg >>%debug_log%
-  %loadingUpdate% 4
+  %loadingUpdate% 6
   reg export HKCC files\backups\registry\HKCC.reg>>%debug_log%
   %loadingUpdate% 1
   echo.%lang-registryBackupCreated%
@@ -189,15 +188,14 @@ goto :mainMenu
 :languageMenu
 set command=command
 %logo%
-echo.^(!^) Select language:
-echo. ║
-echo.^(0^) English                                                   ^(1^) Русский
-echo. ║                                                             ║
-echo.^(2^) Українська                                                 ║
-echo. ║                                                             ║
-echo. ╠═════════════════════════════════════════════════════════════╝
-echo. ║
-set /p command=^(^>^) Language number ^> 
+echo.%lang-languageMenu01%
+echo.^(0^) English
+echo.^(1^) Русский
+echo.^(2^) Українська
+echo.
+echo.
+echo.
+set /p command=%lang-enterCommand%
 
 
 
@@ -221,21 +219,10 @@ goto :languageMenu
 
 
 
-:languageImport
-for /f "eol=# delims=" %%i in (languages\%setting-lang%.lang) do set lang-%%i
-echo.Language: %setting-lang%>>%log%
-exit /b
-
-
-
-
-
-
-
 :mainMenu
 set command=command
 %logo%
-%loadingReset%
+%loadingUpdate% reset
 echo.%lang-mainMenu01%
 echo.%lang-mainMenu02%
 echo.%lang-mainMenu03%
@@ -332,18 +319,18 @@ goto :deleteMenu
 set command=command
 %logo%
 echo.%lang-importMenu01%
-echo. ║
 echo.%lang-importMenu02%
-echo. ║                                                             ║
-echo. ╠═════════════════════════════════════════════════════════════╝
-echo. ║
+echo.%lang-importMenu03%
+echo.
+echo.
+echo.
 if "%importError%" == "1" (
   color c
   set importError=0
   echo.%lang-importError%
-  echo. ║
-  echo. ║
-  echo. ║
+  echo.
+  echo.
+  echo.
 )
 set /p command=%lang-enterCommand%
 
@@ -355,7 +342,6 @@ if "%command%" == "1" (
     set importError=1
     goto :importMenu
   )
-  %loadingUpdate% 10
   set importReturnCode=1
   call subroutines\databasesUpdate.cmd
   exit /b
@@ -372,7 +358,51 @@ goto :importMenu
 set command=command
 %logo%
 echo.%lang-settingsMenu01%
+echo.%lang-settingsMenu02% %setting-lang%
+
+if "%setting-logging%" == "true" (
+  echo.%lang-settingsMenu03% %lang-settingEnabled%
+) else echo.%lang-settingsMenu03% %lang-settingDisabled%
+
+if "%setting-debug%" == "true" (
+  echo.%lang-settingsMenu04% %lang-settingEnabled%
+) else echo.%lang-settingsMenu04% %lang-settingDisabled%
+
+echo.
+echo.%lang-settingsMenu05%
+echo.%lang-settingsMenu06% %setting-updateChannel%
+
+if "%setting-autoUpdateProgram%" == "true" (
+  call echo.%lang-settingsMenu07% %lang-settingEnabled%
+) else call echo.%lang-settingsMenu07% %lang-settingDisabled%
+
+if "%setting-autoUpdateDatabases%" == "true" (
+  echo.%lang-settingsMenu08% %lang-settingEnabled%
+) else echo.%lang-settingsMenu08% %lang-settingDisabled%
+
+if "%setting-remindProgramUpdates%" == "true" (
+  call echo.%lang-settingsMenu09% %lang-settingEnabled%
+) else call echo.%lang-settingsMenu09% %lang-settingDisabled%
+
+if "%setting-remindDatabasesUpdates%" == "true" (
+  echo.%lang-settingsMenu10% %lang-settingEnabled%
+) else echo.%lang-settingsMenu10% %lang-settingDisabled%
+
+echo.
+echo.
+echo.
 set /p command=%lang-enterCommand%
+exit /b
+
+
+
+
+
+
+
+:languageImport
+for /f "eol=# delims=" %%i in (languages\%setting-lang%.lang) do set lang-%%i
+echo.Language: %setting-lang%>>%log%
 exit /b
 
 
@@ -393,14 +423,14 @@ exit /b
 
 :corrupted
 %logo%
-%loadingReset%
+%loadingUpdate% reset
 echo.Program Corrupted!>>%log%
-echo.^(!^) AdVirC Diagnostics: 
+echo.^(!^) %appName% Diagnostics: 
 echo.   Program Corrupted!
 echo.^(!^) Files missing:
 for /f "delims=" %%i in (files\reports\corruptedFilesList.db) do echo.    --^> %%i
 echo.
-echo.^(!^) Reinstall AdVirC!
+echo.^(!^) Reinstall %appName%!
 pause>nul
 exit
 
@@ -411,17 +441,21 @@ exit
 
 
 :exit
-echo.# %appName% Settings #>settings.ini
-echo.autoUpdate=%setting-autoUpdate%>>settings.ini
-echo.debug=%setting-debug%>>settings.ini
-echo.firstRun=%setting-firstRun%>>settings.ini
-echo.lang=%setting-lang%>>settings.ini
-echo.logging=%setting-logging%>>settings.ini
-echo.updateChannel=%setting-updateChannel%>>settings.ini
+echo.# %appName% Settings #>%settings%
+echo.autoUpdateDatabases=%setting-autoUpdateDatabases%>>%settings%
+echo.autoUpdateProgram=%setting-autoUpdateProgram%>>%settings%
+echo.debug=%setting-debug%>>%settings%
+echo.firstRun=%setting-firstRun%>>%settings%
+echo.lang=%setting-lang%>>%settings%
+echo.logging=%setting-logging%>>%settings%
+echo.remindDatabasesUpdates=%setting-remindDatabasesUpdates%>>%settings%
+echo.remindProgramUpdates=%setting-remindProgramUpdates%>>%settings%
+echo.updateChannel=%setting-updateChannel%>>%settings%
 
 reg import files\backups\registry\HKUConsoleCMD_Backup.reg
 
-if "%1" == "reboot" ( shutdown /r /t 0 ) else if exist temp rd /s /q temp
+%loadingUpdate% stop
+%module-sleep% 3
 
-taskkill /f /im cmd.exe /t
+if "%1" == "reboot" ( shutdown /r /t 0 ) else if exist temp rd /s /q temp
 exit

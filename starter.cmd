@@ -27,7 +27,7 @@ if exist temp rd /s /q temp
 md files\backups\registry>nul 2>nul
 md temp>nul 2>nul
 
-echo.0>temp\loadingProgress
+%loadingUpdate% reset
 
 
 

@@ -13,7 +13,6 @@
 
 initialization=^(!^) Инициализацыя...
 initializationRun=^(!^) Инициализацыя запуска...
-selectedLanguage=^(i^) Язык: Русский
 
 enterCommand=^(^>^) Введите номер команды ^> 
 
@@ -27,6 +26,13 @@ mozillaFirefoxUserProfile=^(i^) Идентификатор профиля Mozill
 
 creatingRegistryBackup=^(!^) Создание резервной копии реестра Windows...
 registryBackupCreated=^(!^) Резервная копия реестра Windows успешно создана!
+
+
+
+
+
+languageMenu01=Язык
+selectedLanguage=^(i^) Язык: Русский
 
 
 
@@ -75,15 +81,33 @@ deleteMenu24= ║
 
 
 
-updatingDataBases=^(!^) Обновление вирусных баз данных. Пожалуйста подождите...
-dataBasesUpdated=^(!^) Вирусные базы обновлены!
+updatingDataBases=^(i^) Обновление вирусных баз данных. Пожалуйста подождите...
+dataBasesUpdated=^(i^) Вирусные базы обновлены!
 
 
 
 
 
-importMenu01=^(i^) Чтобы импортировать базы данных в программу, загрузите их на рабочий стол.
-importMenu02=^(1^) Запустить импорт                                          ^(0^) Отменить
+importMenu01=Чтобы импортировать базы данных в программу, загрузите их на рабочий стол.
+importMenu02=^(1^) Запустить импорт
+importMenu03=^(0^) Отменить
+
+
+
+
+
+settingsMenu01=Настройки
+settingsMenu02=^(1^) Язык:
+settingsMenu03=^(2^) Логирование:
+settingsMenu04=^(3^) Отладка:
+settingsMenu05=Обновление
+settingsMenu06=^(4^) Канал обновления:
+settingsMenu07=^(5^) Автообновление %appName%:
+settingsMenu08=^(6^) Автообновление баз данных:
+settingsMenu09=^(7^) Напоминать про обновления %appName%:
+settingsMenu10=^(8^) Напоминать про обновления баз данных:
+settingDisabled=отключено
+settingEnabled=включено
 
 
 
@@ -95,17 +119,19 @@ uninstalling=^(!^) Удаление "%cd%"...
 
 
 
-servicesDeleting=Остановка и удаление служб
-processesDeleting=Остановка и удаление процессов
-dirsDeleting=Удаление папок
-filesDeleting=Удаление файлов
-linksDeleting=Удаление ярлыков
-extensionsDeleting=Удаление розширений
-registryDeleting=Очистка реєстра
-tasksDeleting=Удаление запланированных заданий
-tempDeleting=Удаление временных файлов
+cleaningServices=Остановка и удаление служб...
+cleaningTasks=Остановка и удаление запланированных заданий...
+cleaningProcesses=Остановка и удаление процессов...
+cleaningRegistry=Очистка реєстра...
+cleaningTemp=Очистка временных файлов...
+cleaningFolders=Удаление каталогов...
+cleaningFiles=Удаление файлов...
+cleaningLinks=Удаление ярлыков...
+cleaningExtensions=Удаление расширений...
+cleaningHeuristic=Применение эвристических правил...
+cleaningExperimental=Применение экспериментальных правил...
 
-securityDangersDeletedMessage=Удалено: %k%.
+deletedObjects=Удалено объектов: %counter-deletedObjects%.
 
 
 
@@ -113,7 +139,7 @@ securityDangersDeletedMessage=Удалено: %k%.
 
 restartMessage01=^(!^) Внимание
 restartMessage02=    Перезагрузка компьютера
-restartMessage03=    Сохрани свои данные и нажми ENTER
+restartMessage03=    Сохраните свои данные и нажмите ENTER
 restartMessage04=^(!^) Перезагрузка компьютера будет выполнена через 5 секунд...
 
 
@@ -123,8 +149,10 @@ restartMessage04=^(!^) Перезагрузка компьютера будет 
 
 
 noVirusDataBasesError=^(i^) Сначала обновите вирусные базы!
-dataBasesUpdateError=^(!^) Проверьте подключение к Интернету или , возможно, базы данных или AdVirC повреждены!
-importError=^(!^) Ошибка! Нет баз данных или они повреждены!
+dataBasesUpdateError=^(!^) Базы данных не были обновлены!
+wgetError=^(!^) Ошибка загрузки! Проверьте подключение к Интернету!
+unZipError=^(!^) Ошибка распаковки! Пожалуйста, перезапустите %appName%!
+importError=^(!^) Ошибка! Нет баз данных!
 
 
 

@@ -1,119 +1,56 @@
 %logo%
-if not exist files\databases (
-  echo %lang-noVirusDataBasesError%
+
+if not exist files\databases\rewrited\dirs (
+  echo.%lang-noVirusDataBasesError%
   %module-sleep% 3
   exit /b
 )
-set k=0
+
+set counter-foundObjects=0
+set counter-deletedObjects=0
 
 
 
 
 
-if %deleteLevel% LSS 2 (
-  set deleteLevelPath=files\databases\1-superficial\rewrited
 
-  ::Dirs-1-Superficial
-  echo %lang-dirsDeleting%
-  start /wait subroutines\deleting\dirs.cmd
-  %module-sleep% 1
 
-  ::Files-1-Superficial
-  echo %lang-filesDeleting%
-  start /wait subroutines\deleting\files.cmd
-  %module-sleep% 1
+setlocal EnableDelayedExpansion
+echo.[Scanning]>>%log%
+for %%d in (services tasks processes registry temp folders files links extensions heuristic experimental) do start /wait subroutines\scanning\%%d.cmd
+
+
+
+
+
+
+
+echo.[Deleting]>>%log%
+for %%d in (services tasks processes registry temp folders files links extensions heuristic experimental) do (
+  set temp-lang-cleaning=lang-cleaning%%d
+  echo.!temp-lang-cleaning!
+  start /wait subroutines\deleting\%%d.cmd
 )
-
-
-
-if %deleteLevel% GEQ 4 (
-  ::Services-4-Full
-  echo %lang-servicesDeleting%
-  start /wait subroutines\deleting\services.cmd
-  %module-sleep% 1
-
-  ::Tasks-4-Full
-  echo %lang-tasksDeleting%
-  start /wait subroutines\deleting\tasks.cmd
-  %module-sleep% 1
-
-  ::Processes-4-Full
-  echo %lang-processesDeleting%
-  start /wait subroutines\deleting\processes.cmd
-  %module-sleep% 1
-)
-
-
-
-if %deleteLevel% GEQ 3 (
-  ::Registry-3-Deep
-  echo %lang-registryDeleting%
-  start /wait subroutines\deleting\registry.cmd
-  %module-sleep% 1
-)
-
-
-
-if %deleteLevel% GEQ 4 (
-  ::Temp-4-Full
-  echo %lang-tempDeleting%
-  start /wait subroutines\deleting\temp.cmd
-  %module-sleep% 1
-)
-
-
-
-if %deleteLevel% GEQ 2 (
-  set deleteLevelPath=files\databases\2-main\rewrited
-
-  ::Dirs-2-Main
-  echo %lang-dirsDeleting%
-  start /wait subroutines\deleting\dirs.cmd
-  %module-sleep% 1
-
-  ::Files-2-Main
-  echo %lang-filesDeleting%
-  start /wait subroutines\deleting\files.cmd
-  %module-sleep% 1
-
-  ::Links-2-Main
-  echo %lang-linksDeleting%
-  start /wait subroutines\deleting\links.cmd
-  %module-sleep% 1
-
-  ::Extensions-2-Main
-  echo %lang-extensionsDeleting%
-  start /wait subroutines\deleting\extensions.cmd
-  %module-sleep% 1
-)
-
-
-
-if %deleteLevel% GEQ 5 (
-  ::Heuristic-5-Heuristic
-  rem echo %lang-applyingHeuristicRules%
-
-  ::Experimental-5-Heuristic
-  rem echo %lang-applyingExperimentalRules%
-)
+endlocal
 
 
 
 
 
-for /f "delims=" %%i in (%filesToDelete%) do %moduleMoveFile% /accepteula "%%i" ""
 
-rem copy /y "%reboot%" "%Temp%\%appName%Reboot.cmd"
-rem schtasks /create /tn %appName%Reboot /xml "files\rebootTask.xml" /f
+
+for /f "delims=" %%i in (%filesToDelete%) do %module-moveFile% /accepteula "%%i" ""
+
+
 
 
 
 
 
 %logo%
-call echo %lang-securityDangersDeletedMessage%
+call echo.%lang-deletedObjects%
 
-echo.Deleted security dangers: %k%.>>%log%
+echo.Objects deleted: %counter-deletedObjects%.>>%log%
 echo.>>%log%
 echo.>>%log%
 echo.>>%log%
@@ -123,12 +60,12 @@ echo.===========================================================================
 
 
 
-echo %lang-restartMessage01%
-echo %lang-restartMessage02%
-echo %lang-restartMessage03%
+echo.%lang-restartMessage01%
+echo.%lang-restartMessage02%
+echo.%lang-restartMessage03%
 pause>nul
 
-echo %lang-restartMessage04%
+echo.%lang-restartMessage04%
 %module-sleep% 5
 echo.>temp\rebootNow
 exit /b
