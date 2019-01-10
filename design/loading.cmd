@@ -1,6 +1,6 @@
 @echo off
 color 0b
-chcp 65001
+chcp 65001>nul
 mode con:cols=62 lines=7
 set percents=0
 
