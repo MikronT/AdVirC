@@ -23,7 +23,7 @@ if "%importReturnCode%" == "1" (
 
 %loadingUpdate% 10
 
-%module-wget% --no-check-certificate --quiet --tries=1 --output-document=temp\adVirCDatabases.zip "https://drive.google.com/uc?export=download&id=1Q_cNXPk-PjybPLDTBpAylvjP_C_UbX_x"
+%module-wget% --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=1 "https://drive.google.com/uc?export=download&id=1Q_cNXPk-PjybPLDTBpAylvjP_C_UbX_x" --output-document=temp\adVirCDatabases.zip
 if not exist temp\adVirCDatabases.zip goto :error %lang-wgetError%
 
 %module-sleep% 1

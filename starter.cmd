@@ -52,6 +52,6 @@ exit
 
 
 :startAsAdmin
-echo.Please, run as Admin!
->nul timeout /nobreak /t 3
+echo.^(^!^) Please, run as Admin^!
+timeout /nobreak /t 3 >nul
 exit

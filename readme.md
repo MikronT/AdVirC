@@ -10,7 +10,7 @@
 [![Status: Release](https://img.shields.io/badge/Status-Release-green.svg?style=for-the-badge)](https://sites.google.com/view/advirc)
 -->
 
-AdVirC is a free **open source** console utility for cleaning PCs from Adware, Malware, Trojans, Miners and rubbish.
+AdVirC (AdVirC Removal Tool or AdVirC RT) is a free **open source** console utility for cleaning PCs from Adware, Malware, Trojans, Miners and rubbish.
 
 *If you have ads, third-party programs or your computer live your life, we may be able to help you.*
 
