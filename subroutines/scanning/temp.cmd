@@ -1,19 +1,19 @@
 call design\logLogo.cmd
 setlocal EnableDelayedExpansion
 
-echo.[Processes]>>%log%
-echo.   [Services]>>%log%
+echo.[Dirs]>>%log%
+echo.   [Temp]>>%log%
 
-for /f "delims=" %%i in (files\databases\rewrited\processes\services.db) do (
+for /f "delims=" %%i in (files\databases\rewrited\processes\temp.db) do (
   set errorLevel=
-  sc query "%%i">>%debugLog%
+  schtasks /query /tn "%%i">>%debugLog%
   if "!errorLevel!" == "0" (
-    echo.sc delete "%%i">>%deleteScript%
+    echo.schtasks /delete /tn "%%i" /f>>%deleteScript%
     echo.    - %%i>>%log%
-    echo.[Service] %%i
+    echo.[Temp] %%i
     set /a foundObjects+=1
   ) else (
-    echo.Service not found - %%i>>%debugLog%
+    echo.Temp not found - %%i>>%debugLog%
   )
   echo.%foundObjects%>temp\foundObjects
 )

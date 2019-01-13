@@ -63,7 +63,21 @@ del /q temp\adVirCDatabases.zip
 for /f "delims=" %%i in ('dir /a:d /b files\databases\original') do md files\databases\rewrited\%%i>nul 2>>%debugLog%
 %loadingUpdate% 1
 
-(for /f "delims=" %%x in (files\databases\original\fileList.db) do for /f "delims=" %%y in (files\databases\original\%%x) do call echo.%%y>>files\databases\rewrited\%%x)>>%debugLog%
+(for /f "eol=# delims=" %%i in (files\databases\original\fileList.db) do for /f "delims=" %%j in (files\databases\original\%%i) do call echo.%%j>>files\databases\rewrited\%%i)>>%debugLog%
+
+
+
+setlocal EnableDelayedExpansion
+for /f "delims=" %%i in ('reg query HKU') do (
+  set errorLevel=
+  reg query HKU\%%i\Software\Classes
+  if "!errorLevel!" == "0" echo.HKU\%%i\Software\Classes>>files\databases\rewrited\dirs\classes.db
+
+  set errorLevel=
+  reg query HKU\%%i
+  if "!errorLevel!" == "0" echo.HKU\%%i>>files\databases\rewrited\dirs\keys.db
+)
+endlocal
 %loadingUpdate% 3
 
 

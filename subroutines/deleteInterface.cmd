@@ -1,13 +1,23 @@
 %logo%
 
-if not exist files\databases\rewrited\dirs (
+if not exist files\databases\rewrited\dirs\temp.db (
   echo.%lang-noVirusDataBasesError%
   %module-sleep% 3
   exit /b
 )
 
-set counter-foundObjects=0
-set counter-deletedObjects=0
+set order=services tasks processes registry     temp     folders files links extensions heuristic experimental
+set foundObjects=0
+set deletedObjects=0
+
+
+
+
+
+
+
+echo.[Scanning]>>%log%
+for %%d in (%order%) do start /wait subroutines\scanning\%%d.cmd
 
 
 
@@ -16,17 +26,8 @@ set counter-deletedObjects=0
 
 
 setlocal EnableDelayedExpansion
-echo.[Scanning]>>%log%
-for %%d in (services tasks processes registry temp folders files links extensions heuristic experimental) do start /wait subroutines\scanning\%%d.cmd
-
-
-
-
-
-
-
 echo.[Deleting]>>%log%
-for %%d in (services tasks processes registry temp folders files links extensions heuristic experimental) do (
+for %%d in (%order%) do (
   set temp-lang-cleaning=lang-cleaning%%d
   echo.!temp-lang-cleaning!
   start /wait subroutines\deleting\%%d.cmd
