@@ -14,6 +14,7 @@
 initialization=^(!^) Инициализацыя...
 initializationRun=^(!^) Инициализацыя запуска...
 
+back=^(0^) Назад
 enterCommand=^(^>^) Введите номер команды ^> 
 
 
@@ -31,6 +32,8 @@ registryBackupCreated=^(!^) Резервная копия реестра Windows
 
 
 
+
+
 languageMenu01=Язык
 selectedLanguage=^(i^) Язык: Русский
 
@@ -39,8 +42,8 @@ selectedLanguage=^(i^) Язык: Русский
 
 
 mainMenu01=Функции Безопасности                                          Базы Данных
-mainMenu02=^(1^) Провести очистку системы                                  ^(3^) Обновить вирусные базы
-mainMenu03=^(2^) Исключения                                                ^(4^) Импорт баз данных
+mainMenu02=^(1^) Провести очистку системы                                  ^(3^) Обновить базы данных
+mainMenu03=^(2^) Исключения                                                ^(4^) Импортировать базы данных
 mainMenu04=
 mainMenu05=Поддержка                                                     Программа
 mainMenu06=^(5^) Помощь                                                    ^(8^) Настройки
@@ -74,8 +77,7 @@ deleteMenu19= ║- Папки                ║- Папки                ║-
 deleteMenu20= ║                       ║                       ║                       ║                       ║                       ║
 deleteMenu21= ╠═══════════════════════╩═══════════════════════╩═══════════════════════╩═══════════════════════╩═══════════════════════╝
 deleteMenu22= ║
-deleteMenu23=^(0^) Выход
-deleteMenu24= ║
+deleteMenu23= ║
 
 
 
@@ -90,7 +92,6 @@ dataBasesUpdated=^(i^) Вирусные базы обновлены!
 
 importMenu01=Чтобы импортировать базы данных в программу, загрузите их на рабочий стол.
 importMenu02=^(1^) Запустить импорт
-importMenu03=^(0^) Отменить
 
 
 
@@ -108,6 +109,15 @@ settingsMenu09=^(7^) Напоминать про обновления %appName%:
 settingsMenu10=^(8^) Напоминать про обновления баз данных:
 settingDisabled=отключено
 settingEnabled=включено
+
+
+
+
+
+updateChannelMenu01=Выберите канал обновления для %appName% и баз данных.
+updateChannelMenu02=^(1^) Release ^(стабильные^)
+updateChannelMenu03=^(2^) Beta ^(некоторые новые возможности, но до тестов^)
+updateChannelMenu04=^(3^) Nightly ^(все новые возможности, не стабильные^)
 
 
 
@@ -131,7 +141,7 @@ cleaningExtensions=Удаление расширений...
 cleaningHeuristic=Применение эвристических правил...
 cleaningExperimental=Применение экспериментальных правил...
 
-deletedObjects=Удалено объектов: %counter-deletedObjects%.
+deletedObjects=Удалено объектов: %deletedObjects%.
 
 
 

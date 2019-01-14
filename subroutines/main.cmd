@@ -20,8 +20,8 @@ set setting-lang=lang
 set setting-logging=true
 set setting-remindDatabasesUpdates=true
 set setting-remindProgramUpdates=true
-set setting-updateChannel=stable
-set settings=settings.ini
+set setting-updateChannel=release
+set settings=files\settings.ini
 
 
 
@@ -189,9 +189,11 @@ goto :mainMenu
 set command=command
 %logo%
 echo.%lang-languageMenu01%
-echo.^(0^) English
-echo.^(1^) Русский
-echo.^(2^) Українська
+echo.^(1^) English
+echo.^(2^) Русский
+echo.^(3^) Українська
+echo.
+echo.%lang-back%
 echo.
 echo.
 echo.
@@ -199,19 +201,14 @@ set /p command=%lang-enterCommand%
 
 
 
-if "%command%" == "0" (
-  set setting-lang=english
-  exit /b
-)
-if "%command%" == "1" (
-  set setting-lang=russian
-  exit /b
-)
-if "%command%" == "2" (
-  set setting-lang=ukrainian
-  exit /b
-)
-goto :languageMenu
+if "%command%" == "0" exit /b
+if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" goto :languageMenu
+
+if "%command%" == "1" set setting-lang=english
+if "%command%" == "2" set setting-lang=russian
+if "%command%" == "3" set setting-lang=ukrainian
+call :settingsSave
+exit /b
 
 
 
@@ -244,6 +241,7 @@ if "%setting-firstRun%" == "true" (
   echo.
   echo.
   set setting-firstRun=false
+  call :settingsSave
 )
 set /p command=%lang-enterCommand%
 
@@ -257,7 +255,7 @@ rem if "%command%" == "5" call :helpMenu
 rem if "%command%" == "6" call :report
 rem if "%command%" == "7" call :about
 if "%command%" == "8" call :settingsMenu
-rem if "%command%" == "9" call :clearTemp
+if "%command%" == "9" call :clearTemp
 if "%command%" == "0" call :exit
 if "%command%" == "#" call uninstall.cmd
 
@@ -295,8 +293,8 @@ echo.%lang-deleteMenu19%
 echo.%lang-deleteMenu20%
 echo.%lang-deleteMenu21%
 echo.%lang-deleteMenu22%
+echo.%lang-back%
 echo.%lang-deleteMenu23%
-echo.%lang-deleteMenu24%
 set /p command=%lang-enterCommand%
 
 
@@ -304,7 +302,7 @@ set /p command=%lang-enterCommand%
 if "%command%" == "0" exit /b
 for /l %%i in (1,1,5) do if "%command%" == "%%i" (
   set deleteLevel=%command%
-  call subroutines\deleteInterface.cmd
+  call subroutines\cleaning.cmd
   exit /b
 )
 goto :deleteMenu
@@ -320,7 +318,8 @@ set command=command
 %logo%
 echo.%lang-importMenu01%
 echo.%lang-importMenu02%
-echo.%lang-importMenu03%
+echo.
+echo.%lang-back%
 echo.
 echo.
 echo.
@@ -389,9 +388,87 @@ if "%setting-remindDatabasesUpdates%" == "true" (
 ) else echo.%lang-settingsMenu10% %lang-settingDisabled%
 
 echo.
+echo.%lang-back%
+echo.
 echo.
 echo.
 set /p command=%lang-enterCommand%
+
+
+
+if "%command%" == "0" exit /b
+if "%command%" == "1" (
+  call :languageMenu
+  call :languageImport
+)
+
+if "%command%" == "2" if "%setting-logging%" == "true" (
+  set setting-logging=false
+) else if "%setting-logging%" == "false" (
+  set setting-logging=true
+) else set setting-logging=true
+
+if "%command%" == "3" if "%setting-debug%" == "true" (
+  set setting-debug=false
+) else if "%setting-debug%" == "false" (
+  set setting-debug=true
+) else set setting-debug=false
+
+if "%command%" == "4" call :updateChannelMenu
+
+if "%command%" == "5" if "%setting-autoUpdateProgram%" == "true" (
+  set setting-autoUpdateProgram=false
+) else if "%setting-autoUpdateProgram%" == "false" (
+  set setting-autoUpdateProgram=true
+) else set setting-autoUpdateProgram=false
+
+if "%command%" == "6" if "%setting-autoUpdateDatabases%" == "true" (
+  set setting-autoUpdateDatabases=false
+) else if "%setting-autoUpdateDatabases%" == "false" (
+  set setting-autoUpdateDatabases=true
+) else set setting-autoUpdateDatabases=true
+
+if "%command%" == "7" if "%setting-remindProgramUpdates%" == "true" (
+  set setting-remindProgramUpdates=false
+) else if "%setting-remindProgramUpdates%" == "false" (
+  set setting-remindProgramUpdates=true
+) else set setting-remindProgramUpdates=true
+
+if "%command%" == "8" if "%setting-remindDatabasesUpdates%" == "true" (
+  set setting-remindDatabasesUpdates=false
+) else if "%setting-remindDatabasesUpdates%" == "false" (
+  set setting-remindDatabasesUpdates=true
+) else set setting-remindDatabasesUpdates=true
+
+call :settingsSave
+goto :settingsMenu
+
+
+
+
+
+
+
+:updateChannelMenu
+set command=command
+%logo%
+echo.%lang-updateChannelMenu01%
+echo.%lang-updateChannelMenu02%
+echo.%lang-updateChannelMenu03%
+echo.%lang-updateChannelMenu04%
+echo.
+echo.%lang-back%
+echo.
+echo.
+echo.
+set /p command=%lang-enterCommand%
+
+
+
+if "%command%" == "0" exit /b
+if "%command%" == "1" set setting-updateChannel=release
+if "%command%" == "2" set setting-updateChannel=beta
+if "%command%" == "3" set setting-updateChannel=nightly
 exit /b
 
 
@@ -421,26 +498,7 @@ exit /b
 
 
 
-:corrupted
-%logo%
-%loadingUpdate% reset
-echo.Program Corrupted!>>%log%
-echo.^(!^) %appName% Diagnostics: 
-echo.   Program Corrupted!
-echo.^(!^) Files missing:
-for /f "delims=" %%i in (files\reports\corruptedFilesList.db) do echo.    --^> %%i
-echo.
-echo.^(!^) Reinstall %appName%!
-pause>nul
-exit
-
-
-
-
-
-
-
-:exit
+:settingsSave
 echo.# %appName% Settings #>%settings%
 echo.autoUpdateDatabases=%setting-autoUpdateDatabases%>>%settings%
 echo.autoUpdateProgram=%setting-autoUpdateProgram%>>%settings%
@@ -451,6 +509,48 @@ echo.logging=%setting-logging%>>%settings%
 echo.remindDatabasesUpdates=%setting-remindDatabasesUpdates%>>%settings%
 echo.remindProgramUpdates=%setting-remindProgramUpdates%>>%settings%
 echo.updateChannel=%setting-updateChannel%>>%settings%
+exit /b
+
+
+
+
+
+
+
+:clearTemp
+for %%i in (files\logs files\reports temp) do (
+  if exist %%i rd /s /q %%i
+  if not exist %%i md %%i>nul 2>nul
+)
+exit /b
+
+
+
+
+
+
+
+:corrupted
+%logo%
+%loadingUpdate% reset
+echo.Program Corrupted!>>%log%
+echo.^(!^) %appName% Diagnostics: 
+echo.   Program Corrupted!
+echo.^(i^) Files missing:
+for /f "delims=" %%i in (files\reports\corruptedFilesList.db) do echo.    --^> %%i
+echo.
+echo.^(!^) Reinstall %appName%!
+pause>nul
+call :exit
+
+
+
+
+
+
+
+:exit
+call :settingsSave
 
 reg import files\backups\registry\HKUConsoleCMD_Backup.reg
 
