@@ -7,7 +7,7 @@ echo.   [Shortcuts]>>%log%
 for /f "delims=" %%i in (files\databases\rewrited\dirs\shortcuts.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\files\shortcuts.db) do (
     if exist "%%i\%%j" (
-      echo.del /s /q "%%i\%%j">>%deleteScript%
+      echo.del /q "%%i\%%j">>%deleteScript%
       echo.    - %%i\%%j>>%log%
       echo.[Shortcut] %%i\%%j
       set /a foundObjects+=1
