@@ -15,7 +15,7 @@ for /f "delims=" %%i in (files\databases\rewrited\processes\services.db) do (
   ) else (
     echo.Service not found - %%i>>%debugLog%
   )
-  echo.%foundObjects%>temp\foundObjects
+  echo.!foundObjects!>temp\foundObjects
 )
 
 echo.Script Completed>>%log%

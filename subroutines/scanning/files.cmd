@@ -14,7 +14,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
     ) else (
       echo.File not found - %%i\%%j>>%debugLog%
     )
-    echo.%foundObjects%>temp\foundObjects
+    echo.!foundObjects!>temp\foundObjects
   )
 )
 
@@ -36,7 +36,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
     ) else (
       echo.File not found - %%i\%%j>>%debugLog%
     )
-    echo.%foundObjects%>temp\foundObjects
+    echo.!foundObjects!>temp\foundObjects
   )
 )
 
@@ -48,7 +48,7 @@ echo.>>%log%
 echo.[File System]>>%log%
 echo.   [System Drive Files]>>%log%
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\systemDrive.db) do (
+for /f "delims=" %%i in (files\databases\rewrited\files\systemDrive.db) do (
   if exist "%systemDrive%\%%i" (
     echo.del /q "%systemDrive%\%%i">>%deleteScript%
     echo.    - %systemDrive%\%%i>>%log%
@@ -57,7 +57,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\systemDrive.db) do (
   ) else (
     echo.File not found - %systemDrive%\%%i>>%debugLog%
   )
-  echo.%foundObjects%>temp\foundObjects
+  echo.!foundObjects!>temp\foundObjects
 )
 
 echo.Script Completed>>%log%
@@ -68,7 +68,7 @@ echo.>>%log%
 echo.[File System]>>%log%
 echo.   [Windows Directory Files]>>%log%
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\winDir.db) do (
+for /f "delims=" %%i in (files\databases\rewrited\files\winDir.db) do (
   if exist "%winDir%\%%i" (
     echo.del /q "%winDir%\%%i">>%deleteScript%
     echo.    - %winDir%\%%i>>%log%
@@ -77,7 +77,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\winDir.db) do (
   ) else (
     echo.File not found - %winDir%\%%i>>%debugLog%
   )
-  echo.%foundObjects%>temp\foundObjects
+  echo.!foundObjects!>temp\foundObjects
 )
 
 echo.Script Completed>>%log%

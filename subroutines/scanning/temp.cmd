@@ -13,7 +13,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\temp.db) do (
   ) else (
     echo.Temp not found - %%i>>%debugLog%
   )
-  echo.%foundObjects%>temp\foundObjects
+  echo.!foundObjects!>temp\foundObjects
 )
 
 echo.Script Completed>>%log%

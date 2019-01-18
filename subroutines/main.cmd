@@ -7,10 +7,10 @@ echo.%lang-initialization%
 set debugLog=nul
 set deleteScript=temp\deleteScript.cmd
 set log=nul
-set module-moveFile=subroutines\modules\movefile.exe
-set module-shortcut=subroutines\modules\shortcut.exe
-set module-unZip=subroutines\modules\unzip.exe
-set module-wget=subroutines\modules\wget.exe
+set module-moveFile=subroutines\modules\movefile.exe /accepteula
+set module-shortcut=subroutines\modules\shortcut.exe /a:c
+set module-unZip=subroutines\modules\unzip.exe -qq
+set module-wget=subroutines\modules\wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=1
 set rebootScript=temp\rebootScript.cmd
 set setting-autoUpdateDatabases=true
 set setting-autoUpdateProgram=false
@@ -249,7 +249,7 @@ set /p command=%lang-enterCommand%
 
 if "%command%" == "1" call :deleteMenu
 rem if "%command%" == "2" call :exceptionsMenu
-if "%command%" == "3" call subroutines\databasesUpdate.cmd
+if "%command%" == "3" call subroutines\databases.cmd
 if "%command%" == "4" call :importMenu
 rem if "%command%" == "5" call :helpMenu
 rem if "%command%" == "6" call :report
@@ -342,7 +342,7 @@ if "%command%" == "1" (
     goto :importMenu
   )
   set importReturnCode=1
-  call subroutines\databasesUpdate.cmd
+  call subroutines\databases.cmd
   exit /b
 )
 goto :importMenu

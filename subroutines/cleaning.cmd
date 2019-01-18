@@ -6,7 +6,6 @@ if not exist files\databases\rewrited\dirs\temp.db (
   exit /b
 )
 
-set order=services tasks processes registry     temp     folders files links extensions heuristic experimental
 set foundObjects=0
 set deletedObjects=0
 
@@ -17,30 +16,16 @@ set deletedObjects=0
 
 
 echo.[Scanning]>>%log%
-for %%d in (%order%) do start /wait subroutines\scanning\%%d.cmd
+for %%d in (services tasks processes registry temp folders files shortcuts extensions) do start /wait subroutines\scanning\%%d.cmd
 
 
 
+echo.[Cleaning]>>%log%
+for %%d in (deleting experimental heuristic) do start /wait subroutines\cleaning\%%d.cmd
 
 
 
-
-setlocal EnableDelayedExpansion
-echo.[Deleting]>>%log%
-for %%d in (%order%) do (
-  set temp-lang-cleaning=lang-cleaning%%d
-  echo.!temp-lang-cleaning!
-  start /wait subroutines\deleting\%%d.cmd
-)
-endlocal
-
-
-
-
-
-
-
-for /f "delims=" %%i in (%filesToDelete%) do %module-moveFile% /accepteula "%%i" ""
+for /f "delims=" %%i in (%filesToDelete%) do %module-moveFile% "%%i" ""
 
 
 
@@ -51,7 +36,7 @@ for /f "delims=" %%i in (%filesToDelete%) do %module-moveFile% /accepteula "%%i"
 %logo%
 call echo.%lang-deletedObjects%
 
-echo.Objects deleted: %counter-deletedObjects%.>>%log%
+echo.Objects deleted: %deletedObjects%.>>%log%
 echo.>>%log%
 echo.>>%log%
 echo.>>%log%

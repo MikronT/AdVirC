@@ -16,7 +16,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\classes.db) do (
     ) else (
       echo.Class not found - %%i\%%j>>%debugLog%
     )
-    echo.%foundObjects%>temp\foundObjects
+    echo.!foundObjects!>temp\foundObjects
   )
 )
 
@@ -40,7 +40,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\keys.db) do (
     ) else (
       echo.Key not found - %%i\%%j>>%debugLog%
     )
-    echo.%foundObjects%>temp\foundObjects
+    echo.!foundObjects!>temp\foundObjects
   )
 )
 

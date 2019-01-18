@@ -14,7 +14,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\shortcuts.db) do (
     ) else (
       echo.Shortcut not found - %%i\%%j>>%debugLog%
     )
-    echo.%foundObjects%>temp\foundObjects
+    echo.!foundObjects!>temp\foundObjects
   )
 )
 
@@ -33,7 +33,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\browsersShortcuts.db) do 
       call :subroutine %%j
       copy "%%i\%%j.lnk" "files\reports\shortcuts\%%j\%%x.lnk" /y
       echo.del /s /q "%%i\%%j.lnk">>%deleteScript%
-      echo.%module-shortcut% /a:c /f:"%%i\%%j.lnk" /t:"%%k" /i:"%%k" /w:"%%l">>%deleteScript%
+      echo.%module-shortcut% /f:"%%i\%%j.lnk" /t:"%%k" /i:"%%k" /w:"%%l">>%deleteScript%
       echo.    - %%i\%%j.lnk>>%log%
       echo.[Browser Shortcut] %%i\%%j.lnk ^(Overrided^)
     ) else (

@@ -23,7 +23,7 @@ if "%importReturnCode%" == "1" (
 
 %loadingUpdate% 10
 
-%module-wget% --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=1 "https://drive.google.com/uc?export=download&id=1Q_cNXPk-PjybPLDTBpAylvjP_C_UbX_x" --output-document=temp\adVirCDatabases.zip
+%module-wget% "https://drive.google.com/uc?export=download&id=1Q_cNXPk-PjybPLDTBpAylvjP_C_UbX_x" --output-document=temp\adVirCDatabases.zip
 if not exist temp\adVirCDatabases.zip goto :error %lang-wgetError%
 
 %module-sleep% 1
@@ -44,7 +44,7 @@ rd /s /q files\databases>nul 2>>%debugLog%
 %loadingUpdate% 4
 
 md files\databases\original>nul 2>>%debugLog%
-%module-unZip% -qq -o temp\adVirCDatabases.zip -d files\databases\original
+%module-unZip% -o temp\adVirCDatabases.zip -d files\databases\original
 if not exist files\databases\original\license.txt goto :error %lang-unZipError%
 
 %loadingUpdate% 4
