@@ -94,7 +94,7 @@ echo.chcp 65001>>%rebootScript%
 
 
 
-if "%setting-lang%" NEQ "english" if "%setting-lang%" NEQ "russian" if "%setting-lang%" NEQ "ukrainian" call :languageMenu
+if "%setting-lang%" NEQ "english" if "%setting-lang%" NEQ "russian" if "%setting-lang%" NEQ "ukrainian" call :languageMenu force
 call :languageImport
 %loadingUpdate% 1
 
@@ -116,14 +116,6 @@ if not exist files\reports\systemInfo.rpt systeminfo>files\reports\systemInfo.rp
 
 
 if "%setting-firstRun%" == "true" (
-  if exist "%AppData%\Mozilla\Firefox\Profiles" (
-    echo.%%mozillaFirefoxUserProfile%%>temp\tempMozillaFirefoxUserProfile
-    for /d %%x in (%AppData%\Mozilla\Firefox\Profiles\*) do for /f "tokens=1,2,3,4,5,6,7,8,9* delims=\" %%i in ("%%x") do call set mozillaFirefoxUserProfile=%%q
-    for /f "delims=" %%i in (temp\tempMozillaFirefoxUserProfile) do call echo.%%i>files\reports\mozillaFirefoxUserProfile.rpt
-    call echo.%lang-mozillaFirefoxUserProfile%
-  )
-  %loadingUpdate% 2
-
   echo.%lang-creatingRegistryBackup%
   rem reg export HKCR files\backups\registry\HKCR.reg>>%debug_log%
   %loadingUpdate% 3
@@ -134,10 +126,7 @@ if "%setting-firstRun%" == "true" (
   reg export HKCC files\backups\registry\HKCC.reg>>%debug_log%
   %loadingUpdate% 1
   echo.%lang-registryBackupCreated%
-) else (
-  for /f "delims=" %%i in (files\reports\mozillaFirefoxUserProfile.rpt) do set mozillaFirefoxUserProfile=%%i
-  %loadingUpdate% 17
-)
+) else %loadingUpdate% 15
 
 
 
@@ -145,11 +134,20 @@ echo.%%lastLoggedOnUserSID%%>temp\tempLastLoggedOnUserSID
 for /f "tokens=2*" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI /v LastLoggedOnUserSID') do set lastLoggedOnUserSID=%%j
 for /f "delims=" %%i in (temp\tempLastLoggedOnUserSID) do call echo.%%i>files\reports\lastLoggedOnUserSID.rpt
 call echo.%lang-lastLoggedOnUserSID%
+%loadingUpdate% 2
+
+
+
+if exist "%appData%\Mozilla\Firefox\Profiles" (
+  for /f "delims=" %%i in ('dir "%appData%\Mozilla\Firefox\Profiles" /a:d /b') do set mozillaFirefoxUserProfile=%%i
+  call echo.%lang-mozillaFirefoxUserProfile%
+)
+%loadingUpdate% 1
 
 
 
 call echo.%lang-processorArchitecture%
-%loadingUpdate% 2
+%loadingUpdate% 1
 
 
 
@@ -192,16 +190,26 @@ echo.%lang-languageMenu01%
 echo.^(1^) English
 echo.^(2^) Русский
 echo.^(3^) Українська
-echo.
-echo.%lang-back%
+if "%1" NEQ "force" (
+  echo.
+  echo.%lang-back%
+)
 echo.
 echo.
 echo.
 set /p command=%lang-enterCommand%
+rem if "%1" NEQ "force" ( choice /c 1230 /n /m "%lang-enterCommand%" ) else choice /c 123 /n /m "%lang-enterCommand%"
 
 
 
-if "%command%" == "0" exit /b
+rem if "%errorLevel%" == "1" set setting-lang=english
+rem if "%errorLevel%" == "2" set setting-lang=russian
+rem if "%errorLevel%" == "3" set setting-lang=ukrainian
+rem if "%errorLevel%" == "4" exit /b
+
+
+
+if "%command%" == "0" if "%1" NEQ "force" exit /b
 if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" goto :languageMenu
 
 if "%command%" == "1" set setting-lang=english
@@ -324,7 +332,7 @@ echo.
 echo.
 echo.
 if "%importError%" == "1" (
-  color c
+  color 0c
   set importError=0
   echo.%lang-importError%
   echo.
@@ -341,8 +349,7 @@ if "%command%" == "1" (
     set importError=1
     goto :importMenu
   )
-  set importReturnCode=1
-  call subroutines\databases.cmd
+  call subroutines\databases.cmd import
   exit /b
 )
 goto :importMenu
@@ -466,6 +473,8 @@ set /p command=%lang-enterCommand%
 
 
 if "%command%" == "0" exit /b
+if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" goto :updateChannelMenu
+
 if "%command%" == "1" set setting-updateChannel=release
 if "%command%" == "2" set setting-updateChannel=beta
 if "%command%" == "3" set setting-updateChannel=nightly
@@ -518,7 +527,7 @@ exit /b
 
 
 :clearTemp
-for %%i in (files\logs files\reports temp) do (
+for %%i in (files\databases files\logs files\reports temp) do (
   if exist %%i rd /s /q %%i
   if not exist %%i md %%i>nul 2>nul
 )
@@ -533,6 +542,7 @@ exit /b
 :corrupted
 %logo%
 %loadingUpdate% reset
+color 0c
 echo.Program Corrupted!>>%log%
 echo.^(!^) %appName% Diagnostics: 
 echo.   Program Corrupted!

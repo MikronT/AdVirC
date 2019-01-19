@@ -8,8 +8,7 @@ echo.%lang-updatingDataBases%
 
 
 
-if "%importReturnCode%" == "1" (
-  set importReturnCode=0
+if "%1" == "import" (
   copy /y "%desktopLocation%\adVirCDatabases.zip" temp>>%debugLog%
   %loadingUpdate% 25
   goto :unzip
