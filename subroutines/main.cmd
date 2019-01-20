@@ -198,14 +198,6 @@ echo.
 echo.
 echo.
 set /p command=%lang-enterCommand%
-rem if "%1" NEQ "force" ( choice /c 1230 /n /m "%lang-enterCommand%" ) else choice /c 123 /n /m "%lang-enterCommand%"
-
-
-
-rem if "%errorLevel%" == "1" set setting-lang=english
-rem if "%errorLevel%" == "2" set setting-lang=russian
-rem if "%errorLevel%" == "3" set setting-lang=ukrainian
-rem if "%errorLevel%" == "4" exit /b
 
 
 
