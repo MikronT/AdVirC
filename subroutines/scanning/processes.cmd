@@ -8,7 +8,7 @@ for /f "delims=" %%i in (files\databases\rewrited\processes\processes.db) do (
   set errorLevel=
   tasklist /fi "imagename eq %%i">>%debugLog%
   if "!errorLevel!" == "0" (
-    echo.[Process] %%i>>%deleteScript%
+    echo.%%i>>%cleaning-processes%
     echo.    - %%i>>%log%
     echo.[Process] %%i
     set /a foundObjects+=1

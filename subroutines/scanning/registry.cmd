@@ -9,7 +9,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\classes.db) do (
     set errorLevel=
     reg query "%%i\%%j">>%debugLog%
     if "!errorLevel!" == "0" (
-      echo.[Class] %%i\%%j>>%deleteScript%
+      echo.%%i\%%j>>%cleaning-registry%
       echo.    - %%i\%%j>>%log%
       echo.[Class] %%i\%%j
       set /a foundObjects+=1
@@ -33,7 +33,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\keys.db) do (
     set errorLevel=
     reg query "%%i\%%j">>%debugLog%
     if "!errorLevel!" == "0" (
-      echo.[Key] %%i\%%j>>%deleteScript%
+      echo.%%i\%%j>>%cleaning-registry%
       echo.    - %%i\%%j>>%log%
       echo.[Key] %%i\%%j
       set /a foundObjects+=1

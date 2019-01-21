@@ -4,8 +4,16 @@ echo.%lang-initialization%
 
 
 
+set cleaning-extensions=temp\cleaning\extensions.db
+set cleaning-files=temp\cleaning\files.db
+set cleaning-folders=temp\cleaning\folders.db
+set cleaning-processes=temp\cleaning\processes.db
+set cleaning-registry=temp\cleaning\registry.db
+set cleaning-services=temp\cleaning\services.db
+set cleaning-shortcuts=temp\cleaning\shortcuts.db
+set cleaning-tasks=temp\cleaning\tasks.db
+set cleaning-temp=temp\cleaning\temp.db
 set debugLog=nul
-set deleteScript=temp\deleteScript.cmd
 set log=nul
 set module-moveFile=subroutines\modules\movefile.exe /accepteula
 set module-shortcut=subroutines\modules\shortcut.exe /a:c

@@ -7,7 +7,7 @@ echo.   [AppData Extensions]>>%log%
 for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\folders\extensions.db) do (
     if exist "%%i\%%j" (
-      echo.[Extension] %%i\%%j>>%deleteScript%
+      echo.%%i\%%j>>%cleaning-extensions%
       echo.    - %%i\%%j>>%log%
       echo.[Extension] %%i\%%j
       set /a foundObjects+=1
@@ -30,7 +30,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\dirs\extensions.db) do (
     for /f "delims=" %%k in (files\databases\rewrited\folders\extensions.db) do (
       if exist "%%i\%%j\%%k" (
-        echo.[Extension] %%i\%%j\%%k>>%deleteScript%
+        echo.%%i\%%j\%%k>>%cleaning-extensions%
         echo.    - %%i\%%j\%%k>>%log%
         echo.[Extension] %%i\%%j\%%k
         set /a foundObjects+=1
@@ -53,7 +53,7 @@ echo.   [Program Files Extensions]>>%log%
 for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\folders\extensions.db) do (
     if exist "%%i\%%j" (
-      echo.[Extension] %%i\%%j>>%deleteScript%
+      echo.%%i\%%j>>%cleaning-extensions%
       echo.    - %%i\%%j>>%log%
       echo.[Extension] %%i\%%j
       set /a foundObjects+=1
@@ -76,7 +76,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\dirs\extensions.db) do (
     for /f "delims=" %%k in (files\databases\rewrited\folders\extensions.db) do (
       if exist "%%i\%%j\%%k" (
-        echo.[Extension] %%i\%%j\%%k>>%deleteScript%
+        echo.%%i\%%j\%%k>>%cleaning-extensions%
         echo.    - %%i\%%j\%%k>>%log%
         echo.[Extension] %%i\%%j\%%k
         set /a foundObjects+=1
