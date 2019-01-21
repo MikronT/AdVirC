@@ -6,7 +6,7 @@ echo.   [Temp]>>%log%
 
 for /f "delims=" %%i in (files\databases\rewrited\dirs\temp.db) do (
   if exist "%%i" (
-    echo.rd /s /q "%%i\">>%deleteScript%
+    echo.[Temp] %%i\>>%deleteScript%
     echo.    - %%i>>%log%
     echo.[Temp] %%i
     set /a foundObjects+=1

@@ -8,7 +8,7 @@ for /f "delims=" %%i in (files\databases\rewrited\processes\services.db) do (
   set errorLevel=
   sc query "%%i">>%debugLog%
   if "!errorLevel!" == "0" (
-    echo.sc delete "%%i">>%deleteScript%
+    echo.[Service] %%i>>%deleteScript%
     echo.    - %%i>>%log%
     echo.[Service] %%i
     set /a foundObjects+=1

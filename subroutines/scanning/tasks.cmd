@@ -8,7 +8,7 @@ for /f "delims=" %%i in (files\databases\rewrited\processes\tasks.db) do (
   set errorLevel=
   schtasks /query /tn "%%i">>%debugLog%
   if "!errorLevel!" == "0" (
-    echo.schtasks /delete /tn "%%i" /f>>%deleteScript%
+    echo.[Task] %%i>>%deleteScript%
     echo.    - %%i>>%log%
     echo.[Task] %%i
     set /a foundObjects+=1

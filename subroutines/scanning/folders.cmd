@@ -7,7 +7,7 @@ echo.   [AppData Folders]>>%log%
 for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\folders\appData.db) do (
     if exist "%%i\%%j" (
-      echo.rd /s /q "%%i\%%j">>%deleteScript%
+      echo.[Folder] %%i\%%j>>%deleteScript%
       echo.    - %%i\%%j>>%log%
       echo.[Folder] %%i\%%j
       set /a foundObjects+=1
@@ -29,7 +29,7 @@ echo.   [Program Folders]>>%log%
 for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\folders\programFiles.db) do (
     if exist "%%i\%%j" (
-      echo.rd /s /q "%%i\%%j">>%deleteScript%
+      echo.[Folder] %%i\%%j>>%deleteScript%
       echo.    - %%i\%%j>>%log%
       echo.[Folder] %%i\%%j
       set /a foundObjects+=1
@@ -50,7 +50,7 @@ echo.   [System Drive Folders]>>%log%
 
 for /f "delims=" %%i in (files\databases\rewrited\folders\systemDrive.db) do (
   if exist "%systemDrive%\%%i" (
-    echo.rd /s /q "%systemDrive%\%%i">>%deleteScript%
+    echo.[Folder] %systemDrive%\%%i>>%deleteScript%
     echo.    - %systemDrive%\%%i>>%log%
     echo.[Folder] %systemDrive%\%%i
     set /a foundObjects+=1
@@ -71,7 +71,7 @@ echo.   [User Profile Folders]>>%log%
 for /f "delims=" %%i in (files\databases\rewrited\dirs\userProfile.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\folders\userProfile.db) do (
     if exist "%%i\%%j" (
-      echo.rd /s /q "%%i\%%j">>%deleteScript%
+      echo.[Folder] %%i\%%j>>%deleteScript%
       echo.    - %%i\%%j>>%log%
       echo.[Folder] %%i\%%j
       set /a foundObjects+=1
@@ -92,7 +92,7 @@ echo.   [Windows Directory Folders]>>%log%
 
 for /f "delims=" %%i in (files\databases\rewrited\folders\winDir.db) do (
   if exist "%winDir%\%%i" (
-    echo.rd /s /q "%winDir%\%%i">>%deleteScript%
+    echo.[Folder] %winDir%\%%i>>%deleteScript%
     echo.    - %winDir%\%%i>>%log%
     echo.[Folder] %winDir%\%%i
     set /a foundObjects+=1
