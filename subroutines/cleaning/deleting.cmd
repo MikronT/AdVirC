@@ -93,6 +93,7 @@ for /f "delims=" %%i in (%cleaning-temp%) do (
     rem rd /s /q "%%i\" clears all subdirectories and files without removing directory
     rd /s /q "%%i">>%debugLog%
     if exist "%%i" (
+      dir /a:-d /s /b "%%i">>%filesToRemove%
       echo.[Error] Access denied - %%i>>%log%
       echo.Error^! [Temp] %%i
     ) else (
@@ -105,7 +106,7 @@ for /f "delims=" %%i in (%cleaning-temp%) do (
     echo.Warning^! [Temp] %%i
   )
   echo.!deletedObjects!>temp\deletedObjects
-  if not exist "%%i" md "%%i"
+  md "%%i">nul 2>nul
 )
 
 echo.Script Completed>>%log%
@@ -119,6 +120,7 @@ for /f "delims=" %%i in (%cleaning-folders%) do (
   if exist "%%i" (
     rd /s /q "%%i">>%debugLog%
     if exist "%%i" (
+      dir /a:-d /s /b "%%i">>%filesToRemove%
       echo.[Error] Access denied - %%i>>%log%
       echo.Error^! [Folder] %%i
     ) else (
@@ -144,6 +146,7 @@ for /f "delims=" %%i in (%cleaning-files%) do (
   if exist "%%i" (
     del /q "%%i">>%debugLog%
     if exist "%%i" (
+      echo.%%i>>%filesToRemove%
       echo.[Error] Access denied - %%i>>%log%
       echo.Error^! [File] %%i
     ) else (
@@ -169,6 +172,7 @@ for /f "delims=" %%i in (%cleaning-shortcuts%) do (
   if exist "%%i" (
     del /s /q "%%i">>%debugLog%
     if exist "%%i" (
+      echo.%%i>>%filesToRemove%
       echo.[Error] Access denied - %%i>>%log%
       echo.Error^! [Shortcut] %%i
     ) else (
@@ -194,6 +198,7 @@ for /f "delims=" %%i in (%cleaning-extensions%) do (
   if exist "%%i" (
     rd /s /q "%%i">>%debugLog%
     if exist "%%i" (
+      dir /a:-d /s /b "%%i">>%filesToRemove%
       echo.[Error] Access denied - %%i>>%log%
       echo.Error^! [Extension] %%i
     ) else (

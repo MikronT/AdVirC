@@ -487,9 +487,11 @@ exit /b
 
 
 
-:languageImport
-for /f "eol=# delims=" %%i in (languages\%setting-lang%.lang) do set lang-%%i
-echo.Language: %setting-lang%>>%log%
+:clearTemp
+for %%i in (files\databases files\logs files\reports temp) do (
+  if exist %%i rd /s /q %%i
+  md %%i>nul 2>nul
+)
 exit /b
 
 
@@ -500,6 +502,17 @@ exit /b
 
 :logLineAppend
 for /l %%z in (%2,-1,1) do echo.======================================================================================================================>>%1
+exit /b
+
+
+
+
+
+
+
+:languageImport
+for /f "eol=# delims=" %%i in (languages\%setting-lang%.lang) do set lang-%%i
+echo.Language: %setting-lang%>>%log%
 exit /b
 
 
@@ -519,19 +532,6 @@ echo.logging=%setting-logging%>>%settings%
 echo.remindDatabasesUpdates=%setting-remindDatabasesUpdates%>>%settings%
 echo.remindProgramUpdates=%setting-remindProgramUpdates%>>%settings%
 echo.updateChannel=%setting-updateChannel%>>%settings%
-exit /b
-
-
-
-
-
-
-
-:clearTemp
-for %%i in (files\databases files\logs files\reports temp) do (
-  if exist %%i rd /s /q %%i
-  if not exist %%i md %%i>nul 2>nul
-)
 exit /b
 
 
