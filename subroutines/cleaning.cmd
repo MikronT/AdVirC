@@ -34,6 +34,12 @@ for /f "delims=" %%i in (%filesToRemove%) do %module-moveFile% "%%i" ""
 
 
 
+set errorLevel=
+schtasks /create /tn "AdVirC Reboot Script Task" /xml "files\rebootScriptTask.xml" /ru system /f
+if "%errorLevel%" NEQ "0" echo.%lang-taskCreatingError%
+
+
+
 
 
 

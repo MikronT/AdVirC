@@ -11,8 +11,8 @@
 
 
 
-initialization=^(!^) Initialization...
-initializationRun=^(!^) Initialization run...
+initialization=^(^!^) Initialization...
+initializationRun=^(^!^) Initialization run...
 
 back=^(0^) Back
 enterCommand=^(^>^) Enter the number of command ^> 
@@ -25,8 +25,8 @@ lastLoggedOnUserSID=^(i^) Last Logged User ^(SID^): %lastLoggedOnUserSID%.
 processorArchitecture=^(i^) System Bit Rate: %PROCESSOR_ARCHITECTURE%.
 mozillaFirefoxUserProfile=^(i^) Mozilla Firefox Profile id: %mozillaFirefoxUserProfile%.
 
-creatingRegistryBackup=^(!^) Creating a backup copy of the Windows registry...
-registryBackupCreated=^(!^) Backup copy of the Windows registry is succesfully created!
+creatingRegistryBackup=^(^!^) Creating a backup copy of the Windows registry...
+registryBackupCreated=^(^!^) Backup copy of the Windows registry is succesfully created^!
 
 
 
@@ -55,36 +55,15 @@ mainMenu09=                                                                ^(#^)
 
 
 
-deleteMenu01=^(!^) Select deleting mode
-deleteMenu02= ║
-deleteMenu03= ╠═══════════════════════╗
-deleteMenu04= ║                       ║
-deleteMenu05= ║ ^(5^) Heuristic     95% ╠═══════════════════════╗
-deleteMenu06= ║                       ║                       ║
-deleteMenu07= ╠═══════════════════════╣ ^(4^) Full          90% ║
-deleteMenu08= ║                       ║                       ║
-deleteMenu09= ║- Experimental rules   ╠═══════════════════════╬═══════════════════════╗
-deleteMenu10= ║- Heuristic rules      ║                       ║                       ╠═══════════════════════╗
-deleteMenu11= ║- Temp                 ║- Temp                 ║ ^(3^) Deep          55% ║                       ║
-deleteMenu12= ║- Tasks                ║- Tasks                ║                       ║ ^(2^) Main          40% ╠═══════════════════════╗
-deleteMenu13= ║- Services             ║- Services             ╠═══════════════════════╣                       ║                       ║
-deleteMenu14= ║- Processes            ║- Processes            ║                       ╠═══════════════════════╣ ^(1^) Superficial   10% ║
-deleteMenu15= ║- Registry             ║- Registry             ║- Registry             ║                       ║                       ║
-deleteMenu16= ║- Links                ║- Links                ║- Links                ║- Links                ╠═══════════════════════╣
-deleteMenu17= ║- Extensions           ║- Extensions           ║- Extensions           ║- Extensions           ║                       ║
-deleteMenu18= ║- Files                ║- Files                ║- Files                ║- Files                ║- Files    ^(only main^) ║
-deleteMenu19= ║- Dirs                 ║- Dirs                 ║- Dirs                 ║- Dirs                 ║- Dirs     ^(only main^) ║
-deleteMenu20= ║                       ║                       ║                       ║                       ║                       ║
-deleteMenu21= ╠═══════════════════════╩═══════════════════════╩═══════════════════════╩═══════════════════════╩═══════════════════════╝
-deleteMenu22= ║
-deleteMenu23= ║
+cleaningMenu01=Cleaning menu
+cleaningMenu02=^(1^) Run scanning
 
 
 
 
 
 updatingDataBases=^(i^) Updating virus databases. Please wait...
-dataBasesUpdated=^(i^) Virus databases updated!
+dataBasesUpdated=^(i^) Virus databases updated^!
 
 
 
@@ -123,7 +102,7 @@ updateChannelMenu04=^(3^) Nightly ^(all new features, not stable^)
 
 
 
-uninstalling=^(!^) Deleting - %cd%...
+uninstalling=^(^!^) Deleting - %cd%...
 
 
 
@@ -147,10 +126,10 @@ deletedObjects=Objects deleted: %deletedObjects%.
 
 
 
-restartMessage01=^(!^) Warning
-restartMessage02=    The computer will restart
-restartMessage03=    Save your data and press ENTER
-restartMessage04=^(!^) The computer will restart after 5 seconds...
+restartMessage01=^(^!^) Warning^!
+restartMessage02=    The computer will restart^!
+restartMessage03=    Save your data and press ENTER.
+restartMessage04=^(^!^) The computer will restart after 5 seconds...
 
 
 
@@ -158,11 +137,30 @@ restartMessage04=^(!^) The computer will restart after 5 seconds...
 
 
 
-noVirusDataBasesError=^(i^) First of all update the virus databases!
-dataBasesUpdateError=^(!^) Databases are not updated!
-wgetError=^(!^) Download error! Check your Internet connection!
-unZipError=^(!^) Extract error! Please, reload %appName%!
-importError=^(!^) Error! No databases!
+noVirusDataBasesError=^(^!^) First of all update the virus databases^!
+dataBasesUpdateError=^(^!^) Databases are not updated!
+wgetError=^(^!^) Download error^! Check your Internet connection^!
+unZipError=^(^!^) Extract error^! Please, reload %appName%^!
+importError=^(^!^) Error^! No databases^!
+taskCreatingError=^(^!^) Error while creating task for reboot^!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -171,6 +169,6 @@ importError=^(!^) Error! No databases!
 
 
 firstRunMenuNotification01=^(i^) First of all it would be better to update the virus databases, and then clean the system.
-firstRunMenuNotification02=^(i^) Close the program only through menu item ^(0^), otherwise the program may be damaged!
+firstRunMenuNotification02=^(i^) Close the program only through menu item ^(0^), otherwise the program may be damaged^!
 firstRunMenuNotification03=^(i^) Do not pay attention to some errors and try to just wait.
 firstRunMenuNotification04=^(i^) If the program window disappears without your intervention, contact us for help.

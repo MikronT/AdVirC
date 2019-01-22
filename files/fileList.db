@@ -6,6 +6,7 @@ design\logos.cmd
 design\mainLogo.cmd
 
 files\fileList.db
+files\rebootScriptTask.xml
 files\userShellFolders.db
 
 languages\english.lang

@@ -256,7 +256,7 @@ set /p command=%lang-enterCommand%
 
 
 
-if "%command%" == "1" call :deleteMenu
+if "%command%" == "1" call :cleaningMenu
 rem if "%command%" == "2" call :exceptionsMenu
 if "%command%" == "3" call subroutines\databases.cmd
 if "%command%" == "4" call :importMenu
@@ -277,44 +277,26 @@ goto :mainMenu
 
 
 
-:deleteMenu
+:cleaningMenu
 set command=command
 %logo%
-echo.%lang-deleteMenu01%
-echo.%lang-deleteMenu02%
-echo.%lang-deleteMenu03%
-echo.%lang-deleteMenu04%
-echo.%lang-deleteMenu05%
-echo.%lang-deleteMenu06%
-echo.%lang-deleteMenu07%
-echo.%lang-deleteMenu08%
-echo.%lang-deleteMenu09%
-echo.%lang-deleteMenu10%
-echo.%lang-deleteMenu11%
-echo.%lang-deleteMenu12%
-echo.%lang-deleteMenu13%
-echo.%lang-deleteMenu14%
-echo.%lang-deleteMenu15%
-echo.%lang-deleteMenu16%
-echo.%lang-deleteMenu17%
-echo.%lang-deleteMenu18%
-echo.%lang-deleteMenu19%
-echo.%lang-deleteMenu20%
-echo.%lang-deleteMenu21%
-echo.%lang-deleteMenu22%
+echo.%lang-cleaningMenu01%
+echo.%lang-cleaningMenu02%
+echo.
 echo.%lang-back%
-echo.%lang-deleteMenu23%
+echo.
+echo.
+echo.
 set /p command=%lang-enterCommand%
 
 
 
 if "%command%" == "0" exit /b
-for /l %%i in (1,1,5) do if "%command%" == "%%i" (
-  set deleteLevel=%command%
+if "%command%" == "1" (
   call subroutines\cleaning.cmd
   exit /b
 )
-goto :deleteMenu
+goto :cleaningMenu
 
 
 

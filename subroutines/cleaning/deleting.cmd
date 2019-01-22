@@ -12,6 +12,7 @@ for /f "delims=" %%i in (%cleaning-services%) do (
     echo.[Service] %%i
     set /a deletedObjects+=1
   ) else (
+    echo.sc delete "%%i">>%rebootScript%
     echo.[Error] Service not found or access denied - %%i>>%log%
     echo.Error^! [Service] %%i
   )
@@ -33,6 +34,7 @@ for /f "delims=" %%i in (%cleaning-tasks%) do (
     echo.[Task] %%i
     set /a deletedObjects+=1
   ) else (
+    echo.schtasks /delete /tn "%%i" /f>>%rebootScript%
     echo.[Error] Task not found or access denied - %%i>>%log%
     echo.Error^! [Task] %%i
   )
@@ -75,6 +77,7 @@ for /f "delims=" %%i in (%cleaning-registry%) do (
     echo.[Key] %%i
     set /a deletedObjects+=1
   ) else (
+    echo.reg delete "%%i" /f>>%rebootScript%
     echo.[Error] Key not found or access denied - %%i>>%log%
     echo.Error^! [Key] %%i
   )
@@ -94,6 +97,7 @@ for /f "delims=" %%i in (%cleaning-temp%) do (
     rd /s /q "%%i">>%debugLog%
     if exist "%%i" (
       dir /a:-d /s /b "%%i">>%filesToRemove%
+      echo.rd /s /q "%%i\">>%rebootScript%
       echo.[Error] Access denied - %%i>>%log%
       echo.Error^! [Temp] %%i
     ) else (
@@ -121,6 +125,7 @@ for /f "delims=" %%i in (%cleaning-folders%) do (
     rd /s /q "%%i">>%debugLog%
     if exist "%%i" (
       dir /a:-d /s /b "%%i">>%filesToRemove%
+      echo.rd /s /q "%%i">>%rebootScript%
       echo.[Error] Access denied - %%i>>%log%
       echo.Error^! [Folder] %%i
     ) else (
@@ -147,6 +152,7 @@ for /f "delims=" %%i in (%cleaning-files%) do (
     del /q "%%i">>%debugLog%
     if exist "%%i" (
       echo.%%i>>%filesToRemove%
+      echo.del /q "%%i">>%rebootScript%
       echo.[Error] Access denied - %%i>>%log%
       echo.Error^! [File] %%i
     ) else (
@@ -173,6 +179,7 @@ for /f "delims=" %%i in (%cleaning-shortcuts%) do (
     del /s /q "%%i">>%debugLog%
     if exist "%%i" (
       echo.%%i>>%filesToRemove%
+      echo.del /q "%%i">>%rebootScript%
       echo.[Error] Access denied - %%i>>%log%
       echo.Error^! [Shortcut] %%i
     ) else (
@@ -199,6 +206,7 @@ for /f "delims=" %%i in (%cleaning-extensions%) do (
     rd /s /q "%%i">>%debugLog%
     if exist "%%i" (
       dir /a:-d /s /b "%%i">>%filesToRemove%
+      echo.rd /s /q "%%i">>%rebootScript%
       echo.[Error] Access denied - %%i>>%log%
       echo.Error^! [Extension] %%i
     ) else (
