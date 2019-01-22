@@ -9,6 +9,11 @@ if not exist files\databases\rewrited\dirs\temp.db (
 set foundObjects=0
 set deletedObjects=0
 
+echo.@echo off>%rebootScript%
+echo.chcp 65001>>%rebootScript%
+
+echo.>%filesToRemove%
+
 
 
 
@@ -25,7 +30,7 @@ for %%d in (deleting experimental heuristic) do start /wait subroutines\cleaning
 
 
 
-for /f "delims=" %%i in (%filesToDelete%) do %module-moveFile% "%%i" ""
+for /f "delims=" %%i in (%filesToRemove%) do %module-moveFile% "%%i" ""
 
 
 
@@ -53,5 +58,6 @@ pause>nul
 
 echo.%lang-restartMessage04%
 %module-sleep% 5
+
 echo.>temp\rebootNow
 exit /b

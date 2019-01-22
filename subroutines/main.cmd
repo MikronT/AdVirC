@@ -4,22 +4,6 @@ echo.%lang-initialization%
 
 
 
-set cleaning-extensions=temp\cleaning\extensions.db
-set cleaning-files=temp\cleaning\files.db
-set cleaning-folders=temp\cleaning\folders.db
-set cleaning-processes=temp\cleaning\processes.db
-set cleaning-registry=temp\cleaning\registry.db
-set cleaning-services=temp\cleaning\services.db
-set cleaning-shortcuts=temp\cleaning\shortcuts.db
-set cleaning-tasks=temp\cleaning\tasks.db
-set cleaning-temp=temp\cleaning\temp.db
-set debugLog=nul
-set log=nul
-set module-moveFile=subroutines\modules\movefile.exe /accepteula
-set module-shortcut=subroutines\modules\shortcut.exe /a:c
-set module-unZip=subroutines\modules\unzip.exe -qq
-set module-wget=subroutines\modules\wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=1
-set rebootScript=temp\rebootScript.cmd
 set setting-autoUpdateDatabases=true
 set setting-autoUpdateProgram=false
 set setting-debug=false
@@ -29,7 +13,31 @@ set setting-logging=true
 set setting-remindDatabasesUpdates=true
 set setting-remindProgramUpdates=true
 set setting-updateChannel=release
+
 set settings=files\settings.ini
+
+set module-moveFile=subroutines\modules\movefile.exe /accepteula
+set module-shortcut=subroutines\modules\shortcut.exe /a:c
+set module-unZip=subroutines\modules\unzip.exe -qq
+set module-wget=subroutines\modules\wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=1
+
+set debugLog=nul
+set log=nul
+
+set filesToRemove=temp\filesToRemove.db
+set rebootScript=temp\rebootScript.cmd
+
+set cleaning-extensions=temp\cleaning\extensions.db
+set cleaning-files=temp\cleaning\files.db
+set cleaning-folders=temp\cleaning\folders.db
+set cleaning-processes=temp\cleaning\processes.db
+set cleaning-registry=temp\cleaning\registry.db
+set cleaning-services=temp\cleaning\services.db
+set cleaning-shortcuts=temp\cleaning\shortcuts.db
+set cleaning-tasks=temp\cleaning\tasks.db
+set cleaning-temp=temp\cleaning\temp.db
+
+
 
 
 
@@ -87,13 +95,6 @@ call :logLineAppend %debugLog% 1
 
 echo.User Shell Folders:>>%debugLog%
 for /f "tokens=1,* delims=;" %%i in (files\userShellFolders.db) do echo.%%i Location: %%%iLocation%>>%debugLog%
-
-
-
-echo.>%deleteScript%
-
-echo.@echo off>%rebootScript%
-echo.chcp 65001>>%rebootScript%
 
 
 

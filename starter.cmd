@@ -1,8 +1,7 @@
 @echo off
+
 net session>nul 2>nul
 if %errorLevel% GEQ 1 goto :startAsAdmin
-
-
 
 %~d0
 cd "%~dp0"
