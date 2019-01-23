@@ -5,14 +5,14 @@ echo.%lang-initialization%
 
 
 set setting-autoUpdateDatabases=true
-set setting-autoUpdateProgram=false
-set setting-debug=false
+set setting-autoUpdateProgram=true
+set setting-debug=true
 set setting-firstRun=true
 set setting-lang=lang
 set setting-logging=true
 set setting-remindDatabasesUpdates=true
 set setting-remindProgramUpdates=true
-set setting-updateChannel=release
+set setting-updateChannel=nightly
 
 set settings=files\settings.ini
 
@@ -124,15 +124,16 @@ if not exist files\reports\systemInfo.rpt systeminfo>files\reports\systemInfo.rp
 
 
 
+:::::::::::::::::::::::::::::::::::::::::::Errors:Here:::::::::::::::::::::::::::::::::::::::::::
 if "%setting-firstRun%" == "true" (
   echo.%lang-creatingRegistryBackup%
-  rem reg export HKCR files\backups\registry\HKCR.reg>>%debug_log%
+  rem reg export HKCR files\backups\registry\HKCR.reg /y>>%debug_log%
   %loadingUpdate% 3
-  rem reg export HKLM files\backups\registry\HKLM.reg>>%debug_log%
+  rem reg export HKLM files\backups\registry\HKLM.reg /y>>%debug_log%
   %loadingUpdate% 5
-  rem reg export HKU  files\backups\registry\HKU.reg >>%debug_log%
+  rem reg export HKU  files\backups\registry\HKU.reg  /y>>%debug_log%
   %loadingUpdate% 6
-  reg export HKCC files\backups\registry\HKCC.reg>>%debug_log%
+  reg export HKCC files\backups\registry\HKCC.reg /y>>%debug_log%
   %loadingUpdate% 1
   echo.%lang-registryBackupCreated%
 ) else %loadingUpdate% 15
