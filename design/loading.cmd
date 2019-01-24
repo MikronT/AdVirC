@@ -1,85 +1,87 @@
 @echo off
-color 0b
 chcp 65001>nul
+
 mode con:cols=62 lines=7
-set percents=0
+color 0b
+
+set counter_percents=0
 
 
 
 
 
 :loadingCycle
-set /a percents=%loadingCounter%*2
-title %appName% ^| Loading: %percents%%%...
+set /a counter_percents=%counter_loading%*2
+title %appName% ^| Loading: %counter_percents%%%...
 cls
 echo.
-                          echo.   ╔══════════════════════════════════════════════════════╗
-                          echo.   ║                                                      ║
-if %loadingCounter% == 0  echo.   ║                                                      ║
-if %loadingCounter% == 1  echo.   ║  █                                                   ║
-if %loadingCounter% == 2  echo.   ║  ██                                                  ║
-if %loadingCounter% == 3  echo.   ║  ███                                                 ║
-if %loadingCounter% == 4  echo.   ║  ████                                                ║
-if %loadingCounter% == 5  echo.   ║  █████                                               ║
-if %loadingCounter% == 6  echo.   ║  ██████                                              ║
-if %loadingCounter% == 7  echo.   ║  ███████                                             ║
-if %loadingCounter% == 8  echo.   ║  ████████                                            ║
-if %loadingCounter% == 9  echo.   ║  █████████                                           ║
-if %loadingCounter% == 10 echo.   ║  ██████████                                          ║
-if %loadingCounter% == 11 echo.   ║  ███████████                                         ║
-if %loadingCounter% == 12 echo.   ║  ████████████                                        ║
-if %loadingCounter% == 13 echo.   ║  █████████████                                       ║
-if %loadingCounter% == 14 echo.   ║  ██████████████                                      ║
-if %loadingCounter% == 15 echo.   ║  ███████████████                                     ║
-if %loadingCounter% == 16 echo.   ║  ████████████████                                    ║
-if %loadingCounter% == 17 echo.   ║  █████████████████                                   ║
-if %loadingCounter% == 18 echo.   ║  ██████████████████                                  ║
-if %loadingCounter% == 19 echo.   ║  ███████████████████                                 ║
-if %loadingCounter% == 20 echo.   ║  ████████████████████                                ║
-if %loadingCounter% == 21 echo.   ║  █████████████████████                               ║
-if %loadingCounter% == 22 echo.   ║  ██████████████████████                              ║
-if %loadingCounter% == 23 echo.   ║  ███████████████████████                             ║
-if %loadingCounter% == 24 echo.   ║  ████████████████████████                            ║
-if %loadingCounter% == 25 echo.   ║  █████████████████████████                           ║
-if %loadingCounter% == 26 echo.   ║  ██████████████████████████                          ║
-if %loadingCounter% == 27 echo.   ║  ███████████████████████████                         ║
-if %loadingCounter% == 28 echo.   ║  ████████████████████████████                        ║
-if %loadingCounter% == 29 echo.   ║  █████████████████████████████                       ║
-if %loadingCounter% == 30 echo.   ║  ██████████████████████████████                      ║
-if %loadingCounter% == 31 echo.   ║  ███████████████████████████████                     ║
-if %loadingCounter% == 32 echo.   ║  ████████████████████████████████                    ║
-if %loadingCounter% == 33 echo.   ║  █████████████████████████████████                   ║
-if %loadingCounter% == 34 echo.   ║  ██████████████████████████████████                  ║
-if %loadingCounter% == 35 echo.   ║  ███████████████████████████████████                 ║
-if %loadingCounter% == 36 echo.   ║  ████████████████████████████████████                ║
-if %loadingCounter% == 37 echo.   ║  █████████████████████████████████████               ║
-if %loadingCounter% == 38 echo.   ║  ██████████████████████████████████████              ║
-if %loadingCounter% == 39 echo.   ║  ███████████████████████████████████████             ║
-if %loadingCounter% == 40 echo.   ║  ████████████████████████████████████████            ║
-if %loadingCounter% == 41 echo.   ║  █████████████████████████████████████████           ║
-if %loadingCounter% == 42 echo.   ║  ██████████████████████████████████████████          ║
-if %loadingCounter% == 43 echo.   ║  ███████████████████████████████████████████         ║
-if %loadingCounter% == 44 echo.   ║  ████████████████████████████████████████████        ║
-if %loadingCounter% == 45 echo.   ║  █████████████████████████████████████████████       ║
-if %loadingCounter% == 46 echo.   ║  ██████████████████████████████████████████████      ║
-if %loadingCounter% == 47 echo.   ║  ███████████████████████████████████████████████     ║
-if %loadingCounter% == 48 echo.   ║  ████████████████████████████████████████████████    ║
-if %loadingCounter% == 49 echo.   ║  █████████████████████████████████████████████████   ║
-if %loadingCounter% == 50 echo.   ║  ██████████████████████████████████████████████████  ║
-                          echo.   ║                                                      ║
-                          echo.   ╚══════════════════════════════════════════════════════╝
+                           echo.   ╔══════════════════════════════════════════════════════╗
+                           echo.   ║                                                      ║
+if %counter_loading% == 0  echo.   ║                                                      ║
+if %counter_loading% == 1  echo.   ║  █                                                   ║
+if %counter_loading% == 2  echo.   ║  ██                                                  ║
+if %counter_loading% == 3  echo.   ║  ███                                                 ║
+if %counter_loading% == 4  echo.   ║  ████                                                ║
+if %counter_loading% == 5  echo.   ║  █████                                               ║
+if %counter_loading% == 6  echo.   ║  ██████                                              ║
+if %counter_loading% == 7  echo.   ║  ███████                                             ║
+if %counter_loading% == 8  echo.   ║  ████████                                            ║
+if %counter_loading% == 9  echo.   ║  █████████                                           ║
+if %counter_loading% == 10 echo.   ║  ██████████                                          ║
+if %counter_loading% == 11 echo.   ║  ███████████                                         ║
+if %counter_loading% == 12 echo.   ║  ████████████                                        ║
+if %counter_loading% == 13 echo.   ║  █████████████                                       ║
+if %counter_loading% == 14 echo.   ║  ██████████████                                      ║
+if %counter_loading% == 15 echo.   ║  ███████████████                                     ║
+if %counter_loading% == 16 echo.   ║  ████████████████                                    ║
+if %counter_loading% == 17 echo.   ║  █████████████████                                   ║
+if %counter_loading% == 18 echo.   ║  ██████████████████                                  ║
+if %counter_loading% == 19 echo.   ║  ███████████████████                                 ║
+if %counter_loading% == 20 echo.   ║  ████████████████████                                ║
+if %counter_loading% == 21 echo.   ║  █████████████████████                               ║
+if %counter_loading% == 22 echo.   ║  ██████████████████████                              ║
+if %counter_loading% == 23 echo.   ║  ███████████████████████                             ║
+if %counter_loading% == 24 echo.   ║  ████████████████████████                            ║
+if %counter_loading% == 25 echo.   ║  █████████████████████████                           ║
+if %counter_loading% == 26 echo.   ║  ██████████████████████████                          ║
+if %counter_loading% == 27 echo.   ║  ███████████████████████████                         ║
+if %counter_loading% == 28 echo.   ║  ████████████████████████████                        ║
+if %counter_loading% == 29 echo.   ║  █████████████████████████████                       ║
+if %counter_loading% == 30 echo.   ║  ██████████████████████████████                      ║
+if %counter_loading% == 31 echo.   ║  ███████████████████████████████                     ║
+if %counter_loading% == 32 echo.   ║  ████████████████████████████████                    ║
+if %counter_loading% == 33 echo.   ║  █████████████████████████████████                   ║
+if %counter_loading% == 34 echo.   ║  ██████████████████████████████████                  ║
+if %counter_loading% == 35 echo.   ║  ███████████████████████████████████                 ║
+if %counter_loading% == 36 echo.   ║  ████████████████████████████████████                ║
+if %counter_loading% == 37 echo.   ║  █████████████████████████████████████               ║
+if %counter_loading% == 38 echo.   ║  ██████████████████████████████████████              ║
+if %counter_loading% == 39 echo.   ║  ███████████████████████████████████████             ║
+if %counter_loading% == 40 echo.   ║  ████████████████████████████████████████            ║
+if %counter_loading% == 41 echo.   ║  █████████████████████████████████████████           ║
+if %counter_loading% == 42 echo.   ║  ██████████████████████████████████████████          ║
+if %counter_loading% == 43 echo.   ║  ███████████████████████████████████████████         ║
+if %counter_loading% == 44 echo.   ║  ████████████████████████████████████████████        ║
+if %counter_loading% == 45 echo.   ║  █████████████████████████████████████████████       ║
+if %counter_loading% == 46 echo.   ║  ██████████████████████████████████████████████      ║
+if %counter_loading% == 47 echo.   ║  ███████████████████████████████████████████████     ║
+if %counter_loading% == 48 echo.   ║  ████████████████████████████████████████████████    ║
+if %counter_loading% == 49 echo.   ║  █████████████████████████████████████████████████   ║
+if %counter_loading% == 50 echo.   ║  ██████████████████████████████████████████████████  ║
+                           echo.   ║                                                      ║
+                           echo.   ╚══════════════════════════════════════════════════════╝
 
-if %loadingCounter% == 50 %loadingUpdate% reset
-set lastLoadingNumber=%loadingCounter%
-goto :checkLoadingProgress
-
-
+if %counter_loading% == 50 %loadingUpdate% reset
+set counter_lastLoading=%counter_loading%
+goto :checkEngine
 
 
 
-:checkLoadingProgress
-%module-sleep% -m 250
-for /f "tokens=1,2* delims=" %%n in (temp\loadingCounter) do set loadingCounter=%%n
-if "%loadingCounter%" == "stop" exit
-if "%lastLoadingNumber%" NEQ "%loadingCounter%" goto :loadingCycle
-goto :checkLoadingProgress
+
+
+:checkEngine
+%module_sleep% -m 250
+for /f "tokens=1,2* delims=" %%n in (temp\counter_loading) do set counter_loading=%%n
+if "%counter_loading%" == "stop" exit
+if "%counter_lastLoading%" NEQ "%counter_loading%" goto :loadingCycle
+goto :checkEngine

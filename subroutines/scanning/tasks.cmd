@@ -6,16 +6,16 @@ echo.   [Tasks]>>%log%
 
 for /f "delims=" %%i in (files\databases\rewrited\processes\tasks.db) do (
   set errorLevel=
-  schtasks /query /tn "%%i">>%debugLog%
+  schtasks /query /tn "%%i">>%log_debug%
   if "!errorLevel!" == "0" (
-    echo.%%i>>%cleaning-tasks%
+    echo.%%i>>%cleaning_tasks%
     echo.    - %%i>>%log%
     echo.[Task] %%i
-    set /a foundObjects+=1
+    set /a counter_foundObjects+=1
   ) else (
-    echo.Task not found - %%i>>%debugLog%
+    echo.Task not found - %%i>>%log_debug%
   )
-  echo.!foundObjects!>temp\foundObjects
+  echo.!counter_foundObjects!>temp\counter_foundObjects
 )
 
 echo.Script Completed>>%log%
@@ -24,5 +24,5 @@ echo.>>%log%
 echo.>>%log%
 
 endlocal
-%module-sleep% 3
+%module_sleep% 3
 exit

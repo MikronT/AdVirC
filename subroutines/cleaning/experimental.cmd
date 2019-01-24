@@ -12,5 +12,5 @@ echo.>>%log%
 echo.>>%log%
 
 endlocal
-%module-sleep% 3
+%module_sleep% 3
 exit

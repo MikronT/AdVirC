@@ -2,9 +2,9 @@
 chcp 65001>nul
 
 mode con:cols=70 lines=36
-title %appName% ^| Log
 color 0b
 
+title %appName% ^| Log
 cls
 
 echo.

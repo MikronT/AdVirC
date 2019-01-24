@@ -6,14 +6,14 @@ echo.   [Temp]>>%log%
 
 for /f "delims=" %%i in (files\databases\rewrited\dirs\temp.db) do (
   if exist "%%i" (
-    echo.%%i>>%cleaning-temp%
+    echo.%%i>>%cleaning_temp%
     echo.    - %%i>>%log%
     echo.[Temp] %%i
-    set /a foundObjects+=1
+    set /a counter_foundObjects+=1
   ) else (
-    echo.Temp not found - %%i>>%debugLog%
+    echo.Temp not found - %%i>>%log_debug%
   )
-  echo.!foundObjects!>temp\foundObjects
+  echo.!counter_foundObjects!>temp\counter_foundObjects
 )
 
 echo.Script Completed>>%log%
@@ -22,5 +22,5 @@ echo.>>%log%
 echo.>>%log%
 
 endlocal
-%module-sleep% 3
+%module_sleep% 3
 exit

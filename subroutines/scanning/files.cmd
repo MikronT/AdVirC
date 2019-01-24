@@ -7,14 +7,14 @@ echo.   [AppData Files]>>%log%
 for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\files\appData.db) do (
     if exist "%%i\%%j" (
-      echo.%%i\%%j>>%cleaning-files%
+      echo.%%i\%%j>>%cleaning_files%
       echo.    - %%i\%%j>>%log%
       echo.[File] %%i\%%j
-      set /a foundObjects+=1
+      set /a counter_foundObjects+=1
     ) else (
-      echo.File not found - %%i\%%j>>%debugLog%
+      echo.File not found - %%i\%%j>>%log_debug%
     )
-    echo.!foundObjects!>temp\foundObjects
+    echo.!counter_foundObjects!>temp\counter_foundObjects
   )
 )
 
@@ -29,14 +29,14 @@ echo.   [Program Files]>>%log%
 for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\files\programFiles.db) do (
     if exist "%%i\%%j" (
-      echo.%%i\%%j>>%cleaning-files%
+      echo.%%i\%%j>>%cleaning_files%
       echo.    - %%i\%%j>>%log%
       echo.[File] %%i\%%j
-      set /a foundObjects+=1
+      set /a counter_foundObjects+=1
     ) else (
-      echo.File not found - %%i\%%j>>%debugLog%
+      echo.File not found - %%i\%%j>>%log_debug%
     )
-    echo.!foundObjects!>temp\foundObjects
+    echo.!counter_foundObjects!>temp\counter_foundObjects
   )
 )
 
@@ -50,14 +50,14 @@ echo.   [System Drive Files]>>%log%
 
 for /f "delims=" %%i in (files\databases\rewrited\files\systemDrive.db) do (
   if exist "%systemDrive%\%%i" (
-    echo.%systemDrive%\%%i>>%cleaning-files%
+    echo.%systemDrive%\%%i>>%cleaning_files%
     echo.    - %systemDrive%\%%i>>%log%
     echo.[File] %systemDrive%\%%i
-    set /a foundObjects+=1
+    set /a counter_foundObjects+=1
   ) else (
-    echo.File not found - %systemDrive%\%%i>>%debugLog%
+    echo.File not found - %systemDrive%\%%i>>%log_debug%
   )
-  echo.!foundObjects!>temp\foundObjects
+  echo.!counter_foundObjects!>temp\counter_foundObjects
 )
 
 echo.Script Completed>>%log%
@@ -70,14 +70,14 @@ echo.   [Windows Directory Files]>>%log%
 
 for /f "delims=" %%i in (files\databases\rewrited\files\winDir.db) do (
   if exist "%winDir%\%%i" (
-    echo.%winDir%\%%i>>%cleaning-files%
+    echo.%winDir%\%%i>>%cleaning_files%
     echo.    - %winDir%\%%i>>%log%
     echo.[File] %winDir%\%%i
-    set /a foundObjects+=1
+    set /a counter_foundObjects+=1
   ) else (
-    echo.File not found - %winDir%\%%i>>%debugLog%
+    echo.File not found - %winDir%\%%i>>%log_debug%
   )
-  echo.!foundObjects!>temp\foundObjects
+  echo.!counter_foundObjects!>temp\counter_foundObjects
 )
 
 echo.Script Completed>>%log%
@@ -86,5 +86,5 @@ echo.>>%log%
 echo.>>%log%
 
 endlocal
-%module-sleep% 3
+%module_sleep% 3
 exit

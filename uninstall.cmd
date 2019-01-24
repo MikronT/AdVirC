@@ -20,8 +20,8 @@ if "%command%" NEQ "0" goto :uninstallQuestion
 
 if exist files\backups\registry\HKUConsoleCMD_Backup.reg reg import files\backups\registry\HKUConsoleCMD_Backup.reg
 
-for /f "tokens=1,2,*" %%i in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v Desktop') do set desktopLocation=%%k
-if exist "%desktopLocation%\AdVirC.lnk" del /q "%desktopLocation%\AdVirC.lnk"
+for /f "tokens=1,2,*" %%i in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v Desktop') do set location_desktop=%%k
+if exist "%location_desktop%\AdVirC.lnk" del /q "%location_desktop%\AdVirC.lnk"
 
 
 

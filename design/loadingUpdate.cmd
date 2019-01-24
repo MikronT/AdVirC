@@ -1,7 +1,7 @@
 if "%1" == "reset" (
-  set loadingCounter=0
-) else set /a loadingCounter+=%1
-if "%1" == "stop" set loadingCounter=stop
+  set counter_loading=0
+) else set /a counter_loading+=%1
+if "%1" == "stop" set counter_loading=stop
 
-echo.%loadingCounter%>temp\loadingCounter
+echo.%counter_loading%>temp\counter_loading
 exit /b

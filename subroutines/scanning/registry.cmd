@@ -7,16 +7,16 @@ echo.   [Classes]>>%log%
 for /f "delims=" %%i in (files\databases\rewrited\dirs\classes.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\registry\classes.db) do (
     set errorLevel=
-    reg query "%%i\%%j">>%debugLog%
+    reg query "%%i\%%j">>%log_debug%
     if "!errorLevel!" == "0" (
-      echo.%%i\%%j>>%cleaning-registry%
+      echo.%%i\%%j>>%cleaning_registry%
       echo.    - %%i\%%j>>%log%
       echo.[Class] %%i\%%j
-      set /a foundObjects+=1
+      set /a counter_foundObjects+=1
     ) else (
-      echo.Class not found - %%i\%%j>>%debugLog%
+      echo.Class not found - %%i\%%j>>%log_debug%
     )
-    echo.!foundObjects!>temp\foundObjects
+    echo.!counter_foundObjects!>temp\counter_foundObjects
   )
 )
 
@@ -31,16 +31,16 @@ echo.   [Keys]>>%log%
 for /f "delims=" %%i in (files\databases\rewrited\dirs\keys.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\registry\keys.db) do (
     set errorLevel=
-    reg query "%%i\%%j">>%debugLog%
+    reg query "%%i\%%j">>%log_debug%
     if "!errorLevel!" == "0" (
-      echo.%%i\%%j>>%cleaning-registry%
+      echo.%%i\%%j>>%cleaning_registry%
       echo.    - %%i\%%j>>%log%
       echo.[Key] %%i\%%j
-      set /a foundObjects+=1
+      set /a counter_foundObjects+=1
     ) else (
-      echo.Key not found - %%i\%%j>>%debugLog%
+      echo.Key not found - %%i\%%j>>%log_debug%
     )
-    echo.!foundObjects!>temp\foundObjects
+    echo.!counter_foundObjects!>temp\counter_foundObjects
   )
 )
 
@@ -50,5 +50,5 @@ echo.>>%log%
 echo.>>%log%
 
 endlocal
-%module-sleep% 3
+%module_sleep% 3
 exit

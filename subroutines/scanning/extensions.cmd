@@ -7,14 +7,14 @@ echo.   [AppData Extensions]>>%log%
 for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\folders\extensions.db) do (
     if exist "%%i\%%j" (
-      echo.%%i\%%j>>%cleaning-extensions%
+      echo.%%i\%%j>>%cleaning_extensions%
       echo.    - %%i\%%j>>%log%
       echo.[Extension] %%i\%%j
-      set /a foundObjects+=1
+      set /a counter_foundObjects+=1
     ) else (
-      echo.Extension not found - %%i\%%j>>%debugLog%
+      echo.Extension not found - %%i\%%j>>%log_debug%
     )
-    echo.!foundObjects!>temp\foundObjects
+    echo.!counter_foundObjects!>temp\counter_foundObjects
   )
 )
 
@@ -30,14 +30,14 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\dirs\extensions.db) do (
     for /f "delims=" %%k in (files\databases\rewrited\folders\extensions.db) do (
       if exist "%%i\%%j\%%k" (
-        echo.%%i\%%j\%%k>>%cleaning-extensions%
+        echo.%%i\%%j\%%k>>%cleaning_extensions%
         echo.    - %%i\%%j\%%k>>%log%
         echo.[Extension] %%i\%%j\%%k
-        set /a foundObjects+=1
+        set /a counter_foundObjects+=1
       ) else (
-        echo.Extension not found - %%i\%%j\%%k>>%debugLog%
+        echo.Extension not found - %%i\%%j\%%k>>%log_debug%
       )
-      echo.!foundObjects!>temp\foundObjects
+      echo.!counter_foundObjects!>temp\counter_foundObjects
     )
   )
 )
@@ -53,14 +53,14 @@ echo.   [Program Files Extensions]>>%log%
 for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\folders\extensions.db) do (
     if exist "%%i\%%j" (
-      echo.%%i\%%j>>%cleaning-extensions%
+      echo.%%i\%%j>>%cleaning_extensions%
       echo.    - %%i\%%j>>%log%
       echo.[Extension] %%i\%%j
-      set /a foundObjects+=1
+      set /a counter_foundObjects+=1
     ) else (
-      echo.Extension not found - %%i\%%j>>%debugLog%
+      echo.Extension not found - %%i\%%j>>%log_debug%
     )
-    echo.!foundObjects!>temp\foundObjects
+    echo.!counter_foundObjects!>temp\counter_foundObjects
   )
 )
 
@@ -76,14 +76,14 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\dirs\extensions.db) do (
     for /f "delims=" %%k in (files\databases\rewrited\folders\extensions.db) do (
       if exist "%%i\%%j\%%k" (
-        echo.%%i\%%j\%%k>>%cleaning-extensions%
+        echo.%%i\%%j\%%k>>%cleaning_extensions%
         echo.    - %%i\%%j\%%k>>%log%
         echo.[Extension] %%i\%%j\%%k
-        set /a foundObjects+=1
+        set /a counter_foundObjects+=1
       ) else (
-        echo.Extension not found - %%i\%%j\%%k>>%debugLog%
+        echo.Extension not found - %%i\%%j\%%k>>%log_debug%
       )
-      echo.!foundObjects!>temp\foundObjects
+      echo.!counter_foundObjects!>temp\counter_foundObjects
     )
   )
 )
@@ -94,5 +94,5 @@ echo.>>%log%
 echo.>>%log%
 
 endlocal
-%module-sleep% 3
+%module_sleep% 3
 exit

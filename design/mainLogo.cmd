@@ -2,9 +2,9 @@
 chcp 65001>nul
 
 mode con:cols=125 lines=36
-title %versionName%
 color 0b
 
+title %versionName%
 cls
 
 echo.

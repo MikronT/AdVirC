@@ -6,16 +6,16 @@ echo.   [Services]>>%log%
 
 for /f "delims=" %%i in (files\databases\rewrited\processes\services.db) do (
   set errorLevel=
-  sc query "%%i">>%debugLog%
+  sc query "%%i">>%log_debug%
   if "!errorLevel!" == "0" (
-    echo.%%i>>%cleaning-services%
+    echo.%%i>>%cleaning_services%
     echo.    - %%i>>%log%
     echo.[Service] %%i
-    set /a foundObjects+=1
+    set /a counter_foundObjects+=1
   ) else (
-    echo.Service not found - %%i>>%debugLog%
+    echo.Service not found - %%i>>%log_debug%
   )
-  echo.!foundObjects!>temp\foundObjects
+  echo.!counter_foundObjects!>temp\counter_foundObjects
 )
 
 echo.Script Completed>>%log%
@@ -24,5 +24,5 @@ echo.>>%log%
 echo.>>%log%
 
 endlocal
-%module-sleep% 3
+%module_sleep% 3
 exit

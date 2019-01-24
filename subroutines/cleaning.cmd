@@ -1,13 +1,13 @@
 %logo%
 
 if not exist files\databases\rewrited\dirs\temp.db (
-  echo.%lang-noVirusDataBasesError%
-  %module-sleep% 3
+  echo.%lang_noVirusDataBasesError%
+  %module_sleep% 3
   exit /b
 )
 
-set foundObjects=0
-set deletedObjects=0
+set counter_foundObjects=0
+set counter_deletedObjects=0
 
 echo.@echo off>%rebootScript%
 echo.chcp 65001>>%rebootScript%
@@ -26,7 +26,7 @@ for %%d in (services tasks processes registry temp folders files shortcuts exten
 
 
 echo.[Editing]>>%log%
-for %%d in (services tasks processes registry temp folders files shortcuts extensions) do start /wait notepad cleaning-%%d.db
+for %%d in (services tasks processes registry temp folders files shortcuts extensions) do start /wait notepad cleaning_%%d.db
 
 
 
@@ -35,13 +35,13 @@ for %%d in (deleting experimental heuristic) do start /wait subroutines\cleaning
 
 
 
-for /f "delims=" %%i in (%filesToRemove%) do %module-moveFile% "%%i" ""
+for /f "delims=" %%i in (%filesToRemove%) do %module_moveFile% "%%i" ""
 
 
 
 set errorLevel=
 schtasks /create /tn "AdVirC Reboot Script Task" /xml "files\rebootScriptTask.xml" /ru system /f
-if "%errorLevel%" NEQ "0" echo.%lang-taskCreatingError%
+if "%errorLevel%" NEQ "0" echo.%lang_taskCreatingError%
 
 
 
@@ -50,25 +50,25 @@ if "%errorLevel%" NEQ "0" echo.%lang-taskCreatingError%
 
 
 %logo%
-call echo.%lang-deletedObjects%
+call echo.%lang_counter_deletedObjects%
 
-echo.Objects deleted: %deletedObjects%.>>%log%
+echo.Objects deleted: %counter_deletedObjects%.>>%log%
 echo.>>%log%
 echo.>>%log%
 echo.>>%log%
 echo.========================================================================================================================>>%log%
 
-%module-sleep% 3
+%module_sleep% 3
 
 
 
-echo.%lang-restartMessage01%
-echo.%lang-restartMessage02%
-echo.%lang-restartMessage03%
+echo.%lang_restartMessage01%
+echo.%lang_restartMessage02%
+echo.%lang_restartMessage03%
 pause>nul
 
-echo.%lang-restartMessage04%
-%module-sleep% 5
+echo.%lang_restartMessage04%
+%module_sleep% 5
 
 echo.>temp\rebootNow
 exit /b
