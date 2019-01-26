@@ -4,8 +4,6 @@ echo.%lang_initialization%
 
 
 
-
-
 set setting_autoUpdateDatabases=true
 set setting_autoUpdateProgram=true
 set setting_debug=true
