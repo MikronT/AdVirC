@@ -49,7 +49,7 @@ mainMenu05=Support                                                       Program
 mainMenu06=^(5^) Help                                                      ^(8^) Settings
 mainMenu07=^(6^) Send report                                               ^(9^) Clear temporary files
 mainMenu08=^(7^) About                                                     ^(0^) Exit
-mainMenu09=                                                                ^(#^) Uninstall
+mainMenu09=                                                              ^(#^) Uninstall
 
 
 

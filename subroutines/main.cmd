@@ -112,7 +112,7 @@ call :languageImport
 
 
 %logo%
-echo.^(i^) %versionName%
+echo.^(^i^) %versionName%
 echo.%lang_selectedLanguage%
 echo.%lang_initializationRun%
 %loadingUpdate% 1
@@ -443,7 +443,7 @@ goto :settingsMenu
 :updateChannelMenu
 set command=command
 %logo%
-echo.%lang_updateChannelMenu01%
+call echo.%lang_updateChannelMenu01%
 echo.%lang_updateChannelMenu02%
 echo.%lang_updateChannelMenu03%
 echo.%lang_updateChannelMenu04%
@@ -494,7 +494,7 @@ exit /b
 
 
 :languageImport
-for /f "eol=# delims=" %%i in (languages\%setting_lang%.lang) do set lang_%%i
+for /f "eol=# tokens=1,* delims==" %%i in (languages\%setting_lang%.lang) do set lang_%%i=%%j
 echo.Language: %setting_lang%>>%log%
 exit /b
 

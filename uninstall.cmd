@@ -7,14 +7,18 @@ set uninstallDirectory=%cd%
 :uninstallQuestion
 set command=command
 call design\mainLogo.cmd
+
 echo.^(^i^) Uninstall Directory: %cd%
+echo.
 echo.^(^?^) Do you want to uninstall AdVirC^?
-echo.    ^(0^) Uninstall
-echo.    ^(1^) Cancel
+echo.    ^(1^) Uninstall
+echo.    ^(0^) Cancel
+echo.
+echo.
 echo.
 set /p command=^(^>^) Enter command ^> 
-if "%command%" == "1" exit /b
-if "%command%" NEQ "0" goto :uninstallQuestion
+if "%command%" == "0" exit /b
+if "%command%" NEQ "1" goto :uninstallQuestion
 
 
 

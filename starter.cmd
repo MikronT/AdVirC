@@ -16,8 +16,7 @@ set loadingUpdate=call design\loadingUpdate.cmd
 set logo=call design\mainLogo.cmd
 set module_sleep=subroutines\modules\sleep.exe
 
-
-for /f "eol=# delims=" %%i in (languages\english.lang) do set lang_%%i
+for /f "eol=# tokens=1,* delims==" %%i in (languages\english.lang) do set lang_%%i=%%j
 for /f "tokens=2*" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI /v lastLoggedOnUserSID') do set lastLoggedOnUserSID=%%j
 
 
