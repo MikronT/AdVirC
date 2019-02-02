@@ -52,6 +52,7 @@ for /f "tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
   for /f "skip=1 tokens=1,2,*" %%l in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v %%j') do set location_%%i=%%n
 )
 for /f "tokens=1,2,* delims=." %%i in ("%date%") do set currentDate=%%k.%%j.%%i
+for /f %%a in ('"prompt $h & echo on & for %%b in (1) do rem"') do set inputBS=%%a
 if exist %settings% for /f "eol=# delims=" %%i in (%settings%) do set setting_%%i
 %loadingUpdate% 5
 
@@ -112,19 +113,18 @@ call :languageImport
 
 
 %logo%
-echo.^(^i^) %versionName%
+echo.  ^(^i^) %versionName%
 echo.%lang_selectedLanguage%
 echo.%lang_initializationRun%
 %loadingUpdate% 1
 
 
 
-if not exist files\reports\systemInfo.rpt systeminfo>files\reports\systemInfo.rpt
+if not exist files\reports\systemInfo.rpt systeminfo>files\reports\systemInfo.rpt >nul 2>nul
 %loadingUpdate% 2
 
 
 
-:::::::::::::::::::::::::::::::::::::::::::Errors:Here:::::::::::::::::::::::::::::::::::::::::::
 if "%setting_firstRun%" == "true" (
   echo.%lang_creatingRegistryBackup%
   rem reg export HKCR files\backups\registry\HKCR.reg /y>>%log_debug%
@@ -140,9 +140,9 @@ if "%setting_firstRun%" == "true" (
 
 
 
-echo.%%lastLoggedOnUserSID%%>temp\tempLastLoggedOnUserSID
+echo.%%lastLoggedOnUserSID%%>temp\temp_lastLoggedOnUserSID
 for /f "tokens=2*" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI /v LastLoggedOnUserSID') do set lastLoggedOnUserSID=%%j
-for /f "delims=" %%i in (temp\tempLastLoggedOnUserSID) do call echo.%%i>files\reports\lastLoggedOnUserSID.rpt
+for /f "delims=" %%i in (temp\temp_lastLoggedOnUserSID) do call echo.%%i>files\reports\lastLoggedOnUserSID.rpt
 call echo.%lang_lastLoggedOnUserSID%
 %loadingUpdate% 2
 
@@ -194,12 +194,12 @@ goto :mainMenu
 
 
 :languageMenu
-set command=command
+set command=
 %logo%
 echo.%lang_languageMenu01%
-echo.^(1^) English
-echo.^(2^) Русский
-echo.^(3^) Українська
+echo.  ^(1^) English
+echo.  ^(2^) Русский
+echo.  ^(3^) Українська
 if "%1" NEQ "force" (
   echo.
   echo.%lang_back%
@@ -207,17 +207,19 @@ if "%1" NEQ "force" (
 echo.
 echo.
 echo.
-set /p command=%lang_enterCommand%
+set /p command=%inputBS%   %lang_enterCommand%
 
 
 
-if "%command%" == "0" if "%1" NEQ "force" exit /b
+if "%command%" == "0" if "%1" NEQ "force" ( set command= & exit /b )
 if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" goto :languageMenu
 
 if "%command%" == "1" set setting_lang=english
 if "%command%" == "2" set setting_lang=russian
 if "%command%" == "3" set setting_lang=ukrainian
+
 call :settingsSave
+set command=
 exit /b
 
 
@@ -227,7 +229,7 @@ exit /b
 
 
 :mainMenu
-set command=command
+set command=
 %logo%
 %loadingUpdate% reset
 echo.%lang_mainMenu01%
@@ -253,7 +255,7 @@ if "%setting_firstRun%" == "true" (
   set setting_firstRun=false
   call :settingsSave
 )
-set /p command=%lang_enterCommand%
+set /p command=%inputBS%   %lang_enterCommand%
 
 
 
@@ -269,7 +271,7 @@ if "%command%" == "9" call :clearTemp
 if "%command%" == "0" call :exit
 if "%command%" == "#" call uninstall.cmd
 
-if exist temp\rebootNow goto :exit reboot
+if exist temp\rebootNow call :exit reboot
 goto :mainMenu
 
 
@@ -279,7 +281,7 @@ goto :mainMenu
 
 
 :cleaningMenu
-set command=command
+set command=
 %logo%
 echo.%lang_cleaningMenu01%
 echo.%lang_cleaningMenu02%
@@ -288,13 +290,14 @@ echo.%lang_back%
 echo.
 echo.
 echo.
-set /p command=%lang_enterCommand%
+set /p command=%inputBS%   %lang_enterCommand%
 
 
 
-if "%command%" == "0" exit /b
+if "%command%" == "0" ( set command= & exit /b )
 if "%command%" == "1" (
   call subroutines\cleaning.cmd
+  set command=
   exit /b
 )
 goto :cleaningMenu
@@ -306,7 +309,7 @@ goto :cleaningMenu
 
 
 :importMenu
-set command=command
+set command=
 %logo%
 echo.%lang_importMenu01%
 echo.%lang_importMenu02%
@@ -323,17 +326,18 @@ if "%error_import%" == "1" (
   echo.
   echo.
 )
-set /p command=%lang_enterCommand%
+set /p command=%inputBS%   %lang_enterCommand%
 
 
 
-if "%command%" == "0" exit /b
+if "%command%" == "0" ( set command= & exit /b )
 if "%command%" == "1" (
   if not exist %location_desktop%\adVirCDatabases.zip (
     set error_import=1
     goto :importMenu
   )
   call subroutines\databases.cmd import
+  set command=
   exit /b
 )
 goto :importMenu
@@ -345,7 +349,7 @@ goto :importMenu
 
 
 :settingsMenu
-set command=command
+set command=
 %logo%
 echo.%lang_settingsMenu01%
 echo.%lang_settingsMenu02% %setting_lang%
@@ -358,36 +362,36 @@ if "%setting_debug%" == "true" (
   echo.%lang_settingsMenu04% %lang_settingEnabled%
 ) else echo.%lang_settingsMenu04% %lang_settingDisabled%
 
-echo.
 echo.%lang_settingsMenu05%
-echo.%lang_settingsMenu06% %setting_updateChannel%
+echo.%lang_settingsMenu06%
+echo.%lang_settingsMenu07% %setting_updateChannel%
 
 if "%setting_autoUpdateProgram%" == "true" (
-  call echo.%lang_settingsMenu07% %lang_settingEnabled%
-) else call echo.%lang_settingsMenu07% %lang_settingDisabled%
+  call echo.%lang_settingsMenu08% %lang_settingEnabled%
+) else call echo.%lang_settingsMenu08% %lang_settingDisabled%
 
 if "%setting_autoUpdateDatabases%" == "true" (
-  echo.%lang_settingsMenu08% %lang_settingEnabled%
-) else echo.%lang_settingsMenu08% %lang_settingDisabled%
+  echo.%lang_settingsMenu09% %lang_settingEnabled%
+) else echo.%lang_settingsMenu09% %lang_settingDisabled%
 
 if "%setting_remindProgramUpdates%" == "true" (
-  call echo.%lang_settingsMenu09% %lang_settingEnabled%
-) else call echo.%lang_settingsMenu09% %lang_settingDisabled%
+  call echo.%lang_settingsMenu10% %lang_settingEnabled%
+) else call echo.%lang_settingsMenu10% %lang_settingDisabled%
 
 if "%setting_remindDatabasesUpdates%" == "true" (
-  echo.%lang_settingsMenu10% %lang_settingEnabled%
-) else echo.%lang_settingsMenu10% %lang_settingDisabled%
+  echo.%lang_settingsMenu11% %lang_settingEnabled%
+) else echo.%lang_settingsMenu11% %lang_settingDisabled%
 
 echo.
 echo.%lang_back%
 echo.
 echo.
 echo.
-set /p command=%lang_enterCommand%
+set /p command=%inputBS%   %lang_enterCommand%
 
 
 
-if "%command%" == "0" exit /b
+if "%command%" == "0" ( set command= & exit /b )
 if "%command%" == "1" (
   call :languageMenu
   call :languageImport
@@ -441,7 +445,7 @@ goto :settingsMenu
 
 
 :updateChannelMenu
-set command=command
+set command=
 %logo%
 call echo.%lang_updateChannelMenu01%
 echo.%lang_updateChannelMenu02%
@@ -452,16 +456,17 @@ echo.%lang_back%
 echo.
 echo.
 echo.
-set /p command=%lang_enterCommand%
+set /p command=%inputBS%   %lang_enterCommand%
 
 
 
-if "%command%" == "0" exit /b
+if "%command%" == "0" ( set command= & exit /b )
 if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" goto :updateChannelMenu
 
 if "%command%" == "1" set setting_updateChannel=release
 if "%command%" == "2" set setting_updateChannel=beta
 if "%command%" == "3" set setting_updateChannel=nightly
+set command=
 exit /b
 
 
@@ -471,10 +476,11 @@ exit /b
 
 
 :clearTemp
-for %%i in (files\databases files\logs files\reports temp) do (
+for %%i in (files\databases files\logs files\reports) do (
   if exist %%i rd /s /q %%i
   md %%i>nul 2>nul
 )
+for /f "delims=" %%i in ('dir /b temp') do if "%%i" NEQ "counter_loading" del /q "temp\%%i"
 exit /b
 
 
@@ -528,12 +534,12 @@ exit /b
 %loadingUpdate% reset
 color 0c
 echo.Program Corrupted!>>%log%
-echo.^(!^) %appName% Diagnostics: 
-echo.   Program Corrupted!
-echo.^(i^) Files missing:
+echo.  ^(^!^) %appName% Diagnostics: 
+echo.     Program Corrupted!
+echo.  ^(^i^) Files missing:
 for /f "delims=" %%i in (files\reports\corruptedFilesList.db) do echo.    --^> %%i
 echo.
-echo.^(!^) Reinstall %appName%!
+echo.  ^(^!^) Reinstall %appName%!
 pause>nul
 call :exit
 
@@ -546,7 +552,7 @@ call :exit
 :exit
 call :settingsSave
 
-reg import files\backups\registry\HKUConsoleCMD_Backup.reg
+reg import files\backups\registry\HKUConsoleCMD_Backup.reg>>%log_debug%
 
 %loadingUpdate% stop
 %module_sleep% 3

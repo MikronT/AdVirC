@@ -11,81 +11,82 @@
 
 
 
-initialization=^(^!^) Initialization...
-initializationRun=^(^!^) Initialization run...
+initialization=  ^(^!^) Initialization...
+initializationRun=  ^(^!^) Initialization run...
 
-back=^(0^) Back
+back=  ^(0^) Back
 enterCommand=^(^>^) Enter the number of command ^> 
 
 
 
 
 
-lastLoggedOnUserSID=^(i^) Last Logged User ^(SID^): %lastLoggedOnUserSID%.
-processorArchitecture=^(i^) System Bit Rate: %PROCESSOR_ARCHITECTURE%.
-mozillaFirefoxUserProfile=^(i^) Mozilla Firefox Profile id: %mozillaFirefoxUserProfile%.
+lastLoggedOnUserSID=  ^(i^) Last Logged User ^(SID^): %lastLoggedOnUserSID%.
+processorArchitecture=  ^(i^) System Bit Rate: %PROCESSOR_ARCHITECTURE%.
+mozillaFirefoxUserProfile=  ^(i^) Mozilla Firefox Profile id: %mozillaFirefoxUserProfile%.
 
-creatingRegistryBackup=^(^!^) Creating a backup copy of the Windows registry...
-registryBackupCreated=^(^!^) Backup copy of the Windows registry is succesfully created^!
-
-
+creatingRegistryBackup=  ^(^!^) Creating a backup copy of the Windows registry...
+registryBackupCreated=  ^(^!^) Backup copy of the Windows registry is succesfully created^!
 
 
 
 
 
-languageMenu01=Language
-selectedLanguage=^(i^) Language: English
+
+
+languageMenu01=  Language
+selectedLanguage=  ^(i^) Language: English
 
 
 
 
 
-mainMenu01=Security Features                                             Databases
-mainMenu02=^(1^) Perform cleaning system                                   ^(3^) Update databases
-mainMenu03=^(2^) Exceptions                                                ^(4^) Import databases
+mainMenu01=  Security Features                                           Databases
+mainMenu02=  ^(1^) Perform cleaning system                                 ^(3^) Update databases
+mainMenu03=  ^(2^) Exceptions                                              ^(4^) Import databases
 mainMenu04=
-mainMenu05=Support                                                       Program
-mainMenu06=^(5^) Help                                                      ^(8^) Settings
-mainMenu07=^(6^) Send report                                               ^(9^) Clear temporary files
-mainMenu08=^(7^) About                                                     ^(0^) Exit
+mainMenu05=  Support                                                     Program
+mainMenu06=  ^(5^) Help                                                    ^(8^) Settings
+mainMenu07=  ^(6^) Send report                                             ^(9^) Clear temporary files
+mainMenu08=  ^(7^) About                                                   ^(0^) Exit
 mainMenu09=                                                              ^(#^) Uninstall
 
 
 
 
 
-cleaningMenu01=Cleaning menu
-cleaningMenu02=^(1^) Run scanning
+cleaningMenu01=  Cleaning menu
+cleaningMenu02=  ^(1^) Run scanning
 
 
 
 
 
-updatingDataBases=^(i^) Updating virus databases. Please wait...
-dataBasesUpdated=^(i^) Virus databases updated^!
+updatingDataBases=  ^(i^) Updating virus databases. Please wait...
+dataBasesUpdated=  ^(i^) Virus databases updated^!
 
 
 
 
 
-importMenu01=To import databases into the program, upload them on to your desktop.
-importMenu02=^(1^) Run import
+importMenu01=  To import databases into the program, upload them on to your desktop.
+importMenu02=  ^(1^) Run import
 
 
 
 
 
-settingsMenu01=Settings
-settingsMenu02=^(1^) Language:
-settingsMenu03=^(2^) Logging:
-settingsMenu04=^(3^) Debug:
-settingsMenu05=Update
-settingsMenu06=^(4^) Update channel:
-settingsMenu07=^(5^) Autoupdate %appName%:
-settingsMenu08=^(6^) Autoupdate databases:
-settingsMenu09=^(7^) Remind for %appName% updates:
-settingsMenu10=^(8^) Remind for databases updates:
+settingsMenu01=  Settings
+settingsMenu02=  ^(1^) Language:
+settingsMenu03=  ^(2^) Logging:
+settingsMenu04=  ^(3^) Debug:
+settingsMenu05=
+settingsMenu06=  Update
+settingsMenu07=  ^(4^) Update channel:
+settingsMenu08=  ^(5^) Autoupdate %appName%:
+settingsMenu09=  ^(6^) Autoupdate databases:
+settingsMenu10=  ^(7^) Remind for %appName% updates:
+settingsMenu11=  ^(8^) Remind for databases updates:
 settingDisabled=disabled
 settingEnabled=enabled
 
@@ -93,43 +94,37 @@ settingEnabled=enabled
 
 
 
-updateChannelMenu01=Select update channel for %appName% and databases.
-updateChannelMenu02=^(1^) Release ^(stable^)
-updateChannelMenu03=^(2^) Beta ^(some new features, but before tests^)
-updateChannelMenu04=^(3^) Nightly ^(all new features, not stable^)
+updateChannelMenu01=  Select update channel for %appName% and databases.
+updateChannelMenu02=  ^(1^) Release ^(stable^)
+updateChannelMenu03=  ^(2^) Beta ^(some new features, but before tests^)
+updateChannelMenu04=  ^(3^) Nightly ^(all new features, not stable^)
 
 
 
 
 
-uninstalling=^(^!^) Deleting - %cd%...
+cleaningServices=  Stopping and removing services...
+cleaningTasks=  Stopping and removing schleduled tasks...
+cleaningProcesses=  Stopping and removing processes...
+cleaningRegistry=  Cleaning registry...
+cleaningTemp=  Cleaning temps...
+cleaningFolders=  Deleting directories...
+cleaningFiles=  Deleting files...
+cleaningLinks=  Removing links...
+cleaningExtensions=  Removing extensions...
+cleaningHeuristic=  Applying heuristic rules...
+cleaningExperimental=  Applying experimental rules...
+
+deletedObjects=  Objects deleted: %deletedObjects%.
 
 
 
 
 
-cleaningServices=Stopping and removing services...
-cleaningTasks=Stopping and removing schleduled tasks...
-cleaningProcesses=Stopping and removing processes...
-cleaningRegistry=Cleaning registry...
-cleaningTemp=Cleaning temps...
-cleaningFolders=Deleting directories...
-cleaningFiles=Deleting files...
-cleaningLinks=Removing links...
-cleaningExtensions=Removing extensions...
-cleaningHeuristic=Applying heuristic rules...
-cleaningExperimental=Applying experimental rules...
-
-deletedObjects=Objects deleted: %deletedObjects%.
-
-
-
-
-
-restartMessage01=^(^!^) Warning^!
-restartMessage02=    The computer will restart^!
-restartMessage03=    Save your data and press ENTER.
-restartMessage04=^(^!^) The computer will restart after 5 seconds...
+restartMessage01=  ^(^!^) Warning^!
+restartMessage02=      The computer will restart^!
+restartMessage03=      Save your data and press ENTER.
+restartMessage04=  ^(^!^) The computer will restart after 5 seconds...
 
 
 
@@ -137,12 +132,12 @@ restartMessage04=^(^!^) The computer will restart after 5 seconds...
 
 
 
-noVirusDataBasesError=^(^!^) First of all update the virus databases^!
-dataBasesUpdateError=^(^!^) Databases are not updated!
-wgetError=^(^!^) Download error^! Check your Internet connection^!
-unZipError=^(^!^) Extract error^! Please, reload %appName%^!
-importError=^(^!^) Error^! No databases^!
-taskCreatingError=^(^!^) Error while creating task for reboot^!
+noVirusDataBasesError=  ^(^!^) First of all update the virus databases^!
+dataBasesUpdateError=  ^(^!^) Databases are not updated!
+wgetError=  ^(^!^) Download error^! Check your Internet connection^!
+unZipError=  ^(^!^) Extract error^! Please, reload %appName%^!
+importError=  ^(^!^) Error^! No databases^!
+taskCreatingError=  ^(^!^) Error while creating task for reboot^!
 
 
 
@@ -168,7 +163,7 @@ taskCreatingError=^(^!^) Error while creating task for reboot^!
 
 
 
-firstRunMenuNotification01=^(i^) First of all it would be better to update the virus databases, and then clean the system.
-firstRunMenuNotification02=^(i^) Close the program only through menu item ^(0^), otherwise the program may be damaged^!
-firstRunMenuNotification03=^(i^) Do not pay attention to some errors and try to just wait.
-firstRunMenuNotification04=^(i^) If the program window disappears without your intervention, contact us for help.
+firstRunMenuNotification01=  ^(i^) First of all it would be better to update the virus databases, and then clean the system.
+firstRunMenuNotification02=  ^(i^) Close the program only through menu item ^(0^), otherwise the program may be damaged^!
+firstRunMenuNotification03=  ^(i^) Do not pay attention to some errors and try to just wait.
+firstRunMenuNotification04=  ^(i^) If the program window disappears without your intervention, contact us for help.
