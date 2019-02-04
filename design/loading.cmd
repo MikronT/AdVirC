@@ -4,7 +4,7 @@ chcp 65001>nul
 mode con:cols=62 lines=7
 color 0b
 
-set counter_percents=0
+set counter_loading=0
 
 
 
@@ -71,8 +71,8 @@ if %counter_loading% == 50 echo.   ║  █████████████�
                            echo.   ║                                                      ║
                            echo.   ╚══════════════════════════════════════════════════════╝
 
-if %counter_loading% == 50 %loadingUpdate% reset
 set counter_lastLoading=%counter_loading%
+rem if %counter_loading% == 50 %loadingUpdate% reset
 goto :checkEngine
 
 
@@ -80,8 +80,10 @@ goto :checkEngine
 
 
 :checkEngine
-%module_sleep% -m 250
-for /f "tokens=1,2* delims=" %%n in (temp\counter_loading) do set counter_loading=%%n
+for /f "delims=" %%i in (temp\counter_loading) do set counter_loading=%%i
+
 if "%counter_loading%" == "stop" exit
-if "%counter_lastLoading%" NEQ "%counter_loading%" goto :loadingCycle
+if "%counter_loading%" NEQ "%counter_lastLoading%" goto :loadingCycle
+
+%module_sleep% -m 250
 goto :checkEngine

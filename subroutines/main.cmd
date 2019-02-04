@@ -21,9 +21,6 @@ set module_shortcut=subroutines\modules\shortcut.exe /a:c
 set module_unZip=subroutines\modules\unzip.exe -qq
 set module_wget=subroutines\modules\wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=1
 
-set log=nul
-set log_debug=nul
-
 set filesToRemove=temp\filesToRemove.db
 set rebootScript=temp\rebootScript.cmd
 
@@ -41,33 +38,46 @@ set cleaning_temp=temp\cleaning\temp.db
 
 
 
-for /f "delims=" %%i in (files\fileList.db) do if not exist "%%i" call echo.%%i>>files\reports\corruptedFilesList.db
-for /f "delims=" %%i in (files\fileList.db) do if not exist "%%i" goto :corrupted
+md files\reports\shortcuts>nul 2>nul
+%loadingUpdate% 1
+
+
+
+for /f %%a in ('"prompt $h & echo on & for %%b in (1) do rem"') do set inputBS=%%a
+for /f "tokens=1,2,* delims=." %%i in ("%date%") do set currentDate=%%k.%%j.%%i
 %loadingUpdate% 2
+
+
+
+if exist "files\reports\corruptedFilesList.db" echo.>files\reports\corruptedFilesList.db
+if "%key_skipFilesChecking%" NEQ "true" (
+  for /f "delims=" %%i in (files\fileList.db) do if not exist "%%i" call echo.%%i>>files\reports\corruptedFilesList.db
+  for /f "delims=" %%i in (files\fileList.db) do if not exist "%%i" goto :corrupted
+  if not exist "files\fileList.db" (
+    echo.files\fileList.db>>files\reports\corruptedFilesList.db
+    echo.and maybe others...>>files\reports\corruptedFilesList.db
+    goto :corrupted
+  )
+)
+%loadingUpdate% 3
 
 
 
 for /f "tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
   set location_%%i=%%k
-  for /f "skip=1 tokens=1,2,*" %%l in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v %%j') do set location_%%i=%%n
+  for /f "skip=1 tokens=1,2,3,*" %%l in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v %%j') do (
+    if exist "%%n %%o" (
+      set location_%%i=%%n %%o
+    ) else set location_%%i=%%o
+  )
 )
-for /f "tokens=1,2,* delims=." %%i in ("%date%") do set currentDate=%%k.%%j.%%i
-for /f %%a in ('"prompt $h & echo on & for %%b in (1) do rem"') do set inputBS=%%a
 if exist %settings% for /f "eol=# delims=" %%i in (%settings%) do set setting_%%i
-%loadingUpdate% 5
+%loadingUpdate% 3
 
 
 
-md files\reports\shortcuts>nul 2>nul
-
-
-
-if "%setting_logging%" == "true" (
-  md files\logs>nul 2>nul
-  set log="files\logs\%appName%_log_%currentDate%.log"
-  if "%setting_debug%" == "true" set log_debug="files\logs\%appName%_log_debug_%currentDate%.log"
-)
-%loadingUpdate% 4
+call :settingsApply
+%loadingUpdate% 2
 
 
 
@@ -75,6 +85,7 @@ if exist %log% call :logLineAppend %log% 3
 echo.Log ^| %versionName% ^| %logDate%>>%log%
 echo.>>%log%
 call :logLineAppend %log% 1
+%loadingUpdate% 3
 
 
 
@@ -94,13 +105,14 @@ tasklist>>%log_debug%
 echo.>>%log_debug%
 call :logLineAppend %log_debug% 1
 
-echo.User Shell Folders:>>%log_debug%
-for /f "tokens=1,* delims=;" %%i in (files\userShellFolders.db) do echo.%%i Location: %location_%%i%>>%log_debug%
+rem echo.User Shell Folders:>>%log_debug%
+rem for /f "tokens=1,* delims=;" %%i in (files\userShellFolders.db) do echo.%%i Location: %location_%%i%>>%log_debug%
+%loadingUpdate% 6
 
 
 
 %logo%
-%loadingUpdate% 12
+%loadingUpdate% 3
 
 
 
@@ -164,7 +176,6 @@ call echo.%lang_processorArchitecture%
 echo.>>%log%
 echo.>>%log%
 echo.>>%log%
-%module_sleep% 2
 %loadingUpdate% 1
 %module_sleep% 1
 goto :mainMenu
@@ -332,7 +343,7 @@ set /p command=%inputBS%   %lang_enterCommand%
 
 if "%command%" == "0" ( set command= & exit /b )
 if "%command%" == "1" (
-  if not exist %location_desktop%\adVirCDatabases.zip (
+  if not exist "%location_desktop%\adVirCDatabases.zip" (
     set error_import=1
     goto :importMenu
   )
@@ -391,7 +402,11 @@ set /p command=%inputBS%   %lang_enterCommand%
 
 
 
-if "%command%" == "0" ( set command= & exit /b )
+if "%command%" == "0" (
+  call :settingsApply
+  set command=
+  exit /b
+)
 if "%command%" == "1" (
   call :languageMenu
   call :languageImport
@@ -529,19 +544,49 @@ exit /b
 
 
 
+:settingsApply
+if "%setting_logging%" == "true" (
+  md files\logs>nul 2>nul
+  set log="files\logs\%appName%_log_%currentDate%.log"
+  if "%setting_debug%" == "true" set log_debug="files\logs\%appName%_log_debug_%currentDate%.log"
+) else (
+  set log=nul
+  set log_debug=nul
+)
+exit /b
+
+
+
+
+
+
+
 :corrupted
 %logo%
 %loadingUpdate% reset
 color 0c
-echo.Program Corrupted!>>%log%
-echo.  ^(^!^) %appName% Diagnostics: 
-echo.     Program Corrupted!
-echo.  ^(^i^) Files missing:
-for /f "delims=" %%i in (files\reports\corruptedFilesList.db) do echo.    --^> %%i
+echo.  ^(^!^) %appName% Diagnostics: Program Corrupted^!
+echo.  ^(^!^) Reinstall %appName%^!
 echo.
-echo.  ^(^!^) Reinstall %appName%!
-pause>nul
-call :exit
+echo.  ^(^i^) Files missing:
+for /f "delims=" %%i in (files\reports\corruptedFilesList.db) do echo.      - %%i
+echo.
+echo.  ^(^?^) Do you want to run %appName% without these files^?
+echo.      ^(^0^) Exit
+echo.      ^(^1^) Run
+echo.
+echo.
+echo.
+set /p command=%inputBS%   ^(^>^) Enter the number of command ^> 
+
+
+
+if "%command%" == "0" call :exit
+if "%command%" == "1" (
+  start starter.cmd --key_wait=5 --key_skipFilesChecking=true
+  call :exit
+)
+goto :corrupted
 
 
 
@@ -550,12 +595,12 @@ call :exit
 
 
 :exit
-call :settingsSave
-
-reg import files\backups\registry\HKUConsoleCMD_Backup.reg>>%log_debug%
-
 %loadingUpdate% stop
-%module_sleep% 3
+
+rem call :settingsSave
+reg import files\backups\registry\HKUConsoleCMD_Backup.reg 2>nul
+
+timeout /nobreak /t 1 >nul
 
 if "%1" == "reboot" ( shutdown /r /t 0 ) else if exist temp rd /s /q temp
 exit

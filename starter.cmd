@@ -9,15 +9,25 @@ cd "%~dp0"
 
 
 set appName=AdVirC
-set version=2.0 Pre-Alpha
+set version=2.0.000 Pre-Alpha
 set versionName=%appName% (Version %version% Windows10) [MikronT]
 
 set loadingUpdate=call design\loadingUpdate.cmd
 set logo=call design\mainLogo.cmd
 set module_sleep=subroutines\modules\sleep.exe
 
+set key_wait=0
+
 for /f "eol=# tokens=1,* delims==" %%i in (languages\english.lang) do set lang_%%i=%%j
 for /f "tokens=2*" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI /v lastLoggedOnUserSID') do set lastLoggedOnUserSID=%%j
+for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
+  set %%i
+  set %%j
+)
+
+
+
+if "%key_wait%" NEQ "0" %module_sleep% %key_wait%
 
 
 
