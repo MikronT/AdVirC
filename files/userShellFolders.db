@@ -2,12 +2,15 @@ desktop;Desktop;%userProfile%\Desktop
 documents;Personal;%userProfile%\Documents
 downloads;{374DE290-123F-4565-9164-39C4925E467B};%userProfile%\Downloads
 favorites;Favorites;%userProfile%\Favorites
-music;"My Music";%userProfile%\Music
-pictures;"My Pictures";%userProfile%\Pictures
-videos;"My Video";%userProfile%\Videos
+# music;"My Music";%userProfile%\Music
+# pictures;"My Pictures";%userProfile%\Pictures
+# videos;"My Video";%userProfile%\Videos
 
 threeDObjects;{31C0DD25-9439-4F12-BF41-7FF4EDA38722};%userProfile%\3D Objects
 contacts;{56784854-C6CB-462B-8169-88E350ACB882};%userProfile%\Contacts
 links;{BFB9D5E0-C6A9-404C-B2B2-AE6DB6AF4968};%userProfile%\Links
+music;{A0C69A99-21C8-4671-8703-7934162FCF1D};%userProfile%\Music
+pictures;{0DDD015D-B06C-45D5-8C4C-F59713854639};%userProfile%\Pictures
 savedGames;{4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4};%userProfile%\Saved Games
 searches;{7D1D3A04-DEBB-4115-95CF-2F29DA2920DA};%userProfile%\Searches
+videos;{35286A68-3C57-41A1-BBB1-0EAE73D76C95};%userProfile%\Videos

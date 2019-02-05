@@ -1,5 +1,4 @@
 %logo%
-echo.%lang_initialization%
 %loadingUpdate% 3
 
 
@@ -63,15 +62,12 @@ if "%key_skipFilesChecking%" NEQ "true" (
 
 
 
-for /f "tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
-  set location_%%i=%%k
-  for /f "skip=1 tokens=1,2,3,*" %%l in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v %%j') do (
-    if exist "%%n %%o" (
-      set location_%%i=%%n %%o
-    ) else set location_%%i=%%o
-  )
-)
+for /f "eol=# tokens=1,* delims==" %%i in (languages\english.lang) do set lang_%%i=%%j
 if exist %settings% for /f "eol=# delims=" %%i in (%settings%) do set setting_%%i
+for /f "eol=# tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
+  set location_%%i=%%k
+  for /f "skip=2 tokens=2,* delims= " %%l in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v %%j') do set location_%%i=%%m
+)
 %loadingUpdate% 3
 
 
@@ -81,7 +77,7 @@ call :settingsApply
 
 
 
-if exist %log% call :logLineAppend %log% 3
+if exist "%log%" call :logLineAppend %log% 3
 echo.Log ^| %versionName% ^| %logDate%>>%log%
 echo.>>%log%
 call :logLineAppend %log% 1
@@ -89,7 +85,7 @@ call :logLineAppend %log% 1
 
 
 
-if exist %log_debug% call :logLineAppend %log_debug% 3
+if exist "%log_debug%" call :logLineAppend %log_debug% 3
 echo.Debug Log ^| %versionName% ^| %logDate%>>%log_debug%
 echo.>>%log_debug%
 echo.Operating System: %OS%>>%log_debug%
@@ -104,14 +100,28 @@ echo.>>%log_debug%
 tasklist>>%log_debug%
 echo.>>%log_debug%
 call :logLineAppend %log_debug% 1
+%loadingUpdate% 4
 
-rem echo.User Shell Folders:>>%log_debug%
 rem for /f "tokens=1,* delims=;" %%i in (files\userShellFolders.db) do echo.%%i Location: %location_%%i%>>%log_debug%
-%loadingUpdate% 6
+echo.User Shell Folders:>>%log_debug%
+echo. - 3D Objects location:  %location_threeDObjects%>>%log_debug%
+echo. - Contacts location:    %location_contacts%>>%log_debug%
+echo. - Desktop location:     %location_desktop%>>%log_debug%
+echo. - Documents location:   %location_documents%>>%log_debug%
+echo. - Downloads location:   %location_downloads%>>%log_debug%
+echo. - Favorites location:   %location_favorites%>>%log_debug%
+echo. - Links location:       %location_links%>>%log_debug%
+echo. - Music location:       %location_music%>>%log_debug%
+echo. - Pictures location:    %location_pictures%>>%log_debug%
+echo. - Saved Games location: %location_savedGames%>>%log_debug%
+echo. - Searches location:    %location_searches%>>%log_debug%
+echo. - Videos location:      %location_videos%>>%log_debug%
+%loadingUpdate% 2
 
 
 
 %logo%
+echo.%lang_initialization%
 %loadingUpdate% 3
 
 
@@ -139,11 +149,11 @@ if not exist files\reports\systemInfo.rpt systeminfo>files\reports\systemInfo.rp
 
 if "%setting_firstRun%" == "true" (
   echo.%lang_creatingRegistryBackup%
-  rem reg export HKCR files\backups\registry\HKCR.reg /y>>%log_debug%
+  reg export HKCR files\backups\registry\HKCR.reg /y>>%log_debug%
   %loadingUpdate% 3
-  rem reg export HKLM files\backups\registry\HKLM.reg /y>>%log_debug%
+  reg export HKLM files\backups\registry\HKLM.reg /y>>%log_debug%
   %loadingUpdate% 5
-  rem reg export HKU  files\backups\registry\HKU.reg  /y>>%log_debug%
+  reg export HKU  files\backups\registry\HKU.reg  /y>>%log_debug%
   %loadingUpdate% 6
   reg export HKCC files\backups\registry\HKCC.reg /y>>%log_debug%
   %loadingUpdate% 1
@@ -402,11 +412,7 @@ set /p command=%inputBS%   %lang_enterCommand%
 
 
 
-if "%command%" == "0" (
-  call :settingsApply
-  set command=
-  exit /b
-)
+if "%command%" == "0" ( set command= & exit /b )
 if "%command%" == "1" (
   call :languageMenu
   call :languageImport
@@ -450,6 +456,7 @@ if "%command%" == "8" if "%setting_remindDatabasesUpdates%" == "true" (
   set setting_remindDatabasesUpdates=true
 ) else set setting_remindDatabasesUpdates=true
 
+call :settingsApply
 call :settingsSave
 goto :settingsMenu
 
@@ -548,7 +555,9 @@ exit /b
 if "%setting_logging%" == "true" (
   md files\logs>nul 2>nul
   set log="files\logs\%appName%_log_%currentDate%.log"
-  if "%setting_debug%" == "true" set log_debug="files\logs\%appName%_log_debug_%currentDate%.log"
+  if "%setting_debug%" == "true" (
+    set log_debug="files\logs\%appName%_log_debug_%currentDate%.log"
+  ) else set log_debug=nul
 ) else (
   set log=nul
   set log_debug=nul
@@ -597,8 +606,7 @@ goto :corrupted
 :exit
 %loadingUpdate% stop
 
-rem call :settingsSave
-reg import files\backups\registry\HKUConsoleCMD_Backup.reg 2>nul
+reg import files\backups\consoleSettingsBackup.reg 2>nul
 
 timeout /nobreak /t 1 >nul
 
