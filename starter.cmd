@@ -9,7 +9,7 @@ cd "%~dp0"
 
 
 set appName=AdVirC
-set version=2.0.000 Pre-Alpha
+set version=Pre-Alpha 2.0.000
 set versionName=%appName% (Version %version% Windows10) [MikronT]
 
 set logo=call design\mainLogo.cmd
