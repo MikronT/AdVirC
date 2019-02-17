@@ -26,7 +26,12 @@ for %%d in (services tasks processes registry temp folders files shortcuts exten
 
 
 echo.[Editing]>>%log%
-for %%d in (services tasks processes registry temp folders files shortcuts extensions) do start /wait notepad cleaning_%%d.db
+setlocal EnableDelayedExpansion
+for %%d in (services tasks processes registry temp folders files shortcuts extensions) do (
+  set temp_editingFile=cleaning_%%d
+  call start /wait notepad "%~dp0!!temp_editingFile!!"
+)
+endlocal
 
 
 

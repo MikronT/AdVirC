@@ -1,28 +1,36 @@
 call design\logLogo.cmd
 setlocal EnableDelayedExpansion
 
-echo.[Processes]>>%log%
-echo.   [Services]>>%log%
+for %%i in (%log% %log_debug%) do (
+  echo.[Processes]>>%%i
+  echo.   [Services]>>%%i
+)
 
 for /f "delims=" %%i in (files\databases\rewrited\processes\services.db) do (
   set errorLevel=
   sc query "%%i">>%log_debug%
-  if "!errorLevel!" == "0" (
-    echo.%%i>>%cleaning_services%
-    echo.    - %%i>>%log%
-    echo.[Service] %%i
-    set /a counter_foundObjects+=1
-  ) else (
-    echo.Service not found - %%i>>%log_debug%
-  )
+  if "!errorLevel!" == "" call :subroutine %%i
+  if "!errorLevel!" == "0" call :subroutine %%i
+  if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i>>%log_debug%
   echo.!counter_foundObjects!>temp\counter_foundObjects
 )
 
-echo.Script Completed>>%log%
-echo.>>%log%
-echo.>>%log%
-echo.>>%log%
+for %%i in (%log% %log_debug%) do (
+  echo.Script Completed>>%%i
+  for /l %%z in (3,-1,1) do echo.>>%%i
+)
 
 endlocal
 %module_sleep% 3
 exit
+
+
+
+
+
+:subroutine
+echo.%1>>%cleaning_services%
+echo.    - %1>>%log%
+echo.[Service] %1
+set /a counter_foundObjects+=1
+exit /b

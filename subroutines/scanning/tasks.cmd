@@ -1,28 +1,36 @@
 call design\logLogo.cmd
 setlocal EnableDelayedExpansion
 
-echo.[Processes]>>%log%
-echo.   [Tasks]>>%log%
+for %%i in (%log% %log_debug%) do (
+  echo.[Processes]>>%%i
+  echo.   [Tasks]>>%%i
+)
 
 for /f "delims=" %%i in (files\databases\rewrited\processes\tasks.db) do (
   set errorLevel=
   schtasks /query /tn "%%i">>%log_debug%
-  if "!errorLevel!" == "0" (
-    echo.%%i>>%cleaning_tasks%
-    echo.    - %%i>>%log%
-    echo.[Task] %%i
-    set /a counter_foundObjects+=1
-  ) else (
-    echo.Task not found - %%i>>%log_debug%
-  )
+  if "!errorLevel!" == "" call :subroutine %%i
+  if "!errorLevel!" == "0" call :subroutine %%i
+  if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i>>%log_debug%
   echo.!counter_foundObjects!>temp\counter_foundObjects
 )
 
-echo.Script Completed>>%log%
-echo.>>%log%
-echo.>>%log%
-echo.>>%log%
+for %%i in (%log% %log_debug%) do (
+  echo.Script Completed>>%%i
+  for /l %%z in (3,-1,1) do echo.>>%%i
+)
 
 endlocal
 %module_sleep% 3
 exit
+
+
+
+
+
+:subroutine
+echo.%1>>%cleaning_tasks%
+echo.    - %1>>%log%
+echo.[Task] %1
+set /a counter_foundObjects+=1
+exit /b
