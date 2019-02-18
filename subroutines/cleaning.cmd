@@ -1,7 +1,7 @@
 %logo%
 
 if not exist files\databases\rewrited\dirs\temp.db (
-  echo.%lang_databases_notExist_error%
+  echo.%language_databases_notExist_error%
   %module_sleep% 3
   exit /b
 )
@@ -46,7 +46,7 @@ for /f "delims=" %%i in (%filesToRemove%) do %module_moveFile% "%%i" ""
 
 set errorLevel=
 schtasks /create /tn "AdVirC Reboot Script Task" /xml "files\rebootScriptTask.xml" /ru system /f
-if "%errorLevel%" NEQ "0" echo.%lang_cleaning_taskCreating_error%
+if "%errorLevel%" NEQ "0" echo.%language_cleaning_taskCreating_error%
 
 
 
@@ -55,7 +55,7 @@ if "%errorLevel%" NEQ "0" echo.%lang_cleaning_taskCreating_error%
 
 
 %logo%
-call echo.%lang_cleaning_deletedObjects%
+call echo.%language_cleaning_deletedObjects%
 
 echo.Objects deleted: %counter_deletedObjects%.>>%log%
 echo.>>%log%
@@ -67,12 +67,12 @@ echo.===========================================================================
 
 
 
-echo.%lang_cleaning_reboot01%
-echo.%lang_cleaning_reboot02%
-echo.%lang_cleaning_reboot03%
+echo.%language_cleaning_reboot01%
+echo.%language_cleaning_reboot02%
+echo.%language_cleaning_reboot03%
 pause>nul
 
-echo.%lang_cleaning_reboot04%
+echo.%language_cleaning_reboot04%
 %module_sleep% 5
 
 echo.>temp\rebootNow

@@ -1,6 +1,6 @@
 %logo%
 echo.Updating virus databases>>%log%
-echo.%lang_databases_updating%
+echo.%language_databases_updating%
 
 
 
@@ -23,7 +23,7 @@ if "%1" == "import" (
 %loadingUpdate% 10
 
 %module_wget% "https://drive.google.com/uc?export=download&id=1u1mKCVHfk3LS8zFJ97gxLQ9f_UsH_zsy" --output-document=temp\adVirCDatabases.zip
-if not exist temp\adVirCDatabases.zip ( call :error %lang_module_wget_error% & exit /b )
+if not exist temp\adVirCDatabases.zip ( call :error %language_module_wget_error% & exit /b )
 
 %module_sleep% 1
 %loadingUpdate% 15
@@ -44,7 +44,7 @@ rd /s /q files\databases>nul 2>>%log_debug%
 
 md files\databases\original>nul 2>>%log_debug%
 %module_unZip% -o temp\adVirCDatabases.zip -d files\databases\original
-if not exist files\databases\original\license.txt ( call :error %lang_module_unZip_error% & exit /b )
+if not exist files\databases\original\license.txt ( call :error %language_module_unZip_error% & exit /b )
 
 %loadingUpdate% 4
 %module_sleep% 1
@@ -107,7 +107,7 @@ endlocal
 
 
 
-echo.%lang_databases_updated%
+echo.%language_databases_updated%
 %module_sleep% 3
 exit /b
 
@@ -118,7 +118,7 @@ exit /b
 
 
 :error
-echo.%lang_databases_update_error%
+echo.%language_databases_update_error%
 echo.%*
 %module_sleep% 3
 exit /b

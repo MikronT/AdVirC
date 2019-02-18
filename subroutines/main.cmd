@@ -121,7 +121,7 @@ echo. - Videos location:      %location_videos%>>%log_debug%
 
 
 %logo%
-echo.%lang_initialization%
+echo.%language_initialization%
 %loadingUpdate% 3
 
 
@@ -136,8 +136,8 @@ call :language_import
 
 %logo%
 echo.  ^(^i^) %versionName%
-echo.%lang_info_language%
-echo.%lang_initialization2%
+echo.%language_info_language%
+echo.%language_initialization2%
 %loadingUpdate% 1
 
 
@@ -148,7 +148,7 @@ if not exist files\reports\systemInfo.rpt systeminfo>files\reports\systemInfo.rp
 
 
 if "%setting_firstRun%" == "true" (
-  echo.%lang_info_registryBackup_creating%
+  echo.%language_info_registryBackup_creating%
   reg export HKCR files\backups\registry\HKCR.reg /y>>%log_debug%
   %loadingUpdate% 3
   reg export HKLM files\backups\registry\HKLM.reg /y>>%log_debug%
@@ -157,7 +157,7 @@ if "%setting_firstRun%" == "true" (
   %loadingUpdate% 6
   reg export HKCC files\backups\registry\HKCC.reg /y>>%log_debug%
   %loadingUpdate% 1
-  echo.%lang_info_registryBackup_created%
+  echo.%language_info_registryBackup_created%
 ) else %loadingUpdate% 15
 
 
@@ -165,20 +165,20 @@ if "%setting_firstRun%" == "true" (
 echo.%%lastLoggedOnUserSID%%>temp\temp_lastLoggedOnUserSID
 for /f "tokens=2*" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI /v LastLoggedOnUserSID') do set lastLoggedOnUserSID=%%j
 for /f "delims=" %%i in (temp\temp_lastLoggedOnUserSID) do call echo.%%i>files\reports\lastLoggedOnUserSID.rpt
-call echo.%lang_info_lastLoggedOnUserSID%
+call echo.%language_info_lastLoggedOnUserSID%
 %loadingUpdate% 2
 
 
 
 if exist "%appData%\Mozilla\Firefox\Profiles" (
   for /f "delims=" %%i in ('dir "%appData%\Mozilla\Firefox\Profiles" /a:d /b') do set mozillaFirefoxUserProfile=%%i
-  call echo.%lang_info_mozillaFirefoxUserProfile%
+  call echo.%language_info_mozillaFirefoxUserProfile%
 )
 %loadingUpdate% 1
 
 
 
-call echo.%lang_info_processorArchitecture%
+call echo.%language_info_processorArchitecture%
 %loadingUpdate% 1
 
 
@@ -217,18 +217,18 @@ goto :menu_main
 :menu_language
 set command=
 %logo%
-echo.%lang_menu_language01%
+echo.%language_menu_language01%
 echo.  ^(1^) English
 echo.  ^(2^) Русский
 echo.  ^(3^) Українська
 if "%1" NEQ "force" (
   echo.
-  echo.%lang_back%
+  echo.%language_back%
 )
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %lang_input%
+set /p command=%inputBS%   %language_input%
 
 
 
@@ -253,30 +253,30 @@ exit /b
 set command=
 %logo%
 %loadingUpdate% reset
-echo.%lang_menu_main01%
-echo.%lang_menu_main02%
-echo.%lang_menu_main03%
-echo.%lang_menu_main04%
-echo.%lang_menu_main05%
-echo.%lang_menu_main06%
-echo.%lang_menu_main07%
-echo.%lang_menu_main08%
-echo.%lang_menu_main09%
+echo.%language_menu_main01%
+echo.%language_menu_main02%
+echo.%language_menu_main03%
+echo.%language_menu_main04%
+echo.%language_menu_main05%
+echo.%language_menu_main06%
+echo.%language_menu_main07%
+echo.%language_menu_main08%
+echo.%language_menu_main09%
 echo.
 echo.
 echo.
 if "%setting_firstRun%" == "true" (
-  echo.%lang_menu_main_firstRun01%
-  echo.%lang_menu_main_firstRun02%
-  echo.%lang_menu_main_firstRun03%
-  echo.%lang_menu_main_firstRun04%
+  echo.%language_menu_main_firstRun01%
+  echo.%language_menu_main_firstRun02%
+  echo.%language_menu_main_firstRun03%
+  echo.%language_menu_main_firstRun04%
   echo.
   echo.
   echo.
   set setting_firstRun=false
   call :settings_save
 )
-set /p command=%inputBS%   %lang_input%
+set /p command=%inputBS%   %language_input%
 
 
 
@@ -304,14 +304,14 @@ goto :menu_main
 :menu_cleaning
 set command=
 %logo%
-echo.%lang_menu_cleaning01%
-echo.%lang_menu_cleaning02%
+echo.%language_menu_cleaning01%
+echo.%language_menu_cleaning02%
 echo.
-echo.%lang_back%
+echo.%language_back%
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %lang_input%
+set /p command=%inputBS%   %language_input%
 
 
 
@@ -332,22 +332,22 @@ goto :menu_cleaning
 :menu_databases_import
 set command=
 %logo%
-echo.%lang_menu_databases_import01%
-echo.%lang_menu_databases_import02%
+echo.%language_menu_databases_import01%
+echo.%language_menu_databases_import02%
 echo.
-echo.%lang_back%
+echo.%language_back%
 echo.
 echo.
 echo.
 if "%databases_import_error%" == "1" (
   color 0c
   set databases_import_error=0
-  echo.%lang_databases_import_error%
+  echo.%language_databases_import_error%
   echo.
   echo.
   echo.
 )
-set /p command=%inputBS%   %lang_input%
+set /p command=%inputBS%   %language_input%
 
 
 
@@ -372,43 +372,43 @@ goto :menu_databases_import
 :menu_settings
 set command=
 %logo%
-echo.%lang_menu_settings01%
-echo.%lang_menu_settings02% %setting_language%
+echo.%language_menu_settings01%
+echo.%language_menu_settings02% %setting_language%
 
 if "%setting_logging%" == "true" (
-  echo.%lang_menu_settings03% %lang_menu_setting_enabled%
-) else echo.%lang_menu_settings03% %lang_menu_setting_disabled%
+  echo.%language_menu_settings03% %language_menu_setting_enabled%
+) else echo.%language_menu_settings03% %language_menu_setting_disabled%
 
 if "%setting_debug%" == "true" (
-  echo.%lang_menu_settings04% %lang_menu_setting_enabled%
-) else echo.%lang_menu_settings04% %lang_menu_setting_disabled%
+  echo.%language_menu_settings04% %language_menu_setting_enabled%
+) else echo.%language_menu_settings04% %language_menu_setting_disabled%
 
-echo.%lang_menu_settings05%
-echo.%lang_menu_settings06%
-echo.%lang_menu_settings07% %setting_update_channel%
+echo.%language_menu_settings05%
+echo.%language_menu_settings06%
+echo.%language_menu_settings07% %setting_update_channel%
 
 if "%setting_update_program_auto%" == "true" (
-  call echo.%lang_menu_settings08% %lang_menu_setting_enabled%
-) else call echo.%lang_menu_settings08% %lang_menu_setting_disabled%
+  call echo.%language_menu_settings08% %language_menu_setting_enabled%
+) else call echo.%language_menu_settings08% %language_menu_setting_disabled%
 
 if "%setting_update_databases_auto%" == "true" (
-  echo.%lang_menu_settings09% %lang_menu_setting_enabled%
-) else echo.%lang_menu_settings09% %lang_menu_setting_disabled%
+  echo.%language_menu_settings09% %language_menu_setting_enabled%
+) else echo.%language_menu_settings09% %language_menu_setting_disabled%
 
 if "%setting_update_program_remind%" == "true" (
-  call echo.%lang_menu_settings10% %lang_menu_setting_enabled%
-) else call echo.%lang_menu_settings10% %lang_menu_setting_disabled%
+  call echo.%language_menu_settings10% %language_menu_setting_enabled%
+) else call echo.%language_menu_settings10% %language_menu_setting_disabled%
 
 if "%setting_update_databases_remind%" == "true" (
-  echo.%lang_menu_settings11% %lang_menu_setting_enabled%
-) else echo.%lang_menu_settings11% %lang_menu_setting_disabled%
+  echo.%language_menu_settings11% %language_menu_setting_enabled%
+) else echo.%language_menu_settings11% %language_menu_setting_disabled%
 
 echo.
-echo.%lang_back%
+echo.%language_back%
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %lang_input%
+set /p command=%inputBS%   %language_input%
 
 
 
@@ -469,16 +469,16 @@ goto :menu_settings
 :menu_update_channel
 set command=
 %logo%
-call echo.%lang_menu_update_channel01%
-echo.%lang_menu_update_channel02%
-echo.%lang_menu_update_channel03%
-echo.%lang_menu_update_channel04%
+call echo.%language_menu_update_channel01%
+echo.%language_menu_update_channel02%
+echo.%language_menu_update_channel03%
+echo.%language_menu_update_channel04%
 echo.
-echo.%lang_back%
+echo.%language_back%
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %lang_input%
+set /p command=%inputBS%   %language_input%
 
 
 
