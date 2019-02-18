@@ -55,7 +55,7 @@ if "%errorLevel%" NEQ "0" echo.%lang_cleaning_taskCreating_error%
 
 
 %logo%
-call echo.%lang_counter_deletedObjects%
+call echo.%lang_cleaning_deletedObjects%
 
 echo.Objects deleted: %counter_deletedObjects%.>>%log%
 echo.>>%log%
@@ -67,12 +67,12 @@ echo.===========================================================================
 
 
 
-echo.%lang_restartMessage01%
-echo.%lang_restartMessage02%
-echo.%lang_restartMessage03%
+echo.%lang_cleaning_reboot01%
+echo.%lang_cleaning_reboot02%
+echo.%lang_cleaning_reboot03%
 pause>nul
 
-echo.%lang_restartMessage04%
+echo.%lang_cleaning_reboot04%
 %module_sleep% 5
 
 echo.>temp\rebootNow

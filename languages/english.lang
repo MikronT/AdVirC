@@ -52,19 +52,17 @@ menu_main07=  ^(6^) Send report                                             ^(9^
 menu_main08=  ^(7^) About                                                   ^(0^) Exit
 menu_main09=                                                              ^(#^) Uninstall
 
+menu_main_firstRun01=  ^(i^) First of all it would be better to update the virus databases, and then clean the system.
+menu_main_firstRun02=  ^(i^) Close the program only through menu item ^(0^), otherwise the program may be damaged^!
+menu_main_firstRun03=  ^(i^) Do not pay attention to some errors and try to just wait.
+menu_main_firstRun04=  ^(i^) If the program window disappears without your intervention, contact us for help.
+
 
 
 
 
 menu_cleaning01=  Cleaning menu
 menu_cleaning02=  ^(1^) Run scanning
-
-
-
-
-
-databases_updating=  ^(i^) Updating virus databases. Please wait...
-databases_updated=  ^(i^) Virus databases updated^!
 
 
 
@@ -88,6 +86,7 @@ menu_settings08=  ^(5^) Autoupdate %appName%:
 menu_settings09=  ^(6^) Autoupdate databases:
 menu_settings10=  ^(7^) Remind for %appName% updates:
 menu_settings11=  ^(8^) Remind for databases updates:
+
 menu_setting_disabled=disabled
 menu_setting_enabled=enabled
 
@@ -99,6 +98,17 @@ menu_update_channel01=  Select update channel for %appName% and databases.
 menu_update_channel02=  ^(1^) Release ^(stable^)
 menu_update_channel03=  ^(2^) Beta ^(some new features, but before tests^)
 menu_update_channel04=  ^(3^) Nightly ^(all new features, not stable^)
+
+
+
+
+
+
+
+
+
+databases_updating=  ^(i^) Updating virus databases. Please wait...
+databases_updated=  ^(i^) Virus databases updated^!
 
 
 
@@ -116,16 +126,14 @@ cleaning_extensions=  Removing extensions...
 cleaning_heuristic=  Applying heuristic rules...
 cleaning_experimental=  Applying experimental rules...
 
-deletedObjects=  Objects deleted: %deletedObjects%.
+cleaning_deletedObjects=  Objects deleted: %counter_deletedObjects%.
+
+cleaning_reboot01=  ^(^!^) Warning^!
+cleaning_reboot02=      The computer will restart^!
+cleaning_reboot03=      Save your data and press ENTER.
+cleaning_reboot04=  ^(^!^) The computer will restart after 5 seconds...
 
 
-
-
-
-restartMessage01=  ^(^!^) Warning^!
-restartMessage02=      The computer will restart^!
-restartMessage03=      Save your data and press ENTER.
-restartMessage04=  ^(^!^) The computer will restart after 5 seconds...
 
 
 
@@ -139,32 +147,3 @@ databases_notExist_error=  ^(^!^) First of all update the virus databases^!
 databases_update_error=  ^(^!^) Databases are not updated!
 module_unZip_error=  ^(^!^) Extract error^! Please, reload %appName%^!
 module_wget_error=  ^(^!^) Download error^! Check your Internet connection^!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-menu_main_firstRun01=  ^(i^) First of all it would be better to update the virus databases, and then clean the system.
-menu_main_firstRun02=  ^(i^) Close the program only through menu item ^(0^), otherwise the program may be damaged^!
-menu_main_firstRun03=  ^(i^) Do not pay attention to some errors and try to just wait.
-menu_main_firstRun04=  ^(i^) If the program window disappears without your intervention, contact us for help.
