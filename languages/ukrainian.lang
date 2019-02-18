@@ -11,109 +11,110 @@
 
 
 
-initialization=  ^(^!^) Ініціліазація...
-initializationRun=  ^(^!^) Ініціліазація запуску...
-
 back=  ^(0^) Назад
-enterCommand=^(^>^) Введіть номер команди ^> 
+input=^(^>^) Введіть номер команди ^> 
 
 
 
 
 
-lastLoggedOnUserSID=  ^(i^) Останній зареєстрований користувач ^(SID^): %lastLoggedOnUserSID%.
-processorArchitecture=  ^(i^) Розрядність операційної системи: %PROCESSOR_ARCHITECTURE%.
-mozillaFirefoxUserProfile=  ^(i^) Ідентифікатор профілю Mozilla Firefox: %mozillaFirefoxUserProfile%.
+initialization=  ^(^!^) Ініціліазація...
+initialization2=  ^(^!^) Ініціліазація запуску...
 
-creatingRegistryBackup=  ^(^!^) Створення резервної копії реєстру Windows...
-registryBackupCreated=  ^(^!^) Резервна копія реєстру Windows успішно створена^!
+info_language=  ^(i^) Мова: Українська
 
+info_lastLoggedOnUserSID=  ^(i^) Останній зареєстрований користувач ^(SID^): %lastLoggedOnUserSID%.
+info_processorArchitecture=  ^(i^) Розрядність операційної системи: %PROCESSOR_ARCHITECTURE%.
+info_mozillaFirefoxUserProfile=  ^(i^) Ідентифікатор профілю Mozilla Firefox: %mozillaFirefoxUserProfile%.
 
-
-
-
-
-
-languageMenu01=  Мова
-selectedLanguage=  ^(i^) Мова: Українська
+info_registryBackup_creating=  ^(^!^) Створення резервної копії реєстру Windows...
+info_registryBackup_created=  ^(^!^) Резервна копія реєстру Windows успішно створена^!
 
 
 
 
 
-mainMenu01=  Функції Безпеки                                               Бази Даних
-mainMenu02=  ^(1^) Провести очистку системи                                  ^(3^) Оновити бази даних
-mainMenu03=  ^(2^) Виключення                                                ^(4^) Імпортувати бази даних
-mainMenu04=
-mainMenu05=  Підтримка                                                     Програма
-mainMenu06=  ^(5^) Допомога                                                  ^(8^) Налаштування
-mainMenu07=  ^(6^) Відправити звіт                                           ^(9^) Очистити тимчасові файли
-mainMenu08=  ^(7^) Про програму                                              ^(0^) Вихід
-mainMenu09=                                                                ^(#^) Видалити програму
+
+
+menu_language01=  Мова
 
 
 
 
 
-cleaningMenu01=  Меню очистки
-cleaningMenu02=  ^(1^) Запустити сканування
+menu_main01=  Функції Безпеки                                               Бази Даних
+menu_main02=  ^(1^) Провести очистку системи                                  ^(3^) Оновити бази даних
+menu_main03=  ^(2^) Виключення                                                ^(4^) Імпортувати бази даних
+menu_main04=
+menu_main05=  Підтримка                                                     Програма
+menu_main06=  ^(5^) Допомога                                                  ^(8^) Налаштування
+menu_main07=  ^(6^) Відправити звіт                                           ^(9^) Очистити тимчасові файли
+menu_main08=  ^(7^) Про програму                                              ^(0^) Вихід
+menu_main09=                                                                ^(#^) Видалити програму
 
 
 
 
 
-updatingDataBases=  ^(i^) Оновлення вірусних баз даних. Будь ласка зачекайте...
-dataBasesUpdated=  ^(i^) Вірусні бази оновлено^!
+menu_cleaning01=  Меню очистки
+menu_cleaning02=  ^(1^) Запустити сканування
 
 
 
 
 
-importMenu01=  Щоб імпортувати бази даних у програму, завантажте їх на робочий стіл.
-importMenu02=  ^(1^) Запустити імпорт
+databases_updating=  ^(i^) Оновлення вірусних баз даних. Будь ласка зачекайте...
+databases_updated=  ^(i^) Вірусні бази оновлено^!
 
 
 
 
 
-settingsMenu01=  Налаштування
-settingsMenu02=  ^(1^) Мова:
-settingsMenu03=  ^(2^) Логування:
-settingsMenu04=  ^(3^) Налагодження:
-settingsMenu05=
-settingsMenu06=  Оновлення
-settingsMenu07=  ^(4^) Канал оновлення:
-settingsMenu08=  ^(5^) Автооновлення %appName%:
-settingsMenu09=  ^(6^) Автооновлення баз даних:
-settingsMenu10=  ^(7^) Нагадувати про оновлення %appName%:
-settingsMenu11=  ^(8^) Нагадувати про оновлення баз даних:
-settingDisabled=вимкнено
-settingEnabled=увімкнено
+menu_databases_import01=  Щоб імпортувати бази даних у програму, завантажте їх на робочий стіл.
+menu_databases_import02=  ^(1^) Запустити імпорт
 
 
 
 
 
-updateChannelMenu01=  Виберіть канал оновлення для %appName% і баз даних.
-updateChannelMenu02=  ^(1^) Release ^(стабільні^)
-updateChannelMenu03=  ^(2^) Beta ^(деякі нові можливості, но до тестів^)
-updateChannelMenu04=  ^(3^) Nightly ^(всі нові можливості, не стабільні^)
+menu_settings01=  Налаштування
+menu_settings02=  ^(1^) Мова:
+menu_settings03=  ^(2^) Логування:
+menu_settings04=  ^(3^) Налагодження:
+menu_settings05=
+menu_settings06=  Оновлення
+menu_settings07=  ^(4^) Канал оновлення:
+menu_settings08=  ^(5^) Автооновлення %appName%:
+menu_settings09=  ^(6^) Автооновлення баз даних:
+menu_settings10=  ^(7^) Нагадувати про оновлення %appName%:
+menu_settings11=  ^(8^) Нагадувати про оновлення баз даних:
+menu_setting_disabled=вимкнено
+menu_setting_enabled=увімкнено
 
 
 
 
 
-cleaningServices=  Зупинка і видалення служб...
-cleaningTasks=  Зупинка і видалення запланованих завдань...
-cleaningProcesses=  Зупинка і видалення процесів...
-cleaningRegistry=  Очистка реєстру...
-cleaningTemp=  Очистка тимчасових файлів...
-cleaningFolders=  Видалення каталогів...
-cleaningFiles=  Видалення файлів...
-cleaningLinks=  Видалення ярликів...
-cleaningExtensions=  Видалення розширень...
-cleaningHeuristic=  Прийняття евристичних правил...
-cleaningExperimental=  Прийняття експериментальних правил...
+menu_update_channel01=  Виберіть канал оновлення для %appName% і баз даних.
+menu_update_channel02=  ^(1^) Release ^(стабільні^)
+menu_update_channel03=  ^(2^) Beta ^(деякі нові можливості, но до тестів^)
+menu_update_channel04=  ^(3^) Nightly ^(всі нові можливості, не стабільні^)
+
+
+
+
+
+cleaning_services=  Зупинка і видалення служб...
+cleaning_tasks=  Зупинка і видалення запланованих завдань...
+cleaning_processes=  Зупинка і видалення процесів...
+cleaning_registry=  Очистка реєстру...
+cleaning_temp=  Очистка тимчасових файлів...
+cleaning_folders=  Видалення каталогів...
+cleaning_files=  Видалення файлів...
+cleaning_links=  Видалення ярликів...
+cleaning_extensions=  Видалення розширень...
+cleaning_heuristic=  Прийняття евристичних правил...
+cleaning_experimental=  Прийняття експериментальних правил...
 
 deletedObjects=  Видалено об'єктів: %deletedObjects%.
 
@@ -132,12 +133,12 @@ restartMessage04=  ^(^!^) Перезагрузка комп'ютера буде 
 
 
 
-noVirusDataBasesError=  ^(^!^) Спочатку оновіть вірусні бази^!
-dataBasesUpdateError=  ^(^!^) Бази даних не були оновлені^!
-wgetError=  ^(^!^) Помилка завантаження^! Перевірте підключення до Інтернету^!
-unZipError=  ^(^!^) Помилка розпаковки^! Будь ласка, перезапустіть %appName%^!
-importError=  ^(^!^) Помилка^! Немає баз даних^!
-taskCreatingError=  ^(^!^) Помилка при створення завдання для перезавантаження^!
+cleaning_taskCreating_error=  ^(^!^) Помилка при створення завдання для перезавантаження^!
+databases_import_error=  ^(^!^) Помилка^! Немає баз даних^!
+databases_notExist_error=  ^(^!^) Спочатку оновіть вірусні бази^!
+databases_update_error=  ^(^!^) Бази даних не були оновлені^!
+module_unZip_error=  ^(^!^) Помилка розпаковки^! Будь ласка, перезапустіть %appName%^!
+module_wget_error=  ^(^!^) Помилка завантаження^! Перевірте підключення до Інтернету^!
 
 
 
@@ -163,7 +164,7 @@ taskCreatingError=  ^(^!^) Помилка при створення завдан
 
 
 
-firstRunMenuNotification01=  ^(i^) Спочатку краще б оновити вірусні бази, а потім провести очистку системи.
-firstRunMenuNotification02=  ^(i^) Закривайте програму тільки через пункт меню ^(0^), інакше програма може бути пошкоджена^!
-firstRunMenuNotification03=  ^(i^) Не звертайте уваги на деякі помилки і спробуйте просто почекати.
-firstRunMenuNotification04=  ^(i^) Якщо вікно програми зникло без Вашого втручання, зверніться до нас по допомогу.
+menu_main_firstRun01=  ^(i^) Спочатку краще б оновити вірусні бази, а потім провести очистку системи.
+menu_main_firstRun02=  ^(i^) Закривайте програму тільки через пункт меню ^(0^), інакше програма може бути пошкоджена^!
+menu_main_firstRun03=  ^(i^) Не звертайте уваги на деякі помилки і спробуйте просто почекати.
+menu_main_firstRun04=  ^(i^) Якщо вікно програми зникло без Вашого втручання, зверніться до нас по допомогу.

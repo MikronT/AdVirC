@@ -1,7 +1,7 @@
 %logo%
 
 if not exist files\databases\rewrited\dirs\temp.db (
-  echo.%lang_noVirusDataBasesError%
+  echo.%lang_databases_notExist_error%
   %module_sleep% 3
   exit /b
 )
@@ -46,7 +46,7 @@ for /f "delims=" %%i in (%filesToRemove%) do %module_moveFile% "%%i" ""
 
 set errorLevel=
 schtasks /create /tn "AdVirC Reboot Script Task" /xml "files\rebootScriptTask.xml" /ru system /f
-if "%errorLevel%" NEQ "0" echo.%lang_taskCreatingError%
+if "%errorLevel%" NEQ "0" echo.%lang_cleaning_taskCreating_error%
 
 
 

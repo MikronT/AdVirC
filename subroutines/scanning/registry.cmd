@@ -1,8 +1,10 @@
 call design\logLogo.cmd
 setlocal EnableDelayedExpansion
 
-echo.[Registry]>>%log%
-echo.   [Classes]>>%log%
+for %%i in (%log% %log_debug%) do (
+  echo.[Registry]>>%%i
+  echo.   [Classes]>>%%i
+)
 
 for /f "delims=" %%i in (files\databases\rewrited\dirs\classes.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\registry\classes.db) do (
@@ -14,19 +16,21 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\classes.db) do (
       echo.[Class] %%i\%%j
       set /a counter_foundObjects+=1
     ) else (
-      echo.Class not found - %%i\%%j>>%log_debug%
+      echo.Not Found - %%i\%%j>>%log_debug%
     )
     echo.!counter_foundObjects!>temp\counter_foundObjects
   )
 )
 
-echo.Script Completed>>%log%
-echo.>>%log%
-echo.>>%log%
-echo.>>%log%
+for %%i in (%log% %log_debug%) do (
+  echo.Script Completed>>%%i
+  for /l %%z in (3,-1,1) do echo.>>%%i
+)
 
-echo.[Registry]>>%log%
-echo.   [Keys]>>%log%
+for %%i in (%log% %log_debug%) do (
+  echo.[Registry]>>%%i
+  echo.   [Keys]>>%%i
+)
 
 for /f "delims=" %%i in (files\databases\rewrited\dirs\keys.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\registry\keys.db) do (
@@ -38,16 +42,16 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\keys.db) do (
       echo.[Key] %%i\%%j
       set /a counter_foundObjects+=1
     ) else (
-      echo.Key not found - %%i\%%j>>%log_debug%
+      echo.Not Found - %%i\%%j>>%log_debug%
     )
     echo.!counter_foundObjects!>temp\counter_foundObjects
   )
 )
 
-echo.Script Completed>>%log%
-echo.>>%log%
-echo.>>%log%
-echo.>>%log%
+for %%i in (%log% %log_debug%) do (
+  echo.Script Completed>>%%i
+  for /l %%z in (3,-1,1) do echo.>>%%i
+)
 
 endlocal
 %module_sleep% 3

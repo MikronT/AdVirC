@@ -11,109 +11,110 @@
 
 
 
-initialization=  ^(^!^) Initialization...
-initializationRun=  ^(^!^) Initialization run...
-
 back=  ^(0^) Back
-enterCommand=^(^>^) Enter the number of command ^> 
+input=^(^>^) Enter the number of command ^> 
 
 
 
 
 
-lastLoggedOnUserSID=  ^(i^) Last Logged User ^(SID^): %lastLoggedOnUserSID%.
-processorArchitecture=  ^(i^) System Bit Rate: %PROCESSOR_ARCHITECTURE%.
-mozillaFirefoxUserProfile=  ^(i^) Mozilla Firefox Profile id: %mozillaFirefoxUserProfile%.
+initialization=  ^(^!^) Initialization...
+initialization2=  ^(^!^) Initialization run...
 
-creatingRegistryBackup=  ^(^!^) Creating a backup copy of the Windows registry...
-registryBackupCreated=  ^(^!^) Backup copy of the Windows registry is succesfully created^!
+info_language=  ^(i^) Language: English
 
+info_lastLoggedOnUserSID=  ^(i^) Last Logged User ^(SID^): %lastLoggedOnUserSID%.
+info_processorArchitecture=  ^(i^) System Bit Rate: %PROCESSOR_ARCHITECTURE%.
+info_mozillaFirefoxUserProfile=  ^(i^) Mozilla Firefox Profile id: %mozillaFirefoxUserProfile%.
 
-
-
-
-
-
-languageMenu01=  Language
-selectedLanguage=  ^(i^) Language: English
+info_registryBackup_creating=  ^(^!^) Creating a backup copy of the Windows registry...
+info_registryBackup_created=  ^(^!^) Backup copy of the Windows registry is succesfully created^!
 
 
 
 
 
-mainMenu01=  Security Features                                           Databases
-mainMenu02=  ^(1^) Perform cleaning system                                 ^(3^) Update databases
-mainMenu03=  ^(2^) Exceptions                                              ^(4^) Import databases
-mainMenu04=
-mainMenu05=  Support                                                     Program
-mainMenu06=  ^(5^) Help                                                    ^(8^) Settings
-mainMenu07=  ^(6^) Send report                                             ^(9^) Clear temporary files
-mainMenu08=  ^(7^) About                                                   ^(0^) Exit
-mainMenu09=                                                              ^(#^) Uninstall
+
+
+menu_language01=  Language
 
 
 
 
 
-cleaningMenu01=  Cleaning menu
-cleaningMenu02=  ^(1^) Run scanning
+menu_main01=  Security Features                                           Databases
+menu_main02=  ^(1^) Perform cleaning system                                 ^(3^) Update databases
+menu_main03=  ^(2^) Exceptions                                              ^(4^) Import databases
+menu_main04=
+menu_main05=  Support                                                     Program
+menu_main06=  ^(5^) Help                                                    ^(8^) Settings
+menu_main07=  ^(6^) Send report                                             ^(9^) Clear temporary files
+menu_main08=  ^(7^) About                                                   ^(0^) Exit
+menu_main09=                                                              ^(#^) Uninstall
 
 
 
 
 
-updatingDataBases=  ^(i^) Updating virus databases. Please wait...
-dataBasesUpdated=  ^(i^) Virus databases updated^!
+menu_cleaning01=  Cleaning menu
+menu_cleaning02=  ^(1^) Run scanning
 
 
 
 
 
-importMenu01=  To import databases into the program, upload them on to your desktop.
-importMenu02=  ^(1^) Run import
+databases_updating=  ^(i^) Updating virus databases. Please wait...
+databases_updated=  ^(i^) Virus databases updated^!
 
 
 
 
 
-settingsMenu01=  Settings
-settingsMenu02=  ^(1^) Language:
-settingsMenu03=  ^(2^) Logging:
-settingsMenu04=  ^(3^) Debug:
-settingsMenu05=
-settingsMenu06=  Update
-settingsMenu07=  ^(4^) Update channel:
-settingsMenu08=  ^(5^) Autoupdate %appName%:
-settingsMenu09=  ^(6^) Autoupdate databases:
-settingsMenu10=  ^(7^) Remind for %appName% updates:
-settingsMenu11=  ^(8^) Remind for databases updates:
-settingDisabled=disabled
-settingEnabled=enabled
+menu_databases_import01=  To import databases into the program, upload them on to your desktop.
+menu_databases_import02=  ^(1^) Run import
 
 
 
 
 
-updateChannelMenu01=  Select update channel for %appName% and databases.
-updateChannelMenu02=  ^(1^) Release ^(stable^)
-updateChannelMenu03=  ^(2^) Beta ^(some new features, but before tests^)
-updateChannelMenu04=  ^(3^) Nightly ^(all new features, not stable^)
+menu_settings01=  Settings
+menu_settings02=  ^(1^) Language:
+menu_settings03=  ^(2^) Logging:
+menu_settings04=  ^(3^) Debug:
+menu_settings05=
+menu_settings06=  Update
+menu_settings07=  ^(4^) Update channel:
+menu_settings08=  ^(5^) Autoupdate %appName%:
+menu_settings09=  ^(6^) Autoupdate databases:
+menu_settings10=  ^(7^) Remind for %appName% updates:
+menu_settings11=  ^(8^) Remind for databases updates:
+menu_setting_disabled=disabled
+menu_setting_enabled=enabled
 
 
 
 
 
-cleaningServices=  Stopping and removing services...
-cleaningTasks=  Stopping and removing schleduled tasks...
-cleaningProcesses=  Stopping and removing processes...
-cleaningRegistry=  Cleaning registry...
-cleaningTemp=  Cleaning temps...
-cleaningFolders=  Deleting directories...
-cleaningFiles=  Deleting files...
-cleaningLinks=  Removing links...
-cleaningExtensions=  Removing extensions...
-cleaningHeuristic=  Applying heuristic rules...
-cleaningExperimental=  Applying experimental rules...
+menu_update_channel01=  Select update channel for %appName% and databases.
+menu_update_channel02=  ^(1^) Release ^(stable^)
+menu_update_channel03=  ^(2^) Beta ^(some new features, but before tests^)
+menu_update_channel04=  ^(3^) Nightly ^(all new features, not stable^)
+
+
+
+
+
+cleaning_services=  Stopping and removing services...
+cleaning_tasks=  Stopping and removing schleduled tasks...
+cleaning_processes=  Stopping and removing processes...
+cleaning_registry=  Cleaning registry...
+cleaning_temp=  Cleaning temps...
+cleaning_folders=  Deleting directories...
+cleaning_files=  Deleting files...
+cleaning_links=  Removing links...
+cleaning_extensions=  Removing extensions...
+cleaning_heuristic=  Applying heuristic rules...
+cleaning_experimental=  Applying experimental rules...
 
 deletedObjects=  Objects deleted: %deletedObjects%.
 
@@ -132,12 +133,12 @@ restartMessage04=  ^(^!^) The computer will restart after 5 seconds...
 
 
 
-noVirusDataBasesError=  ^(^!^) First of all update the virus databases^!
-dataBasesUpdateError=  ^(^!^) Databases are not updated!
-wgetError=  ^(^!^) Download error^! Check your Internet connection^!
-unZipError=  ^(^!^) Extract error^! Please, reload %appName%^!
-importError=  ^(^!^) Error^! No databases^!
-taskCreatingError=  ^(^!^) Error while creating task for reboot^!
+cleaning_taskCreating_error=  ^(^!^) Error while creating task for reboot^!
+databases_import_error=  ^(^!^) Error^! No databases^!
+databases_notExist_error=  ^(^!^) First of all update the virus databases^!
+databases_update_error=  ^(^!^) Databases are not updated!
+module_unZip_error=  ^(^!^) Extract error^! Please, reload %appName%^!
+module_wget_error=  ^(^!^) Download error^! Check your Internet connection^!
 
 
 
@@ -163,7 +164,7 @@ taskCreatingError=  ^(^!^) Error while creating task for reboot^!
 
 
 
-firstRunMenuNotification01=  ^(i^) First of all it would be better to update the virus databases, and then clean the system.
-firstRunMenuNotification02=  ^(i^) Close the program only through menu item ^(0^), otherwise the program may be damaged^!
-firstRunMenuNotification03=  ^(i^) Do not pay attention to some errors and try to just wait.
-firstRunMenuNotification04=  ^(i^) If the program window disappears without your intervention, contact us for help.
+menu_main_firstRun01=  ^(i^) First of all it would be better to update the virus databases, and then clean the system.
+menu_main_firstRun02=  ^(i^) Close the program only through menu item ^(0^), otherwise the program may be damaged^!
+menu_main_firstRun03=  ^(i^) Do not pay attention to some errors and try to just wait.
+menu_main_firstRun04=  ^(i^) If the program window disappears without your intervention, contact us for help.

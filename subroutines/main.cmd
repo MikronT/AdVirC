@@ -3,15 +3,15 @@
 
 
 
-set setting_autoUpdateDatabases=true
-set setting_autoUpdateProgram=true
 set setting_debug=true
 set setting_firstRun=true
-set setting_lang=lang
+set setting_language=lang
 set setting_logging=true
-set setting_remindDatabasesUpdates=true
-set setting_remindProgramUpdates=true
-set setting_updateChannel=nightly
+set setting_update_channel=nightly
+set setting_update_databases_auto=true
+set setting_update_databases_remind=true
+set setting_update_program_auto=true
+set setting_update_program_remind=true
 
 set settings=files\settings.ini
 
@@ -72,20 +72,20 @@ for /f "eol=# tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
 
 
 
-call :settingsApply
+call :settings_apply
 %loadingUpdate% 2
 
 
 
-if exist "%log%" call :logLineAppend %log% 3
+if exist "%log%" call :log_append_line %log% 3
 echo.Log ^| %versionName% ^| %logDate%>>%log%
 echo.>>%log%
-call :logLineAppend %log% 1
+call :log_append_line %log% 1
 %loadingUpdate% 3
 
 
 
-if exist "%log_debug%" call :logLineAppend %log_debug% 3
+if exist "%log_debug%" call :log_append_line %log_debug% 3
 echo.Debug Log ^| %versionName% ^| %logDate%>>%log_debug%
 echo.>>%log_debug%
 echo.Operating System: %OS%>>%log_debug%
@@ -94,12 +94,12 @@ echo.Current File Directory: %~dp0>>%log_debug%
 echo.User Profile Directory: %userProfile%>>%log_debug%
 echo.Processor Architecture: %PROCESSOR_ARCHITECTURE%>>%log_debug%
 echo.>>%log_debug%
-call :logLineAppend %log_debug% 1
+call :log_append_line %log_debug% 1
 echo.Running tasks:>>%log_debug%
 echo.>>%log_debug%
 tasklist>>%log_debug%
 echo.>>%log_debug%
-call :logLineAppend %log_debug% 1
+call :log_append_line %log_debug% 1
 %loadingUpdate% 4
 
 rem for /f "tokens=1,* delims=;" %%i in (files\userShellFolders.db) do echo.%%i Location: %location_%%i%>>%log_debug%
@@ -126,8 +126,8 @@ echo.%lang_initialization%
 
 
 
-if "%setting_lang%" NEQ "english" if "%setting_lang%" NEQ "russian" if "%setting_lang%" NEQ "ukrainian" call :languageMenu force
-call :languageImport
+if "%setting_language%" NEQ "english" if "%setting_language%" NEQ "russian" if "%setting_language%" NEQ "ukrainian" call :menu_language force
+call :language_import
 %loadingUpdate% 1
 
 
@@ -136,8 +136,8 @@ call :languageImport
 
 %logo%
 echo.  ^(^i^) %versionName%
-echo.%lang_selectedLanguage%
-echo.%lang_initializationRun%
+echo.%lang_info_language%
+echo.%lang_initialization2%
 %loadingUpdate% 1
 
 
@@ -148,7 +148,7 @@ if not exist files\reports\systemInfo.rpt systeminfo>files\reports\systemInfo.rp
 
 
 if "%setting_firstRun%" == "true" (
-  echo.%lang_creatingRegistryBackup%
+  echo.%lang_info_registryBackup_creating%
   reg export HKCR files\backups\registry\HKCR.reg /y>>%log_debug%
   %loadingUpdate% 3
   reg export HKLM files\backups\registry\HKLM.reg /y>>%log_debug%
@@ -157,7 +157,7 @@ if "%setting_firstRun%" == "true" (
   %loadingUpdate% 6
   reg export HKCC files\backups\registry\HKCC.reg /y>>%log_debug%
   %loadingUpdate% 1
-  echo.%lang_registryBackupCreated%
+  echo.%lang_info_registryBackup_created%
 ) else %loadingUpdate% 15
 
 
@@ -165,20 +165,20 @@ if "%setting_firstRun%" == "true" (
 echo.%%lastLoggedOnUserSID%%>temp\temp_lastLoggedOnUserSID
 for /f "tokens=2*" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI /v LastLoggedOnUserSID') do set lastLoggedOnUserSID=%%j
 for /f "delims=" %%i in (temp\temp_lastLoggedOnUserSID) do call echo.%%i>files\reports\lastLoggedOnUserSID.rpt
-call echo.%lang_lastLoggedOnUserSID%
+call echo.%lang_info_lastLoggedOnUserSID%
 %loadingUpdate% 2
 
 
 
 if exist "%appData%\Mozilla\Firefox\Profiles" (
   for /f "delims=" %%i in ('dir "%appData%\Mozilla\Firefox\Profiles" /a:d /b') do set mozillaFirefoxUserProfile=%%i
-  call echo.%lang_mozillaFirefoxUserProfile%
+  call echo.%lang_info_mozillaFirefoxUserProfile%
 )
 %loadingUpdate% 1
 
 
 
-call echo.%lang_processorArchitecture%
+call echo.%lang_info_processorArchitecture%
 %loadingUpdate% 1
 
 
@@ -188,7 +188,7 @@ echo.>>%log%
 echo.>>%log%
 %loadingUpdate% 1
 %module_sleep% 1
-goto :mainMenu
+goto :menu_main
 
 
 
@@ -214,10 +214,10 @@ goto :mainMenu
 
 
 
-:languageMenu
+:menu_language
 set command=
 %logo%
-echo.%lang_languageMenu01%
+echo.%lang_menu_language01%
 echo.  ^(1^) English
 echo.  ^(2^) Русский
 echo.  ^(3^) Українська
@@ -228,18 +228,18 @@ if "%1" NEQ "force" (
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %lang_enterCommand%
+set /p command=%inputBS%   %lang_input%
 
 
 
 if "%command%" == "0" if "%1" NEQ "force" ( set command= & exit /b )
-if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" goto :languageMenu
+if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" goto :menu_language
 
-if "%command%" == "1" set setting_lang=english
-if "%command%" == "2" set setting_lang=russian
-if "%command%" == "3" set setting_lang=ukrainian
+if "%command%" == "1" set setting_language=english
+if "%command%" == "2" set setting_language=russian
+if "%command%" == "3" set setting_language=ukrainian
 
-call :settingsSave
+call :settings_save
 set command=
 exit /b
 
@@ -249,51 +249,51 @@ exit /b
 
 
 
-:mainMenu
+:menu_main
 set command=
 %logo%
 %loadingUpdate% reset
-echo.%lang_mainMenu01%
-echo.%lang_mainMenu02%
-echo.%lang_mainMenu03%
-echo.%lang_mainMenu04%
-echo.%lang_mainMenu05%
-echo.%lang_mainMenu06%
-echo.%lang_mainMenu07%
-echo.%lang_mainMenu08%
-echo.%lang_mainMenu09%
+echo.%lang_menu_main01%
+echo.%lang_menu_main02%
+echo.%lang_menu_main03%
+echo.%lang_menu_main04%
+echo.%lang_menu_main05%
+echo.%lang_menu_main06%
+echo.%lang_menu_main07%
+echo.%lang_menu_main08%
+echo.%lang_menu_main09%
 echo.
 echo.
 echo.
 if "%setting_firstRun%" == "true" (
-  echo.%lang_firstRunMenuNotification01%
-  echo.%lang_firstRunMenuNotification02%
-  echo.%lang_firstRunMenuNotification03%
-  echo.%lang_firstRunMenuNotification04%
+  echo.%lang_menu_main_firstRun01%
+  echo.%lang_menu_main_firstRun02%
+  echo.%lang_menu_main_firstRun03%
+  echo.%lang_menu_main_firstRun04%
   echo.
   echo.
   echo.
   set setting_firstRun=false
-  call :settingsSave
+  call :settings_save
 )
-set /p command=%inputBS%   %lang_enterCommand%
+set /p command=%inputBS%   %lang_input%
 
 
 
-if "%command%" == "1" call :cleaningMenu
+if "%command%" == "1" call :menu_cleaning
 rem if "%command%" == "2" call :exceptionsMenu
 if "%command%" == "3" call subroutines\databases.cmd
-if "%command%" == "4" call :importMenu
+if "%command%" == "4" call :menu_databases_import
 rem if "%command%" == "5" call :helpMenu
 rem if "%command%" == "6" call :report
 rem if "%command%" == "7" call :about
-if "%command%" == "8" call :settingsMenu
+if "%command%" == "8" call :menu_settings
 if "%command%" == "9" call :clearTemp
 if "%command%" == "0" call :exit
 if "%command%" == "#" call uninstall.cmd
 
 if exist temp\rebootNow call :exit reboot
-goto :mainMenu
+goto :menu_main
 
 
 
@@ -301,17 +301,17 @@ goto :mainMenu
 
 
 
-:cleaningMenu
+:menu_cleaning
 set command=
 %logo%
-echo.%lang_cleaningMenu01%
-echo.%lang_cleaningMenu02%
+echo.%lang_menu_cleaning01%
+echo.%lang_menu_cleaning02%
 echo.
 echo.%lang_back%
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %lang_enterCommand%
+set /p command=%inputBS%   %lang_input%
 
 
 
@@ -321,7 +321,7 @@ if "%command%" == "1" (
   set command=
   exit /b
 )
-goto :cleaningMenu
+goto :menu_cleaning
 
 
 
@@ -329,39 +329,39 @@ goto :cleaningMenu
 
 
 
-:importMenu
+:menu_databases_import
 set command=
 %logo%
-echo.%lang_importMenu01%
-echo.%lang_importMenu02%
+echo.%lang_menu_databases_import01%
+echo.%lang_menu_databases_import02%
 echo.
 echo.%lang_back%
 echo.
 echo.
 echo.
-if "%error_import%" == "1" (
+if "%databases_import_error%" == "1" (
   color 0c
-  set error_import=0
-  echo.%lang_importError%
+  set databases_import_error=0
+  echo.%lang_databases_import_error%
   echo.
   echo.
   echo.
 )
-set /p command=%inputBS%   %lang_enterCommand%
+set /p command=%inputBS%   %lang_input%
 
 
 
 if "%command%" == "0" ( set command= & exit /b )
 if "%command%" == "1" (
   if not exist "%location_desktop%\adVirCDatabases.zip" (
-    set error_import=1
-    goto :importMenu
+    set databases_import_error=1
+    goto :menu_databases_import
   )
   call subroutines\databases.cmd import
   set command=
   exit /b
 )
-goto :importMenu
+goto :menu_databases_import
 
 
 
@@ -369,53 +369,53 @@ goto :importMenu
 
 
 
-:settingsMenu
+:menu_settings
 set command=
 %logo%
-echo.%lang_settingsMenu01%
-echo.%lang_settingsMenu02% %setting_lang%
+echo.%lang_menu_settings01%
+echo.%lang_menu_settings02% %setting_language%
 
 if "%setting_logging%" == "true" (
-  echo.%lang_settingsMenu03% %lang_settingEnabled%
-) else echo.%lang_settingsMenu03% %lang_settingDisabled%
+  echo.%lang_menu_settings03% %lang_menu_setting_enabled%
+) else echo.%lang_menu_settings03% %lang_menu_setting_disabled%
 
 if "%setting_debug%" == "true" (
-  echo.%lang_settingsMenu04% %lang_settingEnabled%
-) else echo.%lang_settingsMenu04% %lang_settingDisabled%
+  echo.%lang_menu_settings04% %lang_menu_setting_enabled%
+) else echo.%lang_menu_settings04% %lang_menu_setting_disabled%
 
-echo.%lang_settingsMenu05%
-echo.%lang_settingsMenu06%
-echo.%lang_settingsMenu07% %setting_updateChannel%
+echo.%lang_menu_settings05%
+echo.%lang_menu_settings06%
+echo.%lang_menu_settings07% %setting_update_channel%
 
-if "%setting_autoUpdateProgram%" == "true" (
-  call echo.%lang_settingsMenu08% %lang_settingEnabled%
-) else call echo.%lang_settingsMenu08% %lang_settingDisabled%
+if "%setting_update_program_auto%" == "true" (
+  call echo.%lang_menu_settings08% %lang_menu_setting_enabled%
+) else call echo.%lang_menu_settings08% %lang_menu_setting_disabled%
 
-if "%setting_autoUpdateDatabases%" == "true" (
-  echo.%lang_settingsMenu09% %lang_settingEnabled%
-) else echo.%lang_settingsMenu09% %lang_settingDisabled%
+if "%setting_update_databases_auto%" == "true" (
+  echo.%lang_menu_settings09% %lang_menu_setting_enabled%
+) else echo.%lang_menu_settings09% %lang_menu_setting_disabled%
 
-if "%setting_remindProgramUpdates%" == "true" (
-  call echo.%lang_settingsMenu10% %lang_settingEnabled%
-) else call echo.%lang_settingsMenu10% %lang_settingDisabled%
+if "%setting_update_program_remind%" == "true" (
+  call echo.%lang_menu_settings10% %lang_menu_setting_enabled%
+) else call echo.%lang_menu_settings10% %lang_menu_setting_disabled%
 
-if "%setting_remindDatabasesUpdates%" == "true" (
-  echo.%lang_settingsMenu11% %lang_settingEnabled%
-) else echo.%lang_settingsMenu11% %lang_settingDisabled%
+if "%setting_update_databases_remind%" == "true" (
+  echo.%lang_menu_settings11% %lang_menu_setting_enabled%
+) else echo.%lang_menu_settings11% %lang_menu_setting_disabled%
 
 echo.
 echo.%lang_back%
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %lang_enterCommand%
+set /p command=%inputBS%   %lang_input%
 
 
 
 if "%command%" == "0" ( set command= & exit /b )
 if "%command%" == "1" (
-  call :languageMenu
-  call :languageImport
+  call :menu_language
+  call :language_import
 )
 
 if "%command%" == "2" if "%setting_logging%" == "true" (
@@ -430,64 +430,64 @@ if "%command%" == "3" if "%setting_debug%" == "true" (
   set setting_debug=true
 ) else set setting_debug=false
 
-if "%command%" == "4" call :updateChannelMenu
+if "%command%" == "4" call :menu_update_channel
 
-if "%command%" == "5" if "%setting_autoUpdateProgram%" == "true" (
-  set setting_autoUpdateProgram=false
-) else if "%setting_autoUpdateProgram%" == "false" (
-  set setting_autoUpdateProgram=true
-) else set setting_autoUpdateProgram=false
+if "%command%" == "5" if "%setting_update_program_auto%" == "true" (
+  set setting_update_program_auto=false
+) else if "%setting_update_program_auto%" == "false" (
+  set setting_update_program_auto=true
+) else set setting_update_program_auto=false
 
-if "%command%" == "6" if "%setting_autoUpdateDatabases%" == "true" (
-  set setting_autoUpdateDatabases=false
-) else if "%setting_autoUpdateDatabases%" == "false" (
-  set setting_autoUpdateDatabases=true
-) else set setting_autoUpdateDatabases=true
+if "%command%" == "6" if "%setting_update_databases_auto%" == "true" (
+  set setting_update_databases_auto=false
+) else if "%setting_update_databases_auto%" == "false" (
+  set setting_update_databases_auto=true
+) else set setting_update_databases_auto=true
 
-if "%command%" == "7" if "%setting_remindProgramUpdates%" == "true" (
-  set setting_remindProgramUpdates=false
-) else if "%setting_remindProgramUpdates%" == "false" (
-  set setting_remindProgramUpdates=true
-) else set setting_remindProgramUpdates=true
+if "%command%" == "7" if "%setting_update_program_remind%" == "true" (
+  set setting_update_program_remind=false
+) else if "%setting_update_program_remind%" == "false" (
+  set setting_update_program_remind=true
+) else set setting_update_program_remind=true
 
-if "%command%" == "8" if "%setting_remindDatabasesUpdates%" == "true" (
-  set setting_remindDatabasesUpdates=false
-) else if "%setting_remindDatabasesUpdates%" == "false" (
-  set setting_remindDatabasesUpdates=true
-) else set setting_remindDatabasesUpdates=true
+if "%command%" == "8" if "%setting_update_databases_remind%" == "true" (
+  set setting_update_databases_remind=false
+) else if "%setting_update_databases_remind%" == "false" (
+  set setting_update_databases_remind=true
+) else set setting_update_databases_remind=true
 
-call :settingsApply
-call :settingsSave
-goto :settingsMenu
-
-
+call :settings_apply
+call :settings_save
+goto :menu_settings
 
 
 
 
 
-:updateChannelMenu
+
+
+:menu_update_channel
 set command=
 %logo%
-call echo.%lang_updateChannelMenu01%
-echo.%lang_updateChannelMenu02%
-echo.%lang_updateChannelMenu03%
-echo.%lang_updateChannelMenu04%
+call echo.%lang_menu_update_channel01%
+echo.%lang_menu_update_channel02%
+echo.%lang_menu_update_channel03%
+echo.%lang_menu_update_channel04%
 echo.
 echo.%lang_back%
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %lang_enterCommand%
+set /p command=%inputBS%   %lang_input%
 
 
 
 if "%command%" == "0" ( set command= & exit /b )
-if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" goto :updateChannelMenu
+if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" goto :menu_update_channel
 
-if "%command%" == "1" set setting_updateChannel=release
-if "%command%" == "2" set setting_updateChannel=beta
-if "%command%" == "3" set setting_updateChannel=nightly
+if "%command%" == "1" set setting_update_channel=release
+if "%command%" == "2" set setting_update_channel=beta
+if "%command%" == "3" set setting_update_channel=nightly
 set command=
 exit /b
 
@@ -511,7 +511,7 @@ exit /b
 
 
 
-:logLineAppend
+:log_append_line
 for /l %%z in (%2,-1,1) do echo.======================================================================================================================>>%1
 exit /b
 
@@ -521,9 +521,9 @@ exit /b
 
 
 
-:languageImport
-for /f "eol=# tokens=1,* delims==" %%i in (languages\%setting_lang%.lang) do set lang_%%i=%%j
-echo.Language: %setting_lang%>>%log%
+:language_import
+for /f "eol=# tokens=1,* delims==" %%i in (languages\%setting_language%.lang) do set lang_%%i=%%j
+echo.Language: %setting_language%>>%log%
 exit /b
 
 
@@ -532,17 +532,17 @@ exit /b
 
 
 
-:settingsSave
+:settings_save
 echo.# %appName% Settings #>%settings%
-echo.autoUpdateDatabases=%setting_autoUpdateDatabases%>>%settings%
-echo.autoUpdateProgram=%setting_autoUpdateProgram%>>%settings%
 echo.debug=%setting_debug%>>%settings%
 echo.firstRun=%setting_firstRun%>>%settings%
-echo.lang=%setting_lang%>>%settings%
+echo.language=%setting_language%>>%settings%
 echo.logging=%setting_logging%>>%settings%
-echo.remindDatabasesUpdates=%setting_remindDatabasesUpdates%>>%settings%
-echo.remindProgramUpdates=%setting_remindProgramUpdates%>>%settings%
-echo.updateChannel=%setting_updateChannel%>>%settings%
+echo.update_channel=%setting_update_channel%>>%settings%
+echo.update_databases_auto=%setting_update_databases_auto%>>%settings%
+echo.update_databases_remind=%setting_update_databases_remind%>>%settings%
+echo.update_program_auto=%setting_update_program_auto%>>%settings%
+echo.update_program_remind=%setting_update_program_remind%>>%settings%
 exit /b
 
 
@@ -551,7 +551,7 @@ exit /b
 
 
 
-:settingsApply
+:settings_apply
 if "%setting_logging%" == "true" (
   md files\logs>nul 2>nul
   set log="files\logs\%appName%_log_%currentDate%.log"
