@@ -554,14 +554,16 @@ exit /b
 :settings_apply
 if "%setting_logging%" == "true" (
   md files\logs>nul 2>nul
-  set log="files\logs\%appName%_log_%currentDate%.log"
+  set log="files\logs\%appName%_%currentDate%_log.log"
   if "%setting_debug%" == "true" (
-    set log_debug="files\logs\%appName%_log_debug_%currentDate%.log"
+    set log_debug="files\logs\%appName%_%currentDate%_log_debug.log"
   ) else set log_debug=nul
 ) else (
   set log=nul
   set log_debug=nul
 )
+
+set log_append_forAll=for %%i in (%log% %log_debug%) do
 exit /b
 
 

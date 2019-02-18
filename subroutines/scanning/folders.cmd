@@ -23,9 +23,6 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 for %%i in (%log% %log_debug%) do (
   echo.Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-)
-
-for %%i in (%log% %log_debug%) do (
   echo.[File System]>>%%i
   echo.   [Program Folders]>>%%i
 )
@@ -47,9 +44,6 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
 for %%i in (%log% %log_debug%) do (
   echo.Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-)
-
-for %%i in (%log% %log_debug%) do (
   echo.[File System]>>%%i
   echo.   [System Drive Folders]>>%%i
 )
@@ -69,9 +63,6 @@ for /f "delims=" %%i in (files\databases\rewrited\folders\systemDrive.db) do (
 for %%i in (%log% %log_debug%) do (
   echo.Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-)
-
-for %%i in (%log% %log_debug%) do (
   echo.[File System]>>%%i
   echo.   [User Profile Folders]>>%%i
 )
@@ -93,9 +84,6 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\userProfile.db) do (
 for %%i in (%log% %log_debug%) do (
   echo.Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-)
-
-for %%i in (%log% %log_debug%) do (
   echo.[File System]>>%%i
   echo.   [Windows Directory Folders]>>%%i
 )

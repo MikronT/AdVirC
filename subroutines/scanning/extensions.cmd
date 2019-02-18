@@ -23,9 +23,6 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 for %%i in (%log% %log_debug%) do (
   echo.Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-)
-
-for %%i in (%log% %log_debug%) do (
   echo.[File System]>>%%i
   echo.   [AppData Browsers Extensions]>>%%i
 )
@@ -49,9 +46,6 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 for %%i in (%log% %log_debug%) do (
   echo.Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-)
-
-for %%i in (%log% %log_debug%) do (
   echo.[File System]>>%%i
   echo.   [Program Files Extensions]>>%%i
 )
@@ -73,9 +67,6 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
 for %%i in (%log% %log_debug%) do (
   echo.Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-)
-
-for %%i in (%log% %log_debug%) do (
   echo.[File System]>>%%i
   echo.   [Program Files Browsers Extensions]>>%%i
 )

@@ -23,9 +23,6 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\shortcuts.db) do (
 for %%i in (%log% %log_debug%) do (
   echo.Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-)
-
-for %%i in (%log% %log_debug%) do (
   echo.[File System]>>%%i
   echo.   [Browsers Shortcuts]>>%%i
 )

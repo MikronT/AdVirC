@@ -29,8 +29,8 @@ exit
 
 
 :subroutine
-echo.%1>>%cleaning_tasks%
-echo.    - %1>>%log%
-echo.[Task] %1
+echo.%*>>%cleaning_tasks%
+echo.    - %*>>%log%
+echo.[Task] %*
 set /a counter_foundObjects+=1
 exit /b
