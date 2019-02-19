@@ -62,20 +62,23 @@ menu_databases_import02=  ^(1^) Запустити імпорт
 
 
 
-menu_settings01=  Налаштування
-menu_settings02=  ^(1^) Мова:
-menu_settings03=  ^(2^) Логування:
-menu_settings04=  ^(3^) Налагодження:
-menu_settings05=
-menu_settings06=  Оновлення
-menu_settings07=  ^(4^) Канал оновлення:
-menu_settings08=  ^(5^) Автооновлення %appName%:
-menu_settings09=  ^(6^) Автооновлення баз даних:
-menu_settings10=  ^(7^) Нагадувати про оновлення %appName%:
-menu_settings11=  ^(8^) Нагадувати про оновлення баз даних:
+menu_settings01=  Налаштування                                                Оновлення
+menu_settings03=  ^(1^) Мова:
+menu_settings04=                                  ^(4^) Канал оновлення:
+menu_settings05=  ^(2^) Логування:
+menu_settings06=                             ^(5^) Автооновлення %appName%:
+menu_settings07=  ^(3^) Налагодження:
+menu_settings08=                          ^(6^) Автооновлення баз даних:
+menu_settings10=                                                              ^(7^) Нагадувати про оновлення %appName%:
+menu_settings12=  Звіти                                                       ^(8^) Нагадувати про оновлення баз даних:
+menu_settings13=  ^(9^) Збір звітів:
+menu_settings15=  ^(#^) Автовідправка звітів:
 
-menu_setting_disabled=вимкнено
-menu_setting_enabled=увімкнено
+menu_setting_disabled=вимкнено       
+menu_setting_enabled=увімкнено      
+menu_setting_update_channel_release=реліз          
+menu_setting_update_channel_beta=бета           
+menu_setting_update_channel_nightly=нічні          
 
 
 

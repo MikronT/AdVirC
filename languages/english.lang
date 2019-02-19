@@ -62,20 +62,26 @@ menu_databases_import02=  ^(1^) Run import
 
 
 
-menu_settings01=  Settings
-menu_settings02=  ^(1^) Language:
-menu_settings03=  ^(2^) Logging:
-menu_settings04=  ^(3^) Debug:
-menu_settings05=
-menu_settings06=  Update
-menu_settings07=  ^(4^) Update channel:
-menu_settings08=  ^(5^) Autoupdate %appName%:
-menu_settings09=  ^(6^) Autoupdate databases:
-menu_settings10=  ^(7^) Remind for %appName% updates:
-menu_settings11=  ^(8^) Remind for databases updates:
+menu_settings01=  Settings                                                    Update
+menu_settings03=  ^(1^) Language:
+menu_settings04=                              ^(4^) Update channel:
+menu_settings05=  ^(2^) Logging:
+menu_settings06=                               ^(5^) Autoupdate %appName%:
+menu_settings07=  ^(3^) Debug:
+menu_settings08=                                 ^(6^) Autoupdate databases:
+menu_settings10=                                                              ^(7^) Remind for %appName% updates:
+menu_settings12=  Report                                                      ^(8^) Remind for databases updates:
+menu_settings13=  ^(9^) Collecting reports:
+menu_settings15=  ^(#^) Autosend reports:
 
-menu_setting_disabled=disabled
-menu_setting_enabled=enabled
+menu_setting_disabled=disabled       
+menu_setting_enabled=enabled        
+menu_setting_language_english=english        
+menu_setting_language_russian=русский        
+menu_setting_language_ukrainian=українська     
+menu_setting_update_channel_release=release        
+menu_setting_update_channel_beta=beta           
+menu_setting_update_channel_nightly=nightly        
 
 
 
