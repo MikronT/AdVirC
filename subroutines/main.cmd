@@ -37,7 +37,7 @@ set cleaning_temp=temp\cleaning\temp.db
 
 
 
-md files\reports\shortcuts>nul 2>nul
+md files\reports>nul 2>nul
 %loadingUpdate% 1
 
 
@@ -62,7 +62,7 @@ if "%key_skipFilesChecking%" NEQ "true" (
 
 
 
-for /f "eol=# tokens=1,* delims==" %%i in (languages\english.lang) do set lang_%%i=%%j
+for /f "eol=# tokens=1,* delims==" %%i in (languages\english.lang) do set language_%%i=%%j
 if exist %settings% for /f "eol=# delims=" %%i in (%settings%) do set setting_%%i
 for /f "eol=# tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
   set location_%%i=%%k
@@ -522,7 +522,7 @@ exit /b
 
 
 :language_import
-for /f "eol=# tokens=1,* delims==" %%i in (languages\%setting_language%.lang) do set lang_%%i=%%j
+for /f "eol=# tokens=1,* delims==" %%i in (languages\%setting_language%.lang) do set language_%%i=%%j
 echo.Language: %setting_language%>>%log%
 exit /b
 
