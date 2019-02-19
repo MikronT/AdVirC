@@ -41,24 +41,19 @@ set cleaning_temp=temp\cleaning\temp.db
 
 
 
-md files\reports>nul 2>nul
-%loadingUpdate% 1
-
-
-
 for /f %%a in ('"prompt $h & echo on & for %%b in (1) do rem"') do set inputBS=%%a
 for /f "tokens=1,2,* delims=." %%i in ("%date%") do set currentDate=%%k.%%j.%%i
 %loadingUpdate% 2
 
 
 
-if exist "files\reports\corruptedFilesList.db" echo.>files\reports\corruptedFilesList.db
+if exist "temp\corruptedFilesList.db" echo.>temp\corruptedFilesList.db
 if "%key_skipFilesChecking%" NEQ "true" (
-  for /f "delims=" %%i in (files\fileList.db) do if not exist "%%i" call echo.%%i>>files\reports\corruptedFilesList.db
+  for /f "delims=" %%i in (files\fileList.db) do if not exist "%%i" call echo.%%i>>temp\corruptedFilesList.db
   for /f "delims=" %%i in (files\fileList.db) do if not exist "%%i" goto :corrupted
   if not exist "files\fileList.db" (
-    echo.files\fileList.db>>files\reports\corruptedFilesList.db
-    echo.and maybe others...>>files\reports\corruptedFilesList.db
+    echo.files\fileList.db>>temp\corruptedFilesList.db
+    echo.and maybe others...>>temp\corruptedFilesList.db
     goto :corrupted
   )
 )
@@ -146,8 +141,11 @@ echo.%language_initialization2%
 
 
 
-if not exist files\reports\systemInfo.rpt systeminfo>files\reports\systemInfo.rpt >nul 2>nul
-%loadingUpdate% 2
+if "%setting_reports_collect%" == "true" (
+  md files\reports>nul 2>nul
+  if not exist files\reports\systemInfo.rpt systeminfo>files\reports\systemInfo.rpt >nul 2>nul
+)
+%loadingUpdate% 3
 
 
 
@@ -168,7 +166,7 @@ if "%setting_firstRun%" == "true" (
 
 echo.%%lastLoggedOnUserSID%%>temp\temp_lastLoggedOnUserSID
 for /f "tokens=2*" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI /v LastLoggedOnUserSID') do set lastLoggedOnUserSID=%%j
-for /f "delims=" %%i in (temp\temp_lastLoggedOnUserSID) do call echo.%%i>files\reports\lastLoggedOnUserSID.rpt
+if "%setting_reports_collect%" == "true" for /f "delims=" %%i in (temp\temp_lastLoggedOnUserSID) do call echo.%%i>files\reports\lastLoggedOnUserSID.rpt
 call echo.%language_info_lastLoggedOnUserSID%
 %loadingUpdate% 2
 
@@ -607,7 +605,7 @@ echo.  ^(^!^) %appName% Diagnostics: Program Corrupted^!
 echo.  ^(^!^) Reinstall %appName%^!
 echo.
 echo.  ^(^i^) Files missing:
-for /f "delims=" %%i in (files\reports\corruptedFilesList.db) do echo.      - %%i
+for /f "delims=" %%i in (temp\corruptedFilesList.db) do echo.      - %%i
 echo.
 echo.  ^(^?^) Do you want to run %appName% without these files^?
 echo.      ^(^0^) Exit
