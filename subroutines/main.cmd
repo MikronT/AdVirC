@@ -66,7 +66,7 @@ for /f "eol=# tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
   set location_%%i=%%k
   for /f "skip=2 tokens=2,* delims= " %%l in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v %%j') do set location_%%i=%%m
 )
-%loadingUpdate% 3
+%loadingUpdate% 4
 
 
 
@@ -126,7 +126,7 @@ echo.%language_initialization%
 
 if "%setting_language%" NEQ "english" if "%setting_language%" NEQ "russian" if "%setting_language%" NEQ "ukrainian" call :menu_language force
 call :language_import
-%loadingUpdate% 1
+%loadingUpdate% 3
 
 
 
@@ -141,11 +141,6 @@ echo.%stringBuilder_string%
 
 echo.%language_info_language%
 %loadingUpdate% 2
-
-
-
-if "%setting_reports_collect%" == "true" if not exist files\reports\systemInfo.rpt systeminfo>files\reports\systemInfo.rpt >nul 2>nul
-%loadingUpdate% 3
 
 
 
@@ -284,12 +279,12 @@ set /p command=%inputBS%   %language_input%
 
 
 if "%command%" == "1" call :menu_cleaning
-rem if "%command%" == "2" call :exceptionsMenu
+rem if "%command%" == "2" call :menu_exceptions
 if "%command%" == "3" call subroutines\databases.cmd
 if "%command%" == "4" call :menu_databases_import
-rem if "%command%" == "5" call :helpMenu
-rem if "%command%" == "6" call :report
-rem if "%command%" == "7" call :about
+rem if "%command%" == "5" call :menu_help
+rem if "%command%" == "6" call :menu_report
+rem if "%command%" == "7" call :menu_about
 if "%command%" == "8" call :menu_settings
 if "%command%" == "9" call :clearTemp
 if "%command%" == "0" call :exit
@@ -365,6 +360,34 @@ if "%command%" == "1" (
   exit /b
 )
 goto :menu_databases_import
+
+
+
+
+
+
+
+:menu_report
+set command=
+%logo%
+echo.%language_menu_report01%
+echo.%language_menu_report02%
+echo.
+echo.%language_back%
+echo.
+echo.
+echo.
+set /p command=%inputBS%   %language_input%
+
+
+
+if "%command%" == "0" ( set command= & exit /b )
+if "%command%" == "1" (
+  systeminfo>files\reports\systemInfo.rpt >nul 2>nul
+  set command=
+  exit /b
+)
+goto :menu_report
 
 
 

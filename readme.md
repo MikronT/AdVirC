@@ -27,9 +27,9 @@ AdVirC (AdVirC Removal Tool or AdVirC RT) is a free **open source** console util
 - It is my hobby, not work.
 
 ## Version History
-| Date       | Version Name   | Version Code   |
-|------------|----------------|----------------|
-| 27.11.2018 | v2.0 Pre-Alpha | 2.0.0.0.0.0.10 |
+| Date       | Version Name                | Version Code   |
+|------------|-----------------------------|----------------|
+| 27.11.2018 | v2.0 Pre-Alpha (Windows 10) | 2.0.0.0.0.0.10 |
 
 <!--
 AdVirC v2.0 Alpha 1         2.0.0.1.1.0.10
