@@ -21,7 +21,7 @@ echo.>%cleaning_filesToRemove%
 
 
 echo.[Scanning]>>%log%
-for %%d in (services tasks processes registry temp folders files shortcuts extensions) do start /wait subroutines\scanning\%%d.cmd
+start /wait subroutines\cleaning\scanning.cmd
 
 
 
@@ -36,7 +36,8 @@ endlocal
 
 
 echo.[Cleaning]>>%log%
-for %%d in (deleting experimental heuristic) do start /wait subroutines\cleaning\%%d.cmd
+start /wait subroutines\cleaning\deleting.cmd
+start /wait subroutines\cleaning\rules.cmd
 
 
 
