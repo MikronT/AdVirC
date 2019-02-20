@@ -9,12 +9,8 @@ cd "%~dp0"
 
 
 set appName=AdVirC
-set version=2.0 Pre-Alpha
-rem set version=2.0 Alpha 1
-rem set version=2.0 Beta 1
-rem set version=2.0 Release Candidate 1
-rem set version=2.0
-set versionName=%appName% (Version %version% for Windows10) [MikronT]
+set versionCode=2.0.0.0.0.0.10
+set versionName=%appName% v2.0 Pre-Alpha (Windows 10) [MikronT]
 
 set logo=call design\mainLogo.cmd
 set loadingUpdate=call design\loadingUpdate.cmd

@@ -9,7 +9,7 @@ set command=command
 call design\mainLogo.cmd
 for /f %%a in ('"prompt $h & echo on & for %%b in (1) do rem"') do set inputBS=%%a
 
-echo.  ^(^i^) Uninstall Directory: %cd%
+echo.  ^(i^) Uninstall Directory: %cd%
 echo.
 echo.  ^(^?^) Do you want to uninstall AdVirC^?
 echo.      ^(0^) Cancel
