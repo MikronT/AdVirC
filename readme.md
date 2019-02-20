@@ -10,7 +10,14 @@
 [![Status: Release](https://img.shields.io/badge/Status-Release-green.svg?style=for-the-badge)](https://sites.google.com/view/advirc)
 -->
 
-### Version name: *AdVirC Pre-Alpha v2.0.000*
+### Version name: *AdVirC v2.0 Pre-Alpha*
+
+<!--
+### Version name: *AdVirC v2.0 Alpha 1*
+### Version name: *AdVirC v2.0 Beta 1*
+### Version name: *AdVirC v2.0 Release Candidate 1*
+### Version name: *AdVirC v2.0*
+-->
 
 AdVirC (AdVirC Removal Tool or AdVirC RT) is a free **open source** console utility for cleaning PCs from Adware, Malware, Trojans, Miners and rubbish.
 
@@ -27,6 +34,6 @@ AdVirC (AdVirC Removal Tool or AdVirC RT) is a free **open source** console util
 
 
 ## Version History
-| Date       | Version            |
-|------------|--------------------|
-| 27.11.2018 | Pre-Alpha v2.0.000 |
+| Date       | Version        |
+|------------|----------------|
+| 27.11.2018 | v2.0 Pre-Alpha |
