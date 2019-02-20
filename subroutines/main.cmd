@@ -5,7 +5,7 @@
 
 set setting_debug=true
 set setting_firstRun=true
-set setting_language=lang
+set setting_language=language
 set setting_logging=true
 set setting_reports_autoSend=true
 set setting_reports_collect=true
@@ -24,8 +24,8 @@ set module_wget=subroutines\modules\wget.exe --quiet --show-progress --progress=
 
 set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
 
-set filesToRemove=temp\filesToRemove.db
-set rebootScript=temp\rebootScript.cmd
+set cleaning_filesToRemove=temp\filesToRemove.db
+set cleaning_rebootScript=temp\rebootScript.cmd
 
 set cleaning_extensions=temp\cleaning\extensions.db
 set cleaning_files=temp\cleaning\files.db
@@ -47,7 +47,6 @@ for /f "tokens=1,2,* delims=." %%i in ("%date%") do set currentDate=%%k.%%j.%%i
 
 
 
-if exist "temp\corruptedFilesList.db" echo.>temp\corruptedFilesList.db
 if "%key_skipFilesChecking%" NEQ "true" (
   for /f "delims=" %%i in (files\fileList.db) do if not exist "%%i" call echo.%%i>>temp\corruptedFilesList.db
   for /f "delims=" %%i in (files\fileList.db) do if not exist "%%i" goto :corrupted
@@ -77,7 +76,7 @@ call :settings_apply
 
 
 if exist "%log%" call :log_append_line %log% 3
-echo.Log ^| %versionName% ^| %logDate%>>%log%
+echo.Log ^| %versionName% ^| %currentDate%>>%log%
 echo.>>%log%
 call :log_append_line %log% 1
 %loadingUpdate% 3
@@ -85,13 +84,13 @@ call :log_append_line %log% 1
 
 
 if exist "%log_debug%" call :log_append_line %log_debug% 3
-echo.Debug Log ^| %versionName% ^| %logDate%>>%log_debug%
+echo.Debug Log ^| %versionName% ^| %versionCode% ^| %currentDate%>>%log_debug%
 echo.>>%log_debug%
 echo.Operating System: %OS%>>%log_debug%
 echo.Current Directory: %cd%>>%log_debug%
 echo.Current File Directory: %~dp0>>%log_debug%
 echo.User Profile Directory: %userProfile%>>%log_debug%
-echo.Processor Architecture: %PROCESSOR_ARCHITECTURE%>>%log_debug%
+echo.Processor Architecture: %processor_architecture%>>%log_debug%
 echo.>>%log_debug%
 call :log_append_line %log_debug% 1
 echo.Running tasks:>>%log_debug%
@@ -119,9 +118,9 @@ echo. - Videos location:      %location_videos%>>%log_debug%
 
 
 
-%logo%
+rem %logo%
 echo.%language_initialization%
-%loadingUpdate% 3
+%loadingUpdate% 2
 
 
 
@@ -134,17 +133,18 @@ call :language_import
 
 
 %logo%
-echo.  ^(^i^) %versionName%
-echo.%language_info_language%
 echo.%language_initialization2%
-%loadingUpdate% 1
+
+set stringBuilder_string=  ^(i^) %versionName%
+if "%setting_debug%" == "true" %stringBuilder_build% ^| %versionCode%
+echo.%stringBuilder_string%
+
+echo.%language_info_language%
+%loadingUpdate% 2
 
 
 
-if "%setting_reports_collect%" == "true" (
-  md files\reports>nul 2>nul
-  if not exist files\reports\systemInfo.rpt systeminfo>files\reports\systemInfo.rpt >nul 2>nul
-)
+if "%setting_reports_collect%" == "true" if not exist files\reports\systemInfo.rpt systeminfo>files\reports\systemInfo.rpt >nul 2>nul
 %loadingUpdate% 3
 
 
@@ -377,41 +377,53 @@ set command=
 echo.%language_menu_settings01%
 
 set stringBuilder_string=%language_menu_settings03%
-if "%setting_language%" == "english" ( call %stringBuilder_build% %language_menu_setting_language_english%
-) else if "%setting_language%" == "russian" ( call %stringBuilder_build% %language_menu_setting_language_russian%
+if "%setting_language%" == "english" (
+  call %stringBuilder_build% %language_menu_setting_language_english%
+) else if "%setting_language%" == "russian" (
+  call %stringBuilder_build% %language_menu_setting_language_russian%
 ) else call %stringBuilder_build% %language_menu_setting_language_ukrainian%
 call %stringBuilder_build% %language_menu_settings04%
-if "%setting_update_channel%" == "release" ( call %stringBuilder_build% %language_menu_setting_update_channel_release%
-) else if "%setting_update_channel%" == "beta" ( call %stringBuilder_build% %language_menu_setting_update_channel_beta%
+if "%setting_update_channel%" == "release" (
+  call %stringBuilder_build% %language_menu_setting_update_channel_release%
+) else if "%setting_update_channel%" == "beta" (
+  call %stringBuilder_build% %language_menu_setting_update_channel_beta%
 ) else call %stringBuilder_build% %language_menu_setting_update_channel_nightly%
 echo.%stringBuilder_string%
 
 set stringBuilder_string=%language_menu_settings05%
-if "%setting_logging%" == "true" ( call %stringBuilder_build% %language_menu_setting_enabled%
+if "%setting_logging%" == "true" (
+  call %stringBuilder_build% %language_menu_setting_enabled%
 ) else call %stringBuilder_build% %language_menu_setting_disabled%
 call %stringBuilder_build% %language_menu_settings06%
-if "%setting_update_program_auto%" == "true" ( call %stringBuilder_build% %language_menu_setting_enabled%
+if "%setting_update_program_auto%" == "true" (
+  call %stringBuilder_build% %language_menu_setting_enabled%
 ) else call %stringBuilder_build% %language_menu_setting_disabled%
 echo.%stringBuilder_string%
 
 set stringBuilder_string=%language_menu_settings07%
-if "%setting_debug%" == "true" ( call %stringBuilder_build% %language_menu_setting_enabled%
+if "%setting_debug%" == "true" (
+  call %stringBuilder_build% %language_menu_setting_enabled%
 ) else call %stringBuilder_build% %language_menu_setting_disabled%
 call %stringBuilder_build% %language_menu_settings08%
-if "%setting_update_databases_auto%" == "true" ( call %stringBuilder_build% %language_menu_setting_enabled%
+if "%setting_update_databases_auto%" == "true" (
+  call %stringBuilder_build% %language_menu_setting_enabled%
 ) else call %stringBuilder_build% %language_menu_setting_disabled%
 echo.%stringBuilder_string%
 
-if "%setting_update_program_remind%" == "true" ( call echo.%language_menu_settings10% %language_menu_setting_enabled%
+if "%setting_update_program_remind%" == "true" (
+  call echo.%language_menu_settings10% %language_menu_setting_enabled%
 ) else call echo.%language_menu_settings10% %language_menu_setting_disabled%
 
-if "%setting_update_databases_remind%" == "true" ( call echo.%language_menu_settings12% %language_menu_setting_enabled%
+if "%setting_update_databases_remind%" == "true" (
+  call echo.%language_menu_settings12% %language_menu_setting_enabled%
 ) else call echo.%language_menu_settings12% %language_menu_setting_disabled%
 
-if "%setting_reports_collect%" == "true" ( call echo.%language_menu_settings13% %language_menu_setting_enabled%
+if "%setting_reports_collect%" == "true" (
+  call echo.%language_menu_settings13% %language_menu_setting_enabled%
 ) else call echo.%language_menu_settings13% %language_menu_setting_disabled%
 
-if "%setting_reports_autoSend%" == "true" ( call echo.%language_menu_settings15% %language_menu_setting_enabled%
+if "%setting_reports_autoSend%" == "true" (
+  call echo.%language_menu_settings15% %language_menu_setting_enabled%
 ) else call echo.%language_menu_settings15% %language_menu_setting_disabled%
 
 echo.
@@ -588,7 +600,7 @@ if "%setting_logging%" == "true" (
   set log_debug=nul
 )
 
-set log_append_forAll=for %%i in (%log% %log_debug%) do
+if "%setting_reports_collect%" == "true" md files\reports>nul 2>nul
 exit /b
 
 
@@ -604,12 +616,12 @@ color 0c
 echo.  ^(^!^) %appName% Diagnostics: Program Corrupted^!
 echo.  ^(^!^) Reinstall %appName%^!
 echo.
-echo.  ^(^i^) Files missing:
+echo.  ^(i^) Files missing:
 for /f "delims=" %%i in (temp\corruptedFilesList.db) do echo.      - %%i
 echo.
 echo.  ^(^?^) Do you want to run %appName% without these files^?
-echo.      ^(^0^) Exit
-echo.      ^(^1^) Run
+echo.      ^(0^) Exit
+echo.      ^(1^) Run
 echo.
 echo.
 echo.

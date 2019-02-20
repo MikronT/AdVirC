@@ -11,7 +11,7 @@ initialization2=  ^(^!^) Инициализацыя запуска...
 info_language=  ^(i^) Язык: Русский
 
 info_lastLoggedOnUserSID=  ^(i^) Последний зарегистрированный пользователь ^(SID^): %lastLoggedOnUserSID%.
-info_processorArchitecture=  ^(i^) Разрядность операционной системы: %PROCESSOR_ARCHITECTURE%.
+info_processorArchitecture=  ^(i^) Разрядность операционной системы: %processor_architecture%.
 info_mozillaFirefoxUserProfile=  ^(i^) Идентификатор профиля Mozilla Firefox: %mozillaFirefoxUserProfile%.
 
 info_registryBackup_creating=  ^(^!^) Создание резервной копии реестра Windows...
@@ -86,7 +86,7 @@ menu_setting_update_channel_nightly=ночные
 
 menu_update_channel01=  Выберите канал обновления для %appName% и баз данных.
 menu_update_channel02=  ^(1^) Release ^(стабильные^)
-menu_update_channel03=  ^(2^) Beta ^(некоторые новые возможности, но до тестов^)
+menu_update_channel03=  ^(2^) Beta ^(некоторые новые возможности, но до конечных тестов^)
 menu_update_channel04=  ^(3^) Nightly ^(все новые возможности, не стабильные^)
 
 

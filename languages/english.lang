@@ -11,7 +11,7 @@ initialization2=  ^(^!^) Initialization run...
 info_language=  ^(i^) Language: English
 
 info_lastLoggedOnUserSID=  ^(i^) Last Logged User ^(SID^): %lastLoggedOnUserSID%.
-info_processorArchitecture=  ^(i^) System Bit Rate: %PROCESSOR_ARCHITECTURE%.
+info_processorArchitecture=  ^(i^) System Bit Rate: %processor_architecture%.
 info_mozillaFirefoxUserProfile=  ^(i^) Mozilla Firefox Profile id: %mozillaFirefoxUserProfile%.
 
 info_registryBackup_creating=  ^(^!^) Creating a backup copy of the Windows registry...
@@ -89,7 +89,7 @@ menu_setting_update_channel_nightly=nightly
 
 menu_update_channel01=  Select update channel for %appName% and databases.
 menu_update_channel02=  ^(1^) Release ^(stable^)
-menu_update_channel03=  ^(2^) Beta ^(some new features, but before tests^)
+menu_update_channel03=  ^(2^) Beta ^(some new features, but before final tests^)
 menu_update_channel04=  ^(3^) Nightly ^(all new features, not stable^)
 
 
