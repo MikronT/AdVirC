@@ -77,7 +77,7 @@ menu_settings15=  ^(#^) Автоотправка отчётов:
 menu_setting_disabled=отключено      
 menu_setting_enabled=включено       
 menu_setting_update_channel_release=релиз          
-menu_setting_update_channel_beta=бэта           
+menu_setting_update_channel_beta=бета           
 menu_setting_update_channel_nightly=ночные         
 
 
@@ -85,9 +85,9 @@ menu_setting_update_channel_nightly=ночные
 
 
 menu_update_channel01=  Выберите канал обновления для %appName% и баз данных.
-menu_update_channel02=  ^(1^) Release ^(стабильные^)
-menu_update_channel03=  ^(2^) Beta ^(некоторые новые возможности, но до конечных тестов^)
-menu_update_channel04=  ^(3^) Nightly ^(все новые возможности, не стабильные^)
+menu_update_channel02=  ^(1^) Релиз ^(стабильные^)
+menu_update_channel03=  ^(2^) Бета ^(некоторые новые возможности, но до конечных тестов^)
+menu_update_channel04=  ^(3^) Ночные ^(все новые возможности, не стабильные^)
 
 
 

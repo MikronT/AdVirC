@@ -85,9 +85,9 @@ menu_setting_update_channel_nightly=нічні
 
 
 menu_update_channel01=  Виберіть канал оновлення для %appName% і баз даних.
-menu_update_channel02=  ^(1^) Release ^(стабільні^)
-menu_update_channel03=  ^(2^) Beta ^(деякі нові можливості, але до остаточних тестів^)
-menu_update_channel04=  ^(3^) Nightly ^(всі нові можливості, не стабільні^)
+menu_update_channel02=  ^(1^) Реліз ^(стабільні^)
+menu_update_channel03=  ^(2^) Бета ^(деякі нові можливості, але до остаточних тестів^)
+menu_update_channel04=  ^(3^) Нічні ^(всі нові можливості, не стабільні^)
 
 
 
