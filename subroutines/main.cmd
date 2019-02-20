@@ -136,7 +136,7 @@ call :language_import
 echo.%language_initialization2%
 
 set stringBuilder_string=  ^(i^) %versionName%
-if "%setting_debug%" == "true" %stringBuilder_build% ^| %versionCode%
+if "%setting_debug%" == "true" call %stringBuilder_build% ^(Version Code: %versionCode%^)
 echo.%stringBuilder_string%
 
 echo.%language_info_language%
