@@ -75,50 +75,50 @@ call :settings_apply
 
 
 
-if exist "%log%" call :log_append_line %log% 3
-echo.Log ^| %versionName% ^| %currentDate%>>%log%
-echo.>>%log%
-call :log_append_line %log% 1
-%loadingUpdate% 3
+if "%setting_logging%" == "true" (
+  if exist "%log%" call :log_append_line %log% 3
+  echo.Log ^| %versionName% ^| %currentDate%>>%log%
+  echo.>>%log%
+  call :log_append_line %log% 1
+  %loadingUpdate% 3
+
+  if "%setting_debug%" == "true" (
+    if exist "%log_debug%" call :log_append_line %log_debug% 3
+    echo.Debug Log ^| %versionName% ^| %versionCode% ^| %currentDate%>>%log_debug%
+    echo.>>%log_debug%
+    echo.Operating System: %OS%>>%log_debug%
+    echo.Current Directory: %cd%>>%log_debug%
+    echo.Current File Directory: %~dp0>>%log_debug%
+    echo.User Profile Directory: %userProfile%>>%log_debug%
+    echo.Processor Architecture: %processor_architecture%>>%log_debug%
+    echo.>>%log_debug%
+    call :log_append_line %log_debug% 1
+    echo.Running tasks:>>%log_debug%
+    echo.>>%log_debug%
+    tasklist>>%log_debug%
+    echo.>>%log_debug%
+    call :log_append_line %log_debug% 1
+    %loadingUpdate% 4
+
+    echo.User Shell Folders:>>%log_debug%
+    echo. - 3D Objects location:  %location_threeDObjects%>>%log_debug%
+    echo. - Contacts location:    %location_contacts%>>%log_debug%
+    echo. - Desktop location:     %location_desktop%>>%log_debug%
+    echo. - Documents location:   %location_documents%>>%log_debug%
+    echo. - Downloads location:   %location_downloads%>>%log_debug%
+    echo. - Favorites location:   %location_favorites%>>%log_debug%
+    echo. - Links location:       %location_links%>>%log_debug%
+    echo. - Music location:       %location_music%>>%log_debug%
+    echo. - Pictures location:    %location_pictures%>>%log_debug%
+    echo. - Saved Games location: %location_savedGames%>>%log_debug%
+    echo. - Searches location:    %location_searches%>>%log_debug%
+    echo. - Videos location:      %location_videos%>>%log_debug%
+    %loadingUpdate% 2
+  ) else %loadingUpdate% 6
+) else %loadingUpdate% 9
 
 
 
-if exist "%log_debug%" call :log_append_line %log_debug% 3
-echo.Debug Log ^| %versionName% ^| %versionCode% ^| %currentDate%>>%log_debug%
-echo.>>%log_debug%
-echo.Operating System: %OS%>>%log_debug%
-echo.Current Directory: %cd%>>%log_debug%
-echo.Current File Directory: %~dp0>>%log_debug%
-echo.User Profile Directory: %userProfile%>>%log_debug%
-echo.Processor Architecture: %processor_architecture%>>%log_debug%
-echo.>>%log_debug%
-call :log_append_line %log_debug% 1
-echo.Running tasks:>>%log_debug%
-echo.>>%log_debug%
-tasklist>>%log_debug%
-echo.>>%log_debug%
-call :log_append_line %log_debug% 1
-%loadingUpdate% 4
-
-rem for /f "tokens=1,* delims=;" %%i in (files\userShellFolders.db) do echo.%%i Location: %location_%%i%>>%log_debug%
-echo.User Shell Folders:>>%log_debug%
-echo. - 3D Objects location:  %location_threeDObjects%>>%log_debug%
-echo. - Contacts location:    %location_contacts%>>%log_debug%
-echo. - Desktop location:     %location_desktop%>>%log_debug%
-echo. - Documents location:   %location_documents%>>%log_debug%
-echo. - Downloads location:   %location_downloads%>>%log_debug%
-echo. - Favorites location:   %location_favorites%>>%log_debug%
-echo. - Links location:       %location_links%>>%log_debug%
-echo. - Music location:       %location_music%>>%log_debug%
-echo. - Pictures location:    %location_pictures%>>%log_debug%
-echo. - Saved Games location: %location_savedGames%>>%log_debug%
-echo. - Searches location:    %location_searches%>>%log_debug%
-echo. - Videos location:      %location_videos%>>%log_debug%
-%loadingUpdate% 2
-
-
-
-rem %logo%
 echo.%language_initialization%
 %loadingUpdate% 2
 
@@ -174,6 +174,7 @@ call echo.%language_info_lastLoggedOnUserSID%
 
 if exist "%appData%\Mozilla\Firefox\Profiles" (
   for /f "delims=" %%i in ('dir "%appData%\Mozilla\Firefox\Profiles" /a:d /b') do set mozillaFirefoxUserProfile=%%i
+  if "%setting_reports_collect%" == "true" echo.%mozillaFirefoxUserProfile%>files\reports\mozillaFirefoxUserProfile.rpt
   call echo.%language_info_mozillaFirefoxUserProfile%
 )
 %loadingUpdate% 1
