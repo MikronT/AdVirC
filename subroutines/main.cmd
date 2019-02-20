@@ -671,7 +671,7 @@ goto :corrupted
 
 reg import files\backups\consoleSettingsBackup.reg 2>nul
 
-timeout /nobreak /t 1 >nul
+%module_sleep% -m 300
 
 if "%1" == "reboot" ( shutdown /r /t 0 ) else if exist temp rd /s /q temp
 exit
