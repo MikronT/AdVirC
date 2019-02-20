@@ -14,8 +14,7 @@ languages\russian.lang
 languages\ukrainian.lang
 
 subroutines\cleaning\deleting.cmd
-subroutines\cleaning\experimental.cmd
-subroutines\cleaning\heuristic.cmd
+subroutines\cleaning\rules.cmd
 subroutines\cleaning\scanning.cmd
 
 subroutines\modules\movefile.exe
