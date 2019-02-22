@@ -21,10 +21,12 @@ AdVirC (AdVirC Removal Tool or AdVirC RT) is a free **open source** console util
 
 
 ## Disclaimer
-- We can not guarantee 100% treatment. We must "catch" the virus, and only after the research the virus enters the database. It takes time.
-- *We are not responsible for any damage to your computer.* Everything that removes the utility is considered to be viral and adware. If you need it, download again. We are not responsible for any lost files or data.
+- I can not guarantee 100% treatment. I must "catch" the virus, and only after the research the virus enters the database. It takes time.
+- *I am not responsible for any damage to your computer.* Everything that removes the utility is considered to be viral and adware. If you need it, download again. I am not responsible for any lost files or data.
 - Utility is in Pre-Alpha-period, so there may be false positives and program errors. You must be patient.
 - It is my hobby, not work.
+
+
 
 ## Version History
 | Date       | Version Name                | Version Code   |
