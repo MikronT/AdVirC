@@ -18,13 +18,14 @@ AdVirC (AdVirC Removal Tool or AdVirC RT) is a free **open source** console util
 
 *If you have ads, third-party programs or your computer live your life, I may be able to help you.*
 
-*Developed only for Windows 10.*
+*Developed only for Windows 10, but may be downgraded for Windows 7, 8 and 8.1 too.*
 
 
 
 ## Disclaimer
 - I can not guarantee 100% treatment. I must "catch" the virus, and only after the research the virus enters the database. It takes some time.
-- *I am not responsible for any damage to your computer.* Everything that removes the utility is considered to be viral and adware. If you need it, download again. I am not responsible for any lost files or data.
+- *I am not responsible for any damage to your computer.* I am not responsible for any lost files or data.
+- Everything that removes the utility is considered to be viral and adware. If you need it, download again.
 - Utility is in Pre-Alpha-period, so there may be false positives and program errors. You must be patient.
 - It is my hobby, not work.
 
@@ -36,10 +37,10 @@ AdVirC (AdVirC Removal Tool or AdVirC RT) is a free **open source** console util
 | 27.11.2018 | v2.0 Pre-Alpha (Windows 10) | 2.0.0.0.0.0.10 |
 
 <!--
-AdVirC v2.0 Alpha 1         2.0.0.1.1.0.10
-AdVirC v2.0 Alpha 2         2.0.0.1.2.0.10
-AdVirC v2.0 Beta 1          2.0.0.2.1.0.10
-AdVirC v2.0 Pre-Release     2.0.0.3.1.0.10
-AdVirC v2.0 Release         2.0.0.4.0.0.10
-AdVirC v2.1 Release         2.1.0.4.0.0.10
+AdVirC v2.0 Alpha 1           2.0.0.1.1.0.10
+AdVirC v2.0 Alpha 2           2.0.0.1.2.0.10
+AdVirC v2.0 Beta 1            2.0.0.2.1.0.10
+AdVirC v2.0 Pre-Release 1     2.0.0.3.1.0.10
+AdVirC v2.0 Release           2.0.0.4.0.0.10
+AdVirC v2.1 Release           2.1.0.4.0.0.10
 -->
