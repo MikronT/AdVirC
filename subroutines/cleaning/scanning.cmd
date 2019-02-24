@@ -48,6 +48,10 @@ for %%i in (%log% %log_debug%) do (
   echo.  [Processes]>>%%i
   echo.    [Processes]>>%%i
 )
+call :log_append_line %log_debug% 1
+echo.    All Running Processes:>>%log_debug%
+tasklist>>%log_debug%
+call :log_append_line %log_debug% 1
 
 
 

@@ -22,7 +22,6 @@ set module_shortcut=subroutines\modules\shortcut.exe /a:c
 set module_unZip=subroutines\modules\unzip.exe -qq
 set module_wget=subroutines\modules\wget.exe --quiet --no-check-certificate --tries=1
 
-set language_import=for /f "eol=# tokens=1,* delims==" %%i in (languages\%setting_language%.lang) do set language_%%i=%%j
 set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
 
 set cleaning_filesToRemove=temp\filesToRemove.db
@@ -92,28 +91,23 @@ if "%setting_logging%" == "true" (
     echo.User Profile Directory: %userProfile%>>%log_debug%
     echo.Processor Architecture: %processor_architecture%>>%log_debug%
     call :log_append_line %log_debug% 1
-    %loadingUpdate% 2
-
-    echo.Running tasks:>>%log_debug%
-    tasklist>>%log_debug%
-    call :log_append_line %log_debug% 1
-    %loadingUpdate% 2
+    %loadingUpdate% 3
 
     echo.User Shell Folders:>>%log_debug%
-    echo. - 3D Objects location:  %location_threeDObjects%>>%log_debug%
-    echo. - Contacts location:    %location_contacts%>>%log_debug%
-    echo. - Desktop location:     %location_desktop%>>%log_debug%
-    echo. - Documents location:   %location_documents%>>%log_debug%
-    echo. - Downloads location:   %location_downloads%>>%log_debug%
-    echo. - Favorites location:   %location_favorites%>>%log_debug%
-    echo. - Links location:       %location_links%>>%log_debug%
-    echo. - Music location:       %location_music%>>%log_debug%
-    echo. - Pictures location:    %location_pictures%>>%log_debug%
-    echo. - Saved Games location: %location_savedGames%>>%log_debug%
-    echo. - Searches location:    %location_searches%>>%log_debug%
-    echo. - Videos location:      %location_videos%>>%log_debug%
+    echo.- 3D Objects location:  %location_threeDObjects%>>%log_debug%
+    echo.- Contacts location:    %location_contacts%>>%log_debug%
+    echo.- Desktop location:     %location_desktop%>>%log_debug%
+    echo.- Documents location:   %location_documents%>>%log_debug%
+    echo.- Downloads location:   %location_downloads%>>%log_debug%
+    echo.- Favorites location:   %location_favorites%>>%log_debug%
+    echo.- Links location:       %location_links%>>%log_debug%
+    echo.- Music location:       %location_music%>>%log_debug%
+    echo.- Pictures location:    %location_pictures%>>%log_debug%
+    echo.- Saved Games location: %location_savedGames%>>%log_debug%
+    echo.- Searches location:    %location_searches%>>%log_debug%
+    echo.- Videos location:      %location_videos%>>%log_debug%
     call :log_append_line %log_debug% 1
-    %loadingUpdate% 2
+    %loadingUpdate% 3
   ) else %loadingUpdate% 6
 ) else %loadingUpdate% 9
 
@@ -125,7 +119,7 @@ echo.%language_initialization%
 
 
 if "%setting_language%" NEQ "english" if "%setting_language%" NEQ "russian" if "%setting_language%" NEQ "ukrainian" call :menu_language force
-%language_import%
+call :language_import
 
 if "%setting_logging%" == "true" (
   echo.Language: %setting_language%>>%log%
@@ -466,7 +460,7 @@ set /p command=%inputBS%   %language_input%
 if "%command%" == "0" ( set command= & exit /b )
 if "%command%" == "1" (
   call :menu_language
-  %language_import%
+  call :language_import
 )
 
 if "%command%" == "2" if "%setting_logging%" == "true" (
@@ -567,6 +561,16 @@ for %%i in (files\databases files\logs files\reports) do (
   md %%i>nul 2>nul
 )
 for /f "delims=" %%i in ('dir /b temp') do if "%%i" NEQ "counter_loading" del /q "temp\%%i"
+exit /b
+
+
+
+
+
+
+
+:language_import
+for /f "eol=# tokens=1,* delims==" %%i in (languages\%setting_language%.lang) do set language_%%i=%%j
 exit /b
 
 
