@@ -5,8 +5,8 @@ input=^(^>^) Enter the number of command ^>
 
 
 
-initialization=  ^(^!^) Initialization...
-initialization2=  ^(^!^) Initialization run...
+initialization=  ^(^i^) Initialization...
+initialization2=  ^(^i^) Initialization run...
 
 info_language=  ^(i^) Language: English
 
@@ -14,8 +14,8 @@ info_lastLoggedOnUserSID=  ^(i^) Last Logged User ^(SID^): %lastLoggedOnUserSID%
 info_processorArchitecture=  ^(i^) System Bit Rate: %processor_architecture%.
 info_mozillaFirefoxUserProfile=  ^(i^) Mozilla Firefox Profile id: %mozillaFirefoxUserProfile%.
 
-info_registryBackup_creating=  ^(^!^) Creating a backup copy of the Windows registry...
-info_registryBackup_created=  ^(^!^) Backup copy of the Windows registry is succesfully created^!
+info_registryBackup_creating=  ^(^i^) Creating a backup copy of the Windows registry...
+info_registryBackup_created=  ^(^i^) Backup copy of the Windows registry is succesfully created^!
 
 
 
@@ -100,8 +100,17 @@ menu_update_channel04=  ^(3^) Nightly ^(all new features, not stable^)
 
 
 
-databases_updating=  ^(i^) Updating virus databases. Please wait...
-databases_updated=  ^(i^) Virus databases updated^!
+databases_updating=  ^(i^) Updating databases...
+databases_updating_success=  ^(i^) Databases updated.
+
+databases_downloading=  ^(i^) Downloading databases...
+databases_downloading_success=  ^(i^) Databases downloaded.
+
+databases_unpacking=  ^(i^) Unpacking databases...
+databases_unpacking_success=  ^(i^) Databases unpacked.
+
+databases_rewriting=  ^(i^) Rewriting databases...
+databases_rewriting_success=  ^(i^) Databases rewrited.
 
 
 

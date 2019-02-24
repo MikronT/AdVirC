@@ -1,6 +1,7 @@
 %logo%
 echo.Updating virus databases>>%log%
 echo.%language_databases_updating%
+echo.
 
 
 
@@ -21,10 +22,13 @@ if "%1" == "import" (
 
 
 %loadingUpdate% 10
+echo.%language_databases_downloading%
 
 %module_wget% "https://drive.google.com/uc?export=download&id=1u1mKCVHfk3LS8zFJ97gxLQ9f_UsH_zsy" --output-document=temp\adVirCDatabases.zip
 if not exist temp\adVirCDatabases.zip ( call :error %language_module_wget_error% & exit /b )
 
+echo.%language_databases_downloading_success%
+echo.
 %module_sleep% 1
 %loadingUpdate% 15
 
@@ -36,6 +40,7 @@ if not exist temp\adVirCDatabases.zip ( call :error %language_module_wget_error%
 
 :unzip
 %loadingUpdate% 4
+echo.%language_databases_unpacking%
 
 rd /s /q files\databases>nul 2>>%log_debug%
 
@@ -51,6 +56,8 @@ if not exist files\databases\original\license.txt ( call :error %language_module
 
 del /q temp\adVirCDatabases.zip
 
+echo.%language_databases_unpacking_success%
+echo.
 %loadingUpdate% 4
 
 
@@ -58,6 +65,8 @@ del /q temp\adVirCDatabases.zip
 
 
 
+
+echo.%language_databases_rewriting%
 
 for /f "delims=" %%i in ('dir /a:d /b files\databases\original') do md files\databases\rewrited\%%i>nul 2>>%log_debug%
 
@@ -99,6 +108,9 @@ for /f "delims=" %%i in ('reg query HKU') do (
   if "!errorLevel!" == "0" echo.%%i>>files\databases\rewrited\dirs\keys.db
 )
 endlocal
+
+echo.%language_databases_rewriting_success%
+echo.
 %loadingUpdate% 2
 
 
@@ -107,7 +119,7 @@ endlocal
 
 
 
-echo.%language_databases_updated%
+echo.%language_databases_updating_success%
 %module_sleep% 3
 exit /b
 

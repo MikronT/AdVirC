@@ -20,7 +20,8 @@ set settings=files\settings.ini
 set module_moveFile=subroutines\modules\movefile.exe /accepteula
 set module_shortcut=subroutines\modules\shortcut.exe /a:c
 set module_unZip=subroutines\modules\unzip.exe -qq
-set module_wget=subroutines\modules\wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=1
+set module_wget=subroutines\modules\wget.exe --quiet --no-check-certificate --tries=1
+rem set module_wget=subroutines\modules\wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=1
 
 set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
 
