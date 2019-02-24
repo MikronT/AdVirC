@@ -21,8 +21,8 @@ set module_moveFile=subroutines\modules\movefile.exe /accepteula
 set module_shortcut=subroutines\modules\shortcut.exe /a:c
 set module_unZip=subroutines\modules\unzip.exe -qq
 set module_wget=subroutines\modules\wget.exe --quiet --no-check-certificate --tries=1
-rem set module_wget=subroutines\modules\wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=1
 
+set language_import=for /f "eol=# tokens=1,* delims==" %%i in (languages\%setting_language%.lang) do set language_%%i=%%j
 set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
 
 set cleaning_filesToRemove=temp\filesToRemove.db
@@ -50,11 +50,11 @@ for /f "tokens=1,2,* delims=." %%i in ("%date%") do set currentDate=%%k.%%j.%%i
 
 if "%key_skipFilesChecking%" NEQ "true" (
   for /f "delims=" %%i in (files\fileList.db) do if not exist "%%i" call echo.%%i>>temp\corruptedFilesList.db
-  for /f "delims=" %%i in (files\fileList.db) do if not exist "%%i" goto :corrupted
+  for /f "delims=" %%i in (files\fileList.db) do if not exist "%%i" goto :diagnostic
   if not exist "files\fileList.db" (
     echo.files\fileList.db>>temp\corruptedFilesList.db
     echo.and maybe others...>>temp\corruptedFilesList.db
-    goto :corrupted
+    goto :diagnostic
   )
 )
 %loadingUpdate% 3
@@ -80,26 +80,24 @@ if "%setting_logging%" == "true" (
   if exist "%log%" call :log_append_line %log% 3
   echo.Log ^| %versionName% ^| %currentDate%>>%log%
   echo.>>%log%
-  call :log_append_line %log% 1
+  echo.Operating System: %OS%>>%log%
+  echo.Current Directory: %cd%>>%log%
   %loadingUpdate% 3
 
   if "%setting_debug%" == "true" (
     if exist "%log_debug%" call :log_append_line %log_debug% 3
     echo.Debug Log ^| %versionName% ^| %versionCode% ^| %currentDate%>>%log_debug%
     echo.>>%log_debug%
-    echo.Operating System: %OS%>>%log_debug%
-    echo.Current Directory: %cd%>>%log_debug%
     echo.Current File Directory: %~dp0>>%log_debug%
     echo.User Profile Directory: %userProfile%>>%log_debug%
     echo.Processor Architecture: %processor_architecture%>>%log_debug%
-    echo.>>%log_debug%
     call :log_append_line %log_debug% 1
+    %loadingUpdate% 2
+
     echo.Running tasks:>>%log_debug%
-    echo.>>%log_debug%
     tasklist>>%log_debug%
-    echo.>>%log_debug%
     call :log_append_line %log_debug% 1
-    %loadingUpdate% 4
+    %loadingUpdate% 2
 
     echo.User Shell Folders:>>%log_debug%
     echo. - 3D Objects location:  %location_threeDObjects%>>%log_debug%
@@ -114,6 +112,7 @@ if "%setting_logging%" == "true" (
     echo. - Saved Games location: %location_savedGames%>>%log_debug%
     echo. - Searches location:    %location_searches%>>%log_debug%
     echo. - Videos location:      %location_videos%>>%log_debug%
+    call :log_append_line %log_debug% 1
     %loadingUpdate% 2
   ) else %loadingUpdate% 6
 ) else %loadingUpdate% 9
@@ -126,7 +125,12 @@ echo.%language_initialization%
 
 
 if "%setting_language%" NEQ "english" if "%setting_language%" NEQ "russian" if "%setting_language%" NEQ "ukrainian" call :menu_language force
-call :language_import
+%language_import%
+
+if "%setting_logging%" == "true" (
+  echo.Language: %setting_language%>>%log%
+  call :log_append_line %log% 1
+)
 %loadingUpdate% 3
 
 
@@ -173,18 +177,11 @@ if exist "%appData%\Mozilla\Firefox\Profiles" (
   if "%setting_reports_collect%" == "true" echo.%mozillaFirefoxUserProfile%>files\reports\mozillaFirefoxUserProfile.rpt
   call echo.%language_info_mozillaFirefoxUserProfile%
 )
-%loadingUpdate% 1
+%loadingUpdate% 2
 
 
 
 call echo.%language_info_processorArchitecture%
-%loadingUpdate% 1
-
-
-
-echo.>>%log%
-echo.>>%log%
-echo.>>%log%
 %loadingUpdate% 1
 %module_sleep% 1
 goto :menu_main
@@ -214,6 +211,7 @@ goto :menu_main
 
 
 :menu_language
+if "%1" NEQ "force" for %%i in (%log% %log_debug%) do echo.[Language Menu]>>%%i
 set command=
 %logo%
 echo.%language_menu_language01%
@@ -249,6 +247,7 @@ exit /b
 
 
 :menu_main
+for %%i in (%log% %log_debug%) do echo.[Main Menu]>>%%i
 set command=
 %logo%
 %loadingUpdate% reset
@@ -301,6 +300,7 @@ goto :menu_main
 
 
 :menu_cleaning
+for %%i in (%log% %log_debug%) do echo.[Cleaning Menu]>>%%i
 set command=
 %logo%
 echo.%language_menu_cleaning01%
@@ -329,6 +329,7 @@ goto :menu_cleaning
 
 
 :menu_databases_import
+for %%i in (%log% %log_debug%) do echo.[Databases Import Menu]>>%%i
 set command=
 %logo%
 echo.%language_menu_databases_import01%
@@ -369,6 +370,7 @@ goto :menu_databases_import
 
 
 :menu_report
+for %%i in (%log% %log_debug%) do echo.[Report Menu]>>%%i
 set command=
 %logo%
 echo.%language_menu_report01%
@@ -397,6 +399,7 @@ goto :menu_report
 
 
 :menu_settings
+for %%i in (%log% %log_debug%) do echo.[Settings Menu]>>%%i
 set command=
 %logo%
 echo.%language_menu_settings01%
@@ -463,7 +466,7 @@ set /p command=%inputBS%   %language_input%
 if "%command%" == "0" ( set command= & exit /b )
 if "%command%" == "1" (
   call :menu_language
-  call :language_import
+  %language_import%
 )
 
 if "%command%" == "2" if "%setting_logging%" == "true" (
@@ -527,6 +530,7 @@ goto :menu_settings
 
 
 :menu_update_channel
+for %%i in (%log% %log_debug%) do echo.[Update Channel Menu]>>%%i
 set command=
 %logo%
 call echo.%language_menu_update_channel01%
@@ -581,17 +585,6 @@ exit /b
 
 
 
-:language_import
-for /f "eol=# tokens=1,* delims==" %%i in (languages\%setting_language%.lang) do set language_%%i=%%j
-echo.Language: %setting_language%>>%log%
-exit /b
-
-
-
-
-
-
-
 :settings_save
 echo.# %appName% Settings #>%settings%
 echo.debug=%setting_debug%>>%settings%
@@ -634,11 +627,16 @@ exit /b
 
 
 
-:corrupted
+:diagnostic
+for %%i in (%log% %log_debug%) do (
+  echo.[Diagnostic]>>%%i
+  echo.Missing Files:>>%%i
+  for /f "delims=" %%i in (temp\corruptedFilesList.db) do echo.- %%i>>%%i
+)
 %logo%
 %loadingUpdate% reset
 color 0c
-echo.  ^(^!^) %appName% Diagnostics: Program Corrupted^!
+echo.  ^(^!^) %appName% Diagnostic: Program Corrupted^!
 echo.  ^(^!^) Reinstall %appName%^!
 echo.
 echo.  ^(i^) Files missing:
@@ -656,10 +654,11 @@ set /p command=%inputBS%   ^(^>^) Enter the number of command ^>
 
 if "%command%" == "0" call :exit
 if "%command%" == "1" (
+  for %%i in (%log% %log_debug%) do echo.Starting without some files>>%%i
   start starter.cmd --key_wait=5 --key_skipFilesChecking=true
   call :exit
 )
-goto :corrupted
+goto :diagnostic
 
 
 

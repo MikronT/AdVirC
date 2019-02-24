@@ -1,11 +1,12 @@
 call design\logLogo.cmd
+for %%i in (%log% %log_debug%) do echo.[Deleting]>>%%i
 setlocal EnableDelayedExpansion
 
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.[Cleaning]>>%%i
-  echo.   [Services]>>%%i
+  echo.  [Processes]>>%%i
+  echo.    [Services]>>%%i
 )
 
 
@@ -19,7 +20,7 @@ for /f "delims=" %%i in (%cleaning_services%) do (
     set /a counter_deletedObjects+=1
   ) else (
     echo.sc delete "%%i">>%cleaning_rebootScript%
-    echo.[Error] Not Found/Access Denied - %%i>>%log%
+    echo.    [Error] Not Found/Access Denied - %%i>>%log%
     echo.[Error] [Service] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
@@ -28,9 +29,10 @@ for /f "delims=" %%i in (%cleaning_services%) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.   [Tasks]>>%%i
+  echo.  [Processes]>>%%i
+  echo.    [Tasks]>>%%i
 )
 
 
@@ -44,7 +46,7 @@ for /f "delims=" %%i in (%cleaning_tasks%) do (
     set /a counter_deletedObjects+=1
   ) else (
     echo.schtasks /delete /tn "%%i" /f>>%cleaning_rebootScript%
-    echo.[Error] Not Found/Access Denied - %%i>>%log%
+    echo.    [Error] Not Found/Access Denied - %%i>>%log%
     echo.[Error] [Task] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
@@ -53,9 +55,10 @@ for /f "delims=" %%i in (%cleaning_tasks%) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.   [Processes]>>%%i
+  echo.  [Processes]>>%%i
+  echo.    [Processes]>>%%i
 )
 
 
@@ -68,7 +71,7 @@ for /f "delims=" %%i in (%cleaning_processes%) do (
     echo.[Process] %%i
     set /a counter_deletedObjects+=1
   ) else (
-    echo.[Error] Not Found/Access Denied - %%i>>%log%
+    echo.    [Error] Not Found/Access Denied - %%i>>%log%
     echo.[Error] [Process] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
@@ -77,9 +80,9 @@ for /f "delims=" %%i in (%cleaning_processes%) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.   [Registry]>>%%i
+  echo.  [Registry]>>%%i
 )
 
 
@@ -93,7 +96,7 @@ for /f "delims=" %%i in (%cleaning_registry%) do (
     set /a counter_deletedObjects+=1
   ) else (
     echo.reg delete "%%i" /f>>%cleaning_rebootScript%
-    echo.[Error] Not Found/Access Denied - %%i>>%log%
+    echo.    [Error] Not Found/Access Denied - %%i>>%log%
     echo.[Error] [Key] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
@@ -102,9 +105,10 @@ for /f "delims=" %%i in (%cleaning_registry%) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.   [Temp]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [Temp]>>%%i
 )
 
 
@@ -116,7 +120,7 @@ for /f "delims=" %%i in (%cleaning_temp%) do (
     if exist "%%i" (
       dir /a:-d /s /b "%%i">>%cleaning_filesToRemove%
       echo.rd /s /q "%%i\">>%cleaning_rebootScript%
-      echo.[Error] Access Denied - %%i>>%log%
+      echo.    [Error] Access Denied - %%i>>%log%
       echo.[Error] [Temp] %%i
     ) else (
       echo.    - %%i>>%log%
@@ -124,7 +128,7 @@ for /f "delims=" %%i in (%cleaning_temp%) do (
       set /a counter_deletedObjects+=1
     )
   ) else (
-    echo.[Warning] Not Found - %%i>>%log%
+    echo.    [Warning] Not Found - %%i>>%log%
     echo.[Warning] [Temp] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
@@ -134,9 +138,10 @@ for /f "delims=" %%i in (%cleaning_temp%) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.   [Folders]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [Folders]>>%%i
 )
 
 
@@ -147,7 +152,7 @@ for /f "delims=" %%i in (%cleaning_folders%) do (
     if exist "%%i" (
       dir /a:-d /s /b "%%i">>%cleaning_filesToRemove%
       echo.rd /s /q "%%i">>%cleaning_rebootScript%
-      echo.[Error] Access Denied - %%i>>%log%
+      echo.    [Error] Access Denied - %%i>>%log%
       echo.[Error] [Folder] %%i
     ) else (
       echo.    - %%i>>%log%
@@ -155,7 +160,7 @@ for /f "delims=" %%i in (%cleaning_folders%) do (
       set /a counter_deletedObjects+=1
     )
   ) else (
-    echo.[Warning] Not Found - %%i>>%log%
+    echo.    [Warning] Not Found - %%i>>%log%
     echo.[Warning] [Folder] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
@@ -164,9 +169,10 @@ for /f "delims=" %%i in (%cleaning_folders%) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.   [Files]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [Files]>>%%i
 )
 
 
@@ -177,7 +183,7 @@ for /f "delims=" %%i in (%cleaning_files%) do (
     if exist "%%i" (
       echo.%%i>>%cleaning_filesToRemove%
       echo.del /q "%%i">>%cleaning_rebootScript%
-      echo.[Error] Access Denied - %%i>>%log%
+      echo.    [Error] Access Denied - %%i>>%log%
       echo.[Error] [File] %%i
     ) else (
       echo.    - %%i>>%log%
@@ -185,7 +191,7 @@ for /f "delims=" %%i in (%cleaning_files%) do (
       set /a counter_deletedObjects+=1
     )
   ) else (
-    echo.[Warning] Not Found - %%i>>%log%
+    echo.    [Warning] Not Found - %%i>>%log%
     echo.[Warning] [File] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
@@ -194,9 +200,10 @@ for /f "delims=" %%i in (%cleaning_files%) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.   [Shortcuts]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [Shortcuts]>>%%i
 )
 
 
@@ -207,7 +214,7 @@ for /f "delims=" %%i in (%cleaning_shortcuts%) do (
     if exist "%%i" (
       echo.%%i>>%cleaning_filesToRemove%
       echo.del /q "%%i">>%cleaning_rebootScript%
-      echo.[Error] Access Denied - %%i>>%log%
+      echo.    [Error] Access Denied - %%i>>%log%
       echo.[Error] [Shortcut] %%i
     ) else (
       echo.    - %%i>>%log%
@@ -215,7 +222,7 @@ for /f "delims=" %%i in (%cleaning_shortcuts%) do (
       set /a counter_deletedObjects+=1
     )
   ) else (
-    echo.[Warning] Not Found - %%i>>%log%
+    echo.    [Warning] Not Found - %%i>>%log%
     echo.[Warning] [Shortcut] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
@@ -224,9 +231,10 @@ for /f "delims=" %%i in (%cleaning_shortcuts%) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.   [Extensions]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [Extensions]>>%%i
 )
 
 
@@ -237,7 +245,7 @@ for /f "delims=" %%i in (%cleaning_extensions%) do (
     if exist "%%i" (
       dir /a:-d /s /b "%%i">>%cleaning_filesToRemove%
       echo.rd /s /q "%%i">>%cleaning_rebootScript%
-      echo.[Error] Access Denied - %%i>>%log%
+      echo.    [Error] Access Denied - %%i>>%log%
       echo.[Error] [Extension] %%i
     ) else (
       echo.    - %%i>>%log%
@@ -245,7 +253,7 @@ for /f "delims=" %%i in (%cleaning_extensions%) do (
       set /a counter_deletedObjects+=1
     )
   ) else (
-    echo.[Warning] Not Found - %%i>>%log%
+    echo.    [Warning] Not Found - %%i>>%log%
     echo.[Warning] [Extension] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
@@ -254,7 +262,7 @@ for /f "delims=" %%i in (%cleaning_extensions%) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
 )
 

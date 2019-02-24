@@ -1,11 +1,12 @@
 call design\logLogo.cmd
+for %%i in (%log% %log_debug%) do echo.[Scanning]>>%%i
 setlocal EnableDelayedExpansion
 
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.[Processes]>>%%i
-  echo.   [Services]>>%%i
+  echo.  [Processes]>>%%i
+  echo.    [Services]>>%%i
 )
 
 
@@ -22,10 +23,10 @@ for /f "delims=" %%i in (files\databases\rewrited\processes\services.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[Processes]>>%%i
-  echo.   [Tasks]>>%%i
+  echo.  [Processes]>>%%i
+  echo.    [Tasks]>>%%i
 )
 
 
@@ -42,10 +43,10 @@ for /f "delims=" %%i in (files\databases\rewrited\processes\tasks.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[Processes]>>%%i
-  echo.   [Processes]>>%%i
+  echo.  [Processes]>>%%i
+  echo.    [Processes]>>%%i
 )
 
 
@@ -62,10 +63,10 @@ for /f "delims=" %%i in (files\databases\rewrited\processes\processes.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[Registry]>>%%i
-  echo.   [Classes]>>%%i
+  echo.  [Registry]>>%%i
+  echo.    [Classes]>>%%i
 )
 
 
@@ -84,10 +85,10 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\classes.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[Registry]>>%%i
-  echo.   [Keys]>>%%i
+  echo.  [Registry]>>%%i
+  echo.    [Keys]>>%%i
 )
 
 
@@ -106,10 +107,10 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\keys.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [Temp]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [Temp]>>%%i
 )
 
 
@@ -129,10 +130,10 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\temp.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [AppData Folders]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [AppData Folders]>>%%i
 )
 
 
@@ -154,10 +155,10 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [Program Folders]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [Program Folders]>>%%i
 )
 
 
@@ -179,10 +180,10 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [System Drive Folders]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [System Drive Folders]>>%%i
 )
 
 
@@ -202,10 +203,10 @@ for /f "delims=" %%i in (files\databases\rewrited\folders\systemDrive.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [User Profile Folders]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [User Profile Folders]>>%%i
 )
 
 
@@ -227,10 +228,10 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\userProfile.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [Windows Directory Folders]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [Windows Directory Folders]>>%%i
 )
 
 
@@ -250,10 +251,10 @@ for /f "delims=" %%i in (files\databases\rewrited\folders\winDir.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [AppData Files]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [AppData Files]>>%%i
 )
 
 
@@ -275,10 +276,10 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [Program Files]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [Program Files]>>%%i
 )
 
 
@@ -300,10 +301,10 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [System Drive Files]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [System Drive Files]>>%%i
 )
 
 
@@ -323,10 +324,10 @@ for /f "delims=" %%i in (files\databases\rewrited\files\systemDrive.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [Windows Directory Files]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [Windows Directory Files]>>%%i
 )
 
 
@@ -346,10 +347,10 @@ for /f "delims=" %%i in (files\databases\rewrited\files\winDir.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [Shortcuts]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [Shortcuts]>>%%i
 )
 
 
@@ -371,10 +372,10 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\shortcuts.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [Browsers Shortcuts]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [Browsers Shortcuts]>>%%i
 )
 
 
@@ -396,10 +397,10 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\browsersShortcuts.db) do 
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [AppData Extensions]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [AppData Extensions]>>%%i
 )
 
 
@@ -421,10 +422,10 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [AppData Browsers Extensions]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [AppData Browsers Extensions]>>%%i
 )
 
 
@@ -448,10 +449,10 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [Program Files Extensions]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [Program Files Extensions]>>%%i
 )
 
 
@@ -473,10 +474,10 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.[File System]>>%%i
-  echo.   [Program Files Browsers Extensions]>>%%i
+  echo.  [File System]>>%%i
+  echo.    [Program Files Browsers Extensions]>>%%i
 )
 
 
@@ -500,7 +501,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
 
 
 for %%i in (%log% %log_debug%) do (
-  echo.Script Completed>>%%i
+  echo.  Script Completed>>%%i
   for /l %%z in (3,-1,1) do echo.>>%%i
 )
 

@@ -1,7 +1,7 @@
 %logo%
-echo.Updating virus databases>>%log%
 echo.%language_databases_updating%
 echo.
+for %%i in (%log% %log_debug%) do echo.[Databases]>>%%i
 
 
 
@@ -101,10 +101,10 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 setlocal EnableDelayedExpansion
 for /f "delims=" %%i in ('reg query HKU') do (
   set errorLevel=
-  reg query %%i\Software\Classes>nul
+  reg query %%i\Software\Classes>nul 2>>%log_debug%
   if "!errorLevel!" == "0" echo.%%i\Software\Classes>>files\databases\rewrited\dirs\classes.db
   set errorLevel=
-  reg query %%i>nul
+  reg query %%i>nul 2>>%log_debug%
   if "!errorLevel!" == "0" echo.%%i>>files\databases\rewrited\dirs\keys.db
 )
 endlocal
