@@ -20,13 +20,59 @@ AdVirC (AdVirC Removal Tool or AdVirC RT) is a free **open source** console util
 
 *Developed only for Windows 10, but may be downgraded for Windows 7, 8 and 8.1 too.*
 
+Utility is in Pre-Alpha-period, so there may be false positives and program errors. You must be patient.
+
+
+
+## Features
+- Interface
+  - simple and understandable
+  - dynamically updating loading window (you can close it if you want)
+  - temporary files cleaning
+- Databases
+  - downloading
+  - import from desktop
+- Settings
+  - settings saving
+  - autoupdate for program and databases
+  - update channel
+- Report collecting and autosending
+
+
+
+## Keys
+| Key Name          | Option         | Description                           |
+|-------------------|----------------|---------------------------------------|
+| wait              | [integer] 5    | start delay in seconds (default is 0) |
+| skipFilesChecking | [boolean] true | to skip startup files checking        |
+
+### How to run AdVirC with specified keys?
+Run Command Prompt as admin and enter the command like this:
+
+```
+"[Path]\starter.cmd" --key_[KeyName]=[Options] --key_[KeyName2]=[Options]
+
+"C:\Users\Admin\Desktop\AdVirC\starter.cmd" --key_wait=20 --key_skipFilesChecking=true
+```
+
+| Syntax marking | Description                   |
+|----------------|-------------------------------|
+| Path           | Path to the starter.cmd file  |
+| KeyName        | Key name from the first table |
+| Options        | Options from the first table  |
+
+<!--
+| ...            | Other keys and options        |
+-->
+
+Note: you can combine the keys as you wish.
+
 
 
 ## Disclaimer
 - I can not guarantee 100% treatment. I must "catch" the virus, and only after the research the virus enters the database. It takes some time.
 - *I am not responsible for any damage to your computer.* I am not responsible for any lost files or data.
 - Everything that removes the utility is considered to be viral and adware. If you need it, download again.
-- Utility is in Pre-Alpha-period, so there may be false positives and program errors. You must be patient.
 - It is my hobby, not work.
 
 
