@@ -257,16 +257,16 @@ echo.
 echo.
 echo.
 if "%setting_firstRun%" == "true" (
-  echo.%language_menu_main_firstRun01%
-  echo.%language_menu_main_firstRun02%
-  echo.%language_menu_main_firstRun03%
-  echo.%language_menu_main_firstRun04%
+  echo.%language_menu_main_firstRunTip%
+  echo.%language_menu_main_tipOfTheDay01%
+  echo.%language_menu_main_tipOfTheDay02%
+  echo.%language_menu_main_tipOfTheDay03%
   echo.
   echo.
   echo.
   set setting_firstRun=false
-call :settings_save
 )
+call :settings_save
 set /p command=%inputBS%   %language_input%
 
 
