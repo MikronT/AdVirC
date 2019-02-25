@@ -230,7 +230,6 @@ if "%command%" == "1" set setting_language=english
 if "%command%" == "2" set setting_language=russian
 if "%command%" == "3" set setting_language=ukrainian
 
-call :settings_save
 set command=
 exit /b
 
@@ -266,7 +265,7 @@ if "%setting_firstRun%" == "true" (
   echo.
   echo.
   set setting_firstRun=false
-  call :settings_save
+call :settings_save
 )
 set /p command=%inputBS%   %language_input%
 
@@ -632,11 +631,13 @@ exit /b
 
 
 :diagnostic
-for %%i in (%log% %log_debug%) do (
-  echo.[Diagnostic]>>%%i
-  echo.Missing Files:>>%%i
-  for /f "delims=" %%i in (temp\corruptedFilesList.db) do echo.- %%i>>%%i
-)
+set log_diagnostic="files\logs\%appName%_%currentDate%_log_diagnostic.log"
+md files\logs>nul 2>nul
+
+echo.[Diagnostic]>>%log_diagnostic%
+echo.Missing Files:>>%log_diagnostic%
+for /f "delims=" %%i in (temp\corruptedFilesList.db) do echo.- %%i>>%log_diagnostic%
+
 %logo%
 %loadingUpdate% reset
 color 0c
@@ -658,7 +659,7 @@ set /p command=%inputBS%   ^(^>^) Enter the number of command ^>
 
 if "%command%" == "0" call :exit
 if "%command%" == "1" (
-  for %%i in (%log% %log_debug%) do echo.Starting without some files>>%%i
+  echo.Starting without some files>>%log_diagnostic%
   start starter.cmd --key_wait=5 --key_skipFilesChecking=true
   call :exit
 )
