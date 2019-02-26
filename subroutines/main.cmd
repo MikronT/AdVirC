@@ -42,7 +42,10 @@ set cleaning_temp=temp\cleaning\temp.db
 
 
 for /f %%a in ('"prompt $h & echo on & for %%b in (1) do rem"') do set inputBS=%%a
-for /f "tokens=1,2,* delims=." %%i in ("%date%") do set currentDate=%%k.%%j.%%i
+
+set currentDate=%date%
+for /f "tokens=2 delims= " %%i in ("%currentDate%") do set currentDate=%%i
+for /f "tokens=1-3 delims=/." %%i in ("%currentDate%") do set currentDate=%%k.%%j.%%i
 %loadingUpdate% 2
 
 
@@ -612,9 +615,9 @@ exit /b
 :settings_apply
 if "%setting_logging%" == "true" (
   md files\logs>nul 2>nul
-  set log="files\logs\%appName%_%currentDate%_log.log"
+  set log=files\logs\%appName%_%currentDate%_log.log
   if "%setting_debug%" == "true" (
-    set log_debug="files\logs\%appName%_%currentDate%_log_debug.log"
+    set log_debug=files\logs\%appName%_%currentDate%_log_debug.log
   ) else set log_debug=nul
 ) else (
   set log=nul
@@ -631,7 +634,7 @@ exit /b
 
 
 :diagnostic
-set log_diagnostic="files\logs\%appName%_%currentDate%_log_diagnostic.log"
+set log_diagnostic=files\logs\%appName%_%currentDate%_log_diagnostic.log
 md files\logs>nul 2>nul
 
 echo.[Diagnostic]>>%log_diagnostic%
