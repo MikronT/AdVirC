@@ -33,7 +33,7 @@ for %%i in (%log% %log_debug%) do (
 
 for /f "delims=" %%i in (files\databases\rewrited\processes\tasks.db) do (
   set errorLevel=
-  schtasks /query /tn "%%i">>%log_debug%
+  schtasks /query /tn "%%i">nul 2>>%log_debug%
   if "!errorLevel!" == "" call :cleaning_scanning_subroutine Task %cleaning_tasks% %%i
   if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Task %cleaning_tasks% %%i
   if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i>>%log_debug%
@@ -76,7 +76,7 @@ for %%i in (%log% %log_debug%) do (
 for /f "delims=" %%i in (files\databases\rewrited\dirs\classes.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\registry\classes.db) do (
     set errorLevel=
-    reg query "%%i\%%j">>%log_debug%
+    reg query "%%i\%%j">nul 2>>%log_debug%
     if "!errorLevel!" == "" call :cleaning_scanning_subroutine Class %cleaning_registry% %%i\%%j
     if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Class %cleaning_registry% %%i\%%j
     if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i\%%j>>%log_debug%
@@ -98,7 +98,7 @@ for %%i in (%log% %log_debug%) do (
 for /f "delims=" %%i in (files\databases\rewrited\dirs\keys.db) do (
   for /f "delims=" %%j in (files\databases\rewrited\registry\keys.db) do (
     set errorLevel=
-    reg query "%%i\%%j">>%log_debug%
+    reg query "%%i\%%j">nul 2>>%log_debug%
     if "!errorLevel!" == "" call :cleaning_scanning_subroutine Key %cleaning_registry% %%i\%%j
     if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Key %cleaning_registry% %%i\%%j
     if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i\%%j>>%log_debug%
