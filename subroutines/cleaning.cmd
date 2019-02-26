@@ -3,7 +3,7 @@ for %%i in (%log% %log_debug%) do echo.[Cleaning]>>%%i
 
 if not exist files\databases\rewrited\dirs\temp.db (
   echo.%language_databases_notExist_error%
-  %module_sleep% 3
+  %module_sleep% 1
   exit /b
 )
 
@@ -30,7 +30,7 @@ echo.[Editing]>>%log%
 setlocal EnableDelayedExpansion
 for %%d in (services tasks processes registry temp folders files shortcuts extensions) do (
   set temp_editingFile=cleaning_%%d
-  call start /wait notepad "%~dp0!!temp_editingFile!!"
+  if exist "temp\cleaning\!!temp_editingFile!!" call start /wait notepad "%cd%temp\cleaning\!!temp_editingFile!!"
 )
 endlocal
 
