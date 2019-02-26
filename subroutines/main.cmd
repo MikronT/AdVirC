@@ -222,7 +222,7 @@ if "%1" NEQ "force" (
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %language_input%
+set /p command=%inputBS%  %language_input%
 
 
 
@@ -270,7 +270,7 @@ if "%setting_firstRun%" == "true" (
   set setting_firstRun=false
 )
 call :settings_save
-set /p command=%inputBS%   %language_input%
+set /p command=%inputBS%  %language_input%
 
 
 
@@ -306,7 +306,7 @@ echo.%language_back%
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %language_input%
+set /p command=%inputBS%  %language_input%
 
 
 
@@ -343,7 +343,7 @@ if "%databases_import_error%" == "1" (
   echo.
   echo.
 )
-set /p command=%inputBS%   %language_input%
+set /p command=%inputBS%  %language_input%
 
 
 
@@ -376,7 +376,7 @@ echo.%language_back%
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %language_input%
+set /p command=%inputBS%  %language_input%
 
 
 
@@ -455,7 +455,7 @@ echo.%language_back%
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %language_input%
+set /p command=%inputBS%  %language_input%
 
 
 
@@ -538,7 +538,7 @@ echo.%language_back%
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %language_input%
+set /p command=%inputBS%  %language_input%
 
 
 
