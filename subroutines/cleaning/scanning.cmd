@@ -56,11 +56,9 @@ call :log_append_line %log_debug% 1
 
 
 for /f "delims=" %%i in (files\databases\rewrited\processes\processes.db) do (
-  set errorLevel=
-  tasklist /fi "imagename eq %%i">>%log_debug%
-  if "!errorLevel!" == "" call :cleaning_scanning_subroutine Process %cleaning_processes% %%i
-  if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Process %cleaning_processes% %%i
-  if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i>>%log_debug%
+  for /f "skip=3 delims= " %%j in ('tasklist /fi "imagename eq %%i"') do if "%%j" == "%%i" (
+    call :cleaning_scanning_subroutine Process %cleaning_processes% %%i
+  ) else echo.Not Found - %%i>>%log_debug%
   echo.!counter_foundObjects!>temp\counter_foundObjects
 )
 
