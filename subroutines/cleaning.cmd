@@ -7,13 +7,20 @@ if not exist files\databases\rewrited\dirs\temp.db (
   exit /b
 )
 
+md temp\cleaning>nul 2>nul
+
 set counter_foundObjects=0
 set counter_deletedObjects=0
 
+setlocal EnableDelayedExpansion
+for %%d in (rebootScript filesToRemove services tasks processes registry temp folders files shortcuts extensions) do (
+  set temp_editingFile=cleaning_%%d
+  call echo.>"!!temp_editingFile!!"
+)
+endlocal
+
 echo.@echo off>%cleaning_rebootScript%
 echo.chcp 65001>>%cleaning_rebootScript%
-
-echo.>%cleaning_filesToRemove%
 
 
 
