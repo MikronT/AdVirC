@@ -63,6 +63,13 @@ menu_databases_import02=  ^(1^) Запустити імпорт
 
 
 
+menu_report01=  Звіт
+menu_report02=  ^(1^) Відправити звіт
+
+
+
+
+
 menu_settings01=  Налаштування                                                Оновлення
 menu_settings03=  ^(1^) Мова:
 menu_settings04=                                  ^(4^) Канал оновлення:

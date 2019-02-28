@@ -63,6 +63,13 @@ menu_databases_import02=  ^(1^) Run import
 
 
 
+menu_report01=  Reports
+menu_report02=  ^(1^) Send report
+
+
+
+
+
 menu_settings01=  Settings                                                    Update
 menu_settings03=  ^(1^) Language:
 menu_settings04=                              ^(4^) Update channel:
