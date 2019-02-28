@@ -30,9 +30,9 @@ if "%key_wait%" NEQ "0" %module_sleep% %key_wait%
 
 
 if exist temp rd /s /q temp
-
-md files\backups\registry>nul 2>nul
 md temp>nul 2>nul
+
+if not exist files\backups md files\backups>nul 2>nul
 
 %loadingUpdate% reset
 

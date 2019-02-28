@@ -64,7 +64,7 @@ if "%key_skipFilesChecking%" NEQ "true" (
 
 
 for /f "eol=# tokens=1,* delims==" %%i in (languages\english.lang) do set language_%%i=%%j
-if exist %settings% for /f "eol=# delims=" %%i in (%settings%) do set setting_%%i
+if exist "%settings%" for /f "eol=# delims=" %%i in (%settings%) do set setting_%%i
 for /f "eol=# tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
   set location_%%i=%%k
   for /f "skip=2 tokens=2,* delims= " %%l in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v %%j') do set location_%%i=%%m
@@ -148,6 +148,7 @@ echo.%language_info_language%
 
 if "%setting_firstRun%" == "true" (
   echo.%language_info_registryBackup_creating%
+  if not exist files\backups\registry md files\backups\registry>nul 2>nul
   rem reg export HKCR files\backups\registry\HKCR.reg /y>>%log_debug%
   %loadingUpdate% 3
   rem reg export HKLM files\backups\registry\HKLM.reg /y>>%log_debug%
@@ -244,9 +245,10 @@ exit /b
 
 :menu_main
 for %%i in (%log% %log_debug%) do echo.[Main Menu]>>%%i
+%loadingUpdate% reset
+call :settings_save
 set command=
 %logo%
-%loadingUpdate% reset
 echo.%language_menu_main01%
 echo.%language_menu_main02%
 echo.%language_menu_main03%
@@ -269,7 +271,6 @@ if "%setting_firstRun%" == "true" (
   echo.
   set setting_firstRun=false
 )
-call :settings_save
 set /p command=%inputBS%  %language_input%
 
 
@@ -559,10 +560,11 @@ exit /b
 
 :clearTemp
 for %%i in (files\databases files\logs files\reports) do (
-  if exist %%i rd /s /q %%i
-  md %%i>nul 2>nul
+  if exist "%%i" rd /s /q "%%i"
 )
 for /f "delims=" %%i in ('dir /b temp') do if "%%i" NEQ "counter_loading" del /q "temp\%%i"
+
+call :settings_apply
 exit /b
 
 
@@ -592,6 +594,8 @@ exit /b
 
 
 :settings_save
+if not exist files\settings md files\settings>nul 2>nul
+
 echo.# %appName% Settings #>%settings%
 echo.debug=%setting_debug%>>%settings%
 echo.firstRun=%setting_firstRun%>>%settings%
@@ -614,7 +618,7 @@ exit /b
 
 :settings_apply
 if "%setting_logging%" == "true" (
-  md files\logs>nul 2>nul
+  if not exist files\logs md files\logs>nul 2>nul
   set log=files\logs\%appName%_%currentDate%_log.log
   if "%setting_debug%" == "true" (
     set log_debug=files\logs\%appName%_%currentDate%_log_debug.log
@@ -624,7 +628,7 @@ if "%setting_logging%" == "true" (
   set log_debug=nul
 )
 
-if "%setting_reports_collect%" == "true" md files\reports>nul 2>nul
+if "%setting_reports_collect%" == "true" if not exist files\reports md files\reports>nul 2>nul
 exit /b
 
 
@@ -635,7 +639,7 @@ exit /b
 
 :diagnostic
 set log_diagnostic=files\logs\%appName%_%currentDate%_log_diagnostic.log
-md files\logs>nul 2>nul
+if not exist files\logs md files\logs>nul 2>nul
 
 echo.[Diagnostic]>>%log_diagnostic%
 echo.Missing Files:>>%log_diagnostic%

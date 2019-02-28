@@ -7,7 +7,7 @@ if not exist files\databases\rewrited\dirs\temp.db (
   exit /b
 )
 
-md temp\cleaning>nul 2>nul
+if not exist temp\cleaning md temp\cleaning>nul 2>nul
 
 set counter_foundObjects=0
 set counter_deletedObjects=0
