@@ -15,7 +15,7 @@ set setting_update_databases_remind=true
 set setting_update_program_auto=true
 set setting_update_program_remind=true
 
-set settings=files\settings.ini
+set settings=files\settings\settings.ini
 
 set module_moveFile=subroutines\modules\movefile.exe /accepteula
 set module_shortcut=subroutines\modules\shortcut.exe /a:c
