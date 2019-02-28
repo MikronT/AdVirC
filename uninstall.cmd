@@ -1,5 +1,9 @@
+@echo off
+chcp 65001>nul
+
 %~d0
 cd %~dp0
+
 set uninstallDirectory=%cd%
 
 
@@ -9,11 +13,12 @@ set command=command
 call design\mainLogo.cmd
 for /f %%a in ('"prompt $h & echo on & for %%b in (1) do rem"') do set inputBS=%%a
 
-echo.  ^(i^) Uninstall Directory: %cd%
+echo.  ^(i^) Uninstall directory: %cd%
 echo.
 echo.  ^(^?^) Do you want to uninstall AdVirC^?
-echo.      ^(0^) Cancel
 echo.      ^(1^) Uninstall
+echo.
+echo.      ^(0^) Cancel
 echo.
 echo.
 echo.
