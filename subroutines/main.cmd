@@ -80,7 +80,7 @@ call :settings_apply
 
 if "%setting_logging%" == "true" (
   if exist "%log%" call :log_append_delimiter %log%
-  
+
   echo.Log ^| %versionName% ^| %currentDate%>>%log%
   echo.>>%log%
   echo.Operating System: %os%>>%log%
@@ -596,9 +596,9 @@ exit /b
 
 
 :log_append_delimiter
-for /l %%z in (5,-1,1) do echo.>>%1
-for /l %%z in (3,-1,1) do echo.======================================================================================================================>>%1
-for /l %%z in (5,-1,1) do echo.>>%1
+for /l %%z in (7,-1,1) do echo.>>%1
+for /l %%z in (3,-1,1) do echo.::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::>>%1
+for /l %%z in (7,-1,1) do echo.>>%1
 exit /b
 
 
