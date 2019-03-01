@@ -5,7 +5,7 @@
 
 set setting_debug=true
 set setting_firstRun=true
-set setting_language=language
+set setting_language=default
 set setting_logging=true
 set setting_reports_autoSend=true
 set setting_reports_collect=true
@@ -39,14 +39,16 @@ set cleaning_temp=temp\cleaning\temp.db
 
 
 
-
-
-for /f %%a in ('"prompt $h & echo on & for %%b in (1) do rem"') do set inputBS=%%a
+for /f %%i in ('"prompt $h & echo on & for %%j in (1) do rem"') do set inputBS=%%i
 
 set currentDate=%date%
 for /f "tokens=2 delims= " %%i in ("%currentDate%") do set currentDate=%%i
 for /f "tokens=1-3 delims=/." %%i in ("%currentDate%") do set currentDate=%%k.%%j.%%i
 %loadingUpdate% 2
+
+
+
+
 
 
 
@@ -63,9 +65,10 @@ if "%key_skipFilesChecking%" NEQ "true" (
 
 
 
-for /f "eol=# tokens=1,* delims==" %%i in (languages\english.lang) do set language_%%i=%%j
 for /f "skip=2 tokens=1,2,3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ReleaseId') do set windowsVersionID=%%k
+call :language_import
 if exist "%settings%" for /f "eol=# delims=" %%i in (%settings%) do set setting_%%i
+
 for /f "eol=# tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
   set location_%%i=%%k
   for /f "skip=2 tokens=2,* delims= " %%l in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v %%j') do set location_%%i=%%m
@@ -228,7 +231,7 @@ if "%1" NEQ "force" (
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %language_input%
+call :input
 
 
 
@@ -276,7 +279,7 @@ if "%setting_firstRun%" == "true" (
   echo.
   set setting_firstRun=false
 )
-set /p command=%inputBS%   %language_input%
+call :input
 
 
 
@@ -312,7 +315,7 @@ echo.%language_back%
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %language_input%
+call :input
 
 
 
@@ -349,7 +352,7 @@ if "%databases_import_error%" == "1" (
   echo.
   echo.
 )
-set /p command=%inputBS%   %language_input%
+call :input
 
 
 
@@ -382,7 +385,7 @@ echo.%language_back%
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %language_input%
+call :input
 
 
 
@@ -461,7 +464,7 @@ echo.%language_back%
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %language_input%
+call :input
 
 
 
@@ -544,7 +547,7 @@ echo.%language_back%
 echo.
 echo.
 echo.
-set /p command=%inputBS%   %language_input%
+call :input
 
 
 
@@ -579,7 +582,21 @@ exit /b
 
 
 :language_import
-for /f "eol=# tokens=1,* delims==" %%i in (languages\%setting_language%.lang) do set language_%%i=%%j
+if "%setting_language%" == "default" (
+  for /f "eol=# tokens=1,* delims==" %%i in (languages\english.lang) do set language_%%i=%%j
+) else for /f "eol=# tokens=1,* delims==" %%i in (languages\%setting_language%.lang) do set language_%%i=%%j
+exit /b
+
+
+
+
+
+
+
+:input
+if "%windowsVersionID%" == "1809" (
+  set /p command=%inputBS%  %language_input%
+) else set /p command=%inputBS%   %language_input%
 exit /b
 
 
