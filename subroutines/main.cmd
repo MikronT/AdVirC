@@ -79,15 +79,17 @@ call :settings_apply
 
 
 if "%setting_logging%" == "true" (
-  if exist "%log%" call :log_append_line %log% 3
+  if exist "%log%" call :log_append_delimiter %log%
+  
   echo.Log ^| %versionName% ^| %currentDate%>>%log%
   echo.>>%log%
-  echo.Operating System: %OS%>>%log%
+  echo.Operating System: %os%>>%log%
   echo.Current Directory: %cd%>>%log%
   %loadingUpdate% 3
 
   if "%setting_debug%" == "true" (
-    if exist "%log_debug%" call :log_append_line %log_debug% 3
+    if exist "%log_debug%" call :log_append_delimiter %log_debug%
+
     echo.Debug Log ^| %versionName% ^| %versionCode% ^| %currentDate%>>%log_debug%
     echo.>>%log_debug%
     echo.Current File Directory: %~dp0>>%log_debug%
@@ -585,6 +587,18 @@ exit /b
 
 :log_append_line
 for /l %%z in (%2,-1,1) do echo.======================================================================================================================>>%1
+exit /b
+
+
+
+
+
+
+
+:log_append_delimiter
+for /l %%z in (5,-1,1) do echo.>>%1
+for /l %%z in (3,-1,1) do echo.======================================================================================================================>>%1
+for /l %%z in (5,-1,1) do echo.>>%1
 exit /b
 
 
