@@ -15,7 +15,7 @@ set counter_deletedObjects=0
 setlocal EnableDelayedExpansion
 for %%d in (rebootScript filesToRemove services tasks processes registry temp folders files shortcuts extensions) do (
   set temp_editingFile=cleaning_%%d
-  call echo.>"!!temp_editingFile!!"
+  call echo.>"temp\cleaning\!!temp_editingFile!!"
 )
 endlocal
 
