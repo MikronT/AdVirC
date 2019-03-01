@@ -8,7 +8,7 @@ input=^(^>^) Введіть номер команди ^>
 initialization=  ^(^i^) Ініціліазація...
 initialization2=  ^(^i^) Ініціліазація запуску...
 
-info_language=  ^(i^) Мова: Українська
+info_language=  ^(i^) Мова:
 
 info_windowsVersionID=  ^(i^) Ідентифікатор версії Windows: %windowsVersionID%.
 info_lastLoggedOnUserSID=  ^(i^) Останній зареєстрований користувач ^(SID^): %lastLoggedOnUserSID%.

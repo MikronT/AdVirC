@@ -8,7 +8,7 @@ input=^(^>^) Enter the number of command ^>
 initialization=  ^(^i^) Initialization...
 initialization2=  ^(^i^) Initialization run...
 
-info_language=  ^(i^) Language: English
+info_language=  ^(i^) Language:
 
 info_windowsVersionID=  ^(i^) Windows version id: %windowsVersionID%.
 info_lastLoggedOnUserSID=  ^(i^) Last logged user ^(SID^): %lastLoggedOnUserSID%.

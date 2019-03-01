@@ -40,11 +40,12 @@ set cleaning_temp=temp\cleaning\temp.db
 
 
 for /f %%i in ('"prompt $h & echo on & for %%j in (1) do rem"') do set inputBS=%%i
+for /f "skip=2 tokens=1,2,3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ReleaseId') do set windowsVersionID=%%k
 
 set currentDate=%date%
 for /f "tokens=2 delims= " %%i in ("%currentDate%") do set currentDate=%%i
 for /f "tokens=1-3 delims=/." %%i in ("%currentDate%") do set currentDate=%%k.%%j.%%i
-%loadingUpdate% 2
+%loadingUpdate% 3
 
 
 
@@ -65,15 +66,13 @@ if "%key_skipFilesChecking%" NEQ "true" (
 
 
 
-for /f "skip=2 tokens=1,2,3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ReleaseId') do set windowsVersionID=%%k
 call :language_import
 if exist "%settings%" for /f "eol=# delims=" %%i in (%settings%) do set setting_%%i
-
 for /f "eol=# tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
   set location_%%i=%%k
   for /f "skip=2 tokens=2,* delims= " %%l in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v %%j') do set location_%%i=%%m
 )
-%loadingUpdate% 4
+%loadingUpdate% 3
 
 
 
@@ -148,7 +147,14 @@ set stringBuilder_string=  ^(i^) %versionName%
 if "%setting_debug%" == "true" call %stringBuilder_build% ^(Version Code: %versionCode%^)
 echo.%stringBuilder_string%
 
-echo.%language_info_language%
+set stringBuilder_string=%language_info_language%
+if "%setting_language%" == "english" (
+  call %stringBuilder_build% %language_menu_setting_language_english%
+) else if "%setting_language%" == "russian" (
+  call %stringBuilder_build% %language_menu_setting_language_russian%
+) else call %stringBuilder_build% %language_menu_setting_language_ukrainian%
+echo.%stringBuilder_string%
+
 call echo.%language_info_windowsVersionID%
 %loadingUpdate% 2
 
