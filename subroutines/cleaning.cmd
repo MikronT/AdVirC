@@ -12,12 +12,7 @@ if not exist temp\cleaning md temp\cleaning>nul 2>nul
 set counter_foundObjects=0
 set counter_deletedObjects=0
 
-setlocal EnableDelayedExpansion
-for %%d in (rebootScript filesToRemove services tasks processes registry temp folders files shortcuts extensions) do (
-  set temp_editingFile=cleaning_%%d
-  call echo.>"temp\cleaning\!!temp_editingFile!!"
-)
-endlocal
+for %%i in (%cleaning_filesToRemove% %cleaning_rebootScript% %cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" del /q "%%i"
 
 echo.@echo off>%cleaning_rebootScript%
 echo.chcp 65001>>%cleaning_rebootScript%
@@ -34,12 +29,7 @@ start /wait subroutines\cleaning\scanning.cmd
 
 
 echo.[Editing]>>%log%
-setlocal EnableDelayedExpansion
-for %%d in (services tasks processes registry temp folders files shortcuts extensions) do (
-  set temp_editingFile=cleaning_%%d
-  if exist "temp\cleaning\!!temp_editingFile!!" call start /wait notepad "%cd%temp\cleaning\!!temp_editingFile!!"
-)
-endlocal
+for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
 
 
 
@@ -49,7 +39,7 @@ start /wait subroutines\cleaning\rules.cmd
 
 
 
-for /f "delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" ""
+for /f "delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" "">nul
 
 
 

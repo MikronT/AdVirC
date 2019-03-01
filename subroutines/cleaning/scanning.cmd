@@ -48,10 +48,10 @@ for %%i in (%log% %log_debug%) do (
   echo.  [Processes]>>%%i
   echo.    [Processes]>>%%i
 )
-call :log_append_line %log_debug% 1
-echo.    All Running Processes:>>%log_debug%
-tasklist>>%log_debug%
-call :log_append_line %log_debug% 1
+rem call :log_append_line %log_debug% 1
+rem echo.    All Running Processes:>>%log_debug%
+rem tasklist>>%log_debug%
+rem call :log_append_line %log_debug% 1
 
 
 
@@ -386,8 +386,8 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\browsersShortcuts.db) do 
   for /f "tokens=1,2,3* delims=;" %%j in (files\databases\rewrited\files\browsersShortcuts.db) do (
     if exist "%%i\%%j.lnk" (
       md "files\reports\shortcuts\%%j">nul 2>nul
-      del /s /q "%%i\%%j.lnk">>%cleaning_deleteScript%
-      %module_shortcut% /f:"%%i\%%j.lnk" /t:"%%k" /i:"%%k" /w:"%%l">>%cleaning_deleteScript%
+      echo.del /s /q "%%i\%%j.lnk">>%cleaning_rebootScript%
+      echo.%module_shortcut% /f:"%%i\%%j.lnk" /t:"%%k" /i:"%%k" /w:"%%l">>%cleaning_rebootScript%
       echo.    - %%i\%%j.lnk>>%log%
       echo.[Browser Shortcut] %%i\%%j.lnk ^(can be overrided^)
     ) else (
@@ -523,9 +523,9 @@ exit
 
 :cleaning_scanning_subroutine
 for /f "tokens=1,2,* delims= " %%i in ("%*") do (
-  echo.%*>>%%j
+  echo.%%k>>%%j
   echo.    - %%k>>%log%
-  echo.[%%i] %%%k
+  echo.[%%i] %%k
 )
 set /a counter_foundObjects+=1
 exit /b
