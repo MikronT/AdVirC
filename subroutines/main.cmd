@@ -40,7 +40,7 @@ set cleaning_temp=temp\cleaning\temp.db
 
 
 for /f %%i in ('"prompt $h & echo on & for %%j in (1) do rem"') do set inputBS=%%i
-for /f "skip=2 tokens=1,2,3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ReleaseId') do set windowsVersionID=%%k
+for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ReleaseId') do set windowsVersionID=%%i
 
 set currentDate=%date%
 for /f "tokens=2 delims= " %%i in ("%currentDate%") do set currentDate=%%i

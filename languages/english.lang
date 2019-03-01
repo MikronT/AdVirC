@@ -156,5 +156,5 @@ cleaning_taskCreating_error=  ^(^!^) Error while creating task for reboot^!
 databases_import_error=  ^(^!^) Error^! No databases^!
 databases_notExist_error=  ^(^!^) First of all update the virus databases^!
 databases_update_error=  ^(^!^) Databases are not updated!
-module_unZip_error=  ^(^!^) Extract error^! Please, reload %appName%^!
-module_wget_error=  ^(^!^) Download error^! Check your Internet connection^!
+module_unZip_error=^(^!^) Extract error^! Please, reload %appName%^!
+module_wget_error=^(^!^) Download error^! Check your Internet connection^!

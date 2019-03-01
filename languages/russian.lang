@@ -153,5 +153,5 @@ cleaning_taskCreating_error=  ^(^!^) Ошибка при создании зад
 databases_import_error=  ^(^!^) Ошибка^! Нет баз данных^!
 databases_notExist_error=  ^(^!^) Сначала обновите вирусные базы^!
 databases_update_error=  ^(^!^) Базы данных не были обновлены^!
-module_unZip_error=  ^(^!^) Ошибка распаковки^! Пожалуйста, перезапустите %appName%^!
-module_wget_error=  ^(^!^) Ошибка загрузки^! Проверьте подключение к Интернету^!
+module_unZip_error=^(^!^) Ошибка распаковки^! Пожалуйста, перезапустите %appName%^!
+module_wget_error=^(^!^) Ошибка загрузки^! Проверьте подключение к Интернету^!
