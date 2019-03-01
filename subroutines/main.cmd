@@ -64,6 +64,7 @@ if "%key_skipFilesChecking%" NEQ "true" (
 
 
 for /f "eol=# tokens=1,* delims==" %%i in (languages\english.lang) do set language_%%i=%%j
+for /f "skip=2 tokens=1,2,3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ReleaseId') do set windowsVersionID=%%k
 if exist "%settings%" for /f "eol=# delims=" %%i in (%settings%) do set setting_%%i
 for /f "eol=# tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
   set location_%%i=%%k
@@ -84,6 +85,7 @@ if "%setting_logging%" == "true" (
   echo.Log ^| %versionName% ^| %currentDate%>>%log%
   echo.>>%log%
   echo.Operating System: %os%>>%log%
+  echo.Windows Version ID: %windowsVersionID%>>%log%
   echo.Current Directory: %cd%>>%log%
   %loadingUpdate% 3
 
@@ -144,6 +146,7 @@ if "%setting_debug%" == "true" call %stringBuilder_build% ^(Version Code: %versi
 echo.%stringBuilder_string%
 
 echo.%language_info_language%
+call echo.%language_info_windowsVersionID%
 %loadingUpdate% 2
 
 

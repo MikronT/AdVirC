@@ -10,6 +10,7 @@ initialization2=  ^(^i^) Инициализацыя запуска...
 
 info_language=  ^(i^) Язык: Русский
 
+info_windowsVersionID=  ^(i^) Идентификатор версии Windows: %windowsVersionID%.
 info_lastLoggedOnUserSID=  ^(i^) Последний зарегистрированный пользователь ^(SID^): %lastLoggedOnUserSID%.
 info_processorArchitecture=  ^(i^) Разрядность операционной системы: %processor_architecture%.
 info_mozillaFirefoxUserProfile=  ^(i^) Идентификатор профиля Mozilla Firefox: %mozillaFirefoxUserProfile%.
