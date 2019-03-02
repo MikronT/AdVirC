@@ -510,6 +510,7 @@ for %%i in (%log% %log_debug%) do (
 
 
 endlocal
+echo.>temp\return_scanningCompleted
 %module_sleep% 3
 exit
 

@@ -23,18 +23,73 @@ echo.chcp 65001>>%cleaning_rebootScript%
 
 
 
-echo.[Scanning]>>%log%
-start /wait subroutines\cleaning\scanning.cmd
+start subroutines\cleaning\scanning.cmd
 
 
 
-echo.[Editing]>>%log%
+:scanning_cycle
+%logo%
+call echo.%language_cleaning_foundObjects%
+
+set counter_lastFoundObjects=%counter_foundObjects%
+goto :scanning_checkEngine
+
+
+
+:scanning_checkEngine
+for /f "delims=" %%i in (temp\counter_foundObjects) do set counter_foundObjects=%%i
+
+if exist temp\return_scanningCompleted goto :editing
+if "%counter_foundObjects%" NEQ "%counter_lastFoundObjects%" goto :scanning_cycle
+
+%module_sleep% 1
+goto :scanning_checkEngine
+
+
+
+
+
+
+
+:editing
+for %%i in (%log% %log_debug%) do echo.[Editing]>>%%i
 for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
 
 
 
-echo.[Cleaning]>>%log%
-start /wait subroutines\cleaning\deleting.cmd
+
+
+
+
+start subroutines\cleaning\deleting.cmd
+
+
+
+:deleting_cycle
+%logo%
+call echo.%language_cleaning_deletedObjects%
+
+set counter_lastDeletedObjects=%counter_deletedObjects%
+goto :deleting_checkEngine
+
+
+
+:deleting_checkEngine
+for /f "delims=" %%i in (temp\counter_deletedObjects) do set counter_deletedObjects=%%i
+
+if exist temp\return_deletingCompleted goto :rules
+if "%counter_deletedObjects%" NEQ "%counter_lastDeletedObjects%" goto :deleting_cycle
+
+%module_sleep% 1
+goto :deleting_checkEngine
+
+
+
+
+
+
+
+:rules
 start /wait subroutines\cleaning\rules.cmd
 
 

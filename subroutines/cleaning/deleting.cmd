@@ -269,5 +269,6 @@ for %%i in (%log% %log_debug%) do (
 
 
 endlocal
+echo.>temp\return_deletingCompleted
 %module_sleep% 3
 exit
