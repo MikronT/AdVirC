@@ -16,7 +16,7 @@ for /f "delims=" %%i in (files\databases\rewrited\processes\services.db) do (
   sc query "%%i">>%log_debug%
   if "!errorLevel!" == "" call :cleaning_scanning_subroutine Service %cleaning_services% %%i
   if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Service %cleaning_services% %%i
-  rem if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i>>%log_debug%
+  if "%setting_logging_advanced%" == "true" if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i>>%log_debug%
   echo.!counter_foundObjects!>temp\counter_foundObjects
 )
 
@@ -36,7 +36,7 @@ for /f "delims=" %%i in (files\databases\rewrited\processes\tasks.db) do (
   schtasks /query /tn "%%i">nul 2>>%log_debug%
   if "!errorLevel!" == "" call :cleaning_scanning_subroutine Task %cleaning_tasks% %%i
   if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Task %cleaning_tasks% %%i
-  rem if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i>>%log_debug%
+  if "%setting_logging_advanced%" == "true" if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i>>%log_debug%
   echo.!counter_foundObjects!>temp\counter_foundObjects
 )
 
@@ -48,17 +48,19 @@ for %%i in (%log% %log_debug%) do (
   echo.  [Processes]>>%%i
   echo.    [Processes]>>%%i
 )
-rem call :log_append_line %log_debug% 1
-rem echo.    All Running Processes:>>%log_debug%
-rem tasklist>>%log_debug%
-rem call :log_append_line %log_debug% 1
+rem if "%setting_debug%" == "true" (
+rem   call :log_append_line %log_debug% 1
+rem   echo.    All Running Processes:>>%log_debug%
+rem   tasklist>>%log_debug%
+rem   call :log_append_line %log_debug% 1
+rem )
 
 
 
 for /f "delims=" %%i in (files\databases\rewrited\processes\processes.db) do (
   for /f "skip=3 delims= " %%j in ('tasklist /fi "imagename eq %%i"') do if "%%j" == "%%i" (
     call :cleaning_scanning_subroutine Process %cleaning_processes% %%i
-  ) else rem echo.Not Found - %%i>>%log_debug%
+  ) else if "%setting_logging_advanced%" == "true" echo.Not Found - %%i>>%log_debug%
   echo.!counter_foundObjects!>temp\counter_foundObjects
 )
 
@@ -79,7 +81,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\classes.db) do (
     reg query "%%i\%%j">nul 2>>%log_debug%
     if "!errorLevel!" == "" call :cleaning_scanning_subroutine Class %cleaning_registry% %%i\%%j
     if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Class %cleaning_registry% %%i\%%j
-    rem if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i\%%j>>%log_debug%
+    if "%setting_logging_advanced%" == "true" if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i\%%j>>%log_debug%
     echo.!counter_foundObjects!>temp\counter_foundObjects
   )
 )
@@ -101,7 +103,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\keys.db) do (
     reg query "%%i\%%j">nul 2>>%log_debug%
     if "!errorLevel!" == "" call :cleaning_scanning_subroutine Key %cleaning_registry% %%i\%%j
     if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Key %cleaning_registry% %%i\%%j
-    rem if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i\%%j>>%log_debug%
+    if "%setting_logging_advanced%" == "true" if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i\%%j>>%log_debug%
     echo.!counter_foundObjects!>temp\counter_foundObjects
   )
 )
@@ -124,7 +126,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\temp.db) do (
     echo.[Temp] %%i
     set /a counter_foundObjects+=1
   ) else (
-    rem echo.Not Found - %%i>>%log_debug%
+    if "%setting_logging_advanced%" == "true" echo.Not Found - %%i>>%log_debug%
   )
   echo.!counter_foundObjects!>temp\counter_foundObjects
 )
@@ -148,7 +150,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
       echo.[Folder] %%i\%%j
       set /a counter_foundObjects+=1
     ) else (
-      rem echo.Not Found - %%i\%%j>>%log_debug%
+      if "%setting_logging_advanced%" == "true" echo.Not Found - %%i\%%j>>%log_debug%
     )
     echo.!counter_foundObjects!>temp\counter_foundObjects
   )
@@ -173,7 +175,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
       echo.[Folder] %%i\%%j
       set /a counter_foundObjects+=1
     ) else (
-      rem echo.Not Found - %%i\%%j>>%log_debug%
+      if "%setting_logging_advanced%" == "true" echo.Not Found - %%i\%%j>>%log_debug%
     )
     echo.!counter_foundObjects!>temp\counter_foundObjects
   )
@@ -197,7 +199,7 @@ for /f "delims=" %%i in (files\databases\rewrited\folders\systemDrive.db) do (
     echo.[Folder] %systemDrive%\%%i
     set /a counter_foundObjects+=1
   ) else (
-    rem echo.Not Found - %systemDrive%\%%i>>%log_debug%
+    if "%setting_logging_advanced%" == "true" echo.Not Found - %systemDrive%\%%i>>%log_debug%
   )
   echo.!counter_foundObjects!>temp\counter_foundObjects
 )
@@ -221,7 +223,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\userProfile.db) do (
       echo.[Folder] %%i\%%j
       set /a counter_foundObjects+=1
     ) else (
-      rem echo.Not Found - %%i\%%j>>%log_debug%
+      if "%setting_logging_advanced%" == "true" echo.Not Found - %%i\%%j>>%log_debug%
     )
     echo.!counter_foundObjects!>temp\counter_foundObjects
   )
@@ -245,7 +247,7 @@ for /f "delims=" %%i in (files\databases\rewrited\folders\winDir.db) do (
     echo.[Folder] %winDir%\%%i
     set /a counter_foundObjects+=1
   ) else (
-    rem echo.Not Found - %winDir%\%%i>>%log_debug%
+    if "%setting_logging_advanced%" == "true" echo.Not Found - %winDir%\%%i>>%log_debug%
   )
   echo.!counter_foundObjects!>temp\counter_foundObjects
 )
@@ -269,7 +271,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
       echo.[File] %%i\%%j
       set /a counter_foundObjects+=1
     ) else (
-      rem echo.Not Found - %%i\%%j>>%log_debug%
+      if "%setting_logging_advanced%" == "true" echo.Not Found - %%i\%%j>>%log_debug%
     )
     echo.!counter_foundObjects!>temp\counter_foundObjects
   )
@@ -294,7 +296,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
       echo.[File] %%i\%%j
       set /a counter_foundObjects+=1
     ) else (
-      rem echo.Not Found - %%i\%%j>>%log_debug%
+      if "%setting_logging_advanced%" == "true" echo.Not Found - %%i\%%j>>%log_debug%
     )
     echo.!counter_foundObjects!>temp\counter_foundObjects
   )
@@ -318,7 +320,7 @@ for /f "delims=" %%i in (files\databases\rewrited\files\systemDrive.db) do (
     echo.[File] %systemDrive%\%%i
     set /a counter_foundObjects+=1
   ) else (
-    rem echo.Not Found - %systemDrive%\%%i>>%log_debug%
+    if "%setting_logging_advanced%" == "true" echo.Not Found - %systemDrive%\%%i>>%log_debug%
   )
   echo.!counter_foundObjects!>temp\counter_foundObjects
 )
@@ -341,7 +343,7 @@ for /f "delims=" %%i in (files\databases\rewrited\files\winDir.db) do (
     echo.[File] %winDir%\%%i
     set /a counter_foundObjects+=1
   ) else (
-    rem echo.Not Found - %winDir%\%%i>>%log_debug%
+    if "%setting_logging_advanced%" == "true" echo.Not Found - %winDir%\%%i>>%log_debug%
   )
   echo.!counter_foundObjects!>temp\counter_foundObjects
 )
@@ -365,7 +367,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\shortcuts.db) do (
       echo.[Shortcut] %%i\%%j
       set /a counter_foundObjects+=1
     ) else (
-      rem echo.Not Found - %%i\%%j>>%log_debug%
+      if "%setting_logging_advanced%" == "true" echo.Not Found - %%i\%%j>>%log_debug%
     )
     echo.!counter_foundObjects!>temp\counter_foundObjects
   )
@@ -391,7 +393,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\browsersShortcuts.db) do 
       echo.    - %%i\%%j.lnk>>%log%
       echo.[Browser Shortcut] %%i\%%j.lnk ^(can be overrided^)
     ) else (
-      rem echo.Not Found - %%i\%%j.lnk>>%log_debug%
+      if "%setting_logging_advanced%" == "true" echo.Not Found - %%i\%%j.lnk>>%log_debug%
     )
   )
 )
@@ -415,7 +417,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
       echo.[Extension] %%i\%%j
       set /a counter_foundObjects+=1
     ) else (
-      rem echo.Not Found - %%i\%%j>>%log_debug%
+      if "%setting_logging_advanced%" == "true" echo.Not Found - %%i\%%j>>%log_debug%
     )
     echo.!counter_foundObjects!>temp\counter_foundObjects
   )
@@ -441,7 +443,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
         echo.[Extension] %%i\%%j\%%k
         set /a counter_foundObjects+=1
       ) else (
-        rem echo.Not Found - %%i\%%j\%%k>>%log_debug%
+        if "%setting_logging_advanced%" == "true" echo.Not Found - %%i\%%j\%%k>>%log_debug%
       )
       echo.!counter_foundObjects!>temp\counter_foundObjects
     )
@@ -467,7 +469,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
       echo.[Extension] %%i\%%j
       set /a counter_foundObjects+=1
     ) else (
-      rem echo.Not Found - %%i\%%j>>%log_debug%
+      if "%setting_logging_advanced%" == "true" echo.Not Found - %%i\%%j>>%log_debug%
     )
     echo.!counter_foundObjects!>temp\counter_foundObjects
   )
@@ -493,7 +495,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
         echo.[Extension] %%i\%%j\%%k
         set /a counter_foundObjects+=1
       ) else (
-        rem echo.Not Found - %%i\%%j\%%k>>%log_debug%
+        if "%setting_logging_advanced%" == "true" echo.Not Found - %%i\%%j\%%k>>%log_debug%
       )
       echo.!counter_foundObjects!>temp\counter_foundObjects
     )

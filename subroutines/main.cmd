@@ -7,6 +7,7 @@ set setting_debug=true
 set setting_firstRun=true
 set setting_language=default
 set setting_logging=true
+set setting_logging_advanced=true
 set setting_reports_autoSend=true
 set setting_reports_collect=true
 set setting_update_channel=nightly
@@ -152,7 +153,9 @@ if "%setting_language%" == "english" (
   call %stringBuilder_build% %language_menu_setting_language_english%
 ) else if "%setting_language%" == "russian" (
   call %stringBuilder_build% %language_menu_setting_language_russian%
-) else call %stringBuilder_build% %language_menu_setting_language_ukrainian%
+) else if "%setting_language%" == "ukrainian" (
+  call %stringBuilder_build% %language_menu_setting_language_ukrainian%
+) else call %stringBuilder_build% UNKNOWN
 echo.%stringBuilder_string%
 
 call echo.%language_info_windowsVersionID%
@@ -440,7 +443,7 @@ if "%setting_update_program_auto%" == "true" (
 echo.%stringBuilder_string%
 
 set stringBuilder_string=%language_menu_settings07%
-if "%setting_debug%" == "true" (
+if "%setting_logging_advanced%" == "true" (
   call %stringBuilder_build% %language_menu_setting_enabled%
 ) else call %stringBuilder_build% %language_menu_setting_disabled%
 call %stringBuilder_build% %language_menu_settings08%
@@ -449,21 +452,29 @@ if "%setting_update_databases_auto%" == "true" (
 ) else call %stringBuilder_build% %language_menu_setting_disabled%
 echo.%stringBuilder_string%
 
+set stringBuilder_string=%language_menu_settings09%
+if "%setting_debug%" == "true" (
+  call %stringBuilder_build% %language_menu_setting_enabled%
+) else call %stringBuilder_build% %language_menu_setting_disabled%
+call %stringBuilder_build% %language_menu_settings10%
 if "%setting_update_program_remind%" == "true" (
-  call echo.%language_menu_settings10% %language_menu_setting_enabled%
-) else call echo.%language_menu_settings10% %language_menu_setting_disabled%
+  call %stringBuilder_build% %language_menu_setting_enabled%
+) else call %stringBuilder_build% %language_menu_setting_disabled%
+echo.%stringBuilder_string%
 
 if "%setting_update_databases_remind%" == "true" (
   call echo.%language_menu_settings12% %language_menu_setting_enabled%
 ) else call echo.%language_menu_settings12% %language_menu_setting_disabled%
 
-if "%setting_reports_collect%" == "true" (
-  call echo.%language_menu_settings13% %language_menu_setting_enabled%
-) else call echo.%language_menu_settings13% %language_menu_setting_disabled%
+echo.%language_menu_settings13%
 
-if "%setting_reports_autoSend%" == "true" (
+if "%setting_reports_collect%" == "true" (
   call echo.%language_menu_settings15% %language_menu_setting_enabled%
 ) else call echo.%language_menu_settings15% %language_menu_setting_disabled%
+
+if "%setting_reports_autoSend%" == "true" (
+  call echo.%language_menu_settings17% %language_menu_setting_enabled%
+) else call echo.%language_menu_settings17% %language_menu_setting_disabled%
 
 echo.
 echo.%language_back%
@@ -486,45 +497,51 @@ if "%command%" == "2" if "%setting_logging%" == "true" (
   set setting_logging=true
 ) else set setting_logging=true
 
-if "%command%" == "3" if "%setting_debug%" == "true" (
+if "%command%" == "3" if "%setting_logging_advanced%" == "true" (
+  set setting_logging_advanced=false
+) else if "%setting_logging_advanced%" == "false" (
+  set setting_logging_advanced=true
+) else set setting_logging_advanced=true
+
+if "%command%" == "4" if "%setting_debug%" == "true" (
   set setting_debug=false
 ) else if "%setting_debug%" == "false" (
   set setting_debug=true
 ) else set setting_debug=true
 
-if "%command%" == "4" call :menu_update_channel
+if "%command%" == "5" call :menu_update_channel
 
-if "%command%" == "5" if "%setting_update_program_auto%" == "true" (
+if "%command%" == "6" if "%setting_update_program_auto%" == "true" (
   set setting_update_program_auto=false
 ) else if "%setting_update_program_auto%" == "false" (
   set setting_update_program_auto=true
 ) else set setting_update_program_auto=true
 
-if "%command%" == "6" if "%setting_update_databases_auto%" == "true" (
+if "%command%" == "7" if "%setting_update_databases_auto%" == "true" (
   set setting_update_databases_auto=false
 ) else if "%setting_update_databases_auto%" == "false" (
   set setting_update_databases_auto=true
 ) else set setting_update_databases_auto=true
 
-if "%command%" == "7" if "%setting_update_program_remind%" == "true" (
+if "%command%" == "8" if "%setting_update_program_remind%" == "true" (
   set setting_update_program_remind=false
 ) else if "%setting_update_program_remind%" == "false" (
   set setting_update_program_remind=true
 ) else set setting_update_program_remind=true
 
-if "%command%" == "8" if "%setting_update_databases_remind%" == "true" (
+if "%command%" == "9" if "%setting_update_databases_remind%" == "true" (
   set setting_update_databases_remind=false
 ) else if "%setting_update_databases_remind%" == "false" (
   set setting_update_databases_remind=true
 ) else set setting_update_databases_remind=true
 
-if "%command%" == "9" if "%setting_reports_collect%" == "true" (
+if "%command%" == "#" if "%setting_reports_collect%" == "true" (
   set setting_reports_collect=false
 ) else if "%setting_reports_collect%" == "false" (
   set setting_reports_collect=true
 ) else set setting_reports_collect=true
 
-if "%command%" == "#" if "%setting_reports_autoSend%" == "true" (
+if /i "%command%" == "A" if "%setting_reports_autoSend%" == "true" (
   set setting_reports_autoSend=false
 ) else if "%setting_reports_autoSend%" == "false" (
   set setting_reports_autoSend=true
@@ -641,6 +658,7 @@ echo.debug=%setting_debug%>>%settings%
 echo.firstRun=%setting_firstRun%>>%settings%
 echo.language=%setting_language%>>%settings%
 echo.logging=%setting_logging%>>%settings%
+echo.logging_advanced=%setting_logging_advanced%>>%settings%
 echo.reports_autoSend=%setting_reports_autoSend%>>%settings%
 echo.reports_collect=%setting_reports_collect%>>%settings%
 echo.update_channel=%setting_update_channel%>>%settings%

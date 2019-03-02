@@ -73,15 +73,17 @@ menu_report02=  ^(1^) Відправити звіт
 
 menu_settings01=  Налаштування                                                Оновлення
 menu_settings03=  ^(1^) Мова:
-menu_settings04=                                  ^(4^) Канал оновлення:
+menu_settings04=                                  ^(5^) Канал оновлення:
 menu_settings05=  ^(2^) Логування:
-menu_settings06=                             ^(5^) Автооновлення %appName%:
-menu_settings07=  ^(3^) Налагодження:
-menu_settings08=                          ^(6^) Автооновлення баз даних:
-menu_settings10=                                                              ^(7^) Нагадувати про оновлення %appName%:
-menu_settings12=  Звіти                                                       ^(8^) Нагадувати про оновлення баз даних:
-menu_settings13=  ^(9^) Збір звітів:
-menu_settings15=  ^(#^) Автовідправка звітів:
+menu_settings06=                             ^(6^) Автооновлення %appName%:
+menu_settings07=  ^(3^) Расширенное логирование:
+menu_settings08=               ^(7^) Автооновлення баз даних:
+menu_settings09=  ^(4^) Налагодження:
+menu_settings10=                          ^(8^) Нагадувати про оновлення %appName%:
+menu_settings12=                                                              ^(9^) Нагадувати про оновлення баз даних:
+menu_settings13=  Звіти
+menu_settings15=  ^(#^) Збір звітів:
+menu_settings17=  ^(A^) Автовідправка звітів:
 
 menu_setting_disabled=вимкнено       
 menu_setting_enabled=увімкнено      
