@@ -37,7 +37,7 @@ goto :scanning_checkEngine
 
 
 :scanning_checkEngine
-for /f "delims=" %%i in (temp\counter_foundObjects) do set counter_foundObjects=%%i
+(for /f "delims=" %%i in (temp\counter_foundObjects) do set counter_foundObjects=%%i)>nul 2>nul
 
 if exist temp\return_scanningCompleted goto :editing
 if "%counter_foundObjects%" NEQ "%counter_lastFoundObjects%" goto :scanning_cycle
@@ -75,7 +75,7 @@ goto :deleting_checkEngine
 
 
 :deleting_checkEngine
-for /f "delims=" %%i in (temp\counter_deletedObjects) do set counter_deletedObjects=%%i
+(for /f "delims=" %%i in (temp\counter_deletedObjects) do set counter_deletedObjects=%%i)>nul 2>nul
 
 if exist temp\return_deletingCompleted goto :rules
 if "%counter_deletedObjects%" NEQ "%counter_lastDeletedObjects%" goto :deleting_cycle

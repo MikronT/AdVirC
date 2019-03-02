@@ -79,7 +79,7 @@ goto :checkEngine
 
 
 :checkEngine
-for /f "delims=" %%i in (temp\counter_loading) do set counter_loading=%%i
+(for /f "delims=" %%i in (temp\counter_loading) do set counter_loading=%%i)>nul 2>nul
 
 if "%counter_loading%" == "stop" exit
 if "%counter_loading%" NEQ "%counter_lastLoading%" goto :cycle
