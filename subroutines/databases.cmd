@@ -105,9 +105,27 @@ for /f "delims=" %%i in ('reg query HKU') do (
   set errorLevel=
   reg query %%i\Software\Classes>nul 2>>%log_debug%
   if "!errorLevel!" == "0" echo.%%i\Software\Classes>>files\databases\rewrited\dirs\classes.db
+
+  set errorLevel=
+  reg query %%i\Software\Classes\Software\Classes>nul 2>>%log_debug%
+  if "!errorLevel!" == "0" echo.%%i\Software\Classes\Software\Classes>>files\databases\rewrited\dirs\classes.db
+
+  set errorLevel=
+  reg query %%i\Software\Software\Classes>nul 2>>%log_debug%
+  if "!errorLevel!" == "0" echo.%%i\Software\Software\Classes>>files\databases\rewrited\dirs\classes.db
+
+
   set errorLevel=
   reg query %%i>nul 2>>%log_debug%
   if "!errorLevel!" == "0" echo.%%i>>files\databases\rewrited\dirs\keys.db
+
+  set errorLevel=
+  reg query %%i\Software>nul 2>>%log_debug%
+  if "!errorLevel!" == "0" echo.%%i\Software>>files\databases\rewrited\dirs\keys.db
+
+  set errorLevel=
+  reg query %%i\Software\Classes>nul 2>>%log_debug%
+  if "!errorLevel!" == "0" echo.%%i\Software\Classes>>files\databases\rewrited\dirs\keys.db
 )
 endlocal
 
