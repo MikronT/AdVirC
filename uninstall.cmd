@@ -34,7 +34,7 @@ timeout /nobreak /t 1 >nul
 if exist files\backups\consoleSettingsBackup.reg reg import files\backups\consoleSettingsBackup.reg 2>nul
 
 for /f "skip=2 tokens=2,* delims= " %%i in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v Desktop') do set location_desktop=%%j
-del /q "%location_desktop%\AdVirC.lnk"
+if exist "%location_desktop%\AdVirC.lnk" del /q "%location_desktop%\AdVirC.lnk"
 
 
 

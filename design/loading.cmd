@@ -10,7 +10,7 @@ set counter_loading=0
 
 
 
-:loadingCycle
+:cycle
 set /a counter_percents=%counter_loading%*2
 title %appName% ^| Loading: %counter_percents%%%...
 cls
@@ -72,7 +72,6 @@ if %counter_loading% == 50 echo.   ║  █████████████�
                            echo.   ╚══════════════════════════════════════════════════════╝
 
 set counter_lastLoading=%counter_loading%
-rem if %counter_loading% == 50 %loadingUpdate% reset
 goto :checkEngine
 
 
@@ -83,7 +82,7 @@ goto :checkEngine
 for /f "delims=" %%i in (temp\counter_loading) do set counter_loading=%%i
 
 if "%counter_loading%" == "stop" exit
-if "%counter_loading%" NEQ "%counter_lastLoading%" goto :loadingCycle
+if "%counter_loading%" NEQ "%counter_lastLoading%" goto :cycle
 
 %module_sleep% -m 250
 goto :checkEngine

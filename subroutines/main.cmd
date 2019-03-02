@@ -294,14 +294,14 @@ rem if "%command%" == "2" call :menu_exceptions
 if "%command%" == "3" call subroutines\databases.cmd
 if "%command%" == "4" call :menu_databases_import
 rem if "%command%" == "5" call :menu_help
-rem if "%command%" == "6" call :menu_report
+if "%command%" == "6" call :menu_report
 rem if "%command%" == "7" call :menu_about
 if "%command%" == "8" call :menu_settings
 if "%command%" == "9" call :clearTemp
 if "%command%" == "0" call :exit
 if "%command%" == "#" call uninstall.cmd
 
-if exist temp\rebootNow call :exit reboot
+if exist temp\return_rebootNow call :exit reboot
 goto :menu_main
 
 

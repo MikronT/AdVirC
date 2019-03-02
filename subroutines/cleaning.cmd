@@ -39,7 +39,15 @@ start /wait subroutines\cleaning\rules.cmd
 
 
 
+
+
+
+
 for /f "delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" "">nul
+
+
+
+
 
 
 
@@ -57,14 +65,7 @@ if "%errorLevel%" NEQ "0" echo.%language_cleaning_taskCreating_error%
 call echo.%language_cleaning_deletedObjects%
 
 echo.Objects deleted: %counter_deletedObjects%.>>%log%
-echo.>>%log%
-echo.>>%log%
-echo.>>%log%
-echo.========================================================================================================================>>%log%
-
-%module_sleep% 3
-
-
+echo.Objects found: %counter_foundObjects%.>>%log_debug%
 
 echo.%language_cleaning_reboot01%
 echo.%language_cleaning_reboot02%
@@ -74,5 +75,5 @@ pause>nul
 echo.%language_cleaning_reboot04%
 %module_sleep% 5
 
-echo.>temp\rebootNow
+echo.>temp\return_rebootNow
 exit /b
