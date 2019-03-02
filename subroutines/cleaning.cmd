@@ -39,7 +39,10 @@ goto :scanning_checkEngine
 :scanning_checkEngine
 (for /f "delims=" %%i in (temp\counter_foundObjects) do set counter_foundObjects=%%i)>nul 2>nul
 
-if exist temp\return_scanningCompleted goto :editing
+if exist temp\return_scanningCompleted (
+  echo.Objects found: %counter_foundObjects%.>>%log_debug%
+  goto :editing
+)
 if "%counter_foundObjects%" NEQ "%counter_lastFoundObjects%" goto :scanning_cycle
 
 %module_sleep% 1
@@ -67,6 +70,7 @@ start subroutines\cleaning\deleting.cmd
 
 :deleting_cycle
 %logo%
+call echo.%language_cleaning_foundObjects%
 call echo.%language_cleaning_deletedObjects%
 
 set counter_lastDeletedObjects=%counter_deletedObjects%
@@ -77,7 +81,10 @@ goto :deleting_checkEngine
 :deleting_checkEngine
 (for /f "delims=" %%i in (temp\counter_deletedObjects) do set counter_deletedObjects=%%i)>nul 2>nul
 
-if exist temp\return_deletingCompleted goto :rules
+if exist temp\return_deletingCompleted (
+  echo.Objects deleted: %counter_deletedObjects%.>>%log%
+  goto :rules
+)
 if "%counter_deletedObjects%" NEQ "%counter_lastDeletedObjects%" goto :deleting_cycle
 
 %module_sleep% 1
@@ -115,12 +122,6 @@ if "%errorLevel%" NEQ "0" echo.%language_cleaning_taskCreating_error%
 
 
 
-
-%logo%
-call echo.%language_cleaning_deletedObjects%
-
-echo.Objects deleted: %counter_deletedObjects%.>>%log%
-echo.Objects found: %counter_foundObjects%.>>%log_debug%
 
 echo.%language_cleaning_reboot01%
 echo.%language_cleaning_reboot02%
