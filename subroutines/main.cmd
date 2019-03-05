@@ -124,7 +124,7 @@ if "%setting_logging%" == "true" (
 
 
 echo.%language_initialization%
-%loadingUpdate% 2
+%loadingUpdate% 1
 
 
 
@@ -135,7 +135,7 @@ if "%setting_logging%" == "true" (
   echo.Language: %setting_language%>>%log%
   call :log_append_line %log% 1
 )
-%loadingUpdate% 3
+%loadingUpdate% 2
 
 
 
@@ -169,12 +169,13 @@ if "%setting_firstRun%" == "true" (
   rem reg export HKCR files\backups\registry\HKCR.reg /y>>%log_debug%
   %loadingUpdate% 3
   rem reg export HKLM files\backups\registry\HKLM.reg /y>>%log_debug%
-  %loadingUpdate% 5
-  rem reg export HKU  files\backups\registry\HKU.reg  /y>>%log_debug%
   %loadingUpdate% 6
+  rem reg export HKU  files\backups\registry\HKU.reg  /y>>%log_debug%
+  %loadingUpdate% 5
   rem reg export HKCC files\backups\registry\HKCC.reg /y>>%log_debug%
   %loadingUpdate% 1
   echo.%language_info_registryBackup_created%
+  set setting_firstRun=false
 ) else %loadingUpdate% 15
 
 
@@ -278,16 +279,17 @@ echo.%language_menu_main09%
 echo.
 echo.
 echo.
-if "%setting_firstRun%" == "true" (
-  echo.%language_menu_main_firstRunTip%
-  echo.%language_menu_main_tipOfTheDay01%
-  echo.%language_menu_main_tipOfTheDay02%
-  echo.%language_menu_main_tipOfTheDay03%
   echo.
   echo.
   echo.
-  set setting_firstRun=false
 )
+echo.%language_menu_main_firstRunTip%
+echo.%language_menu_main_tipOfTheDay01%
+echo.%language_menu_main_tipOfTheDay02%
+echo.%language_menu_main_tipOfTheDay03%
+echo.
+echo.
+echo.
 call :input
 
 
@@ -371,7 +373,7 @@ if "%command%" == "1" (
     set databases_import_error=1
     goto :menu_databases_import
   )
-  call subroutines\databases.cmd import
+  call subroutines\databases.cmd --key_import=true
   set command=
   exit /b
 )

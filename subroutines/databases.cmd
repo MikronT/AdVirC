@@ -1,7 +1,9 @@
 %logo%
+for %%i in (%log% %log_debug%) do echo.[Databases]>>%%i
 echo.%language_databases_updating%
 echo.
-for %%i in (%log% %log_debug%) do echo.[Databases]>>%%i
+
+for /f "tokens=1,* delims=- " %%i in ("%*") do set %%i
 
 
 
@@ -9,7 +11,8 @@ for %%i in (%log% %log_debug%) do echo.[Databases]>>%%i
 
 
 
-if "%1" == "import" (
+if "%key_import%" == "true" (
+  set key_import=false
   copy /y "%location_desktop%\adVirCDatabases.zip" temp>>%log_debug%
   %loadingUpdate% 25
   goto :unzip
