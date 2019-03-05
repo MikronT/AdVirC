@@ -27,7 +27,7 @@ if "%key_import%" == "true" (
 %loadingUpdate% 10
 echo.%language_databases_downloading%
 
-%module_wget% "https://drive.google.com/uc?export=download&id=1u1mKCVHfk3LS8zFJ97gxLQ9f_UsH_zsy" --output-document=temp\adVirCDatabases.zip
+%module_wget% "%url_databases%" --output-document=temp\adVirCDatabases.zip
 
 for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir temp\adVirCDatabases.zip') do if "%%i" == "1" set databases_lenghtReturn=%%j
 if "%databases_lenghtReturn%" == "0" ( call :error %language_module_wget_error% & exit /b )
@@ -143,7 +143,7 @@ echo.
 
 
 echo.%language_databases_updating_success%
-%module_sleep% 3
+%module_sleep% 1
 exit /b
 
 

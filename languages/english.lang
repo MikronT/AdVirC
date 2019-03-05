@@ -40,6 +40,9 @@ menu_main07=  ^(6^) Send report                                             ^(9^
 menu_main08=  ^(7^) About                                                   ^(0^) Exit
 menu_main09=                                                              ^(#^) Uninstall
 
+menu_main_update_databases_available=  ^(i^) Databases update is now available^! Update it using menu item ^(3^).
+menu_main_update_program_available=  ^(i^) %appName% update is now available^!
+
 menu_main_firstRunTip=  ^(i^) Close the program only using menu item ^(0^), otherwise the program may be damaged^!
 
 menu_main_tipOfTheDay01=  ^(i^) First of all it would be better to update the virus databases, and then clean the system.

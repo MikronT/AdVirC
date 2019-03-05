@@ -38,6 +38,9 @@ set cleaning_shortcuts=temp\cleaning\shortcuts.db
 set cleaning_tasks=temp\cleaning\tasks.db
 set cleaning_temp=temp\cleaning\temp.db
 
+set url_databases=https://drive.google.com/uc?export=download^^^&id=1u1mKCVHfk3LS8zFJ97gxLQ9f_UsH_zsy
+set url_program=https://drive.google.com/uc?export=download^^^&id=
+
 
 
 for /f %%i in ('"prompt $h & echo on & for %%j in (1) do rem"') do set inputBS=%%i
@@ -135,6 +138,11 @@ if "%setting_logging%" == "true" (
   echo.Language: %setting_language%>>%log%
   call :log_append_line %log% 1
 )
+%loadingUpdate% 2
+
+
+
+rem start /b subroutines\update.cmd --key_check=true
 %loadingUpdate% 2
 
 
@@ -279,6 +287,16 @@ echo.%language_menu_main09%
 echo.
 echo.
 echo.
+if "%setting_update_databases_remind%" == "true" if exist temp\return_update_databases_available (
+  echo.%language_menu_main_update_databases_available%
+  if not exist temp\return_update_program_available (
+    echo.
+    echo.
+    echo.
+  )
+)
+if "%setting_update_program_remind%" == "true" if exist temp\return_update_program_available (
+  call echo.%language_menu_main_update_program_available%
   echo.
   echo.
   echo.
