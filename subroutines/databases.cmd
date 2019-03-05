@@ -13,7 +13,7 @@ for /f "tokens=1,* delims=- " %%i in ("%*") do set %%i
 
 if "%key_import%" == "true" (
   set key_import=false
-  copy /y "%location_desktop%\adVirCDatabases.zip" temp>>%log_debug%
+  copy /y "%location_desktop%\%appName%Databases.zip" temp>>%log_debug%
   %loadingUpdate% 25
   goto :unzip
 )
@@ -27,9 +27,9 @@ if "%key_import%" == "true" (
 %loadingUpdate% 10
 echo.%language_databases_downloading%
 
-%module_wget% "%url_databases%" --output-document=temp\adVirCDatabases.zip
+%module_wget% "%update_databases_url%" --output-document=%update_databases_output%
 
-for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir temp\adVirCDatabases.zip') do if "%%i" == "1" set databases_lenghtReturn=%%j
+for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir %update_databases_output%') do if "%%i" == "1" set databases_lenghtReturn=%%j
 if "%databases_lenghtReturn%" == "0" ( call :error %language_module_wget_error% & exit /b )
 
 echo.%language_databases_downloading_success%
@@ -53,13 +53,13 @@ rd /s /q files\databases>nul 2>>%log_debug%
 %loadingUpdate% 4
 
 md files\databases\original>nul 2>>%log_debug%
-%module_unZip% -o temp\adVirCDatabases.zip -d files\databases\original
+%module_unZip% -o %update_databases_output% -d files\databases\original
 if not exist files\databases\original\license.txt ( call :error %language_module_unZip_error% & exit /b )
 
 %loadingUpdate% 4
 %module_sleep% 1
 
-del /q temp\adVirCDatabases.zip
+del /q %update_databases_output%
 
 echo.%language_databases_unpacking_success%
 echo.

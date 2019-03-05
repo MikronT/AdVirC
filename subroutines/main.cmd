@@ -38,8 +38,10 @@ set cleaning_shortcuts=temp\cleaning\shortcuts.db
 set cleaning_tasks=temp\cleaning\tasks.db
 set cleaning_temp=temp\cleaning\temp.db
 
-set url_databases=https://drive.google.com/uc?export=download^^^&id=1u1mKCVHfk3LS8zFJ97gxLQ9f_UsH_zsy
-set url_program=https://drive.google.com/uc?export=download^^^&id=
+set update_databases_url=https://drive.google.com/uc?export=download^^^&id=1u1mKCVHfk3LS8zFJ97gxLQ9f_UsH_zsy
+set update_databases_output=temp\%appName%Databases.zip
+set update_program_url=https://drive.google.com/uc?export=download^^^&id=
+set update_program_output=temp\%appName%.zip
 
 
 
