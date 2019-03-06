@@ -12,15 +12,15 @@
 [![Latest Release](https://img.shields.io/badge/Latest-Release-blue.svg?style=for-the-badge)](https://github.com/MikronT/AdVirC/releases/latest)
 -->
 
-### Version name: *AdVirC v2.0 Pre-Alpha (Windows 10)*
+### Version name: *AdVirC v2.0 Pre-Alpha*
 
 AdVirC (AdVirC Removal Tool or AdVirC RT) is a free **open source** console utility for cleaning PCs from Adware, Malware, Trojans, Miners and rubbish for Windows 10.
 
 *If you have ads, third-party programs or your computer live your life, I may be able to help you.*
 
-*Developed only for Windows 10, but may be downgraded for Windows 7, 8 and 8.1 too.*
+*Developed only for Windows 10*
 
-Utility is in Pre-Alpha-period, so there may be false positives and program errors. You must be patient.
+Utility is in Pre-Alpha-period, so there may be false positives and program errors. Some features do not working or are not exist yet. You must be patient.
 
 
 
@@ -34,9 +34,11 @@ Utility is in Pre-Alpha-period, so there may be false positives and program erro
   - import from desktop
 - Settings
   - settings saving
-  - autoupdate for program and databases
+  - autoupdate for program and databases with reminder
   - update channel
+- Exceptions for cleaning
 - Report collecting and autosending
+- About and help menus
 
 
 
@@ -78,15 +80,18 @@ Note: you can combine the keys as you wish.
 
 
 ## Version History
-| Date       | Version Name                | Version Code   |
-|------------|-----------------------------|----------------|
-| 27.11.2018 | v2.0 Pre-Alpha (Windows 10) | 2.0.0.0.0.0.10 |
+| Date       | Version Name   | Version Code    |
+|------------|----------------|-----------------|
+| 27.11.2018 | v2.0 Pre-Alpha | 2.0.0.0.0.0     |
 
 <!--
-AdVirC v2.0 Alpha 1           2.0.0.1.1.0.10
-AdVirC v2.0 Alpha 2           2.0.0.1.2.0.10
-AdVirC v2.0 Beta 1            2.0.0.2.1.0.10
-AdVirC v2.0 Pre-Release 1     2.0.0.3.1.0.10
-AdVirC v2.0 Release           2.0.0.4.0.0.10
-AdVirC v2.1 Release           2.1.0.4.0.0.10
+AdVirC v2.0 Alpha 1                2.0.0.1.1.0
+AdVirC v2.0 Alpha 2                2.0.0.1.2.0
+AdVirC v2.0 Beta 1                 2.0.0.2.1.0
+AdVirC v2.0 Pre-Release 1          2.0.0.3.1.0
+AdVirC v2.0 Release                2.0.0.4.0.0
+
+AdVirC v2.1 Beta 1                 2.1.0.2.1.0
+AdVirC v2.1 Beta 1 Nightly 001     2.1.0.2.1.0.001
+AdVirC v2.1 Release                2.1.0.4.0.0
 -->

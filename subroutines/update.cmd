@@ -38,9 +38,12 @@ exit /b
 
 
 :checkVersion
-if "%1" == "databases" %module_wget% "%update_databases_versionUrl%" --output-document=%update_databasesVersion_output%
-if "%1" == "program"   %module_wget% "%update_program_versionUrl%"   --output-document=%update_programVersion_output%
-
-for /f "delims=" %%i in (%update_databasesVersion_output%) do rem
-for /f "delims=" %%i in (%update_programVersion_output%) do rem
+if "%1" == "databases" (
+  %module_wget% "%update_databases_versionUrl%" --output-document=%update_databasesVersion_output%
+  for /f "delims=" %%i in (%update_databasesVersion_output%) do rem
+)
+if "%1" == "program" (
+  %module_wget% "%update_program_versionUrl%"   --output-document=%update_programVersion_output%
+  for /f "delims=" %%i in (%update_programVersion_output%) do rem
+)
 exit /b
