@@ -23,7 +23,7 @@ set module_shortcut=subroutines\modules\shortcut.exe /a:c
 set module_unZip=subroutines\modules\unzip.exe -qq
 set module_wget=subroutines\modules\wget.exe --quiet --no-check-certificate --tries=1
 
-set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
+set stringBuilder=set stringBuilder_string=%%stringBuilder_string%%
 
 set cleaning_filesToRemove=temp\filesToRemove.db
 set cleaning_rebootScript=temp\rebootScript.cmd
@@ -155,17 +155,15 @@ rem start /b subroutines\update.cmd --key_check=true
 echo.%language_initialization2%
 
 set stringBuilder_string=  ^(i^) %versionName%
-if "%setting_debug%" == "true" call %stringBuilder_build% ^(Version Code: %versionCode%^)
+if "%setting_debug%" == "true" call %stringBuilder% ^(Version Code: %versionCode%^)
 echo.%stringBuilder_string%
 
 set stringBuilder_string=%language_info_language%
 if "%setting_language%" == "english" (
-  call %stringBuilder_build% %language_menu_setting_language_english%
+  call %stringBuilder% %language_menu_setting_language_english%
 ) else if "%setting_language%" == "russian" (
-  call %stringBuilder_build% %language_menu_setting_language_russian%
-) else if "%setting_language%" == "ukrainian" (
-  call %stringBuilder_build% %language_menu_setting_language_ukrainian%
-) else call %stringBuilder_build% UNKNOWN
+  call %stringBuilder% %language_menu_setting_language_russian%
+) else call %stringBuilder% %language_menu_setting_language_ukrainian%
 echo.%stringBuilder_string%
 
 call echo.%language_info_windowsVersionID%
@@ -442,46 +440,46 @@ echo.%language_menu_settings01%
 
 set stringBuilder_string=%language_menu_settings03%
 if "%setting_language%" == "english" (
-  call %stringBuilder_build% %language_menu_setting_language_english%
+  call %stringBuilder% %language_menu_setting_language_english%
 ) else if "%setting_language%" == "russian" (
-  call %stringBuilder_build% %language_menu_setting_language_russian%
-) else call %stringBuilder_build% %language_menu_setting_language_ukrainian%
-call %stringBuilder_build% %language_menu_settings04%
+  call %stringBuilder% %language_menu_setting_language_russian%
+) else call %stringBuilder% %language_menu_setting_language_ukrainian%
+call %stringBuilder% %language_menu_settings04%
 if "%setting_update_channel%" == "release" (
-  call %stringBuilder_build% %language_menu_setting_update_channel_release%
+  call %stringBuilder% %language_menu_setting_update_channel_release%
 ) else if "%setting_update_channel%" == "beta" (
-  call %stringBuilder_build% %language_menu_setting_update_channel_beta%
-) else call %stringBuilder_build% %language_menu_setting_update_channel_nightly%
+  call %stringBuilder% %language_menu_setting_update_channel_beta%
+) else call %stringBuilder% %language_menu_setting_update_channel_nightly%
 echo.%stringBuilder_string%
 
 set stringBuilder_string=%language_menu_settings05%
 if "%setting_logging%" == "true" (
-  call %stringBuilder_build% %language_menu_setting_enabled%
-) else call %stringBuilder_build% %language_menu_setting_disabled%
-call %stringBuilder_build% %language_menu_settings06%
+  call %stringBuilder% %language_menu_setting_enabled%
+) else call %stringBuilder% %language_menu_setting_disabled%
+call %stringBuilder% %language_menu_settings06%
 if "%setting_update_program_auto%" == "true" (
-  call %stringBuilder_build% %language_menu_setting_enabled%
-) else call %stringBuilder_build% %language_menu_setting_disabled%
+  call %stringBuilder% %language_menu_setting_enabled%
+) else call %stringBuilder% %language_menu_setting_disabled%
 echo.%stringBuilder_string%
 
 set stringBuilder_string=%language_menu_settings07%
 if "%setting_logging_advanced%" == "true" (
-  call %stringBuilder_build% %language_menu_setting_enabled%
-) else call %stringBuilder_build% %language_menu_setting_disabled%
-call %stringBuilder_build% %language_menu_settings08%
+  call %stringBuilder% %language_menu_setting_enabled%
+) else call %stringBuilder% %language_menu_setting_disabled%
+call %stringBuilder% %language_menu_settings08%
 if "%setting_update_databases_auto%" == "true" (
-  call %stringBuilder_build% %language_menu_setting_enabled%
-) else call %stringBuilder_build% %language_menu_setting_disabled%
+  call %stringBuilder% %language_menu_setting_enabled%
+) else call %stringBuilder% %language_menu_setting_disabled%
 echo.%stringBuilder_string%
 
 set stringBuilder_string=%language_menu_settings09%
 if "%setting_debug%" == "true" (
-  call %stringBuilder_build% %language_menu_setting_enabled%
-) else call %stringBuilder_build% %language_menu_setting_disabled%
-call %stringBuilder_build% %language_menu_settings10%
+  call %stringBuilder% %language_menu_setting_enabled%
+) else call %stringBuilder% %language_menu_setting_disabled%
+call %stringBuilder% %language_menu_settings10%
 if "%setting_update_program_remind%" == "true" (
-  call %stringBuilder_build% %language_menu_setting_enabled%
-) else call %stringBuilder_build% %language_menu_setting_disabled%
+  call %stringBuilder% %language_menu_setting_enabled%
+) else call %stringBuilder% %language_menu_setting_disabled%
 echo.%stringBuilder_string%
 
 if "%setting_update_databases_remind%" == "true" (
