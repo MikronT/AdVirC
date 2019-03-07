@@ -1,4 +1,10 @@
+@echo off
+chcp 65001>nul
+
 for %%i in (%log% %log_debug%) do echo.[Update]>>%%i
+
+set key_check=
+set key_update=
 
 for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
   set %%i
@@ -11,11 +17,11 @@ for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
 
 
 
-if "%key_check%" == "true" (
-  set key_check=false
+if "%key_check%" == "databases" (
+  %module_wget% "%update_databases_version_url%" --output-document=%update_databases_version_output%
+  for /f "delims=" %%i in (%update_databases_version_output%) do rem
 
-  if "%setting_update_databases_auto%" == "true" ( call :checkVersion databases ) else if "%setting_update_databases_remind%" == "true" call :checkVersion databases
-  if "%setting_update_program_auto%" == "true"   ( call :checkVersion program   ) else if "%setting_update_program_remind%" == "true"   call :checkVersion program
+  if "%key_update%" == "databases" rem
 )
 
 
@@ -24,26 +30,11 @@ if "%key_check%" == "true" (
 
 
 
-if "%key_update%" == "true" (
-  set key_update=false
+if "%key_check%" == "program" (
+  %module_wget% "%update_program_version_url%" --output-document=%update_program_version_output%
+  for /f "delims=" %%i in (%update_program_version_output%) do rem
+
+  if "%key_update%" == "program" rem
 )
-exit /b
-
-
-
-
-
-
-
-
-
-:checkVersion
-if "%1" == "databases" (
-  %module_wget% "%update_databases_versionUrl%" --output-document=%update_databasesVersion_output%
-  for /f "delims=" %%i in (%update_databasesVersion_output%) do rem
-)
-if "%1" == "program" (
-  %module_wget% "%update_program_versionUrl%"   --output-document=%update_programVersion_output%
-  for /f "delims=" %%i in (%update_programVersion_output%) do rem
-)
+pause
 exit /b
