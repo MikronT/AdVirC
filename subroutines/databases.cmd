@@ -13,7 +13,7 @@ for /f "tokens=1,* delims=- " %%i in ("%*") do set %%i
 
 if "%key_import%" == "true" (
   set key_import=false
-  copy /y "%location_desktop%\%appName%Databases.zip" temp>>%log_debug%
+  copy /y "%location_desktop%\%appName%Databases v2.0.zip" temp>>%log_debug%
   %loadingUpdate% 25
   goto :unzip
 )

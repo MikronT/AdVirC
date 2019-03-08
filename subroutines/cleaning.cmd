@@ -114,7 +114,7 @@ for /f "delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" ""
 
 
 set errorLevel=
-schtasks /create /tn "AdVirC Reboot Script Task" /xml "files\rebootScriptTask.xml" /ru system /f
+schtasks /create /tn "%appName% Reboot Script Task" /xml "files\rebootScriptTask.xml" /ru system /f
 if "%errorLevel%" NEQ "0" echo.%language_cleaning_taskCreating_error%
 
 

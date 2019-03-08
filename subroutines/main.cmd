@@ -24,7 +24,7 @@ set module_unZip=subroutines\modules\unzip.exe -qq
 set module_wget=subroutines\modules\wget.exe --quiet --no-check-certificate --tries=1
 
 set stringBuilder=set stringBuilder_string=%%stringBuilder_string%%
-set update=start /b subroutines\update.cmd
+set update=start subroutines\update.cmd
 
 set cleaning_filesToRemove=temp\filesToRemove.db
 set cleaning_rebootScript=temp\rebootScript.cmd
@@ -401,7 +401,7 @@ call :input
 
 if "%command%" == "0" ( set command= & exit /b )
 if "%command%" == "1" (
-  if not exist "%location_desktop%\adVirCDatabases.zip" (
+  if not exist "%location_desktop%\%appName%Databases v2.0.zip" (
     set databases_import_error=1
     goto :menu_databases_import
   )
