@@ -24,7 +24,7 @@ set module_unZip=subroutines\modules\unzip.exe -qq
 set module_wget=subroutines\modules\wget.exe --quiet --no-check-certificate --tries=1
 
 set stringBuilder=set stringBuilder_string=%%stringBuilder_string%%
-set update=start subroutines\update.cmd
+set update=start /b subroutines\update.cmd
 
 set cleaning_filesToRemove=temp\filesToRemove.db
 set cleaning_rebootScript=temp\rebootScript.cmd
@@ -39,17 +39,17 @@ set cleaning_shortcuts=temp\cleaning\shortcuts.db
 set cleaning_tasks=temp\cleaning\tasks.db
 set cleaning_temp=temp\cleaning\temp.db
 
-set update_databases_output=temp\%appName%Databases.zip
-set update_databases_url=https://drive.google.com/uc?export=download^^^&id=1u1mKCVHfk3LS8zFJ97gxLQ9f_UsH_zsy
+set update_program_version_output=temp\%appName%Databases.version
+set update_program_version_url=https://drive.google.com/uc?export=download^^^&id=1ZCUccG0U3VoePdTmwqQmid3d7vlQZWGY
 
 set update_databases_version_output=temp\%appName%Databases.version
-set update_databases_version_url=https://drive.google.com/uc?export=download^^^&id=
+set update_databases_version_url=https://drive.google.com/uc?export=download^^^&id=1ene7znlMRqGpXFQqgBFZfFCghN8FBF1O
 
 set update_program_output=temp\%appName%.zip
-set update_program_url=https://drive.google.com/uc?export=download^^^&id=
+set update_program_url=https://drive.google.com/uc?export=download^^^&id=1ssADcfpKfFf9mjtVuL9lQ7NLoc4comTh
 
-set update_program_version_output=temp\%appName%Databases.version
-set update_program_version_url=https://drive.google.com/uc?export=download^^^&id=
+set update_databases_output=temp\%appName%Databases.zip
+set update_databases_url=https://drive.google.com/uc?export=download^^^&id=1u1mKCVHfk3LS8zFJ97gxLQ9f_UsH_zsy
 
 
 
