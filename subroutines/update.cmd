@@ -19,7 +19,14 @@ for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
 
 if "%key_check%" == "databases" (
   %module_wget% "%update_databases_version_url%" --output-document=%update_databases_version_output%
-  for /f "delims=" %%i in (%update_databases_version_output%) do rem
+
+  for /f "tokens=1-3 delims= " %%i in (%update_databases_version_output%) do (
+    if /i "%%i" == "%setting_update_channel%" (
+      for /f "tokens=1-8 delims=." %%l in ("%%j") do (
+        echo.%%l--%%m--%%n--%%o--%%p--%%q--%%r--%%s
+      )
+    )
+  )
 
   if "%key_update%" == "databases" rem
 )
@@ -32,9 +39,10 @@ if "%key_check%" == "databases" (
 
 if "%key_check%" == "program" (
   %module_wget% "%update_program_version_url%" --output-document=%update_program_version_output%
+
   for /f "delims=" %%i in (%update_program_version_output%) do rem
 
   if "%key_update%" == "program" rem
 )
 pause
-exit /b
+exit
