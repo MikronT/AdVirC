@@ -13,6 +13,5 @@ call design\logos.cmd main1
 echo.
 echo.
 echo.
-echo.
 
 exit /b
