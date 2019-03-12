@@ -1,7 +1,11 @@
 @echo off
 
 net session>nul 2>nul
-if %errorLevel% GEQ 1 goto :startAsAdmin
+if %errorLevel% GEQ 1 (
+  echo.^(^!^) Please, run as Admin^!
+  timeout /nobreak /t 3 >nul
+  exit
+)
 
 %~d0
 cd "%~dp0"
@@ -52,13 +56,4 @@ reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v WindowSize       /t REG_
 
 start design\loading.cmd
 start subroutines\main.cmd
-exit
-
-
-
-
-
-:startAsAdmin
-echo.^(^!^) Please, run as Admin^!
-timeout /nobreak /t 3 >nul
 exit
