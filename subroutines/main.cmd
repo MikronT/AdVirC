@@ -202,17 +202,18 @@ if "%setting_firstRun%" == "true" (
 
 
 
-echo.%%lastLoggedOnUserSID%%>temp\temp_lastLoggedOnUserSID
+echo.%%lastLoggedOnUserSID%%>temp\lastLoggedOnUserSID
 for /f "tokens=2*" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI /v LastLoggedOnUserSID') do set lastLoggedOnUserSID=%%j
-if "%setting_reports_collect%" == "true" for /f "delims=" %%i in (temp\temp_lastLoggedOnUserSID) do call echo.%%i>files\reports\lastLoggedOnUserSID.rpt
+if "%setting_reports_collect%" == "true" for /f "delims=" %%i in (temp\lastLoggedOnUserSID) do call echo.%%i>files\reports\lastLoggedOnUserSID.rpt
 call echo.%language_info_lastLoggedOnUserSID%
 %loadingUpdate% 2
 
 
 
 if exist "%appData%\Mozilla\Firefox\Profiles" (
+  echo.%%mozillaFirefoxUserProfile%%>temp\mozillaFirefoxUserProfile
   for /f "delims=" %%i in ('dir "%appData%\Mozilla\Firefox\Profiles" /a:d /b') do set mozillaFirefoxUserProfile=%%i
-  if "%setting_reports_collect%" == "true" echo.%mozillaFirefoxUserProfile%>files\reports\mozillaFirefoxUserProfile.rpt
+  if "%setting_reports_collect%" == "true" for /f "delims=" %%i in (temp\mozillaFirefoxUserProfile) do call echo.%%i>files\reports\mozillaFirefoxUserProfile.rpt
   call echo.%language_info_mozillaFirefoxUserProfile%
 )
 %loadingUpdate% 2
