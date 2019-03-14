@@ -81,6 +81,20 @@ for /f "tokens=1-7 delims=." %%i in ("%program_version_code%") do (
 )
 %loadingUpdate% 3
 
+if exist "files\databases\original\databases.version" (
+  for /f "delims=" %%i in (files\databases\original\databases.version) do set databases_version_code=%%i
+  for /f "tokens=1-8 delims=." %%i in ("%databases_version_code%") do (
+    set databases_version_code_level1=%%i
+    set databases_version_code_level2=%%j
+    set databases_version_code_level3=%%k
+    set databases_version_code_level4=%%l
+    set databases_version_code_level5=%%m
+    set databases_version_code_level6=%%n
+    set databases_version_code_level7=%%o
+    set databases_version_code_level8=%%p
+  )
+)
+
 
 
 
@@ -172,13 +186,13 @@ if "%setting_logging%" == "true" (
 
 
 
-rem if "%setting_update_databases_auto%" == "true" (
-rem   %update% --key_check=databases --key_update=databases
-rem ) else if "%setting_update_databases_remind%" == "true" %update% --key_check=databases
+if "%setting_update_databases_auto%" == "true" (
+  %update% --key_check=databases --key_update=databases
+) else if "%setting_update_databases_remind%" == "true" %update% --key_check=databases
 
-rem if "%setting_update_program_auto%" == "true" (
-rem   %update% --key_check=program --key_update=program
-rem ) else if "%setting_update_program_remind%" == "true" %update% --key_check=program
+if "%setting_update_program_auto%" == "true" (
+  %update% --key_check=program --key_update=program
+) else if "%setting_update_program_remind%" == "true" %update% --key_check=program
 %loadingUpdate% 2
 
 
