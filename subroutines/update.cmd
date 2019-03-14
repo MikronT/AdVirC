@@ -48,7 +48,7 @@ if "%key_check%" == "databases" (
 if "%key_check%" == "program" (
   %module_wget% "%update_program_version_url%" --output-document=%update_program_version_output%
 
-  for /f "delims=" %%i in (%update_program_version_output%) do (
+  for /f "tokens=1-3 delims= " %%i in (%update_program_version_output%) do (
     if /i "%%i" == "%setting_update_channel%" (
       for /f "tokens=1-7 delims=." %%l in ("%%j") do (
                if "%%l" NEQ "" if %%l GTR %program_version_code_level1% ( echo.>temp\return_update_program_available

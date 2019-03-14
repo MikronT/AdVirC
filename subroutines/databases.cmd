@@ -72,7 +72,7 @@ echo.
 
 
 for /f "delims=" %%i in (files\databases\original\databases.version) do set databases_version_code=%%i
-if "%databases_version_code%" NEQ "0" for /f "tokens=1-8 delims=." %%i in ("%databases_version_code%") do (
+for /f "tokens=1-8 delims=." %%i in ("%databases_version_code%") do (
   set databases_version_code_level1=%%i
   set databases_version_code_level2=%%j
   set databases_version_code_level3=%%k

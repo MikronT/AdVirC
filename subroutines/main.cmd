@@ -24,7 +24,7 @@ set module_unZip=subroutines\modules\unzip.exe -qq
 set module_wget=subroutines\modules\wget.exe --quiet --no-check-certificate --tries=1
 
 set stringBuilder=set stringBuilder_string=%%stringBuilder_string%%
-set update=start subroutines\update.cmd
+set update=start /b subroutines\update.cmd
 
 set cleaning_filesToRemove=temp\filesToRemove.db
 set cleaning_rebootScript=temp\rebootScript.cmd
@@ -49,7 +49,7 @@ set databases_version_code_level6=0
 set databases_version_code_level7=0
 set databases_version_code_level8=0
 
-set update_program_version_output=temp\%program_name%Databases.version
+set update_program_version_output=temp\%program_name%.version
 set update_program_version_url=https://drive.google.com/uc?export=download^^^&id=1ZCUccG0U3VoePdTmwqQmid3d7vlQZWGY
 
 set update_databases_version_output=temp\%program_name%Databases.version
@@ -79,7 +79,6 @@ for /f "tokens=1-7 delims=." %%i in ("%program_version_code%") do (
   set program_version_code_level6=%%n
   set program_version_code_level7=%%o
 )
-%loadingUpdate% 3
 
 if exist "files\databases\original\databases.version" (
   for /f "delims=" %%i in (files\databases\original\databases.version) do set databases_version_code=%%i
@@ -94,6 +93,7 @@ if exist "files\databases\original\databases.version" (
     set databases_version_code_level8=%%p
   )
 )
+%loadingUpdate% 4
 
 
 
@@ -215,7 +215,7 @@ if "%setting_language%" == "english" (
 echo.%stringBuilder_string%
 
 call echo.%language_info_windowsVersionID%
-%loadingUpdate% 2
+%loadingUpdate% 1
 
 
 
@@ -350,7 +350,7 @@ if "%setting_update_program_remind%" == "true" if exist temp\return_update_progr
   echo.
   echo.
 )
-echo.%language_menu_main_firstRunTip%
+if "%setting_firstRun%" == "true" echo.%language_menu_main_firstRunTip%
 echo.%language_menu_main_tipOfTheDay01%
 echo.%language_menu_main_tipOfTheDay02%
 echo.%language_menu_main_tipOfTheDay03%
