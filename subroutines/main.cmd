@@ -39,6 +39,16 @@ set cleaning_shortcuts=temp\cleaning\shortcuts.db
 set cleaning_tasks=temp\cleaning\tasks.db
 set cleaning_temp=temp\cleaning\temp.db
 
+set databases_version_code=0
+set databases_version_code_level1=0
+set databases_version_code_level2=0
+set databases_version_code_level3=0
+set databases_version_code_level4=0
+set databases_version_code_level5=0
+set databases_version_code_level6=0
+set databases_version_code_level7=0
+set databases_version_code_level8=0
+
 set update_program_version_output=temp\%program_name%Databases.version
 set update_program_version_url=https://drive.google.com/uc?export=download^^^&id=1ZCUccG0U3VoePdTmwqQmid3d7vlQZWGY
 
@@ -59,6 +69,16 @@ for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\
 set currentDate=%date%
 for /f "tokens=2 delims= " %%i in ("%currentDate%") do set currentDate=%%i
 for /f "tokens=1-3 delims=/." %%i in ("%currentDate%") do set currentDate=%%k.%%j.%%i
+
+for /f "tokens=1-7 delims=." %%i in ("%program_version_code%") do (
+  set program_version_code_level1=%%i
+  set program_version_code_level2=%%j
+  set program_version_code_level3=%%k
+  set program_version_code_level4=%%l
+  set program_version_code_level5=%%m
+  set program_version_code_level6=%%n
+  set program_version_code_level7=%%o
+)
 %loadingUpdate% 3
 
 
@@ -113,7 +133,7 @@ if "%setting_logging%" == "true" (
     echo.Current File Directory: %~dp0>>%log_debug%
     echo.User Profile Directory: %userProfile%>>%log_debug%
     echo.Processor Architecture: %processor_architecture%>>%log_debug%
-    call :log_append_line %log_debug% 1
+    echo.>>%log_debug%
     %loadingUpdate% 3
 
     echo.User Shell Folders:>>%log_debug%
@@ -129,7 +149,7 @@ if "%setting_logging%" == "true" (
     echo.- Saved Games location: %location_savedGames%>>%log_debug%
     echo.- Searches location:    %location_searches%>>%log_debug%
     echo.- Videos location:      %location_videos%>>%log_debug%
-    echo.>>%log_debug%
+    call :log_append_line %log_debug% 1
     %loadingUpdate% 3
   ) else %loadingUpdate% 6
 ) else %loadingUpdate% 9

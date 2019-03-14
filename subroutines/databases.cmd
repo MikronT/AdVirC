@@ -54,7 +54,7 @@ rd /s /q files\databases>nul 2>>%log_debug%
 
 md files\databases\original>nul 2>>%log_debug%
 %module_unZip% -o %update_databases_output% -d files\databases\original
-if not exist files\databases\original\license.txt ( call :error %language_module_unZip_error% & exit /b )
+if not exist files\databases\original\databases.version ( call :error %language_module_unZip_error% & exit /b )
 
 %loadingUpdate% 4
 %module_sleep% 1
@@ -63,7 +63,26 @@ del /q %update_databases_output%
 
 echo.%language_databases_unpacking_success%
 echo.
-%loadingUpdate% 4
+%loadingUpdate% 3
+
+
+
+
+
+
+
+for /f "delims=" %%i in (files\databases\original\databases.version) do set databases_version_code=%%i
+if "%databases_version_code%" NEQ "0" for /f "tokens=1-8 delims=." %%i in ("%databases_version_code%") do (
+  set databases_version_code_level1=%%i
+  set databases_version_code_level2=%%j
+  set databases_version_code_level3=%%k
+  set databases_version_code_level4=%%l
+  set databases_version_code_level5=%%m
+  set databases_version_code_level6=%%n
+  set databases_version_code_level7=%%o
+  set databases_version_code_level8=%%p
+)
+%loadingUpdate% 1
 
 
 
