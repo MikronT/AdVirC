@@ -100,9 +100,9 @@ if "%setting_logging%" == "true" (
 
   echo.Log ^| %program_version_name% ^| %currentDate%>>%log%
   echo.>>%log%
-  echo.Operating System: %os%>>%log%
+  echo.Operating System:   %os%>>%log%
   echo.Windows Version ID: %windowsVersionID%>>%log%
-  echo.Current Directory: %cd%>>%log%
+  echo.Current Directory:  %cd%>>%log%
   %loadingUpdate% 3
 
   if "%setting_debug%" == "true" (
@@ -129,7 +129,7 @@ if "%setting_logging%" == "true" (
     echo.- Saved Games location: %location_savedGames%>>%log_debug%
     echo.- Searches location:    %location_searches%>>%log_debug%
     echo.- Videos location:      %location_videos%>>%log_debug%
-    call :log_append_line %log_debug% 1
+    echo.>>%log_debug%
     %loadingUpdate% 3
   ) else %loadingUpdate% 6
 ) else %loadingUpdate% 9
@@ -145,7 +145,7 @@ if "%setting_language%" NEQ "english" if "%setting_language%" NEQ "russian" if "
 call :language_import
 
 if "%setting_logging%" == "true" (
-  echo.Language: %setting_language%>>%log%
+  echo.Language:           %setting_language%>>%log%
   call :log_append_line %log% 1
 )
 %loadingUpdate% 2
