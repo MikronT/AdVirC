@@ -41,7 +41,7 @@ menu_main08=  ^(7^) About                                                   ^(0^
 menu_main09=                                                              ^(#^) Uninstall
 
 menu_main_update_databases_available=  ^(i^) Databases update is now available^! Update it using menu item ^(3^).
-menu_main_update_program_available=  ^(i^) %appName% update is now available^!
+menu_main_update_program_available=  ^(i^) %program_name% update is now available^!
 
 menu_main_firstRunTip=  ^(i^) Close the program only using menu item ^(0^), otherwise the program may be damaged^!
 
@@ -78,11 +78,11 @@ menu_settings01=  Settings                                                    Up
 menu_settings03=  ^(1^) Language:
 menu_settings04=                              ^(5^) Update channel:
 menu_settings05=  ^(2^) Logging:
-menu_settings06=                               ^(6^) Autoupdate %appName%:
+menu_settings06=                               ^(6^) Autoupdate %program_name%:
 menu_settings07=  ^(3^) Advanced logging:
 menu_settings08=                      ^(7^) Autoupdate databases:
 menu_settings09=  ^(4^) Debug:
-menu_settings10=                                 ^(8^) Remind for %appName% updates:
+menu_settings10=                                 ^(8^) Remind for %program_name% updates:
 menu_settings12=                                                              ^(9^) Remind for databases updates:
 menu_settings13=  Report
 menu_settings15=  ^(#^) Collecting reports:
@@ -101,7 +101,7 @@ menu_setting_update_channel_nightly=nightly
 
 
 
-menu_update_channel01=  Select update channel for %appName% and databases.
+menu_update_channel01=  Select update channel for %program_name% and databases.
 menu_update_channel02=  ^(1^) Release ^(stable^)
 menu_update_channel03=  ^(2^) Beta ^(some new features, but before final tests^)
 menu_update_channel04=  ^(3^) Nightly ^(all new features, not stable^)
@@ -162,5 +162,5 @@ cleaning_taskCreating_error=  ^(^!^) Error while creating task for reboot^!
 databases_import_error=  ^(^!^) Error^! No databases^!
 databases_notExist_error=  ^(^!^) First of all update the virus databases^!
 databases_update_error=  ^(^!^) Databases are not updated!
-module_unZip_error=^(^!^) Extract error^! Please, reload %appName%^!
+module_unZip_error=^(^!^) Extract error^! Please, reload %program_name%^!
 module_wget_error=^(^!^) Download error^! Check your Internet connection^!

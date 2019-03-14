@@ -12,7 +12,7 @@ set counter_loading=0
 
 :cycle
 set /a counter_percents=%counter_loading%*2
-title %appName% ^| Loading: %counter_percents%%%...
+title %program_name% ^| Loading: %counter_percents%%%...
 cls
 echo.
                            echo.   ╔══════════════════════════════════════════════════════╗

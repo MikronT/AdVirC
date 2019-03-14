@@ -41,7 +41,7 @@ menu_main08=  ^(7^) Про программу                                   
 menu_main09=                                                              ^(#^) Удалить программу
 
 menu_main_update_databases_available=  ^(i^) Доступно обновление баз данных^! Обновите их используя пункт меню ^(3^).
-menu_main_update_program_available=  ^(i^) Доступно обновление %appName%^!
+menu_main_update_program_available=  ^(i^) Доступно обновление %program_name%^!
 
 menu_main_firstRunTip=  ^(i^) Закрывайте программу только используя пункт меню ^(0^), иначе программа может быть повреждена^!
 
@@ -78,11 +78,11 @@ menu_settings01=  Настройки                                            
 menu_settings03=  ^(1^) Язык:
 menu_settings04=                                  ^(5^) Канал обновления:
 menu_settings05=  ^(2^) Логирование:
-menu_settings06=                           ^(6^) Автообновление %appName%:
+menu_settings06=                           ^(6^) Автообновление %program_name%:
 menu_settings07=  ^(3^) Расширенное логирование:
 menu_settings08=               ^(7^) Автообновление баз данных:
 menu_settings09=  ^(4^) Отладка:
-menu_settings10=                               ^(8^) Напоминать про обновления %appName%:
+menu_settings10=                               ^(8^) Напоминать про обновления %program_name%:
 menu_settings12=                                                              ^(9^) Напоминать про обновления баз данных:
 menu_settings13=  Отчёты
 menu_settings15=  ^(#^) Сбор отчётов:
@@ -98,7 +98,7 @@ menu_setting_update_channel_nightly=ночные
 
 
 
-menu_update_channel01=  Выберите канал обновления для %appName% и баз данных.
+menu_update_channel01=  Выберите канал обновления для %program_name% и баз данных.
 menu_update_channel02=  ^(1^) Релиз ^(стабильные^)
 menu_update_channel03=  ^(2^) Бета ^(некоторые новые возможности, но до конечных тестов^)
 menu_update_channel04=  ^(3^) Ночные ^(все новые возможности, не стабильные^)
@@ -159,5 +159,5 @@ cleaning_taskCreating_error=  ^(^!^) Ошибка при создании зад
 databases_import_error=  ^(^!^) Ошибка^! Нет баз данных^!
 databases_notExist_error=  ^(^!^) Сначала обновите вирусные базы^!
 databases_update_error=  ^(^!^) Базы данных не были обновлены^!
-module_unZip_error=^(^!^) Ошибка распаковки^! Пожалуйста, перезапустите %appName%^!
+module_unZip_error=^(^!^) Ошибка распаковки^! Пожалуйста, перезапустите %program_name%^!
 module_wget_error=^(^!^) Ошибка загрузки^! Проверьте подключение к Интернету^!

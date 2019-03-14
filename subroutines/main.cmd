@@ -39,16 +39,16 @@ set cleaning_shortcuts=temp\cleaning\shortcuts.db
 set cleaning_tasks=temp\cleaning\tasks.db
 set cleaning_temp=temp\cleaning\temp.db
 
-set update_program_version_output=temp\%appName%Databases.version
+set update_program_version_output=temp\%program_name%Databases.version
 set update_program_version_url=https://drive.google.com/uc?export=download^^^&id=1ZCUccG0U3VoePdTmwqQmid3d7vlQZWGY
 
-set update_databases_version_output=temp\%appName%Databases.version
+set update_databases_version_output=temp\%program_name%Databases.version
 set update_databases_version_url=https://drive.google.com/uc?export=download^^^&id=1ene7znlMRqGpXFQqgBFZfFCghN8FBF1O
 
-set update_program_output=temp\%appName%.zip
+set update_program_output=temp\%program_name%.zip
 set update_program_url=https://drive.google.com/uc?export=download^^^&id=1ssADcfpKfFf9mjtVuL9lQ7NLoc4comTh
 
-set update_databases_output=temp\%appName%Databases.zip
+set update_databases_output=temp\%program_name%Databases.zip
 set update_databases_url=https://drive.google.com/uc?export=download^^^&id=1u1mKCVHfk3LS8zFJ97gxLQ9f_UsH_zsy
 
 
@@ -98,7 +98,7 @@ call :settings_apply
 if "%setting_logging%" == "true" (
   if exist "%log%" call :log_append_delimiter %log%
 
-  echo.Log ^| %versionName% ^| %currentDate%>>%log%
+  echo.Log ^| %program_version_name% ^| %currentDate%>>%log%
   echo.>>%log%
   echo.Operating System: %os%>>%log%
   echo.Windows Version ID: %windowsVersionID%>>%log%
@@ -108,7 +108,7 @@ if "%setting_logging%" == "true" (
   if "%setting_debug%" == "true" (
     if exist "%log_debug%" call :log_append_delimiter %log_debug%
 
-    echo.Debug Log ^| %versionName% ^| %versionCode% ^| %currentDate%>>%log_debug%
+    echo.Debug Log ^| %program_version_name% ^| %program_version_code% ^| %currentDate%>>%log_debug%
     echo.>>%log_debug%
     echo.Current File Directory: %~dp0>>%log_debug%
     echo.User Profile Directory: %userProfile%>>%log_debug%
@@ -168,8 +168,8 @@ rem ) else if "%setting_update_program_remind%" == "true" %update% --key_check=p
 %logo%
 echo.%language_initialization2%
 
-set stringBuilder_string=  ^(i^) %versionName%
-if "%setting_debug%" == "true" call %stringBuilder% ^(Version Code: %versionCode%^)
+set stringBuilder_string=  ^(i^) %program_version_name%
+if "%setting_debug%" == "true" call %stringBuilder% ^(Version Code: %program_version_code%^)
 echo.%stringBuilder_string%
 
 set stringBuilder_string=%language_info_language%
@@ -402,7 +402,7 @@ call :input
 
 if "%command%" == "0" ( set command= & exit /b )
 if "%command%" == "1" (
-  if not exist "%location_desktop%\%appName%Databases v2.0.zip" (
+  if not exist "%location_desktop%\%program_name%Databases v2.0.zip" (
     set databases_import_error=1
     goto :menu_databases_import
   )
@@ -688,7 +688,7 @@ exit /b
 :settings_save
 if not exist files\settings md files\settings>nul 2>nul
 
-echo.# %appName% Settings #>%settings%
+echo.# %program_name% Settings #>%settings%
 echo.debug=%setting_debug%>>%settings%
 echo.firstRun=%setting_firstRun%>>%settings%
 echo.language=%setting_language%>>%settings%
@@ -712,9 +712,9 @@ exit /b
 :settings_apply
 if "%setting_logging%" == "true" (
   if not exist files\logs md files\logs>nul 2>nul
-  set log=files\logs\%appName%_%currentDate%_log.log
+  set log=files\logs\%program_name%_%currentDate%.log
   if "%setting_debug%" == "true" (
-    set log_debug=files\logs\%appName%_%currentDate%_log_debug.log
+    set log_debug=files\logs\%program_name%_%currentDate%_debug.log
   ) else set log_debug=nul
 ) else (
   set log=nul
@@ -731,7 +731,7 @@ exit /b
 
 
 :diagnostic
-set log_diagnostic=files\logs\%appName%_%currentDate%_log_diagnostic.log
+set log_diagnostic=files\logs\%program_name%_%currentDate%_diagnostic.log
 if not exist files\logs md files\logs>nul 2>nul
 
 echo.[Diagnostic]>>%log_diagnostic%
@@ -741,13 +741,13 @@ for /f "delims=" %%i in (temp\corruptedFilesList.db) do echo.- %%i>>%log_diagnos
 %logo%
 %loadingUpdate% reset
 color 0c
-echo.  ^(^!^) %appName% Diagnostic: Program Corrupted^!
-echo.  ^(^!^) Reinstall %appName%^!
+echo.  ^(^!^) %program_name% Diagnostic: Program Corrupted^!
+echo.  ^(^!^) Reinstall %program_name%^!
 echo.
 echo.  ^(i^) Files missing:
 for /f "delims=" %%i in (temp\corruptedFilesList.db) do echo.      - %%i
 echo.
-echo.  ^(^?^) Do you want to run %appName% without these files^?
+echo.  ^(^?^) Do you want to run %program_name% without these files^?
 echo.      ^(0^) Exit
 echo.      ^(1^) Run
 echo.
