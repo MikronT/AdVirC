@@ -23,8 +23,8 @@ set module_sleep=subroutines\modules\sleep.exe
 set key_wait=0
 
 for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
-  set %%i
-  set %%j
+  >nul set %%i
+  >nul set %%j
 )
 
 
