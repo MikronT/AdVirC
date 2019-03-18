@@ -8,10 +8,7 @@ title %program_name% ^| Log
 cls
 
 echo.
-echo.
 call design\logos.cmd log1
-echo.
-echo.
 echo.
 echo.
 

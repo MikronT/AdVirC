@@ -4,8 +4,6 @@ chcp 65001>nul
 mode con:cols=62 lines=7
 color 0b
 
-set counter_loading=0
-
 
 
 
