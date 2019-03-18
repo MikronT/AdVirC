@@ -71,7 +71,7 @@ if %counter_loading% == 50 echo.   ║  █████████████�
                            echo.   ║                                                      ║
                            echo.   ╚══════════════════════════════════════════════════════╝
 
-set counter_lastLoading=%counter_loading%
+set counter_loading_last=%counter_loading%
 goto :checkEngine
 
 
@@ -82,7 +82,7 @@ goto :checkEngine
 (for /f "delims=" %%i in (temp\counter_loading) do set counter_loading=%%i)>nul 2>nul
 
 if "%counter_loading%" == "stop" exit
-if "%counter_loading%" NEQ "%counter_lastLoading%" goto :cycle
+if "%counter_loading%" NEQ "%counter_loading_last%" goto :cycle
 
 %module_sleep% -m 250
 goto :checkEngine
