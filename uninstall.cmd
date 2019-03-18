@@ -12,7 +12,7 @@ set uninstallDirectory=%cd%
 :uninstallQuestion
 set command=command
 call design\mainLogo.cmd
-for /f %%a in ('"prompt $h & echo on & for %%b in (1) do rem"') do set inputBS=%%a
+for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ReleaseId') do set windowsVersionID=%%i
 
 echo.  ^(i^) Uninstall directory: %cd%
 echo.
@@ -23,7 +23,12 @@ echo.      ^(0^) Cancel
 echo.
 echo.
 echo.
-set /p command=%inputBS%   ^(^>^) Enter command ^> 
+
+:input
+if "%windowsVersionID%" == "1809" (
+  set /p command=%inputBS%  %language_input%
+) else set /p command=%inputBS%   %language_input%
+
 if "%command%" == "0" exit /b
 if "%command%" NEQ "1" goto :uninstallQuestion
 
