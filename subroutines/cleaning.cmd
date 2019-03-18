@@ -31,7 +31,7 @@ start subroutines\cleaning\scanning.cmd
 %logo%
 call echo.%language_cleaning_foundObjects%
 
-set counter_lastFoundObjects=%counter_foundObjects%
+set counter_foundObjects_last=%counter_foundObjects%
 goto :scanning_checkEngine
 
 
@@ -43,7 +43,7 @@ if exist temp\return_scanningCompleted (
   echo.Objects found: %counter_foundObjects%.>>%log_debug%
   goto :editing
 )
-if "%counter_foundObjects%" NEQ "%counter_lastFoundObjects%" goto :scanning_cycle
+if "%counter_foundObjects%" NEQ "%counter_foundObjects_last%" goto :scanning_cycle
 
 %module_sleep% 1
 goto :scanning_checkEngine
@@ -73,7 +73,7 @@ start subroutines\cleaning\deleting.cmd
 call echo.%language_cleaning_foundObjects%
 call echo.%language_cleaning_deletedObjects%
 
-set counter_lastDeletedObjects=%counter_deletedObjects%
+set counter_deletedObjects_last=%counter_deletedObjects%
 goto :deleting_checkEngine
 
 
@@ -85,7 +85,7 @@ if exist temp\return_deletingCompleted (
   echo.Objects deleted: %counter_deletedObjects%.>>%log%
   goto :rules
 )
-if "%counter_deletedObjects%" NEQ "%counter_lastDeletedObjects%" goto :deleting_cycle
+if "%counter_deletedObjects%" NEQ "%counter_deletedObjects_last%" goto :deleting_cycle
 
 %module_sleep% 1
 goto :deleting_checkEngine
