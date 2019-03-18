@@ -36,7 +36,7 @@ if "%key_check%" == "databases" (
     )
   )
 
-  if "%key_update%" == "databases" rem
+  if "%key_update%" == "databases" if exist temp\return_update_databases_available call subroutines\databases.cmd --key_auto=true
 )
 
 
@@ -63,6 +63,6 @@ if "%key_check%" == "program" (
     )
   )
 
-  if "%key_update%" == "program" rem
+  rem if "%key_update%" == "program" %loadingUpdate% stop
 )
 exit
