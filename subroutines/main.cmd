@@ -186,13 +186,13 @@ if "%setting_logging%" == "true" (
 
 
 
-rem if "%setting_update_databases_auto%" == "true" (
-rem   %update% --key_check=databases --key_update=databases
-rem ) else if "%setting_update_databases_remind%" == "true" %update% --key_check=databases
+if "%setting_update_databases_auto%" == "true" (
+  %update% --key_check=databases --key_update=databases
+) else if "%setting_update_databases_remind%" == "true" %update% --key_check=databases
 
-rem if "%setting_update_program_auto%" == "true" (
-rem   %update% --key_check=program --key_update=program
-rem ) else if "%setting_update_program_remind%" == "true" %update% --key_check=program
+if "%setting_update_program_auto%" == "true" (
+  %update% --key_check=program --key_update=program
+) else if "%setting_update_program_remind%" == "true" %update% --key_check=program
 %loadingUpdate% 2
 
 

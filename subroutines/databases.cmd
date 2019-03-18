@@ -1,13 +1,17 @@
-if "%key_auto%" NEQ "true" (
-  %logo%
-  echo.%language_databases_updating%
-  echo.
-)
+@echo off
+chcp 65001>nul
+
 for %%i in (%log% %log_debug%) do echo.[Databases]>>%%i
 
 for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
   >nul set %%i
   >nul set %%j
+)
+
+if "%key_auto%" NEQ "true" (
+  %logo%
+  echo.%language_databases_updating%
+  echo.
 )
 
 if exist temp\return_update_databases_available del /q temp\return_update_databases_available
