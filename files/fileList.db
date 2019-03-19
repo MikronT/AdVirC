@@ -26,6 +26,7 @@ subroutines\modules\wget.exe
 subroutines\cleaning.cmd
 subroutines\databases.cmd
 subroutines\main.cmd
+subroutines\methods.cmd
 subroutines\update.cmd
 
 license.txt

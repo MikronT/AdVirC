@@ -23,6 +23,7 @@ set module_shortcut=subroutines\modules\shortcut.exe /a:c
 set module_unZip=subroutines\modules\unzip.exe -qq
 set module_wget=subroutines\modules\wget.exe --quiet --no-check-certificate --tries=1
 
+set method=call subroutines\methods.cmd
 set stringBuilder=set stringBuilder_string=%%stringBuilder_string%%
 set update=start /b subroutines\update.cmd
 
@@ -130,7 +131,7 @@ call :settings_apply
 
 
 if "%setting_logging%" == "true" (
-  if exist "%log%" call :log_append_delimiter %log%
+  if exist "%log%" %method% :log_append_delimiter %log%
 
   echo.Log ^| %program_version_name% ^| %currentDate%>>%log%
   echo.>>%log%
@@ -140,7 +141,7 @@ if "%setting_logging%" == "true" (
   %loadingUpdate% 3
 
   if "%setting_debug%" == "true" (
-    if exist "%log_debug%" call :log_append_delimiter %log_debug%
+    if exist "%log_debug%" %method% :log_append_delimiter %log_debug%
 
     echo.Debug Log ^| %program_version_name% ^| %program_version_code% ^| %currentDate%>>%log_debug%
     echo.>>%log_debug%
@@ -163,7 +164,7 @@ if "%setting_logging%" == "true" (
     echo.- Saved Games location: %location_savedGames%>>%log_debug%
     echo.- Searches location:    %location_searches%>>%log_debug%
     echo.- Videos location:      %location_videos%>>%log_debug%
-    call :log_append_line %log_debug% 1
+    %method% :log_append_line %log_debug% 1
     %loadingUpdate% 3
   ) else %loadingUpdate% 6
 ) else %loadingUpdate% 9
@@ -180,7 +181,7 @@ call :language_import
 
 if "%setting_logging%" == "true" (
   echo.Language:           %setting_language%>>%log%
-  call :log_append_line %log% 1
+  %method% :log_append_line %log% 1
 )
 %loadingUpdate% 2
 
@@ -298,7 +299,7 @@ if "%1" NEQ "force" (
 echo.
 echo.
 echo.
-call :input
+%method% :input
 
 
 
@@ -357,7 +358,7 @@ echo.%language_menu_main_tipOfTheDay03%
 echo.
 echo.
 echo.
-call :input
+%method% :input
 
 
 
@@ -393,7 +394,7 @@ echo.%language_back%
 echo.
 echo.
 echo.
-call :input
+%method% :input
 
 
 
@@ -430,7 +431,7 @@ if "%databases_import_error%" == "1" (
   echo.
   echo.
 )
-call :input
+%method% :input
 
 
 
@@ -463,7 +464,7 @@ echo.%language_back%
 echo.
 echo.
 echo.
-call :input
+%method% :input
 
 
 
@@ -550,7 +551,7 @@ echo.%language_back%
 echo.
 echo.
 echo.
-call :input
+%method% :input
 
 
 
@@ -639,7 +640,7 @@ echo.%language_back%
 echo.
 echo.
 echo.
-call :input
+%method% :input
 
 
 
@@ -677,40 +678,6 @@ exit /b
 if "%setting_language%" == "default" (
   for /f "eol=# tokens=1,* delims==" %%i in (languages\english.lang) do set language_%%i=%%j
 ) else for /f "eol=# tokens=1,* delims==" %%i in (languages\%setting_language%.lang) do set language_%%i=%%j
-exit /b
-
-
-
-
-
-
-
-:input
-if "%windowsVersionID%" == "1809" (
-  set /p command=%inputBS%  %language_input%
-) else set /p command=%inputBS%   %language_input%
-exit /b
-
-
-
-
-
-
-
-:log_append_line
-for /l %%z in (%2,-1,1) do echo.======================================================================================================================>>%1
-exit /b
-
-
-
-
-
-
-
-:log_append_delimiter
-for /l %%z in (7,-1,1) do echo.>>%1
-for /l %%z in (3,-1,1) do echo.::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::>>%1
-for /l %%z in (7,-1,1) do echo.>>%1
 exit /b
 
 
