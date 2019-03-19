@@ -61,9 +61,12 @@ exit /b
 
 
 :log_append_place
+set log_append_place_string=%*
+set log_append_place_string=%log_append_place_string:~2%
+
 if "%setting_logging%" == "true" (
-  echo.[%*]>>%log%
-  if "%setting_debug%" == "true" echo.[%*]>>%log_debug%
+  echo.%log_append_place_string%>>%log%
+  if "%setting_debug%" == "true" echo.%log_append_place_string%>>%log_debug%
 )
 exit /b
 
