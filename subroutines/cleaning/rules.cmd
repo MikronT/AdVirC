@@ -1,12 +1,10 @@
 @%logo_log%
-for %%i in (%log% %log_debug%) do echo.[Rules]>>%%i
+%log_append_place% : [Rules]
 setlocal EnableDelayedExpansion
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  [Experimental]>>%%i
-)
+%log_append_place% :   [Experimental]>>%%i
 
 
 
@@ -14,11 +12,8 @@ call files\databases\original\other\experimental.cmd
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [Heuristic]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [Heuristic]>>%%i
 
 
 
@@ -26,10 +21,7 @@ call files\databases\original\other\heuristic.cmd
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
 
 
 

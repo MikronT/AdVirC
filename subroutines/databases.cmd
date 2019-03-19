@@ -1,7 +1,7 @@
 @echo off
 chcp 65001>nul
 
-for %%i in (%log% %log_debug%) do echo.[Databases]>>%%i
+%log_append_place% : [Databases]
 
 for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
   >nul set %%i

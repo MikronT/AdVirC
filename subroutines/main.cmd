@@ -290,7 +290,7 @@ goto :menu_main
 
 
 :menu_language
-if "%1" NEQ "force" for %%i in (%log% %log_debug%) do echo.[Language Menu]>>%%i
+if "%1" NEQ "force" %log_append_place% :     [Language Menu]
 set command=
 %logo%
 echo.%language_menu_language01%
@@ -325,7 +325,7 @@ exit /b
 
 
 :menu_main
-for %%i in (%log% %log_debug%) do echo.[Main Menu]>>%%i
+%log_append_place% : [Main Menu]
 %loadingUpdate% reset
 call :settings_save
 set command=
@@ -389,7 +389,7 @@ goto :menu_main
 
 
 :menu_cleaning
-for %%i in (%log% %log_debug%) do echo.[Cleaning Menu]>>%%i
+%log_append_place% :   [Cleaning Menu]
 set command=
 %logo%
 echo.%language_menu_cleaning01%
@@ -418,7 +418,7 @@ goto :menu_cleaning
 
 
 :menu_databases_import
-for %%i in (%log% %log_debug%) do echo.[Databases Import Menu]>>%%i
+%log_append_place% :   [Databases Import Menu]
 set command=
 %logo%
 echo.%language_menu_databases_import01%
@@ -459,7 +459,7 @@ goto :menu_databases_import
 
 
 :menu_report
-for %%i in (%log% %log_debug%) do echo.[Report Menu]>>%%i
+%log_append_place% :   [Report Menu]
 set command=
 %logo%
 echo.%language_menu_report01%
@@ -488,7 +488,7 @@ goto :menu_report
 
 
 :menu_settings
-for %%i in (%log% %log_debug%) do echo.[Settings Menu]>>%%i
+%log_append_place% :   [Settings Menu]
 set command=
 %logo%
 echo.%language_menu_settings01%
@@ -633,7 +633,7 @@ goto :menu_settings
 
 
 :menu_update_channel
-for %%i in (%log% %log_debug%) do echo.[Update Channel Menu]>>%%i
+%log_append_place% :     [Update Channel Menu]
 set command=
 %logo%
 call echo.%language_menu_update_channel01%

@@ -1,5 +1,5 @@
 @%logo%
-for %%i in (%log% %log_debug%) do echo.[Cleaning]>>%%i
+%log_append_place% : [Cleaning]
 
 if not exist files\databases\rewrited\dirs\temp.db (
   echo.%language_databases_notExist_error%
@@ -55,7 +55,7 @@ goto :scanning_checkEngine
 
 
 :editing
-for %%i in (%log% %log_debug%) do echo.[Editing]>>%%i
+%log_append_place% :   [Editing]
 for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
 
 

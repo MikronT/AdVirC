@@ -1,13 +1,11 @@
 @%logo_log%
-for %%i in (%log% %log_debug%) do echo.[Deleting]>>%%i
+%log_append_place% : [Deleting]
 setlocal EnableDelayedExpansion
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  [Processes]>>%%i
-  echo.    [Services]>>%%i
-)
+%log_append_place% :   [Processes]>>%%i
+%log_append_place% :     [Services]>>%%i
 
 
 
@@ -28,12 +26,9 @@ for /f "delims=" %%i in (%cleaning_services%) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [Processes]>>%%i
-  echo.    [Tasks]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [Processes]>>%%i
+%log_append_place% :     [Tasks]>>%%i
 
 
 
@@ -54,12 +49,9 @@ for /f "delims=" %%i in (%cleaning_tasks%) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [Processes]>>%%i
-  echo.    [Processes]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [Processes]>>%%i
+%log_append_place% :     [Processes]>>%%i
 
 
 
@@ -79,11 +71,8 @@ for /f "delims=" %%i in (%cleaning_processes%) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [Registry]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [Registry]>>%%i
 
 
 
@@ -104,12 +93,9 @@ for /f "delims=" %%i in (%cleaning_registry%) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [Temp]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [Temp]>>%%i
 
 
 
@@ -137,12 +123,9 @@ for /f "delims=" %%i in (%cleaning_temp%) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [Folders]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [Folders]>>%%i
 
 
 
@@ -168,12 +151,9 @@ for /f "delims=" %%i in (%cleaning_folders%) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [Files]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [Files]>>%%i
 
 
 
@@ -199,12 +179,9 @@ for /f "delims=" %%i in (%cleaning_files%) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [Shortcuts]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [Shortcuts]>>%%i
 
 
 
@@ -230,12 +207,9 @@ for /f "delims=" %%i in (%cleaning_shortcuts%) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [Extensions]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [Extensions]>>%%i
 
 
 
@@ -261,10 +235,7 @@ for /f "delims=" %%i in (%cleaning_extensions%) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
 
 
 

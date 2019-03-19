@@ -1,13 +1,11 @@
 @%logo_log%
-for %%i in (%log% %log_debug%) do echo.[Scanning]>>%%i
+%log_append_place% : [Scanning]
 setlocal EnableDelayedExpansion
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  [Processes]>>%%i
-  echo.    [Services]>>%%i
-)
+%log_append_place% :   [Processes]>>%%i
+%log_append_place% :     [Services]>>%%i
 
 
 
@@ -22,12 +20,9 @@ for /f "delims=" %%i in (files\databases\rewrited\processes\services.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [Processes]>>%%i
-  echo.    [Tasks]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [Processes]>>%%i
+%log_append_place% :     [Tasks]>>%%i
 
 
 
@@ -42,12 +37,9 @@ for /f "delims=" %%i in (files\databases\rewrited\processes\tasks.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [Processes]>>%%i
-  echo.    [Processes]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [Processes]>>%%i
+%log_append_place% :     [Processes]>>%%i
 rem if "%setting_debug%" == "true" (
 rem   call :log_append_line %log_debug% 1
 rem   echo.    All Running Processes:>>%log_debug%
@@ -66,12 +58,9 @@ for /f "delims=" %%i in (files\databases\rewrited\processes\processes.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [Registry]>>%%i
-  echo.    [Classes]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [Registry]>>%%i
+%log_append_place% :     [Classes]>>%%i
 
 
 
@@ -88,12 +77,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\classes.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [Registry]>>%%i
-  echo.    [Keys]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [Registry]>>%%i
+%log_append_place% :     [Keys]>>%%i
 
 
 
@@ -110,12 +96,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\keys.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [Temp]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [Temp]>>%%i
 
 
 
@@ -133,12 +116,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\temp.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [AppData Folders]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [AppData Folders]>>%%i
 
 
 
@@ -158,12 +138,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [Program Folders]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [Program Folders]>>%%i
 
 
 
@@ -183,12 +160,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [System Drive Folders]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [System Drive Folders]>>%%i
 
 
 
@@ -206,12 +180,9 @@ for /f "delims=" %%i in (files\databases\rewrited\folders\systemDrive.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [User Profile Folders]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [User Profile Folders]>>%%i
 
 
 
@@ -231,12 +202,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\userProfile.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [Windows Directory Folders]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [Windows Directory Folders]>>%%i
 
 
 
@@ -254,12 +222,9 @@ for /f "delims=" %%i in (files\databases\rewrited\folders\winDir.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [AppData Files]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [AppData Files]>>%%i
 
 
 
@@ -279,12 +244,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [Program Files]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [Program Files]>>%%i
 
 
 
@@ -304,12 +266,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [System Drive Files]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [System Drive Files]>>%%i
 
 
 
@@ -327,12 +286,9 @@ for /f "delims=" %%i in (files\databases\rewrited\files\systemDrive.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [Windows Directory Files]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [Windows Directory Files]>>%%i
 
 
 
@@ -350,12 +306,9 @@ for /f "delims=" %%i in (files\databases\rewrited\files\winDir.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [Shortcuts]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [Shortcuts]>>%%i
 
 
 
@@ -375,12 +328,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\shortcuts.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [Browsers Shortcuts]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [Browsers Shortcuts]>>%%i
 
 
 
@@ -400,12 +350,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\browsersShortcuts.db) do 
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [AppData Extensions]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [AppData Extensions]>>%%i
 
 
 
@@ -425,12 +372,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [AppData Browsers Extensions]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [AppData Browsers Extensions]>>%%i
 
 
 
@@ -452,12 +396,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [Program Files Extensions]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [Program Files Extensions]>>%%i
 
 
 
@@ -477,12 +418,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-  echo.  [File System]>>%%i
-  echo.    [Program Files Browsers Extensions]>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   [File System]>>%%i
+%log_append_place% :     [Program Files Browsers Extensions]>>%%i
 
 
 
@@ -504,10 +442,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
 
 
 
-for %%i in (%log% %log_debug%) do (
-  echo.  Script Completed>>%%i
-  for /l %%z in (3,-1,1) do echo.>>%%i
-)
+%log_append_place% :   Script Completed>>%%i
 
 
 

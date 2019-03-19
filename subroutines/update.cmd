@@ -1,7 +1,7 @@
 @echo off
 chcp 65001>nul
 
-for %%i in (%log% %log_debug%) do echo.[Update]>>%%i
+%log_append_place% : [Update]
 
 set key_check=
 set key_update=
