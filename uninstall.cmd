@@ -5,6 +5,8 @@ chcp 65001>nul
 cd %~dp0
 
 set program_name=AdVirC
+set program_version_name=%program_name% v2.0 Pre-Alpha [MikronT]
+
 set uninstallDirectory=%cd%
 
 for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ReleaseId') do set windowsVersionID=%%i
@@ -15,7 +17,7 @@ for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\
 
 :uninstallQuestion
 set command=command
-if exist design\mainLogo.cmd call design\mainLogo.cmd
+if exist subroutines\methods.cmd call subroutines\methods.cmd :logo main1
 
 echo.  ^(i^) Uninstall directory: %uninstallDirectory%
 echo.
