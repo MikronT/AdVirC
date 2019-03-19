@@ -1,4 +1,4 @@
-call design\logLogo.cmd
+%logo_log%
 for %%i in (%log% %log_debug%) do echo.[Scanning]>>%%i
 setlocal EnableDelayedExpansion
 

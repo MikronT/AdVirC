@@ -23,6 +23,8 @@ set module_shortcut=subroutines\modules\shortcut.exe /a:c
 set module_unZip=subroutines\modules\unzip.exe -qq
 set module_wget=subroutines\modules\wget.exe --quiet --no-check-certificate --tries=1
 
+
+set logo_log=%method% :logo_log log1
 set stringBuilder=set stringBuilder_string=%%stringBuilder_string%%
 set update=start /b subroutines\update.cmd
 

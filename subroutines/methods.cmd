@@ -31,6 +31,28 @@ exit /b
 
 
 
+:logo_log
+@echo off
+chcp 65001>nul
+
+mode con:cols=70 lines=36
+color 0b
+
+title %program_name% ^| Log
+cls
+
+echo.
+call design\logos.cmd %1
+echo.
+echo.
+exit /b
+
+
+
+
+
+
+
 :input
 if "%windowsVersionID%" == "1809" (
   set /p command=%inputBS%  %language_input%
