@@ -56,6 +56,6 @@ reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v WindowSize       /t REG_
 
 
 
-start design\loading.cmd
+start subroutines\loading.cmd
 start subroutines\main.cmd
 exit

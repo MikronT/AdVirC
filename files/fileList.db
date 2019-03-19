@@ -1,5 +1,3 @@
-design\loading.cmd
-
 files\fileList.db
 files\icon.ico
 files\rebootScriptTask.xml
@@ -21,6 +19,7 @@ subroutines\modules\wget.exe
 
 subroutines\cleaning.cmd
 subroutines\databases.cmd
+subroutines\loading.cmd
 subroutines\main.cmd
 subroutines\methods.cmd
 subroutines\update.cmd
