@@ -1,7 +1,7 @@
-design\icon.ico
 design\loading.cmd
 
 files\fileList.db
+files\icon.ico
 files\rebootScriptTask.xml
 files\userShellFolders.db
 

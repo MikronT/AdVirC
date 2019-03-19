@@ -1,4 +1,4 @@
-call %*
+@call %*
 exit /b
 
 

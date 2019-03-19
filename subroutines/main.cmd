@@ -1,4 +1,4 @@
-%logo%
+@%logo%
 %loadingUpdate% 3
 
 
@@ -661,9 +661,7 @@ exit /b
 
 
 :clearTemp
-for %%i in (files\databases files\logs files\reports) do (
-  if exist "%%i" rd /s /q "%%i"
-)
+rem for %%i in (files\databases files\logs files\reports) do if exist "%%i" rd /s /q "%%i"
 for /f "delims=" %%i in ('dir /b temp') do if "%%i" NEQ "counter_loading" del /q "temp\%%i"
 
 call :settings_apply
