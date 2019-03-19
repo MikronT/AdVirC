@@ -7,14 +7,17 @@ cd %~dp0
 set program_name=AdVirC
 set uninstallDirectory=%cd%
 
+for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ReleaseId') do set windowsVersionID=%%i
+
+
+
 
 
 :uninstallQuestion
 set command=command
-call design\mainLogo.cmd
-for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ReleaseId') do set windowsVersionID=%%i
+if exist design\mainLogo.cmd call design\mainLogo.cmd
 
-echo.  ^(i^) Uninstall directory: %cd%
+echo.  ^(i^) Uninstall directory: %uninstallDirectory%
 echo.
 echo.  ^(^?^) Do you want to uninstall %program_name%^?
 echo.      ^(1^) Uninstall
@@ -34,7 +37,7 @@ if "%command%" NEQ "1" goto :uninstallQuestion
 
 
 
-%loadingUpdate% stop
+if exist subroutines\methods.cmd call subroutines\methods.cmd :loadingUpdate stop
 timeout /nobreak /t 1 >nul
 
 if exist files\backups\consoleSettingsBackup.reg reg import files\backups\consoleSettingsBackup.reg 2>nul
