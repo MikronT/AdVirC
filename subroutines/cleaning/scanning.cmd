@@ -9,7 +9,7 @@ setlocal EnableDelayedExpansion
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\processes\services.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\processes\services.db) do (
   set errorLevel=
   sc query "%%i">>%log_debug%
   if "!errorLevel!" == "" call :cleaning_scanning_subroutine Service %cleaning_services% %%i
@@ -26,7 +26,7 @@ for /f "delims=" %%i in (files\databases\rewrited\processes\services.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\processes\tasks.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\processes\tasks.db) do (
   set errorLevel=
   schtasks /query /tn "%%i">nul 2>>%log_debug%
   if "!errorLevel!" == "" call :cleaning_scanning_subroutine Task %cleaning_tasks% %%i
@@ -49,7 +49,7 @@ rem )
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\processes\processes.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\processes\processes.db) do (
   for /f "skip=3 delims= " %%j in ('tasklist /fi "imagename eq %%i"') do if "%%j" == "%%i" (
     call :cleaning_scanning_subroutine Process %cleaning_processes% %%i
   ) else if "%setting_logging_advanced%" == "true" echo.Not Found - %%i>>%log_debug%
@@ -64,8 +64,8 @@ for /f "delims=" %%i in (files\databases\rewrited\processes\processes.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\classes.db) do (
-  for /f "delims=" %%j in (files\databases\rewrited\registry\classes.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\classes.db) do (
+  for /f "delims=" %%j in (%dataDir%\databases\rewrited\registry\classes.db) do (
     set errorLevel=
     reg query "%%i\%%j">nul 2>>%log_debug%
     if "!errorLevel!" == "" call :cleaning_scanning_subroutine Class %cleaning_registry% %%i\%%j
@@ -83,8 +83,8 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\classes.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\keys.db) do (
-  for /f "delims=" %%j in (files\databases\rewrited\registry\keys.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\keys.db) do (
+  for /f "delims=" %%j in (%dataDir%\databases\rewrited\registry\keys.db) do (
     set errorLevel=
     reg query "%%i\%%j">nul 2>>%log_debug%
     if "!errorLevel!" == "" call :cleaning_scanning_subroutine Key %cleaning_registry% %%i\%%j
@@ -102,7 +102,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\keys.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\temp.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\temp.db) do (
   if exist "%%i" (
     echo.%%i>>%cleaning_temp%
     echo.    - %%i>>%log%
@@ -122,8 +122,8 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\temp.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
-  for /f "delims=" %%j in (files\databases\rewrited\folders\appData.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do (
+  for /f "delims=" %%j in (%dataDir%\databases\rewrited\folders\appData.db) do (
     if exist "%%i\%%j" (
       echo.%%i\%%j>>%cleaning_folders%
       echo.    - %%i\%%j>>%log%
@@ -144,8 +144,8 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
-  for /f "delims=" %%j in (files\databases\rewrited\folders\programFiles.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\programFiles.db) do (
+  for /f "delims=" %%j in (%dataDir%\databases\rewrited\folders\programFiles.db) do (
     if exist "%%i\%%j" (
       echo.%%i\%%j>>%cleaning_folders%
       echo.    - %%i\%%j>>%log%
@@ -166,7 +166,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\folders\systemDrive.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\folders\systemDrive.db) do (
   if exist "%systemDrive%\%%i" (
     echo.%systemDrive%\%%i>>%cleaning_folders%
     echo.    - %systemDrive%\%%i>>%log%
@@ -186,8 +186,8 @@ for /f "delims=" %%i in (files\databases\rewrited\folders\systemDrive.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\userProfile.db) do (
-  for /f "delims=" %%j in (files\databases\rewrited\folders\userProfile.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\userProfile.db) do (
+  for /f "delims=" %%j in (%dataDir%\databases\rewrited\folders\userProfile.db) do (
     if exist "%%i\%%j" (
       echo.%%i\%%j>>%cleaning_folders%
       echo.    - %%i\%%j>>%log%
@@ -208,7 +208,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\userProfile.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\folders\winDir.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\folders\winDir.db) do (
   if exist "%winDir%\%%i" (
     echo.%winDir%\%%i>>%cleaning_folders%
     echo.    - %winDir%\%%i>>%log%
@@ -228,8 +228,8 @@ for /f "delims=" %%i in (files\databases\rewrited\folders\winDir.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
-  for /f "delims=" %%j in (files\databases\rewrited\files\appData.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do (
+  for /f "delims=" %%j in (%dataDir%\databases\rewrited\files\appData.db) do (
     if exist "%%i\%%j" (
       echo.%%i\%%j>>%cleaning_files%
       echo.    - %%i\%%j>>%log%
@@ -250,8 +250,8 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
-  for /f "delims=" %%j in (files\databases\rewrited\files\programFiles.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\programFiles.db) do (
+  for /f "delims=" %%j in (%dataDir%\databases\rewrited\files\programFiles.db) do (
     if exist "%%i\%%j" (
       echo.%%i\%%j>>%cleaning_files%
       echo.    - %%i\%%j>>%log%
@@ -272,7 +272,7 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\files\systemDrive.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\files\systemDrive.db) do (
   if exist "%systemDrive%\%%i" (
     echo.%systemDrive%\%%i>>%cleaning_files%
     echo.    - %systemDrive%\%%i>>%log%
@@ -292,7 +292,7 @@ for /f "delims=" %%i in (files\databases\rewrited\files\systemDrive.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\files\winDir.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\files\winDir.db) do (
   if exist "%winDir%\%%i" (
     echo.%winDir%\%%i>>%cleaning_files%
     echo.    - %winDir%\%%i>>%log%
@@ -312,8 +312,8 @@ for /f "delims=" %%i in (files\databases\rewrited\files\winDir.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\shortcuts.db) do (
-  for /f "delims=" %%j in (files\databases\rewrited\files\shortcuts.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\shortcuts.db) do (
+  for /f "delims=" %%j in (%dataDir%\databases\rewrited\files\shortcuts.db) do (
     if exist "%%i\%%j" (
       echo.%%i\%%j>>%cleaning_shortcuts%
       echo.    - %%i\%%j>>%log%
@@ -334,10 +334,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\shortcuts.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\browsersShortcuts.db) do (
-  for /f "tokens=1,2,3* delims=;" %%j in (files\databases\rewrited\files\browsersShortcuts.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\browsersShortcuts.db) do (
+  for /f "tokens=1,2,3* delims=;" %%j in (%dataDir%\databases\rewrited\files\browsersShortcuts.db) do (
     if exist "%%i\%%j.lnk" (
-      md "files\reports\shortcuts\%%j">nul 2>nul
       echo.del /s /q "%%i\%%j.lnk">>%cleaning_rebootScript%
       echo.%module_shortcut% /f:"%%i\%%j.lnk" /t:"%%k" /i:"%%k" /w:"%%l">>%cleaning_rebootScript%
       echo.    - %%i\%%j.lnk>>%log%
@@ -356,8 +355,8 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\browsersShortcuts.db) do 
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
-  for /f "delims=" %%j in (files\databases\rewrited\folders\extensions.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do (
+  for /f "delims=" %%j in (%dataDir%\databases\rewrited\folders\extensions.db) do (
     if exist "%%i\%%j" (
       echo.%%i\%%j>>%cleaning_extensions%
       echo.    - %%i\%%j>>%log%
@@ -378,9 +377,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
-  for /f "delims=" %%j in (files\databases\rewrited\dirs\extensions.db) do (
-    for /f "delims=" %%k in (files\databases\rewrited\folders\extensions.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do (
+  for /f "delims=" %%j in (%dataDir%\databases\rewrited\dirs\extensions.db) do (
+    for /f "delims=" %%k in (%dataDir%\databases\rewrited\folders\extensions.db) do (
       if exist "%%i\%%j\%%k" (
         echo.%%i\%%j\%%k>>%cleaning_extensions%
         echo.    - %%i\%%j\%%k>>%log%
@@ -402,8 +401,8 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\appData.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
-  for /f "delims=" %%j in (files\databases\rewrited\folders\extensions.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\programFiles.db) do (
+  for /f "delims=" %%j in (%dataDir%\databases\rewrited\folders\extensions.db) do (
     if exist "%%i\%%j" (
       echo.%%i\%%j>>%cleaning_extensions%
       echo.    - %%i\%%j>>%log%
@@ -424,9 +423,9 @@ for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
 
 
 
-for /f "delims=" %%i in (files\databases\rewrited\dirs\programFiles.db) do (
-  for /f "delims=" %%j in (files\databases\rewrited\dirs\extensions.db) do (
-    for /f "delims=" %%k in (files\databases\rewrited\folders\extensions.db) do (
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\programFiles.db) do (
+  for /f "delims=" %%j in (%dataDir%\databases\rewrited\dirs\extensions.db) do (
+    for /f "delims=" %%k in (%dataDir%\databases\rewrited\folders\extensions.db) do (
       if exist "%%i\%%j\%%k" (
         echo.%%i\%%j\%%k>>%cleaning_extensions%
         echo.    - %%i\%%j\%%k>>%log%

@@ -24,6 +24,8 @@ set loadingUpdate=%method% :loadingUpdate
 set module_sleep=subroutines\modules\sleep.exe
 set key_wait=0
 
+set dataDir=data
+
 for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
   >nul set %%i
   >nul set %%j
@@ -38,13 +40,13 @@ if "%key_wait%" NEQ "0" %module_sleep% %key_wait%
 if exist temp rd /s /q temp
 md temp>nul 2>nul
 
-if not exist files\backups md files\backups>nul 2>nul
+if not exist %dataDir%\backups md %dataDir%\backups>nul 2>nul
 
 %loadingUpdate% reset
 
 
 
-reg export HKCU\Console\%%SystemRoot%%_system32_cmd.exe files\backups\consoleSettingsBackup.reg /y >nul
+reg export HKCU\Console\%%SystemRoot%%_system32_cmd.exe %dataDir%\backups\consoleSettingsBackup.reg /y >nul
 reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v CodePage         /t REG_DWORD /d 65001      /f >nul
 reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v ColorTable00     /t REG_DWORD /d 0          /f >nul
 reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v FaceName         /t REG_SZ    /d Consolas   /f >nul

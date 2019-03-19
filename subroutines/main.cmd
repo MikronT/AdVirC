@@ -16,7 +16,7 @@ set setting_update_databases_remind=true
 set setting_update_program_auto=true
 set setting_update_program_remind=true
 
-set settings=files\settings\settings.ini
+set settings=%dataDir%\settings\settings.ini
 
 set module_moveFile=subroutines\modules\movefile.exe /accepteula
 set module_shortcut=subroutines\modules\shortcut.exe /a:c
@@ -86,8 +86,8 @@ for /f "tokens=1-7 delims=." %%i in ("%program_version_code%") do (
   set program_version_code_level7=%%o
 )
 
-if exist "files\databases\original\databases.version" (
-  for /f "delims=" %%i in (files\databases\original\databases.version) do set databases_version_code=%%i
+if exist "%dataDir%\databases\original\databases.version" (
+  for /f "delims=" %%i in (%dataDir%\databases\original\databases.version) do set databases_version_code=%%i
   for /f "tokens=1-8 delims=." %%i in ("%databases_version_code%") do (
     set databases_version_code_level1=%%i
     set databases_version_code_level2=%%j
@@ -227,14 +227,14 @@ call echo.%language_info_windowsVersionID%
 
 if "%setting_firstRun%" == "true" (
   echo.%language_info_registryBackup_creating%
-  if not exist files\backups\registry md files\backups\registry>nul 2>nul
-  rem reg export HKCR files\backups\registry\HKCR.reg /y>>%log_debug%
+  if not exist %dataDir%\backups\registry md %dataDir%\backups\registry>nul 2>nul
+  rem reg export HKCR %dataDir%\backups\registry\HKCR.reg /y>>%log_debug%
   %loadingUpdate% 3
-  rem reg export HKLM files\backups\registry\HKLM.reg /y>>%log_debug%
+  rem reg export HKLM %dataDir%\backups\registry\HKLM.reg /y>>%log_debug%
   %loadingUpdate% 6
-  rem reg export HKU  files\backups\registry\HKU.reg  /y>>%log_debug%
+  rem reg export HKU  %dataDir%\backups\registry\HKU.reg  /y>>%log_debug%
   %loadingUpdate% 5
-  rem reg export HKCC files\backups\registry\HKCC.reg /y>>%log_debug%
+  rem reg export HKCC %dataDir%\backups\registry\HKCC.reg /y>>%log_debug%
   %loadingUpdate% 1
   echo.%language_info_registryBackup_created%
   set setting_firstRun=false
@@ -244,7 +244,7 @@ if "%setting_firstRun%" == "true" (
 
 echo.%%lastLoggedOnUserSID%%>temp\lastLoggedOnUserSID
 for /f "tokens=2*" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI /v LastLoggedOnUserSID') do set lastLoggedOnUserSID=%%j
-if "%setting_reports_collect%" == "true" for /f "delims=" %%i in (temp\lastLoggedOnUserSID) do call echo.%%i>files\reports\lastLoggedOnUserSID.rpt
+if "%setting_reports_collect%" == "true" for /f "delims=" %%i in (temp\lastLoggedOnUserSID) do call echo.%%i>%dataDir%\reports\lastLoggedOnUserSID.rpt
 call echo.%language_info_lastLoggedOnUserSID%
 %loadingUpdate% 2
 
@@ -253,7 +253,7 @@ call echo.%language_info_lastLoggedOnUserSID%
 if exist "%appData%\Mozilla\Firefox\Profiles" (
   echo.%%mozillaFirefoxUserProfile%%>temp\mozillaFirefoxUserProfile
   for /f "delims=" %%i in ('dir "%appData%\Mozilla\Firefox\Profiles" /a:d /b') do set mozillaFirefoxUserProfile=%%i
-  if "%setting_reports_collect%" == "true" for /f "delims=" %%i in (temp\mozillaFirefoxUserProfile) do call echo.%%i>files\reports\mozillaFirefoxUserProfile.rpt
+  if "%setting_reports_collect%" == "true" for /f "delims=" %%i in (temp\mozillaFirefoxUserProfile) do call echo.%%i>%dataDir%\reports\mozillaFirefoxUserProfile.rpt
   call echo.%language_info_mozillaFirefoxUserProfile%
 )
 %loadingUpdate% 2
@@ -475,7 +475,7 @@ echo.
 
 if "%command%" == "0" ( set command= & exit /b )
 if "%command%" == "1" (
-  systeminfo>files\reports\systemInfo.rpt >nul 2>nul
+  systeminfo>%dataDir%\reports\systemInfo.rpt >nul 2>nul
   set command=
   exit /b
 )
@@ -665,7 +665,7 @@ exit /b
 
 
 :clearTemp
-rem for %%i in (files\databases files\logs files\reports) do if exist "%%i" rd /s /q "%%i"
+rem for %%i in (%dataDir%\databases %dataDir%\logs %dataDir%\reports) do if exist "%%i" rd /s /q "%%i"
 for /f "delims=" %%i in ('dir /b temp') do if "%%i" NEQ "counter_loading" del /q "temp\%%i"
 
 call :settings_apply
@@ -690,7 +690,7 @@ exit /b
 
 
 :settings_save
-if not exist files\settings md files\settings>nul 2>nul
+if not exist %dataDir%\settings md %dataDir%\settings>nul 2>nul
 
 echo.# %program_name% Settings #>%settings%
 echo.debug=%setting_debug%>>%settings%
@@ -715,17 +715,17 @@ exit /b
 
 :settings_apply
 if "%setting_logging%" == "true" (
-  if not exist files\logs md files\logs>nul 2>nul
-  set log=files\logs\%program_name%_%currentDate%.log
+  if not exist %dataDir%\logs md %dataDir%\logs>nul 2>nul
+  set log=%dataDir%\logs\%program_name%_%currentDate%.log
   if "%setting_debug%" == "true" (
-    set log_debug=files\logs\%program_name%_%currentDate%_debug.log
+    set log_debug=%dataDir%\logs\%program_name%_%currentDate%_debug.log
   ) else set log_debug=nul
 ) else (
   set log=nul
   set log_debug=nul
 )
 
-if "%setting_reports_collect%" == "true" if not exist files\reports md files\reports>nul 2>nul
+if "%setting_reports_collect%" == "true" if not exist %dataDir%\reports md %dataDir%\reports>nul 2>nul
 exit /b
 
 
@@ -735,8 +735,8 @@ exit /b
 
 
 :diagnostic
-set log_diagnostic=files\logs\%program_name%_%currentDate%_diagnostic.log
-if not exist files\logs md files\logs>nul 2>nul
+set log_diagnostic=%dataDir%\logs\%program_name%_%currentDate%_diagnostic.log
+if not exist %dataDir%\logs md %dataDir%\logs>nul 2>nul
 
 echo.[Diagnostic]>>%log_diagnostic%
 echo.Missing Files:>>%log_diagnostic%
@@ -778,7 +778,7 @@ goto :diagnostic
 :exit
 %loadingUpdate% stop
 
-reg import files\backups\consoleSettingsBackup.reg 2>nul
+reg import %dataDir%\backups\consoleSettingsBackup.reg 2>nul
 
 %module_sleep% -m 300
 

@@ -7,6 +7,7 @@ cd %~dp0
 set program_name=AdVirC
 set program_version_name=%program_name% v2.0 Pre-Alpha [MikronT]
 
+set dataDir=data
 set uninstallDirectory=%cd%
 
 for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ReleaseId') do set windowsVersionID=%%i
@@ -42,7 +43,7 @@ if "%command%" NEQ "1" goto :uninstallQuestion
 if exist subroutines\methods.cmd call subroutines\methods.cmd :loadingUpdate stop
 timeout /nobreak /t 1 >nul
 
-if exist files\backups\consoleSettingsBackup.reg reg import files\backups\consoleSettingsBackup.reg 2>nul
+if exist %dataDir%\backups\consoleSettingsBackup.reg reg import %dataDir%\backups\consoleSettingsBackup.reg 2>nul
 
 for /f "skip=2 tokens=2,* delims= " %%i in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v Desktop') do set location_desktop=%%j
 if exist "%location_desktop%\%program_name%.lnk" del /q "%location_desktop%\%program_name%.lnk"

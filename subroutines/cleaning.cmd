@@ -1,7 +1,7 @@
 @%logo%
 %log_append_place% : [Cleaning]
 
-if not exist files\databases\rewrited\dirs\temp.db (
+if not exist %dataDir%\databases\rewrited\dirs\temp.db (
   echo.%language_databases_notExist_error%
   %module_sleep% 1
   exit /b
