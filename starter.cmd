@@ -16,9 +16,11 @@ set program_name=AdVirC
 set program_version_code=2.0.0.0.0.0
 set program_version_name=%program_name% v2.0 Pre-Alpha [MikronT]
 
-set logo=call design\mainLogo.cmd
-set loadingUpdate=call design\loadingUpdate.cmd
+set method=call subroutines\methods.cmd
 set module_sleep=subroutines\modules\sleep.exe
+
+set logo=call design\mainLogo.cmd
+set loadingUpdate=%method% :loadingUpdate
 
 set key_wait=0
 
