@@ -28,6 +28,7 @@ if "%1" == "reset" (
   ) else set /a counter_loading+=%1
 )
 
+if not exist temp md temp
 echo.%counter_loading%>temp\counter_loading
 exit /b
 
