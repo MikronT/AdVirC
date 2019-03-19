@@ -1,4 +1,4 @@
-%logo%
+@%logo%
 for %%i in (%log% %log_debug%) do echo.[Cleaning]>>%%i
 
 if not exist files\databases\rewrited\dirs\temp.db (

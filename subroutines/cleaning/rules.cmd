@@ -1,4 +1,4 @@
-%logo_log%
+@%logo_log%
 for %%i in (%log% %log_debug%) do echo.[Rules]>>%%i
 setlocal EnableDelayedExpansion
 
