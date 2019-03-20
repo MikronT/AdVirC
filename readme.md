@@ -82,16 +82,16 @@ Note: you can combine the keys as you wish.
 ## Version History
 | Date       | Version Name   | Version Code    |
 |------------|----------------|-----------------|
-| 27.11.2018 | v2.0 Pre-Alpha | 2.0.0.0.0.0.0   |
+| 27.11.2018 | v2.0 Pre-Alpha | 2.0.0.0.0.0     |
 
 <!--
-AdVirC v2.0 Alpha 1                2.0.0.1.1.0.0
-AdVirC v2.0 Alpha 2                2.0.0.1.2.0.0
-AdVirC v2.0 Beta 1                 2.0.0.2.1.0.0
-AdVirC v2.0 Pre-Release 1          2.0.0.3.1.0.0
-AdVirC v2.0 Release                2.0.0.4.0.0.0
+AdVirC v2.0 Alpha 1                2.0.0.1.1.0
+AdVirC v2.0 Alpha 2                2.0.0.1.2.0
+AdVirC v2.0 Beta 1                 2.0.0.2.1.0
+AdVirC v2.0 Pre-Release 1          2.0.0.3.1.0
+AdVirC v2.0 Release                2.0.0.4.0.0
 
-AdVirC v2.1 Beta 1                 2.1.0.2.1.0.0
+AdVirC v2.1 Beta 1                 2.1.0.2.1.0
 AdVirC v2.1 Beta 1 Nightly 001     2.1.0.2.1.0.001
-AdVirC v2.1 Release                2.1.0.4.0.0.0
+AdVirC v2.1 Release                2.1.0.4.0.0
 -->
