@@ -14,7 +14,7 @@ cd "%~dp0"
 
 
 set program_name=AdVirC
-set program_version_code=2.0.0.0.0.0
+set program_version_code=2.0.0.0.0.0.0
 set program_version_name=%program_name% v2.0 Pre-Alpha [MikronT]
 
 set method=call subroutines\methods.cmd
