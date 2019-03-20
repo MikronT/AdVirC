@@ -30,7 +30,7 @@ set log_append_place=%method% :log_append_place
 set logo_log=%method% :logo log 1
 
 set stringBuilder=set stringBuilder_string=%%stringBuilder_string%%
-set update=subroutines\update.cmd
+set update=/b subroutines\update.cmd
 
 set cleaning_filesToRemove=temp\filesToRemove.db
 set cleaning_rebootScript=temp\rebootScript.cmd
@@ -181,6 +181,13 @@ echo.%language_initialization%
 
 
 
+if "%setting_update_databases_auto%" == "true" (
+  start %update% --key_check=databases
+) else if "%setting_update_databases_remind%" == "true" start %update% --key_check=databases
+
+if "%setting_update_program_auto%" == "true" (
+  start %update% --key_check=program
+) else if "%setting_update_program_remind%" == "true" start %update% --key_check=program
 %loadingUpdate% 2
 
 
@@ -270,6 +277,8 @@ call echo.%language_info_processorArchitecture%
 
 
 
+if "%setting_update_databases_auto%" == "true" start /wait %update% --key_update=databases
+if "%setting_update_program_auto%" == "true" start /wait %update% --key_update=program
 goto :menu_main
 
 

@@ -61,9 +61,11 @@ if "%key_check%" == "program" (
   )
 )
 
-rem if "%key_update%" == "program" %loadingUpdate% stop
+if "%key_update%" == "program" if exist temp\return_update_program_available (
+  %loadingUpdate% stop
+  echo.Soon...
+)
 
 set key_check=
 set key_update=
-
 exit
