@@ -27,7 +27,7 @@ set input=%method% :input
 set log_append_delimiter=%method% :log_append_delimiter
 set log_append_line=%method% :log_append_line
 set log_append_place=%method% :log_append_place
-set logo_log=%method% :logo_log log1
+set logo_log=%method% :logo log 1
 
 set stringBuilder=set stringBuilder_string=%%stringBuilder_string%%
 set update=start /b subroutines\update.cmd

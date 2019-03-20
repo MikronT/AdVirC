@@ -79,16 +79,21 @@ exit /b
 :logo
 @echo off
 chcp 65001>nul
-
-mode con:cols=124 lines=36
 color 0b
 
-title %program_version_name%
+if "%1" == "main" (
+  mode con:cols=124 lines=36
+  title %program_version_name%
+) else if "%1" == "log" (
+  mode con:cols=70 lines=36
+  title %program_name% ^| Log
+)
+
 cls
 
 echo.
 echo.
-call :%1
+call :%1%2
 echo.
 echo.
 echo.
@@ -147,28 +152,6 @@ echo.     ●●               ●●  ●●    ●●  ●●    ●●  ●�
 echo.       ●●            ●●●●●●●●   ●●  ●●     ●●●●    ●●  ●●  ●●   ●●      
 echo.     ●●             ●●●    ●●●  ●●  ●●      ●●     ●●  ●●●●●    ●●    ●●
 echo.   ●●     ¬¬¬¬¬¬¬  ●●●●●  ●●●●● ●●●●       ●●●●   ●●●● ●●  ●●    ●●●●●● 
-exit /b
-
-
-
-
-
-
-
-:logo_log
-@echo off
-chcp 65001>nul
-
-mode con:cols=70 lines=36
-color 0b
-
-title %program_name% ^| Log
-cls
-
-echo.
-call :%1
-echo.
-echo.
 exit /b
 
 
