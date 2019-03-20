@@ -3,12 +3,9 @@ chcp 65001>nul
 
 %log_append_place% : [Update]
 
-set key_check=
-set key_update=
-
 for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
-  set %%i
-  set %%j
+  >nul set %%i
+  >nul set %%j
 )
 
 
@@ -35,9 +32,9 @@ if "%key_check%" == "databases" (
       )
     )
   )
-
-  if "%key_update%" == "databases" if exist temp\return_update_databases_available call subroutines\databases.cmd --key_auto=true
 )
+
+if "%key_update%" == "databases" if exist temp\return_update_databases_available call subroutines\databases.cmd
 
 
 
@@ -62,7 +59,11 @@ if "%key_check%" == "program" (
       )
     )
   )
-
-  rem if "%key_update%" == "program" %loadingUpdate% stop
 )
+
+rem if "%key_update%" == "program" %loadingUpdate% stop
+
+set key_check=
+set key_update=
+
 exit

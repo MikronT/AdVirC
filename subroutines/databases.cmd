@@ -1,17 +1,12 @@
-@echo off
-chcp 65001>nul
+@%logo%
+echo.%language_databases_updating%
+echo.
 
 %log_append_place% : [Databases]
 
 for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
   >nul set %%i
   >nul set %%j
-)
-
-if "%key_auto%" NEQ "true" (
-  %logo%
-  echo.%language_databases_updating%
-  echo.
 )
 
 if exist temp\return_update_databases_available del /q temp\return_update_databases_available
@@ -35,22 +30,18 @@ if "%key_import%" == "true" (
 
 
 
-if "%key_auto%" NEQ "true" (
-  %loadingUpdate% 10
-  echo.%language_databases_downloading%
-)
+%loadingUpdate% 10
+echo.%language_databases_downloading%
 
 %module_wget% "%update_databases_url%" --output-document=%update_databases_output%
 
-if "%key_auto%" NEQ "true" (
-  for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir %update_databases_output%') do if "%%i" == "1" set databases_lenghtReturn=%%j
-  if "%databases_lenghtReturn%" == "0" ( call :error %language_module_wget_error% & exit /b )
+for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir %update_databases_output%') do if "%%i" == "1" set databases_lenghtReturn=%%j
+if "%databases_lenghtReturn%" == "0" ( call :error %language_module_wget_error% & exit /b )
 
-  echo.%language_databases_downloading_success%
-  echo.
-  %module_sleep% 1
-  %loadingUpdate% 15
-)
+echo.%language_databases_downloading_success%
+echo.
+%module_sleep% 1
+%loadingUpdate% 15
 
 
 
@@ -59,35 +50,27 @@ if "%key_auto%" NEQ "true" (
 
 
 :unzip
-if "%key_auto%" NEQ "true" (
-  %loadingUpdate% 4
-  echo.%language_databases_unpacking%
-)
+%loadingUpdate% 4
+echo.%language_databases_unpacking%
 
 rd /s /q %dataDir%\databases>nul 2>>%log_debug%
 
-if "%key_auto%" NEQ "true" (
-  %module_sleep% 1
-  %loadingUpdate% 4
-)
+%module_sleep% 1
+%loadingUpdate% 4
 
 md %dataDir%\databases\original>nul 2>>%log_debug%
 %module_unZip% -o %update_databases_output% -d %dataDir%\databases\original
 
-if "%key_auto%" NEQ "true" (
-  if not exist %dataDir%\databases\original\databases.version ( call :error %language_module_unZip_error% & exit /b )
+if not exist %dataDir%\databases\original\license.txt ( call :error %language_module_unZip_error% & exit /b )
 
-  %loadingUpdate% 4
-  %module_sleep% 1
-)
+%loadingUpdate% 4
+%module_sleep% 1
 
 del /q %update_databases_output%
 
-if "%key_auto%" NEQ "true" (
-  echo.%language_databases_unpacking_success%
-  echo.
-  %loadingUpdate% 3
-)
+echo.%language_databases_unpacking_success%
+echo.
+%loadingUpdate% 3
 
 
 
@@ -106,7 +89,7 @@ for /f "tokens=1-8 delims=." %%i in ("%databases_version_code%") do (
   set databases_version_code_level7=%%o
   set databases_version_code_level8=%%p
 )
-if "%key_auto%" NEQ "true" %loadingUpdate% 1
+%loadingUpdate% 1
 
 
 
@@ -114,26 +97,26 @@ if "%key_auto%" NEQ "true" %loadingUpdate% 1
 
 
 
-if "%key_auto%" NEQ "true" echo.%language_databases_rewriting%
+echo.%language_databases_rewriting%
 
 for /f "delims=" %%i in ('dir /a:d /b %dataDir%\databases\original') do md %dataDir%\databases\rewrited\%%i>nul 2>>%log_debug%
 
 (for /f "eol=# delims=" %%i in (%dataDir%\databases\original\fileList.db) do for /f "delims=" %%j in (%dataDir%\databases\original\%%i) do call echo.%%j>>%dataDir%\databases\rewrited\%%i)>>%log_debug%
-if "%key_auto%" NEQ "true" %loadingUpdate% 1
+%loadingUpdate% 1
 
 
 
 for /f "delims=" %%i in ('dir "%systemDrive%\Users" /a:d /b') do if exist "%systemDrive%\Users\%%i" echo.%systemDrive%\Users\%%i>>%dataDir%\databases\rewrited\dirs\userProfile.db
-if "%key_auto%" NEQ "true" %loadingUpdate% 1
+%loadingUpdate% 1
 
 for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\userProfile.db) do for %%j in (Local LocalLow Roaming) do if exist "%%i\AppData\%%j" echo.%%i\AppData\%%j>>%dataDir%\databases\rewrited\dirs\appData.db
-if "%key_auto%" NEQ "true" %loadingUpdate% 1
+%loadingUpdate% 1
 
 for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\userProfile.db) do if exist "%%i\Desktop" echo.%%i\Desktop>>%dataDir%\databases\rewrited\dirs\browsersShortcuts.db
-if "%key_auto%" NEQ "true" %loadingUpdate% 1
+%loadingUpdate% 1
 
 for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do if exist "%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" echo.%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar>>%dataDir%\databases\rewrited\dirs\browsersShortcuts.db
-if "%key_auto%" NEQ "true" %loadingUpdate% 1
+%loadingUpdate% 1
 
 for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do (
   if exist "%%i\Microsoft\Internet Explorer\Quick Launch" echo.%%i\Microsoft\Internet Explorer\Quick Launch>>%dataDir%\databases\rewrited\dirs\shortcuts.db
@@ -144,7 +127,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do (
   if exist "%%i\Microsoft\Windows\Start Menu" echo.%%i\Microsoft\Windows\Start Menu>>%dataDir%\databases\rewrited\dirs\shortcuts.db
   if exist "%%i\Microsoft\Windows\Start Menu\Programs" echo.%%i\Microsoft\Windows\Start Menu\Programs>>%dataDir%\databases\rewrited\dirs\shortcuts.db
 )
-if "%key_auto%" NEQ "true" %loadingUpdate% 2
+%loadingUpdate% 2
 
 setlocal EnableDelayedExpansion
 for /f "delims=" %%i in ('reg query HKU') do (
@@ -175,11 +158,9 @@ for /f "delims=" %%i in ('reg query HKU') do (
 )
 endlocal
 
-if "%key_auto%" NEQ "true" (
-  echo.%language_databases_rewriting_success%
-  echo.
-  %loadingUpdate% 2
-)
+echo.%language_databases_rewriting_success%
+echo.
+%loadingUpdate% 2
 
 
 
@@ -187,10 +168,8 @@ if "%key_auto%" NEQ "true" (
 
 
 
-if "%key_auto%" NEQ "true" (
-  echo.%language_databases_updating_success%
-  %module_sleep% 1
-) else set key_auto=false
+echo.%language_databases_updating_success%
+%module_sleep% 1
 exit /b
 
 

@@ -30,7 +30,7 @@ set log_append_place=%method% :log_append_place
 set logo_log=%method% :logo log 1
 
 set stringBuilder=set stringBuilder_string=%%stringBuilder_string%%
-set update=start /b subroutines\update.cmd
+set update=subroutines\update.cmd
 
 set cleaning_filesToRemove=temp\filesToRemove.db
 set cleaning_rebootScript=temp\rebootScript.cmd
@@ -181,6 +181,10 @@ echo.%language_initialization%
 
 
 
+%loadingUpdate% 2
+
+
+
 if "%setting_language%" NEQ "english" if "%setting_language%" NEQ "russian" if "%setting_language%" NEQ "ukrainian" call :menu_language force
 call :language_import
 
@@ -199,7 +203,6 @@ rem ) else if "%setting_update_databases_remind%" == "true" %update% --key_check
 rem if "%setting_update_program_auto%" == "true" (
 rem   %update% --key_check=program --key_update=program
 rem ) else if "%setting_update_program_remind%" == "true" %update% --key_check=program
-%loadingUpdate% 2
 
 
 
@@ -263,6 +266,10 @@ if exist "%appData%\Mozilla\Firefox\Profiles" (
 call echo.%language_info_processorArchitecture%
 %loadingUpdate% 1
 %module_sleep% 1
+%loadingUpdate% reset
+
+
+
 goto :menu_main
 
 
