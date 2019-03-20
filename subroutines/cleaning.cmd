@@ -114,7 +114,7 @@ for /f "delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" ""
 
 
 set errorLevel=
-schtasks /create /tn "%program_name% Reboot Script Task" /xml "files\rebootScriptTask.xml" /ru system /f
+schtasks /create /tn "%program_name% Reboot Script Task" /xml "files\rebootScriptTask.xml" /ru system /f>nul 2>nul
 if "%errorLevel%" NEQ "0" echo.%language_cleaning_taskCreating_error%
 
 

@@ -9,7 +9,7 @@ setlocal EnableDelayedExpansion
 
 
 
-for /f "delims=" %%i in (%cleaning_services%) do (
+if exist %cleaning_services% for /f "delims=" %%i in (%cleaning_services%) do (
   set errorLevel=
   sc delete "%%i">>%log_debug%
   if "!errorLevel!" == "0" (
@@ -32,7 +32,7 @@ for /f "delims=" %%i in (%cleaning_services%) do (
 
 
 
-for /f "delims=" %%i in (%cleaning_tasks%) do (
+if exist %cleaning_tasks% for /f "delims=" %%i in (%cleaning_tasks%) do (
   set errorLevel=
   schtasks /delete /tn "%%i" /f>>%log_debug%
   if "!errorLevel!" == "0" (
@@ -55,7 +55,7 @@ for /f "delims=" %%i in (%cleaning_tasks%) do (
 
 
 
-for /f "delims=" %%i in (%cleaning_processes%) do (
+if exist %cleaning_processes% for /f "delims=" %%i in (%cleaning_processes%) do (
   set errorLevel=
   taskkill /f /t /im "%%i">>%log_debug%
   if "!errorLevel!" == "0" (
@@ -76,7 +76,7 @@ for /f "delims=" %%i in (%cleaning_processes%) do (
 
 
 
-for /f "delims=" %%i in (%cleaning_registry%) do (
+if exist %cleaning_registry% for /f "delims=" %%i in (%cleaning_registry%) do (
   set errorLevel=
   reg delete "%%i" /f>>%log_debug%
   if "!errorLevel!" == "0" (
@@ -99,7 +99,7 @@ for /f "delims=" %%i in (%cleaning_registry%) do (
 
 
 
-for /f "delims=" %%i in (%cleaning_temp%) do (
+if exist %cleaning_temp% for /f "delims=" %%i in (%cleaning_temp%) do (
   if exist "%%i" (
     rem rd /s /q "%%i\" clears all subdirectories and files without removing directory
     rd /s /q "%%i">>%log_debug%
@@ -129,7 +129,7 @@ for /f "delims=" %%i in (%cleaning_temp%) do (
 
 
 
-for /f "delims=" %%i in (%cleaning_folders%) do (
+if exist %cleaning_folders% for /f "delims=" %%i in (%cleaning_folders%) do (
   if exist "%%i" (
     rd /s /q "%%i">>%log_debug%
     if exist "%%i" (
@@ -157,7 +157,7 @@ for /f "delims=" %%i in (%cleaning_folders%) do (
 
 
 
-for /f "delims=" %%i in (%cleaning_files%) do (
+if exist %cleaning_files% for /f "delims=" %%i in (%cleaning_files%) do (
   if exist "%%i" (
     del /q "%%i">>%log_debug%
     if exist "%%i" (
@@ -185,7 +185,7 @@ for /f "delims=" %%i in (%cleaning_files%) do (
 
 
 
-for /f "delims=" %%i in (%cleaning_shortcuts%) do (
+if exist %cleaning_shortcuts% for /f "delims=" %%i in (%cleaning_shortcuts%) do (
   if exist "%%i" (
     del /s /q "%%i">>%log_debug%
     if exist "%%i" (
@@ -213,7 +213,7 @@ for /f "delims=" %%i in (%cleaning_shortcuts%) do (
 
 
 
-for /f "delims=" %%i in (%cleaning_extensions%) do (
+if exist %cleaning_extensions% for /f "delims=" %%i in (%cleaning_extensions%) do (
   if exist "%%i" (
     rd /s /q "%%i">>%log_debug%
     if exist "%%i" (
