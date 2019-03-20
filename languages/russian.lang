@@ -10,6 +10,8 @@ initialization2=  ^(^i^) Инициализацыя запуска...
 
 info_language=  ^(i^) Язык:
 
+info_versionCode_program=  ^(i^) Код версии программы: %program_version_code%
+info_versionCode_databases=  ^(i^) Код версии баз данных: %databases_version_code%
 info_windowsVersionID=  ^(i^) Идентификатор версии Windows: %windowsVersionID%.
 info_lastLoggedOnUserSID=  ^(i^) Последний зарегистрированный пользователь ^(SID^): %lastLoggedOnUserSID%.
 info_processorArchitecture=  ^(i^) Разрядность операционной системы: %processor_architecture%.

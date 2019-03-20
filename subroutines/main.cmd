@@ -207,10 +207,11 @@ if "%setting_logging%" == "true" (
 
 %logo%
 echo.%language_initialization2%
+echo.
+echo.  ^(i^) %program_version_name%
 
-set stringBuilder_string=  ^(i^) %program_version_name%
-if "%setting_debug%" == "true" call %stringBuilder% ^(Version Code: %program_version_code%^)
-echo.%stringBuilder_string%
+if "%setting_debug%" == "true" call echo.%language_info_versionCode_program%
+if "%setting_debug%" == "true" if exist "%dataDir%\databases\original\databases.version" call echo.%language_info_versionCode_databases%
 
 set stringBuilder_string=%language_info_language%
 if "%setting_language%" == "english" (
@@ -219,9 +220,12 @@ if "%setting_language%" == "english" (
   call %stringBuilder% %language_menu_setting_language_russian%
 ) else call %stringBuilder% %language_menu_setting_language_ukrainian%
 echo.%stringBuilder_string%
+echo.
 
 call echo.%language_info_windowsVersionID%
-%loadingUpdate% 1
+call echo.%language_info_processorArchitecture%
+echo.
+%loadingUpdate% 2
 
 
 
@@ -237,6 +241,7 @@ if "%setting_firstRun%" == "true" (
   rem reg export HKCC %dataDir%\backups\registry\HKCC.reg /y>>%log_debug%
   %loadingUpdate% 1
   echo.%language_info_registryBackup_created%
+  echo.
   set setting_firstRun=false
 ) else %loadingUpdate% 15
 
@@ -260,8 +265,6 @@ if exist "%appData%\Mozilla\Firefox\Profiles" (
 
 
 
-call echo.%language_info_processorArchitecture%
-%loadingUpdate% 1
 %module_sleep% 1
 %loadingUpdate% reset
 

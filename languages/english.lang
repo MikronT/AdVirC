@@ -10,6 +10,8 @@ initialization2=  ^(^i^) Initialization run...
 
 info_language=  ^(i^) Language:
 
+info_versionCode_program=  ^(i^) Program version code: %program_version_code%
+info_versionCode_databases=  ^(i^) Databases version code: %databases_version_code%
 info_windowsVersionID=  ^(i^) Windows version id: %windowsVersionID%.
 info_lastLoggedOnUserSID=  ^(i^) Last logged user ^(SID^): %lastLoggedOnUserSID%.
 info_processorArchitecture=  ^(i^) System bit rate: %processor_architecture%.
