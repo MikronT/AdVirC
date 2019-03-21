@@ -97,7 +97,7 @@ menu_setting_update_channel_nightly=ночные
 
 
 
-menu_language01=  Язык
+menu_language01=  Меню Выбора Языка
 
 
 
@@ -107,6 +107,18 @@ menu_update_channel01=  Меню Канала Обновления
 menu_update_channel02=  ^(1^) Релиз ^(стабильные^)
 menu_update_channel03=  ^(2^) Бета ^(некоторые новые возможности, но до конечных тестов^)
 menu_update_channel04=  ^(3^) Ночные ^(все новые возможности, не стабильные^)
+
+
+
+
+
+menu_dataManagement01=  Меню Управления Данными Программы
+menu_dataManagement02=  ^(1^) Очистить временные файлы
+menu_dataManagement03=  ^(2^) Очистить логи
+menu_dataManagement04=  ^(3^) Очистить отчёты
+menu_dataManagement05=  ^(4^) Очистить базы данных
+menu_dataManagement06=  ^(5^) Очистить настройки
+menu_dataManagement07=  ^(6^) Очистить резервные копии
 
 
 
