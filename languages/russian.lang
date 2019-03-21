@@ -103,7 +103,7 @@ menu_language01=  Язык
 
 
 
-menu_update_channel01=  Выберите канал обновления для %program_name% и баз данных.
+menu_update_channel01=  Меню Канала Обновления
 menu_update_channel02=  ^(1^) Релиз ^(стабильные^)
 menu_update_channel03=  ^(2^) Бета ^(некоторые новые возможности, но до конечных тестов^)
 menu_update_channel04=  ^(3^) Ночные ^(все новые возможности, не стабильные^)
