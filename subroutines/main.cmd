@@ -349,7 +349,7 @@ rem if "%command%" == "5" call :menu_help
 if "%command%" == "6" call :menu_report
 rem if "%command%" == "7" call :menu_about
 if "%command%" == "8" call :menu_settings
-if "%command%" == "9" call :clearTemp
+if "%command%" == "9" call :menu_dataManagement
 if "%command%" == "0" call :exit
 if "%command%" == "#" call uninstall.cmd
 
@@ -701,12 +701,36 @@ exit /b
 
 
 
-:clearTemp
-rem for %%i in (%dataDir%\databases %dataDir%\logs %dataDir%\reports) do if exist "%%i" rd /s /q "%%i"
-for /f "delims=" %%i in ('dir /b temp') do if "%%i" NEQ "counter_loading" del /q "temp\%%i"
+:menu_dataManagement
+%log_append_place% :   [Data Management Menu]
+set command=
+%logo%
+echo.%language_menu_dataManagement01%
+echo.%language_menu_dataManagement02%
+echo.%language_menu_dataManagement03%
+echo.%language_menu_dataManagement04%
+echo.%language_menu_dataManagement05%
+echo.%language_menu_dataManagement06%
+echo.%language_menu_dataManagement07%
+echo.
+echo.%language_back%
+echo.
+echo.
+echo.
+%input%
+
+
+
+if "%command%" == "0" ( set command= & exit /b )
+if "%command%" == "1" for /f "delims=" %%i in ('dir /b temp') do if "%%i" NEQ "counter_loading" del /q "temp\%%i"
+if "%command%" == "2" if exist "%dataDir%\logs"      rd /s /q "%dataDir%\logs"
+if "%command%" == "3" if exist "%dataDir%\reports"   rd /s /q "%dataDir%\reports"
+if "%command%" == "4" if exist "%dataDir%\databases" rd /s /q "%dataDir%\databases"
+if "%command%" == "5" if exist "%dataDir%\settings"  rd /s /q "%dataDir%\settings"
+if "%command%" == "6" if exist "%dataDir%\backups"   rd /s /q "%dataDir%\backups"
 
 call :settings_apply
-exit /b
+goto :menu_dataManagement
 
 
 
