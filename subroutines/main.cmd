@@ -391,6 +391,15 @@ goto :menu_cleaning
 
 
 
+:menu_exceptions
+goto :menu_exceptions
+
+
+
+
+
+
+
 :menu_databases_import
 %log_append_place% :   [Databases Import Menu]
 set command=
@@ -432,6 +441,15 @@ goto :menu_databases_import
 
 
 
+:menu_help
+goto :menu_help
+
+
+
+
+
+
+
 :menu_report
 %log_append_place% :   [Report Menu]
 set command=
@@ -454,6 +472,15 @@ if "%command%" == "1" (
   exit /b
 )
 goto :menu_report
+
+
+
+
+
+
+
+:menu_about
+goto :menu_about
 
 
 
