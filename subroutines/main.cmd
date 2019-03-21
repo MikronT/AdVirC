@@ -639,7 +639,9 @@ goto :menu_settings
 if "%1" NEQ "force" %log_append_place% :     [Language Menu]
 %input_clear%
 %logo%
-echo.%language_menu_language01%
+if "%1" NEQ "force" (
+  echo.%language_menu_language01%
+) else echo.  Language
 echo.  ^(1^) English
 echo.  ^(2^) Русский
 echo.  ^(3^) Українська
