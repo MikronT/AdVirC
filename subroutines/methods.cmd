@@ -9,8 +9,8 @@ exit /b
 
 :input
 if "%windowsVersionID%" == "1809" (
-  set /p command=%inputBS%  %language_input%
-) else set /p command=%inputBS%   %language_input%
+  set /p command=%input_backspace%  %language_input%
+) else set /p command=%input_backspace%   %language_input%
 exit /b
 
 

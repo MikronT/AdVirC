@@ -70,7 +70,7 @@ set update_databases_url=https://drive.google.com/uc?export=download^^^&id=1u1mK
 
 
 
-for /f %%i in ('"prompt $h & echo on & for %%j in (1) do rem"') do set inputBS=%%i
+for /f %%i in ('"prompt $h & echo on & for %%j in (1) do rem"') do set input_backspace=%%i
 for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ReleaseId') do set windowsVersionID=%%i
 
 set currentDate=%date%
@@ -706,7 +706,7 @@ exit /b
 %log_append_place% :   [Data Management Menu]
 %input_clear%
 %logo%
-echo.%language_menu_dataManagement01%
+call echo.%language_menu_dataManagement01%
 echo.%language_menu_dataManagement02%
 echo.%language_menu_dataManagement03%
 echo.%language_menu_dataManagement04%
@@ -819,7 +819,7 @@ echo.      ^(1^) Run
 echo.
 echo.
 echo.
-set /p command=%inputBS%   ^(^>^) Enter the number of command ^> 
+set /p command=%input_backspace%   ^(^>^) Enter the number of command ^> 
 
 
 

@@ -10,6 +10,7 @@ set program_version_name=%program_name% v2.0 Pre-Alpha [MikronT]
 set dataDir=data
 set uninstallDirectory=%cd%
 
+for /f %%i in ('"prompt $h & echo on & for %%j in (1) do rem"') do set input_backspace=%%i
 for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ReleaseId') do set windowsVersionID=%%i
 
 
@@ -32,8 +33,8 @@ echo.
 
 :input
 if "%windowsVersionID%" == "1809" (
-  set /p command=%inputBS%  %language_input%
-) else set /p command=%inputBS%   %language_input%
+  set /p command=%input_backspace%  %language_input%
+) else set /p command=%input_backspace%   %language_input%
 
 if "%command%" == "0" exit /b
 if "%command%" NEQ "1" goto :uninstallQuestion
