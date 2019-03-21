@@ -9,6 +9,7 @@ set log_append_line=%method% :log_append_line
 set log_append_place=%method% :log_append_place
 set logo_log=%method% :logo log 1
 
+set input_clear=set command=
 set stringBuilder=set stringBuilder_string=%%stringBuilder_string%%
 set update=/b subroutines\update.cmd
 
@@ -302,7 +303,7 @@ goto :menu_main
 %log_append_place% : [Main Menu]
 %loadingUpdate% reset
 call :settings_save
-set command=
+%input_clear%
 %logo%
 echo.%language_menu_main01%
 echo.%language_menu_main02%
@@ -364,7 +365,7 @@ goto :menu_main
 
 :menu_cleaning
 %log_append_place% :   [Cleaning Menu]
-set command=
+%input_clear%
 %logo%
 echo.%language_menu_cleaning01%
 echo.%language_menu_cleaning02%
@@ -377,10 +378,10 @@ echo.
 
 
 
-if "%command%" == "0" ( set command= & exit /b )
+if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" (
   call subroutines\cleaning.cmd
-  set command=
+  %input_clear%
   exit /b
 )
 goto :menu_cleaning
@@ -402,7 +403,7 @@ goto :menu_exceptions
 
 :menu_databases_import
 %log_append_place% :   [Databases Import Menu]
-set command=
+%input_clear%
 %logo%
 echo.%language_menu_databases_import01%
 echo.%language_menu_databases_import02%
@@ -423,14 +424,14 @@ if "%databases_import_error%" == "1" (
 
 
 
-if "%command%" == "0" ( set command= & exit /b )
+if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" (
   if not exist "%location_desktop%\%program_name%Databases v2.0.zip" (
     set databases_import_error=1
     goto :menu_databases_import
   )
   call subroutines\databases.cmd --key_import=true
-  set command=
+  %input_clear%
   exit /b
 )
 goto :menu_databases_import
@@ -452,7 +453,7 @@ goto :menu_help
 
 :menu_report
 %log_append_place% :   [Report Menu]
-set command=
+%input_clear%
 %logo%
 echo.%language_menu_report01%
 echo.%language_menu_report02%
@@ -465,10 +466,10 @@ echo.
 
 
 
-if "%command%" == "0" ( set command= & exit /b )
+if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" (
   systeminfo>%dataDir%\reports\systemInfo.rpt >nul 2>nul
-  set command=
+  %input_clear%
   exit /b
 )
 goto :menu_report
@@ -490,7 +491,7 @@ goto :menu_about
 
 :menu_settings
 %log_append_place% :   [Settings Menu]
-set command=
+%input_clear%
 %logo%
 echo.%language_menu_settings01%
 
@@ -561,7 +562,7 @@ echo.
 
 
 
-if "%command%" == "0" ( set command= & exit /b )
+if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" (
   call :menu_language
   call :language_import
@@ -635,7 +636,7 @@ goto :menu_settings
 
 :menu_language
 if "%1" NEQ "force" %log_append_place% :     [Language Menu]
-set command=
+%input_clear%
 %logo%
 echo.%language_menu_language01%
 echo.  ^(1^) English
@@ -652,14 +653,14 @@ echo.
 
 
 
-if "%command%" == "0" if "%1" NEQ "force" ( set command= & exit /b )
+if "%command%" == "0" if "%1" NEQ "force" ( %input_clear% & exit /b )
 if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" goto :menu_language
 
 if "%command%" == "1" set setting_language=english
 if "%command%" == "2" set setting_language=russian
 if "%command%" == "3" set setting_language=ukrainian
 
-set command=
+%input_clear%
 exit /b
 
 
@@ -670,7 +671,7 @@ exit /b
 
 :menu_update_channel
 %log_append_place% :     [Update Channel Menu]
-set command=
+%input_clear%
 %logo%
 call echo.%language_menu_update_channel01%
 echo.%language_menu_update_channel02%
@@ -685,14 +686,14 @@ echo.
 
 
 
-if "%command%" == "0" ( set command= & exit /b )
+if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" goto :menu_update_channel
 
 if "%command%" == "1" set setting_update_channel=release
 if "%command%" == "2" set setting_update_channel=beta
 if "%command%" == "3" set setting_update_channel=nightly
 
-set command=
+%input_clear%
 exit /b
 
 
@@ -703,7 +704,7 @@ exit /b
 
 :menu_dataManagement
 %log_append_place% :   [Data Management Menu]
-set command=
+%input_clear%
 %logo%
 echo.%language_menu_dataManagement01%
 echo.%language_menu_dataManagement02%
@@ -721,7 +722,7 @@ echo.
 
 
 
-if "%command%" == "0" ( set command= & exit /b )
+if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" for /f "delims=" %%i in ('dir /b temp') do if "%%i" NEQ "counter_loading" del /q "temp\%%i"
 if "%command%" == "2" if exist "%dataDir%\logs"      rd /s /q "%dataDir%\logs"
 if "%command%" == "3" if exist "%dataDir%\reports"   rd /s /q "%dataDir%\reports"
