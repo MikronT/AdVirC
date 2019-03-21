@@ -3,6 +3,20 @@
 
 
 
+set input=%method% :input
+set log_append_delimiter=%method% :log_append_delimiter
+set log_append_line=%method% :log_append_line
+set log_append_place=%method% :log_append_place
+set logo_log=%method% :logo log 1
+
+set stringBuilder=set stringBuilder_string=%%stringBuilder_string%%
+set update=/b subroutines\update.cmd
+
+set module_moveFile=subroutines\modules\movefile.exe /accepteula
+set module_shortcut=subroutines\modules\shortcut.exe /a:c
+set module_unZip=subroutines\modules\unzip.exe -qq
+set module_wget=subroutines\modules\wget.exe --quiet --no-check-certificate --tries=1
+
 set setting_debug=true
 set setting_firstRun=true
 set setting_language=default
@@ -17,20 +31,6 @@ set setting_update_program_auto=true
 set setting_update_program_remind=true
 
 set settings=%dataDir%\settings\settings.ini
-
-set module_moveFile=subroutines\modules\movefile.exe /accepteula
-set module_shortcut=subroutines\modules\shortcut.exe /a:c
-set module_unZip=subroutines\modules\unzip.exe -qq
-set module_wget=subroutines\modules\wget.exe --quiet --no-check-certificate --tries=1
-
-set input=%method% :input
-set log_append_delimiter=%method% :log_append_delimiter
-set log_append_line=%method% :log_append_line
-set log_append_place=%method% :log_append_place
-set logo_log=%method% :logo log 1
-
-set stringBuilder=set stringBuilder_string=%%stringBuilder_string%%
-set update=/b subroutines\update.cmd
 
 set cleaning_filesToRemove=temp\filesToRemove.db
 set cleaning_rebootScript=temp\rebootScript.cmd
@@ -105,8 +105,6 @@ if exist "%dataDir%\databases\original\databases.version" (
 
 
 
-
-
 if "%key_skipFilesChecking%" NEQ "true" (
   for /f "eol=# delims=" %%i in (files\fileList.db) do if not exist "%%i" call echo.%%i>>temp\corruptedFilesList.db
   for /f "eol=# delims=" %%i in (files\fileList.db) do if not exist "%%i" goto :diagnostic
@@ -117,6 +115,8 @@ if "%key_skipFilesChecking%" NEQ "true" (
   )
 )
 %loadingUpdate% 3
+
+
 
 
 
@@ -291,41 +291,6 @@ goto :menu_main
 
 
 
-
-
-
-
-
-
-
-:menu_language
-if "%1" NEQ "force" %log_append_place% :     [Language Menu]
-set command=
-%logo%
-echo.%language_menu_language01%
-echo.  ^(1^) English
-echo.  ^(2^) Русский
-echo.  ^(3^) Українська
-if "%1" NEQ "force" (
-  echo.
-  echo.%language_back%
-)
-echo.
-echo.
-echo.
-%input%
-
-
-
-if "%command%" == "0" if "%1" NEQ "force" ( set command= & exit /b )
-if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" goto :menu_language
-
-if "%command%" == "1" set setting_language=english
-if "%command%" == "2" set setting_language=russian
-if "%command%" == "3" set setting_language=ukrainian
-
-set command=
-exit /b
 
 
 
@@ -641,6 +606,41 @@ goto :menu_settings
 
 
 
+:menu_language
+if "%1" NEQ "force" %log_append_place% :     [Language Menu]
+set command=
+%logo%
+echo.%language_menu_language01%
+echo.  ^(1^) English
+echo.  ^(2^) Русский
+echo.  ^(3^) Українська
+if "%1" NEQ "force" (
+  echo.
+  echo.%language_back%
+)
+echo.
+echo.
+echo.
+%input%
+
+
+
+if "%command%" == "0" if "%1" NEQ "force" ( set command= & exit /b )
+if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" goto :menu_language
+
+if "%command%" == "1" set setting_language=english
+if "%command%" == "2" set setting_language=russian
+if "%command%" == "3" set setting_language=ukrainian
+
+set command=
+exit /b
+
+
+
+
+
+
+
 :menu_update_channel
 %log_append_place% :     [Update Channel Menu]
 set command=
@@ -664,6 +664,7 @@ if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" goto :menu_
 if "%command%" == "1" set setting_update_channel=release
 if "%command%" == "2" set setting_update_channel=beta
 if "%command%" == "3" set setting_update_channel=nightly
+
 set command=
 exit /b
 

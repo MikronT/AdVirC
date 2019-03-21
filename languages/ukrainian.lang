@@ -26,10 +26,6 @@ info_registryBackup_created=  ^(^i^) Резервна копія реєстру 
 
 
 
-menu_language01=  Мова
-
-
-
 
 
 menu_main01=  Функції Безпеки                                             Бази Даних
@@ -95,6 +91,12 @@ menu_setting_enabled=увімкнено
 menu_setting_update_channel_release=реліз          
 menu_setting_update_channel_beta=бета           
 menu_setting_update_channel_nightly=нічні          
+
+
+
+
+
+menu_language01=  Мова
 
 
 

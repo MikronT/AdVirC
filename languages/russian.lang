@@ -26,10 +26,6 @@ info_registryBackup_created=  ^(^i^) Резервная копия реестр�
 
 
 
-menu_language01=  Язык
-
-
-
 
 
 menu_main01=  Функции Безопасности                                        Базы Данных
@@ -95,6 +91,12 @@ menu_setting_enabled=включено
 menu_setting_update_channel_release=релиз          
 menu_setting_update_channel_beta=бета           
 menu_setting_update_channel_nightly=ночные         
+
+
+
+
+
+menu_language01=  Язык
 
 
 

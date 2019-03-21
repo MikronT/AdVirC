@@ -26,10 +26,6 @@ info_registryBackup_created=  ^(^i^) Backup copy of the Windows registry is succ
 
 
 
-menu_language01=  Language
-
-
-
 
 
 menu_main01=  Security Features                                           Databases
@@ -98,6 +94,12 @@ menu_setting_language_ukrainian=українська
 menu_setting_update_channel_release=release        
 menu_setting_update_channel_beta=beta           
 menu_setting_update_channel_nightly=nightly        
+
+
+
+
+
+menu_language01=  Language
 
 
 
