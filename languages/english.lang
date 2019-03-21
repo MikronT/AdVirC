@@ -51,21 +51,22 @@ menu_main_tipOfTheDay03=  ^(i^) If the program window disappears without your in
 
 
 
-menu_cleaning01=  Cleaning menu
+menu_cleaning01=  Cleaning Menu
 menu_cleaning02=  ^(1^) Run scanning
 
 
 
 
 
-menu_databases_import01=  To import databases into the program, upload them on to your desktop.
+menu_databases_import01=  Databases Import Menu
 menu_databases_import02=  ^(1^) Run import
+menu_databases_import03=  Tip: To import databases into the program, upload them on to your desktop.
 
 
 
 
 
-menu_report01=  Reports
+menu_report01=  Reports Menu
 menu_report02=  ^(1^) Send report
 
 

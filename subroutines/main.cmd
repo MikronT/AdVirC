@@ -407,6 +407,7 @@ goto :menu_exceptions
 %logo%
 echo.%language_menu_databases_import01%
 echo.%language_menu_databases_import02%
+echo.%language_menu_databases_import03%
 echo.
 echo.%language_back%
 echo.
