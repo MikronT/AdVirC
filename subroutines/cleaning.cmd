@@ -131,5 +131,5 @@ pause>nul
 echo.%language_cleaning_reboot04%
 %module_sleep% 5
 
-echo.>temp\return_rebootNow
+echo.>temp\return_reboot
 exit /b

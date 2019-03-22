@@ -15,7 +15,7 @@ for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
 
 
 if "%key_check%" == "databases" (
-  %module_wget% "%update_databases_version_url%" --output-document=%update_databases_version_output%
+  %module_wget% "%update_databases_version_url%" --output-document="%update_databases_version_output%"
 
   for /f "tokens=1-3 delims= " %%i in (%update_databases_version_output%) do (
     if /i "%%i" == "%setting_update_channel%" (
@@ -43,7 +43,7 @@ if "%key_update%" == "databases" if exist temp\return_update_databases_available
 
 
 if "%key_check%" == "program" (
-  %module_wget% "%update_program_version_url%" --output-document=%update_program_version_output%
+  %module_wget% "%update_program_version_url%" --output-document="%update_program_version_output%"
 
   for /f "tokens=1-3 delims= " %%i in (%update_program_version_output%) do (
     if /i "%%i" == "%setting_update_channel%" (

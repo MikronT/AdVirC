@@ -346,18 +346,23 @@ echo.
 
 
 if "%command%" == "1" call :menu_cleaning
-rem if "%command%" == "2" call :menu_exceptions
+if "%command%" == "2" rem call :menu_exceptions
 if "%command%" == "3" call subroutines\databases.cmd
 if "%command%" == "4" call :menu_databases_import
-rem if "%command%" == "5" call :menu_help
+if "%command%" == "5" rem call :menu_help
 if "%command%" == "6" call :menu_report
-rem if "%command%" == "7" call :menu_about
+if "%command%" == "7" rem call :menu_about
 if "%command%" == "8" call :menu_settings
 if "%command%" == "9" call :menu_dataManagement
-if "%command%" == "0" call :exit
+if /i "%command%" == "A" (
+  rem start %update% --key_check=program
+  rem start /wait %update% --key_update=program
+)
 if "%command%" == "#" call uninstall.cmd
+if "%command%" == "0" call :exit
 
-if exist temp\return_rebootNow call :exit reboot
+if exist temp\return_reboot call :exit reboot
+if exist temp\return_update call :exit update
 goto :menu_main
 
 
@@ -729,7 +734,10 @@ echo.
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-if "%command%" == "1" for /f "delims=" %%i in ('dir /b temp') do if "%%i" NEQ "counter_loading" del /q "temp\%%i"
+if "%command%" == "1" for /f "delims=" %%i in ('dir /b temp') do if "%%i" NEQ "counter_loading" (
+  rd /s /q "temp\%%i">nul 2>nul
+  del /q "temp\%%i">nul 2>nul
+)
 if "%command%" == "2" if exist "%dataDir%\logs"      rd /s /q "%dataDir%\logs"
 if "%command%" == "3" if exist "%dataDir%\reports"   rd /s /q "%dataDir%\reports"
 if "%command%" == "4" if exist "%dataDir%\databases" rd /s /q "%dataDir%\databases"
@@ -846,9 +854,10 @@ goto :diagnostic
 :exit
 %loadingUpdate% stop
 
-reg import %dataDir%\backups\consoleSettingsBackup.reg 2>nul
+if exist %dataDir%\backups\consoleSettingsBackup.reg reg import %dataDir%\backups\consoleSettingsBackup.reg 2>nul
 
 %module_sleep% -m 300
 
-if "%1" == "reboot" ( shutdown /r /t 0 ) else if exist temp rd /s /q temp
+       if "%1" == "reboot" ( shutdown /r /t 0
+) else if exist temp rd /s /q temp
 exit
