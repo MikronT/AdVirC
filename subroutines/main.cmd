@@ -301,8 +301,13 @@ goto :menu_main
 
 :menu_main
 %log_append_place% : [Main Menu]
+
+if exist temp\return_reboot call :exit reboot
+if exist temp\return_update call :exit update
+
 %loadingUpdate% reset
 call :settings_save
+
 %input_clear%
 %logo%
 echo.%language_menu_main01%
@@ -355,14 +360,11 @@ if "%command%" == "7" rem call :menu_about
 if "%command%" == "8" call :menu_settings
 if "%command%" == "9" call :menu_dataManagement
 if /i "%command%" == "A" (
-  rem start %update% --key_check=program
-  rem start /wait %update% --key_update=program
+  start /wait %update% --key_check=program
+  start /wait %update% --key_update=program
 )
 if "%command%" == "#" call uninstall.cmd
 if "%command%" == "0" call :exit
-
-if exist temp\return_reboot call :exit reboot
-if exist temp\return_update call :exit update
 goto :menu_main
 
 
