@@ -61,21 +61,23 @@ if "%key_check%" == "program" (
   )
 )
 
-if "%key_update%" == "program" if exist temp\return_update_program_available (
-  if exist "%temp%\%program_name%-Update" rd /s /q "%temp%\%program_name%-Update"
-  md "%temp%\%program_name%-Update\update"
+if "%key_update%" == "program" (
+  if exist temp\return_update_program_available (
+    if exist "%temp%\%program_name%-Update" rd /s /q "%temp%\%program_name%-Update"
+    md "%temp%\%program_name%-Update\update"
 
-  %module_wget% "%update_program_url%" --output-document="%update_program_output%"
+    %module_wget% "%update_program_url%" --output-document="%update_program_output%"
 
-  copy /y "%~dpnx0"                 "%temp%\%program_name%-Update\updater.cmd">nul
-  copy /y "%update_program_output%" "%temp%\%program_name%-Update\update.zip">nul
+    copy /y "%~dpnx0"                 "%temp%\%program_name%-Update\updater.cmd">nul
+    copy /y "%update_program_output%" "%temp%\%program_name%-Update\update.zip">nul
 
-  echo.>temp\return_update
-) else if exist update.zip (
+    echo.>temp\return_update
+  )
+) else if exist "%~dp0update.zip" (
   %~d0
   cd "%~dp0"
 
-  "%key_target%"\%module_unZip% -o update.zip -d update
+  "%key_target%\%module_unZip%" -o update.zip -d update
 
   for /f "eol=# delims=" %%i in (%key_target%\files\fileList.db) do if exist "%key_target%\%%i" if "%%i" NEQ "files\filelist.db" del /q "%key_target%\%%i"
   del /q "%key_target%\files\filelist.db"

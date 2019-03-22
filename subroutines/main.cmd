@@ -11,7 +11,7 @@ set logo_log=%method% :logo log 1
 
 set input_clear=set command=
 set stringBuilder=set stringBuilder_string=%%stringBuilder_string%%
-set update=/b subroutines\update.cmd
+set update=subroutines\update.cmd
 
 set module_moveFile=subroutines\modules\movefile.exe /accepteula
 set module_shortcut=subroutines\modules\shortcut.exe /a:c
@@ -183,12 +183,12 @@ echo.%language_initialization%
 
 
 if "%setting_update_databases_auto%" == "true" (
-  start %update% --key_check=databases
-) else if "%setting_update_databases_remind%" == "true" start %update% --key_check=databases
+  start /b %update% --key_check=databases
+) else if "%setting_update_databases_remind%" == "true" start /b %update% --key_check=databases
 
 if "%setting_update_program_auto%" == "true" (
-  start %update% --key_check=program
-) else if "%setting_update_program_remind%" == "true" start %update% --key_check=program
+  start /b %update% --key_check=program
+) else if "%setting_update_program_remind%" == "true" start /b %update% --key_check=program
 %loadingUpdate% 2
 
 
@@ -271,8 +271,8 @@ if exist "%appData%\Mozilla\Firefox\Profiles" (
 
 
 
-if "%setting_update_databases_auto%" == "true" start /wait %update% --key_update=databases
-if "%setting_update_program_auto%" == "true" start /wait %update% --key_update=program
+rem if "%setting_update_databases_auto%" == "true" start /wait /b %update% --key_update=databases
+if "%setting_update_program_auto%" == "true"   start /wait /b %update% --key_update=program
 goto :menu_main
 
 
@@ -861,6 +861,6 @@ if exist %dataDir%\backups\consoleSettingsBackup.reg reg import %dataDir%\backup
 %module_sleep% -m 300
 
        if "%1" == "reboot" ( shutdown /r /t 0
-) else if "%1" == "update" ( start "" "%temp%\%program_name%-Update\updater.cmd" --key_update=program --key_target="%cd%"
+) else if "%1" == "update" ( start "" "%temp%\%program_name%-Update\updater.cmd" --key_target="%cd%"
 ) else if exist temp rd /s /q temp
 exit
