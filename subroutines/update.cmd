@@ -62,8 +62,31 @@ if "%key_check%" == "program" (
 )
 
 if "%key_update%" == "program" if exist temp\return_update_program_available (
-  %loadingUpdate% stop
-  echo.Soon...
+  if exist "%temp%\%program_name%-Update" rd /s /q "%temp%\%program_name%-Update"
+  md "%temp%\%program_name%-Update\update"
+
+  %module_wget% "%update_program_url%" --output-document="%update_program_output%"
+
+  copy /y "%~dpnx0"                 "%temp%\%program_name%-Update\updater.cmd"
+  copy /y "%update_program_output%" "%temp%\%program_name%-Update\update.zip"
+
+  echo.>return_update
+) else if exist update.zip (
+  %module_unZip% -o update.zip -d update
+
+  for /f "eol=# delims=" %%i in (%key_target%\files\fileList.db) do if exist "%key_target%\%%i" if "%%i" NEQ "files\filelist.db" del /q "%key_target%\%%i"
+  del /q "%key_target%\files\filelist.db"
+
+  for /f "delims=" %%i in ('dir /b "update"') do (
+    copy /y "update\%%i" "%key_target%"
+    rd /s /q "update\%%i">nul
+    del /q "update\%%i">nul
+  )
+
+  start /wait "" "%key_target%\setupEnd.cmd"
+  start "" "%key_target%\starter.cmd" --key_wait=3
+  start cmd /c "timeout /nobreak /t 2 >nul && rd /s /q "%cd%""
+  exit
 )
 
 set key_check=
