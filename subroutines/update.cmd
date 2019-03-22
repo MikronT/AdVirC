@@ -1,9 +1,8 @@
 @echo off
 chcp 65001>nul
 
-for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
+for /f "tokens=1 delims=- " %%i in ("%*") do (
   >nul set %%i
-  >nul set %%j
 )
 
 if "%key_target%" NEQ "" goto :program_update
@@ -89,10 +88,10 @@ exit
 %~d0
 cd "%~dp0"
 
-%key_target%\%module_unZip% -o update.zip -d update
+"%key_target%\%module_unZip%" -o update.zip -d update
 
-for /f "eol=# delims=" %%i in (%key_target%\files\fileList.db) do if exist %key_target%\%%i if "%%i" NEQ "files\filelist.db" del /q %key_target%\%%i
-rd /s /q %key_target%\files
+for /f "eol=# delims=" %%i in ('%key_target%\files\fileList.db') do if exist "%key_target%\%%i" if "%%i" NEQ "files\filelist.db" del /q "%key_target%\%%i"
+rd /s /q "%key_target%\files"
 
 for /f "delims=" %%i in ('dir /b "update"') do (
   copy /y "update\%%i" "%key_target%">nul
@@ -100,7 +99,7 @@ for /f "delims=" %%i in ('dir /b "update"') do (
   del /q "update\%%i">nul 2>nul
 )
 
-start /wait "" %key_target%\setupEnd.cmd
-start "" %key_target%\starter.cmd --key_wait=3
+start /wait "" "%key_target%\setupEnd.cmd"
+start "" "%key_target%\starter.cmd" --key_wait=3
 start cmd /c "timeout /nobreak /t 2 >nul && rd /s /q "%cd%""
 exit
