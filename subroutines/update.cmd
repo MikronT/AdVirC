@@ -69,7 +69,7 @@ if "%key_update%" == "program" if exist temp\return_update_program_available (
 
   %module_wget% "%update_program_url%" --output-document="%update_program_output%"
 
-  copy /y "%~dpnx0"                 "%temp%\%program_name%-Update\updater.cmd">nul
+  copy /y "%~dpnx0"                 "%temp%\%program_name%-Update">nul
   copy /y "%update_program_output%" "%temp%\%program_name%-Update\update.zip">nul
 
   echo.>temp\return_update
