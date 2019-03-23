@@ -233,13 +233,13 @@ echo.
 if "%setting_firstRun%" == "true" (
   echo.%language_info_registryBackup_creating%
   if not exist %dataDir%\backups\registry md %dataDir%\backups\registry>nul 2>nul
-  rem reg export HKCR %dataDir%\backups\registry\HKCR.reg /y>>%log_debug%
+  reg export HKCR %dataDir%\backups\registry\HKCR.reg /y>>%log_debug%
   %loadingUpdate% 3
-  rem reg export HKLM %dataDir%\backups\registry\HKLM.reg /y>>%log_debug%
+  reg export HKLM %dataDir%\backups\registry\HKLM.reg /y>>%log_debug%
   %loadingUpdate% 6
-  rem reg export HKU  %dataDir%\backups\registry\HKU.reg  /y>>%log_debug%
+  reg export HKU  %dataDir%\backups\registry\HKU.reg  /y>>%log_debug%
   %loadingUpdate% 5
-  rem reg export HKCC %dataDir%\backups\registry\HKCC.reg /y>>%log_debug%
+  reg export HKCC %dataDir%\backups\registry\HKCC.reg /y>>%log_debug%
   %loadingUpdate% 1
   echo.%language_info_registryBackup_created%
   echo.
@@ -271,7 +271,7 @@ if exist "%appData%\Mozilla\Firefox\Profiles" (
 
 
 
-rem if "%setting_update_databases_auto%" == "true" start /wait /b %update% --key_update=databases
+if "%setting_update_databases_auto%" == "true" start /wait /b %update% --key_update=databases
 if "%setting_update_program_auto%" == "true"   start /wait /b %update% --key_update=program
 goto :menu_main
 
