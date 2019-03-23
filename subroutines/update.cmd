@@ -85,21 +85,26 @@ exit
 
 
 :program_update
-%~d0
-cd "%~dp0"
+pushd %key_target%
+%module_unZip% -o "%~dp0update.zip" -d "%~dp0update"
 
-"%key_target%\%module_unZip%" -o update.zip -d update
+for /f "eol=# delims=" %%i in (files\fileList.db) do if exist %%i if "%%i" NEQ "files\filelist.db" del /q %%i
 
-for /f "eol=# delims=" %%i in ('%key_target%\files\fileList.db') do if exist "%key_target%\%%i" if "%%i" NEQ "files\filelist.db" del /q "%key_target%\%%i"
-rd /s /q "%key_target%\files"
+timeout /nobreak /t 1 >nul
 
-for /f "delims=" %%i in ('dir /b "update"') do (
-  copy /y "update\%%i" "%key_target%">nul
-  rd /s /q "update\%%i">nul 2>nul
-  del /q "update\%%i">nul 2>nul
+pushd "%~dp0"
+for /f "delims=" %%i in ('dir /b update') do (
+  if exist %key_target%\%%i (
+    rd /s /q %key_target%\%%i>nul 2>nul
+    del /q %key_target%\%%i>nul 2>nul
+  )
+  move /y "update\%%i" %key_target%
+  echo.move /y "update\%%i" %key_target%
 )
+rem rd /s /q "update">nul 2>nul
 
-start /wait "" "%key_target%\setupEnd.cmd"
-start "" "%key_target%\starter.cmd" --key_wait=3
-start cmd /c "timeout /nobreak /t 2 >nul && rd /s /q "%cd%""
+pushd %key_target%
+start /wait cmd /c setupEnd.cmd
+start cmd /i starter.cmd --key_wait=3
+rem start cmd /c "timeout /nobreak /t 2 >nul && rd /s /q "%~dp0""
 exit

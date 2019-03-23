@@ -863,6 +863,6 @@ if exist %dataDir%\backups\consoleSettingsBackup.reg reg import %dataDir%\backup
        if "%1" == "reboot" ( shutdown /r /t 0
 ) else if "%1" == "update" (
   cd "%temp%\%program_name%-Update"
-  start update.cmd --key_target=%cd%
+  start update.cmd --key_target="%cd%"
 ) else if exist temp rd /s /q temp
 exit
