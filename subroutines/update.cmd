@@ -89,7 +89,6 @@ pushd %key_target%
 %module_unZip% -o "%~dp0update.zip" -d "%~dp0update"
 
 for /f "eol=# delims=" %%i in (files\fileList.db) do if exist %%i if "%%i" NEQ "files\filelist.db" del /q %%i
-
 timeout /nobreak /t 1 >nul
 
 pushd "%~dp0"
@@ -98,9 +97,9 @@ for /f "delims=" %%i in ('dir /b update') do (
     rd /s /q %key_target%\%%i>nul 2>nul
     del /q %key_target%\%%i>nul 2>nul
   )
-  move /y "update\%%i" %key_target%
-  echo.move /y "update\%%i" %key_target%
+  move /y "update\%%i" %key_target%>nul
 )
+
 pushd %key_target%
 start /wait cmd /c setupEnd.cmd
 start /i starter.cmd --key_wait=1
