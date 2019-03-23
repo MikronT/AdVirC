@@ -101,10 +101,7 @@ for /f "delims=" %%i in ('dir /b update') do (
   move /y "update\%%i" %key_target%
   echo.move /y "update\%%i" %key_target%
 )
-rem rd /s /q "update">nul 2>nul
-
 pushd %key_target%
 start /wait cmd /c setupEnd.cmd
-start cmd /i starter.cmd --key_wait=3
-rem start cmd /c "timeout /nobreak /t 2 >nul && rd /s /q "%~dp0""
+start /i starter.cmd --key_wait=3
 exit
