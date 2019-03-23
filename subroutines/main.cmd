@@ -302,11 +302,11 @@ goto :menu_main
 :menu_main
 %log_append_place% : [Main Menu]
 
-if exist temp\return_reboot call :exit reboot
-if exist temp\return_update call :exit update
-
 %loadingUpdate% reset
 call :settings_save
+
+if exist temp\return_reboot call :exit reboot
+if exist temp\return_update call :exit update
 
 %input_clear%
 %logo%
