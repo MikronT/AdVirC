@@ -876,6 +876,9 @@ goto :diagnostic
 
 
 :exit
+if "%setting_firstRun%" == "true" set setting_firstRun=false
+call :settings_save
+
 %loadingUpdate% stop
 
 if exist %dataDir%\backups\consoleSettingsBackup.reg reg import %dataDir%\backups\consoleSettingsBackup.reg 2>nul
