@@ -25,6 +25,7 @@ set setting_logging=true
 set setting_logging_advanced=true
 set setting_reports_autoSend=true
 set setting_reports_collect=true
+set setting_tipOfTheDay=true
 set setting_update_channel=nightly
 set setting_update_databases_auto=true
 set setting_update_databases_remind=true
@@ -353,30 +354,38 @@ goto :menu_main
 
 
 :menu_main_tips
-if "%setting_update_databases_remind%" == "true" if exist temp\return_update_databases_available (
-  echo.%language_menu_main_update_databases_available%
-  if not exist temp\return_update_program_available echo.
-)
-if "%setting_update_program_remind%" == "true" if exist temp\return_update_program_available (
-  call echo.%language_menu_main_update_program_available%
-  echo.
-)
-if "%setting_firstRun%" == "true" (
-  echo.%language_menu_main_firstRunTip%
-  set setting_firstRun=false
+if "%setting_update_databases_remind%" == "true" if exist temp\return_update_databases_available echo.%language_menu_main_update_databases_available%
+if "%setting_update_program_remind%" == "true" if exist temp\return_update_program_available call echo.%language_menu_main_update_program_available%
+
+if exist temp\return_update_databases_available (
+  if "%setting_firstRun%" == "true" (
+    echo.
+  ) else if "%setting_tipOfTheDay%" == "true" (
+    echo.
+  ) else for /l %%i in (3,-1,1) do echo.
+) else if exist temp\return_update_program_available (
+  if "%setting_firstRun%" == "true" (
+    echo.
+  ) else if "%setting_tipOfTheDay%" == "true" (
+    echo.
+  ) else for /l %%i in (3,-1,1) do echo.
 )
 
-setlocal EnableDelayedExpansion
-set /a random_tipNumber=%random%*3/32768+1
 
-if %random_tipNumber% LSS 10 (
-  echo.!language_menu_main_tipOfTheDay0%random_tipNumber%!
-) else echo.!language_menu_main_tipOfTheDay%random_tipNumber%!
-endlocal
 
-echo.
-echo.
-echo.
+if "%setting_firstRun%" == "true" echo.%language_menu_main_firstRunTip%
+if "%setting_tipOfTheDay%" == "true" (
+  setlocal EnableDelayedExpansion
+  set /a random_tipNumber=%random%*3/32768+1
+
+  if !random_tipNumber! LSS 10 (
+    set temp_tipOfTheDay=language_menu_main_tipOfTheDay0!random_tipNumber!
+  ) else set temp_tipOfTheDay=language_menu_main_tipOfTheDay!random_tipNumber!
+  call echo.%%!temp_tipOfTheDay!%%
+  endlocal
+)
+
+if "%setting_firstRun%" == "true" ( for /l %%i in (3,-1,1) do echo. ) else if "%setting_tipOfTheDay%" == "true" for /l %%i in (3,-1,1) do echo.
 exit /b
 
 
@@ -778,6 +787,7 @@ echo.logging=%setting_logging%>>%settings%
 echo.logging_advanced=%setting_logging_advanced%>>%settings%
 echo.reports_autoSend=%setting_reports_autoSend%>>%settings%
 echo.reports_collect=%setting_reports_collect%>>%settings%
+echo.tipOfTheDay=%setting_tipOfTheDay%>>%settings%
 echo.update_channel=%setting_update_channel%>>%settings%
 echo.update_databases_auto=%setting_update_databases_auto%>>%settings%
 echo.update_databases_remind=%setting_update_databases_remind%>>%settings%
