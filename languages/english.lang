@@ -78,17 +78,19 @@ menu_report02=  ^(1^) Send report
 
 menu_settings01=  Settings                                                    Update
 menu_settings03=  ^(1^) Language:
-menu_settings04=                              ^(5^) Update channel:
+menu_settings04=                              ^(6^) Update channel:
 menu_settings05=  ^(2^) Logging:
-menu_settings06=                               ^(6^) Autoupdate %program_name%:
+menu_settings06=                               ^(7^) Autoupdate %program_name%:
 menu_settings07=  ^(3^) Advanced logging:
-menu_settings08=                      ^(7^) Autoupdate databases:
+menu_settings08=                      ^(8^) Autoupdate databases:
 menu_settings09=  ^(4^) Debug:
-menu_settings10=                                 ^(8^) Remind for %program_name% updates:
-menu_settings12=                                                              ^(9^) Remind for databases updates:
-menu_settings13=  Report
-menu_settings15=  ^(#^) Collecting reports:
-menu_settings17=  ^(A^) Autosend reports:
+menu_settings10=                                 ^(9^) Remind for %program_name% updates:
+menu_settings11=  ^(5^) Tip of the Day:
+menu_settings12=                                         ^(#^) Remind for databases updates:
+menu_settings13=
+menu_settings15=  Report
+menu_settings17=  ^(A^) Collecting reports:
+menu_settings19=  ^(B^) Autosend reports:
 
 menu_setting_disabled=disabled       
 menu_setting_enabled=enabled        

@@ -571,9 +571,33 @@ if "%setting_update_program_remind%" == "true" (
 ) else call %stringBuilder% %language_menu_setting_disabled%
 echo.%stringBuilder_string%
 
+
+
+
+
+
+set stringBuilder_string=%language_menu_settings09%
+if "%setting_tipOfTheDay%" == "true" (
+  call %stringBuilder% %language_menu_setting_enabled%
+) else call %stringBuilder% %language_menu_setting_disabled%
+call %stringBuilder% %language_menu_settings10%
+if "%setting_update_program_remind%" == "true" (
+  call %stringBuilder% %language_menu_setting_enabled%
+) else call %stringBuilder% %language_menu_setting_disabled%
+echo.%stringBuilder_string%
+
+
+
+
+
 if "%setting_update_databases_remind%" == "true" (
   call echo.%language_menu_settings12% %language_menu_setting_enabled%
 ) else call echo.%language_menu_settings12% %language_menu_setting_disabled%
+
+
+
+
+
 
 echo.%language_menu_settings13%
 
@@ -618,39 +642,45 @@ if "%command%" == "4" if "%setting_debug%" == "true" (
   set setting_debug=true
 ) else set setting_debug=true
 
-if "%command%" == "5" call :menu_update_channel
+if "%command%" == "5" if "%setting_tipOfTheDay%" == "true" (
+  set setting_tipOfTheDay=false
+) else if "%setting_tipOfTheDay%" == "false" (
+  set setting_tipOfTheDay=true
+) else set setting_tipOfTheDay=true
 
-if "%command%" == "6" if "%setting_update_program_auto%" == "true" (
+if "%command%" == "6" call :menu_update_channel
+
+if "%command%" == "7" if "%setting_update_program_auto%" == "true" (
   set setting_update_program_auto=false
 ) else if "%setting_update_program_auto%" == "false" (
   set setting_update_program_auto=true
 ) else set setting_update_program_auto=true
 
-if "%command%" == "7" if "%setting_update_databases_auto%" == "true" (
+if "%command%" == "8" if "%setting_update_databases_auto%" == "true" (
   set setting_update_databases_auto=false
 ) else if "%setting_update_databases_auto%" == "false" (
   set setting_update_databases_auto=true
 ) else set setting_update_databases_auto=true
 
-if "%command%" == "8" if "%setting_update_program_remind%" == "true" (
+if "%command%" == "9" if "%setting_update_program_remind%" == "true" (
   set setting_update_program_remind=false
 ) else if "%setting_update_program_remind%" == "false" (
   set setting_update_program_remind=true
 ) else set setting_update_program_remind=true
 
-if "%command%" == "9" if "%setting_update_databases_remind%" == "true" (
+if "%command%" == "#" if "%setting_update_databases_remind%" == "true" (
   set setting_update_databases_remind=false
 ) else if "%setting_update_databases_remind%" == "false" (
   set setting_update_databases_remind=true
 ) else set setting_update_databases_remind=true
 
-if "%command%" == "#" if "%setting_reports_collect%" == "true" (
+if "%command%" == "A" if "%setting_reports_collect%" == "true" (
   set setting_reports_collect=false
 ) else if "%setting_reports_collect%" == "false" (
   set setting_reports_collect=true
 ) else set setting_reports_collect=true
 
-if /i "%command%" == "A" if "%setting_reports_autoSend%" == "true" (
+if /i "%command%" == "B" if "%setting_reports_autoSend%" == "true" (
   set setting_reports_autoSend=false
 ) else if "%setting_reports_autoSend%" == "false" (
   set setting_reports_autoSend=true
