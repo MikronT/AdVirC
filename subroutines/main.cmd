@@ -657,7 +657,7 @@ if "%command%" == "#" if "%setting_update_databases_remind%" == "true" (
   set setting_update_databases_remind=true
 ) else set setting_update_databases_remind=true
 
-if "%command%" == "A" if "%setting_reports_collect%" == "true" (
+if /i "%command%" == "A" if "%setting_reports_collect%" == "true" (
   set setting_reports_collect=false
 ) else if "%setting_reports_collect%" == "false" (
   set setting_reports_collect=true
