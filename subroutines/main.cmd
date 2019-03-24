@@ -767,18 +767,6 @@ goto :menu_dataManagement
 
 
 
-:language_import
-if "%setting_language%" == "default" (
-  for /f "eol=# tokens=1,* delims==" %%i in (languages\english.lang) do set language_%%i=%%j
-) else for /f "eol=# tokens=1,* delims==" %%i in (languages\%setting_language%.lang) do set language_%%i=%%j
-exit /b
-
-
-
-
-
-
-
 :settings_save
 if not exist %dataDir%\settings md %dataDir%\settings>nul 2>nul
 
@@ -816,6 +804,18 @@ if "%setting_logging%" == "true" (
 )
 
 if "%setting_reports_collect%" == "true" if not exist %dataDir%\reports md %dataDir%\reports>nul 2>nul
+exit /b
+
+
+
+
+
+
+
+:language_import
+if "%setting_language%" == "default" (
+  for /f "eol=# tokens=1,* delims==" %%i in (languages\english.lang) do set language_%%i=%%j
+) else for /f "eol=# tokens=1,* delims==" %%i in (languages\%setting_language%.lang) do set language_%%i=%%j
 exit /b
 
 
