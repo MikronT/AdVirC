@@ -571,43 +571,26 @@ if "%setting_update_program_remind%" == "true" (
 ) else call %stringBuilder% %language_menu_setting_disabled%
 echo.%stringBuilder_string%
 
-
-
-
-
-
-set stringBuilder_string=%language_menu_settings09%
+set stringBuilder_string=%language_menu_settings11%
 if "%setting_tipOfTheDay%" == "true" (
   call %stringBuilder% %language_menu_setting_enabled%
 ) else call %stringBuilder% %language_menu_setting_disabled%
-call %stringBuilder% %language_menu_settings10%
-if "%setting_update_program_remind%" == "true" (
+call %stringBuilder% %language_menu_settings12%
+if "%setting_update_databases_remind%" == "true" (
   call %stringBuilder% %language_menu_setting_enabled%
 ) else call %stringBuilder% %language_menu_setting_disabled%
 echo.%stringBuilder_string%
 
-
-
-
-
-if "%setting_update_databases_remind%" == "true" (
-  call echo.%language_menu_settings12% %language_menu_setting_enabled%
-) else call echo.%language_menu_settings12% %language_menu_setting_disabled%
-
-
-
-
-
-
 echo.%language_menu_settings13%
+echo.%language_menu_settings15%
 
 if "%setting_reports_collect%" == "true" (
-  call echo.%language_menu_settings15% %language_menu_setting_enabled%
-) else call echo.%language_menu_settings15% %language_menu_setting_disabled%
-
-if "%setting_reports_autoSend%" == "true" (
   call echo.%language_menu_settings17% %language_menu_setting_enabled%
 ) else call echo.%language_menu_settings17% %language_menu_setting_disabled%
+
+if "%setting_reports_autoSend%" == "true" (
+  call echo.%language_menu_settings19% %language_menu_setting_enabled%
+) else call echo.%language_menu_settings19% %language_menu_setting_disabled%
 
 echo.
 echo.%language_back%
