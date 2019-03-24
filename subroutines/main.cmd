@@ -243,7 +243,6 @@ if "%setting_firstRun%" == "true" (
   %loadingUpdate% 1
   echo.%language_info_registryBackup_created%
   echo.
-  set setting_firstRun=false
 ) else %loadingUpdate% 15
 
 
@@ -325,27 +324,7 @@ echo.%language_menu_main12%
 echo.
 echo.
 echo.
-if "%setting_update_databases_remind%" == "true" if exist temp\return_update_databases_available (
-  echo.%language_menu_main_update_databases_available%
-  if not exist temp\return_update_program_available (
-    echo.
-    echo.
-    echo.
-  )
-)
-if "%setting_update_program_remind%" == "true" if exist temp\return_update_program_available (
-  call echo.%language_menu_main_update_program_available%
-  echo.
-  echo.
-  echo.
-)
-if "%setting_firstRun%" == "true" echo.%language_menu_main_firstRunTip%
-echo.%language_menu_main_tipOfTheDay01%
-echo.%language_menu_main_tipOfTheDay02%
-echo.%language_menu_main_tipOfTheDay03%
-echo.
-echo.
-echo.
+call :menu_main_tips
 %input%
 
 
@@ -366,6 +345,39 @@ if /i "%command%" == "A" (
 if "%command%" == "#" call uninstall.cmd
 if "%command%" == "0" call :exit
 goto :menu_main
+
+
+
+
+
+
+
+:menu_main_tips
+if "%setting_update_databases_remind%" == "true" if exist temp\return_update_databases_available (
+  echo.%language_menu_main_update_databases_available%
+  if not exist temp\return_update_program_available echo.
+)
+if "%setting_update_program_remind%" == "true" if exist temp\return_update_program_available (
+  call echo.%language_menu_main_update_program_available%
+  echo.
+)
+if "%setting_firstRun%" == "true" (
+  echo.%language_menu_main_firstRunTip%
+  set setting_firstRun=false
+)
+
+setlocal EnableDelayedExpansion
+set /a random_tipNumber=%random%*3/32768+1
+
+if %random_tipNumber% LSS 10 (
+  echo.!language_menu_main_tipOfTheDay0%random_tipNumber%!
+) else echo.!language_menu_main_tipOfTheDay%random_tipNumber%!
+endlocal
+
+echo.
+echo.
+echo.
+exit /b
 
 
 
