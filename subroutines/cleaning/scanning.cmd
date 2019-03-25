@@ -69,8 +69,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\classes.db) do (
   for /f "delims=" %%j in (%dataDir%\databases\rewrited\registry\classes.db) do (
     set errorLevel=
     reg query "%%i\%%j">nul 2>>%log_debug%
-    if "!errorLevel!" == "" call :cleaning_scanning_subroutine Class %cleaning_registry% %%i\%%j
-    if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Class %cleaning_registry% %%i\%%j
+    if "!errorLevel!" == "" call :cleaning_scanning_subroutine Class %cleaning_registry% "%%i\%%j"
+    if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Class %cleaning_registry% "%%i\%%j"
     if "%setting_logging_advanced%" == "true" if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i\%%j>>%log_debug%
     echo.!counter_foundObjects!>temp\counter_foundObjects
   )
@@ -88,8 +88,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\keys.db) do (
   for /f "delims=" %%j in (%dataDir%\databases\rewrited\registry\keys.db) do (
     set errorLevel=
     reg query "%%i\%%j">nul 2>>%log_debug%
-    if "!errorLevel!" == "" call :cleaning_scanning_subroutine Key %cleaning_registry% %%i\%%j
-    if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Key %cleaning_registry% %%i\%%j
+    if "!errorLevel!" == "" call :cleaning_scanning_subroutine Key %cleaning_registry% "%%i\%%j"
+    if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Key %cleaning_registry% "%%i\%%j"
     if "%setting_logging_advanced%" == "true" if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i\%%j>>%log_debug%
     echo.!counter_foundObjects!>temp\counter_foundObjects
   )
@@ -339,7 +339,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\browsersShortcuts.db)
   for /f "tokens=1,2,3* delims=;" %%j in (%dataDir%\databases\rewrited\files\browsersShortcuts.db) do (
     if exist "%%i\%%j.lnk" (
       echo.del /s /q "%%i\%%j.lnk">>%cleaning_rebootScript%
-      echo.%module_shortcut% /f:"%%i\%%j.lnk" /t:"%%k" /i:"%%k" /w:"%%l">>%cleaning_rebootScript%
+      echo.%cd%\%module_shortcut% /f:"%%i\%%j.lnk" /t:"%%k" /i:"%%k" /w:"%%l">>%cleaning_rebootScript%
       echo.    - %%i\%%j.lnk>>%log%
       echo.[Browser Shortcut] %%i\%%j.lnk ^(can be overrided^)
     ) else (

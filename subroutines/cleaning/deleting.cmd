@@ -78,13 +78,13 @@ if exist %cleaning_processes% for /f "delims=" %%i in (%cleaning_processes%) do 
 
 if exist %cleaning_registry% for /f "delims=" %%i in (%cleaning_registry%) do (
   set errorLevel=
-  reg delete "%%i" /f>>%log_debug%
+  reg delete %%i /f>>%log_debug%
   if "!errorLevel!" == "0" (
     echo.    - %%i>>%log%
     echo.[Key] %%i
     set /a counter_deletedObjects+=1
   ) else (
-    echo.reg delete "%%i" /f>>%cleaning_rebootScript%
+    echo.reg delete %%i /f>>%cleaning_rebootScript%
     echo.    [Error] Not Found/Access Denied - %%i>>%log%
     echo.[Error] [Key] %%i
   )
