@@ -40,12 +40,13 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\processes\tasks.db) do (
 %log_append_place% :   Script Completed>>%%i
 %log_append_place% :   [Processes]>>%%i
 %log_append_place% :     [Processes]>>%%i
-rem if "%setting_debug%" == "true" (
-rem   call :log_append_line %log_debug% 1
-rem   echo.    All Running Processes:>>%log_debug%
-rem   tasklist>>%log_debug%
-rem   call :log_append_line %log_debug% 1
-rem )
+
+if "%setting_debug%" == "true" (
+  %log_append_line% %log_debug% 1
+  echo.    All Running Processes:>>%log_debug%
+  tasklist>>%log_debug%
+  %log_append_line% %log_debug% 1
+)
 
 
 
