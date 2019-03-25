@@ -89,7 +89,7 @@ for /f "tokens=1-7 delims=." %%i in ("%program_version_code%") do (
 )
 
 if exist "%dataDir%\databases\original\databases.version" (
-  for /f "delims=" %%i in (%dataDir%\databases\original\databases.version) do set databases_version_code=%%i
+  for /f "delims="             %%i in (%dataDir%\databases\original\databases.version) do set databases_version_code=%%i
   for /f "tokens=1-8 delims=." %%i in (%dataDir%\databases\original\databases.version) do (
     set databases_version_code_level1=%%i
     set databases_version_code_level2=%%j
@@ -332,7 +332,7 @@ call :menu_main_tips
 
 if "%command%" == "1" call :menu_cleaning
 if "%command%" == "2" rem call :menu_exceptions
-if "%command%" == "3" call subroutines\databases.cmd
+if "%command%" == "3" call :databases_update
 if "%command%" == "4" call :menu_databases_import
 if "%command%" == "5" rem call :menu_help
 if "%command%" == "6" call :menu_report
@@ -462,7 +462,7 @@ if "%command%" == "1" (
     set databases_import_error=1
     goto :menu_databases_import
   )
-  call subroutines\databases.cmd --key_import=true
+  call :databases_update --key_import=true
   %input_clear%
   exit /b
 )
@@ -827,6 +827,42 @@ if "%setting_logging%" == "true" (
 )
 
 if "%setting_reports_collect%" == "true" if not exist %dataDir%\reports md %dataDir%\reports>nul 2>nul
+exit /b
+
+
+
+
+
+
+
+:databases_update
+call subroutines\databases.cmd %*
+for /f "delims="             %%i in (%dataDir%\databases\original\databases.version) do set databases_version_code=%%i
+for /f "tokens=1-8 delims=." %%i in (%dataDir%\databases\original\databases.version) do (
+  set databases_version_code_level1=%%i
+  set databases_version_code_level2=%%j
+  set databases_version_code_level3=%%k
+  set databases_version_code_level4=%%l
+  set databases_version_code_level5=%%m
+  set databases_version_code_level6=%%n
+  set databases_version_code_level7=%%o
+  set databases_version_code_level8=%%p
+)
+for /f "tokens=1-3 delims= " %%i in (%update_databases_version_output%) do (
+  if /i "%%i" == "%setting_update_channel%" (
+    for /f "tokens=1-8 delims=." %%l in ("%%j") do (
+             if "%%l" NEQ "" if %%l GTR %databases_version_code_level1% ( echo.>temp\return_update_databases_available
+      ) else if "%%m" NEQ "" if %%m GTR %databases_version_code_level2% ( echo.>temp\return_update_databases_available
+      ) else if "%%n" NEQ "" if %%n GTR %databases_version_code_level3% ( echo.>temp\return_update_databases_available
+      ) else if "%%o" NEQ "" if %%o GTR %databases_version_code_level4% ( echo.>temp\return_update_databases_available
+      ) else if "%%p" NEQ "" if %%p GTR %databases_version_code_level5% ( echo.>temp\return_update_databases_available
+      ) else if "%%q" NEQ "" if %%q GTR %databases_version_code_level6% ( echo.>temp\return_update_databases_available
+      ) else if "%%r" NEQ "" if %%r GTR %databases_version_code_level7% ( echo.>temp\return_update_databases_available
+      ) else if "%%s" NEQ "" if %%s GTR %databases_version_code_level8% ( echo.>temp\return_update_databases_available
+      )
+    )
+  )
+)
 exit /b
 
 

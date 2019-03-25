@@ -78,25 +78,6 @@ echo.
 
 
 
-for /f "delims=" %%i in (%dataDir%\databases\original\databases.version) do set databases_version_code=%%i
-for /f "tokens=1-8 delims=." %%i in ("%databases_version_code%") do (
-  set databases_version_code_level1=%%i
-  set databases_version_code_level2=%%j
-  set databases_version_code_level3=%%k
-  set databases_version_code_level4=%%l
-  set databases_version_code_level5=%%m
-  set databases_version_code_level6=%%n
-  set databases_version_code_level7=%%o
-  set databases_version_code_level8=%%p
-)
-%loadingUpdate% 1
-
-
-
-
-
-
-
 echo.%language_databases_rewriting%
 
 for /f "delims=" %%i in ('dir /a:d /b %dataDir%\databases\original') do md %dataDir%\databases\rewrited\%%i>nul 2>>%log_debug%
@@ -127,7 +108,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do (
   if exist "%%i\Microsoft\Windows\Start Menu" echo.%%i\Microsoft\Windows\Start Menu>>%dataDir%\databases\rewrited\dirs\shortcuts.db
   if exist "%%i\Microsoft\Windows\Start Menu\Programs" echo.%%i\Microsoft\Windows\Start Menu\Programs>>%dataDir%\databases\rewrited\dirs\shortcuts.db
 )
-%loadingUpdate% 2
+%loadingUpdate% 3
 
 setlocal EnableDelayedExpansion
 for /f "delims=" %%i in ('reg query HKU') do (
