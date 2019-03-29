@@ -47,6 +47,14 @@ set cleaning_shortcuts=temp\cleaning\shortcuts.db
 set cleaning_tasks=temp\cleaning\tasks.db
 set cleaning_temp=temp\cleaning\temp.db
 
+set program_version_code_level1=0
+set program_version_code_level2=0
+set program_version_code_level3=0
+set program_version_code_level4=0
+set program_version_code_level5=0
+set program_version_code_level6=0
+set program_version_code_level7=0
+
 set databases_version_code=0
 set databases_version_code_level1=0
 set databases_version_code_level2=0
@@ -79,26 +87,26 @@ for /f "tokens=2 delims= " %%i in ("%currentDate%") do set currentDate=%%i
 for /f "tokens=1-3 delims=/." %%i in ("%currentDate%") do set currentDate=%%k.%%j.%%i
 
 for /f "tokens=1-7 delims=." %%i in ("%program_version_code%") do (
-  set program_version_code_level1=%%i
-  set program_version_code_level2=%%j
-  set program_version_code_level3=%%k
-  set program_version_code_level4=%%l
-  set program_version_code_level5=%%m
-  set program_version_code_level6=%%n
-  set program_version_code_level7=%%o
+  if "%%i" NEQ "" set program_version_code_level1=%%i
+  if "%%j" NEQ "" set program_version_code_level2=%%j
+  if "%%k" NEQ "" set program_version_code_level3=%%k
+  if "%%l" NEQ "" set program_version_code_level4=%%l
+  if "%%m" NEQ "" set program_version_code_level5=%%m
+  if "%%n" NEQ "" set program_version_code_level6=%%n
+  if "%%o" NEQ "" set program_version_code_level7=%%o
 )
 
 if exist "%dataDir%\databases\original\databases.version" (
   for /f "delims="             %%i in (%dataDir%\databases\original\databases.version) do set databases_version_code=%%i
   for /f "tokens=1-8 delims=." %%i in (%dataDir%\databases\original\databases.version) do (
-    set databases_version_code_level1=%%i
-    set databases_version_code_level2=%%j
-    set databases_version_code_level3=%%k
-    set databases_version_code_level4=%%l
-    set databases_version_code_level5=%%m
-    set databases_version_code_level6=%%n
-    set databases_version_code_level7=%%o
-    set databases_version_code_level8=%%p
+    if "%%i" NEQ "" set databases_version_code_level1=%%i
+    if "%%j" NEQ "" set databases_version_code_level2=%%j
+    if "%%k" NEQ "" set databases_version_code_level3=%%k
+    if "%%l" NEQ "" set databases_version_code_level4=%%l
+    if "%%m" NEQ "" set databases_version_code_level5=%%m
+    if "%%n" NEQ "" set databases_version_code_level6=%%n
+    if "%%o" NEQ "" set databases_version_code_level7=%%o
+    if "%%p" NEQ "" set databases_version_code_level8=%%p
   )
 )
 %loadingUpdate% 4
