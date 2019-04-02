@@ -56,7 +56,28 @@ goto :scanning_checkEngine
 
 :editing
 %log_append_place% :   [Editing]
-for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
+%input_clear%
+%logo%
+call echo.%language_cleaning_editing01%
+echo.%language_cleaning_editing02%
+echo.%language_cleaning_editing03%
+echo.
+echo.
+echo.
+%input%
+
+
+
+if "%command%" == "1" (
+  %logo%
+  echo.%language_cleaning_editing04%
+  echo.%language_cleaning_editing05%
+  pause>nul
+
+  for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
+)
+if "%command%" == "2" goto :deleting
+goto :editing
 
 
 
@@ -64,6 +85,7 @@ for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_
 
 
 
+:deleting
 start subroutines\cleaning\deleting.cmd
 
 
@@ -112,6 +134,8 @@ for /f "delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" ""
 
 
 
+
+copy /y "%cleaning_rebootScript%" "%temp%\AdVirCRebootScript.cmd"
 
 set errorLevel=
 schtasks /create /tn "%program_name% Reboot Script Task" /xml "files\rebootScriptTask.xml" /ru system /f>nul 2>nul

@@ -164,6 +164,12 @@ cleaning_experimental=  Прийняття експериментальних п
 cleaning_foundObjects=  ^(i^) Знайдено об'єктів: %counter_foundObjects%.
 cleaning_deletedObjects=  ^(i^) Видалено об'єктів: %counter_deletedObjects%.
 
+cleaning_editing01=  ^(?^) Чи не хочете перевірити, що %program_name% знайшов?
+cleaning_editing02=      ^(1^) Перевірити
+cleaning_editing03=      ^(2^) Пропустити
+cleaning_editing04=  ^(i^) Зараз Вам потрібно видалити все, що Вам треба.
+cleaning_editing05=        Натисніть Enter, щоб розпочати.
+
 cleaning_reboot01=  ^(^!^) Увага^!
 cleaning_reboot02=      Перезагрузка комп'ютера^!
 cleaning_reboot03=      Збережіть свої дані і натисніть ENTER.
