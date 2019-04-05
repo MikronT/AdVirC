@@ -46,9 +46,9 @@ menu_main_update_program_available=  ^(i^) %program_name% update is now availabl
 
 menu_main_firstRunTip=  ^(i^) Close the program only using menu item ^(0^), otherwise the program may be damaged^!
 
-menu_main_tipOfTheDay01=  (i) First of all it would be better to update the virus databases, and then clean the system.
-menu_main_tipOfTheDay02=  (i) Do not pay attention to some errors and try to just wait.
-menu_main_tipOfTheDay03=  (i) If the program window disappears without your intervention, contact us for help.
+menu_main_tipOfTheDay01=  ^(i^) First of all it would be better to update the virus databases, and then clean the system.
+menu_main_tipOfTheDay02=  ^(i^) Do not pay attention to some errors and try to just wait.
+menu_main_tipOfTheDay03=  ^(i^) If the program window disappears without your intervention, contact us for help.
 
 
 
@@ -171,7 +171,7 @@ cleaning_editing01=  ^(?^) Do you want to check what %program_name% found?
 cleaning_editing02=      ^(1^) Check
 cleaning_editing03=      ^(2^) Skip
 cleaning_editing04=  ^(i^) Now you must remove all what you need.
-cleaning_editing05=        Press Enter to start.
+cleaning_editing05=      Press Enter to start.
 
 cleaning_reboot01=  ^(^!^) Warning^!
 cleaning_reboot02=      The computer will restart^!
