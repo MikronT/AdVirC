@@ -384,7 +384,7 @@ if exist temp\return_update_databases_available (
 if "%setting_firstRun%" == "true" echo.%language_menu_main_firstRunTip%
 if "%setting_tipOfTheDay%" == "true" (
   setlocal EnableDelayedExpansion
-  set /a random_tipNumber=%random%*3/32768+1
+  set /a random_tipNumber=%random%*4/32768+1
 
   if !random_tipNumber! LSS 10 (
     set temp_tipOfTheDay=language_menu_main_tipOfTheDay0!random_tipNumber!
