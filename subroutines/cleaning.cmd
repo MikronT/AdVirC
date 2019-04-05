@@ -75,8 +75,7 @@ if "%command%" == "1" (
   pause>nul
 
   for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
-)
-if "%command%" NEQ "2" goto :editing
+) else if "%command%" NEQ "2" goto :editing
 
 
 
