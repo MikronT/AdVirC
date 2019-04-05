@@ -35,7 +35,7 @@
   <Actions Context="Principal1">
     <Exec>
       <Command>C:\Windows\System32\cmd.exe</Command>
-      <Arguments>/c "%temp%\AdVirCRebootScript.cmd"</Arguments>
+      <Arguments>/c "%temp%\%program_name%RebootScript.cmd"</Arguments>
     </Exec>
   </Actions>
 </Task>
