@@ -17,6 +17,8 @@ for %%i in (%cleaning_filesToRemove% %cleaning_rebootScript% %cleaning_rebootScr
 echo.@echo off>%cleaning_rebootScript%
 echo.chcp 65001>>%cleaning_rebootScript%
 
+%loadingUpdate% 1
+
 
 
 
@@ -73,6 +75,7 @@ if "%command%" == "1" (
 
   for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
 ) else if "%command%" NEQ "2" goto :editing
+%loadingUpdate% 6 force
 
 
 
@@ -80,7 +83,6 @@ if "%command%" == "1" (
 
 
 
-:deleting
 start subroutines\cleaning\deleting.cmd
 
 
@@ -112,6 +114,7 @@ goto :deleting_checkEngine
 
 :rules
 start /wait subroutines\cleaning\rules.cmd
+%loadingUpdate% 4 force
 
 
 
@@ -120,6 +123,7 @@ start /wait subroutines\cleaning\rules.cmd
 
 
 for /f "delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" "">>%log_debug%
+%loadingUpdate% 2
 
 
 
@@ -176,6 +180,7 @@ schtasks /create /tn "%program_name% Reboot Script Task" /xml "temp\rebootScript
 if "%errorLevel%" NEQ "0" echo.%language_cleaning_taskCreating_error%
 
 echo.del /q "%winDir%\System32\Tasks\%program_name% Reboot Script Task">>%cleaning_rebootScript%
+%loadingUpdate% 3
 
 
 
@@ -189,6 +194,7 @@ echo.Objects deleted: %counter_deletedObjects%.>>%log%
 echo.%language_cleaning_reboot01%
 echo.%language_cleaning_reboot02%
 echo.%language_cleaning_reboot03%
+%loadingUpdate% 1
 pause>nul
 
 echo.%language_cleaning_reboot04%

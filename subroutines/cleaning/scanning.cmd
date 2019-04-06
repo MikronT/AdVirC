@@ -21,6 +21,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\processes\services.db) do 
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [Processes]
 %log_append_place% :     [Tasks]
 
@@ -38,6 +40,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\processes\tasks.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [Processes]
 %log_append_place% :     [Processes]
 
@@ -47,6 +51,7 @@ if "%setting_debug%" == "true" (
   tasklist>>%log_debug%
   %log_append_line% %log_debug% 1
 )
+%loadingUpdate% 1
 
 
 
@@ -60,6 +65,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\processes\processes.db) do
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [Registry]
 %log_append_place% :     [Classes]
 
@@ -79,6 +86,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\classes.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [Registry]
 %log_append_place% :     [Keys]
 
@@ -98,6 +107,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\keys.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [Temp]
 
@@ -118,6 +129,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\temp.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [AppData Folders]
 
@@ -140,6 +153,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [Program Folders]
 
@@ -162,6 +177,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\programFiles.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [System Drive Folders]
 
@@ -182,6 +199,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\folders\systemDrive.db) do
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [User Profile Folders]
 
@@ -204,6 +223,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\userProfile.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [Windows Directory Folders]
 
@@ -224,6 +245,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\folders\winDir.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [AppData Files]
 
@@ -246,6 +269,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [Program Files]
 
@@ -268,6 +293,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\programFiles.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [System Drive Files]
 
@@ -288,6 +315,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\files\systemDrive.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [Windows Directory Files]
 
@@ -308,6 +337,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\files\winDir.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [Shortcuts]
 
@@ -330,6 +361,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\shortcuts.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [Browsers Shortcuts]
 
@@ -351,6 +384,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\browsersShortcuts.db)
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [AppData Extensions]
 
@@ -373,6 +408,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [AppData Browsers Extensions]
 
@@ -397,6 +434,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [Program Files Extensions]
 
@@ -419,6 +458,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\programFiles.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
+
 %log_append_place% :   [File System]
 %log_append_place% :     [Program Files Browsers Extensions]
 
@@ -443,6 +484,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\programFiles.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
 
 
 
