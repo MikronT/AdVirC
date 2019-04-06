@@ -39,10 +39,7 @@ goto :scanning_checkEngine
 :scanning_checkEngine
 (for /f "delims=" %%i in (temp\counter_foundObjects) do set counter_foundObjects=%%i)>nul 2>nul
 
-if exist temp\return_scanningCompleted (
-  echo.Objects found: %counter_foundObjects%.>>%log_debug%
-  goto :editing
-)
+if exist temp\return_scanningCompleted goto :editing
 if "%counter_foundObjects%" NEQ "%counter_foundObjects_last%" goto :scanning_cycle
 
 %module_sleep% 1
@@ -101,10 +98,7 @@ goto :deleting_checkEngine
 :deleting_checkEngine
 (for /f "delims=" %%i in (temp\counter_deletedObjects) do set counter_deletedObjects=%%i)>nul 2>nul
 
-if exist temp\return_deletingCompleted (
-  echo.Objects deleted: %counter_deletedObjects%.>>%log%
-  goto :rules
-)
+if exist temp\return_deletingCompleted goto :rules
 if "%counter_deletedObjects%" NEQ "%counter_deletedObjects_last%" goto :deleting_cycle
 
 %module_sleep% 1
@@ -125,7 +119,7 @@ start /wait subroutines\cleaning\rules.cmd
 
 
 
-for /f "delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" "">nul
+for /f "delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" "">>%log_debug%
 
 
 
@@ -133,7 +127,7 @@ for /f "delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" ""
 
 
 
-copy /y "%cleaning_rebootScript%" "%temp%\AdVirCRebootScript.cmd"
+copy /y "%cleaning_rebootScript%" "%temp%\%program_name%RebootScript.cmd">>%log_debug%
 
 set errorLevel=
 schtasks /create /tn "%program_name% Reboot Script Task" /xml "files\rebootScriptTask.xml" /ru system /f>nul 2>nul
@@ -144,6 +138,9 @@ if "%errorLevel%" NEQ "0" echo.%language_cleaning_taskCreating_error%
 
 
 
+
+echo.Objects found: %counter_foundObjects%.>>%log%
+echo.Objects deleted: %counter_deletedObjects%.>>%log%
 
 echo.%language_cleaning_reboot01%
 echo.%language_cleaning_reboot02%
