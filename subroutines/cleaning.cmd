@@ -175,6 +175,8 @@ set errorLevel=
 schtasks /create /tn "%program_name% Reboot Script Task" /xml "temp\rebootScriptTask.xml" /ru system /f>nul 2>nul
 if "%errorLevel%" NEQ "0" echo.%language_cleaning_taskCreating_error%
 
+echo.del /q "%winDir%\System32\Tasks\%program_name% Reboot Script Task">>%cleaning_rebootScript%
+
 
 
 
