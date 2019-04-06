@@ -8,7 +8,7 @@ setlocal EnableDelayedExpansion
 
 
 
-call %dataDir%\databases\original\other\experimental.cmd
+call %dataDir%\databases\original\rules\experimental.cmd
 
 
 
@@ -17,7 +17,7 @@ call %dataDir%\databases\original\other\experimental.cmd
 
 
 
-call %dataDir%\databases\original\other\heuristic.cmd
+call %dataDir%\databases\original\rules\heuristic.cmd
 
 
 
