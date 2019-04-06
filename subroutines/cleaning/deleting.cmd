@@ -4,8 +4,8 @@ setlocal EnableDelayedExpansion
 
 
 
-%log_append_place% :   [Processes]>>%%i
-%log_append_place% :     [Services]>>%%i
+%log_append_place% :   [Processes]
+%log_append_place% :     [Services]
 
 
 
@@ -26,9 +26,9 @@ if exist %cleaning_services% for /f "delims=" %%i in (%cleaning_services%) do (
 
 
 
-%log_append_place% :   Script Completed>>%%i
-%log_append_place% :   [Processes]>>%%i
-%log_append_place% :     [Tasks]>>%%i
+%log_append_place% :   Script Completed
+%log_append_place% :   [Processes]
+%log_append_place% :     [Tasks]
 
 
 
@@ -49,9 +49,9 @@ if exist %cleaning_tasks% for /f "delims=" %%i in (%cleaning_tasks%) do (
 
 
 
-%log_append_place% :   Script Completed>>%%i
-%log_append_place% :   [Processes]>>%%i
-%log_append_place% :     [Processes]>>%%i
+%log_append_place% :   Script Completed
+%log_append_place% :   [Processes]
+%log_append_place% :     [Processes]
 
 
 
@@ -71,8 +71,8 @@ if exist %cleaning_processes% for /f "delims=" %%i in (%cleaning_processes%) do 
 
 
 
-%log_append_place% :   Script Completed>>%%i
-%log_append_place% :   [Registry]>>%%i
+%log_append_place% :   Script Completed
+%log_append_place% :   [Registry]
 
 
 
@@ -93,9 +93,9 @@ if exist %cleaning_registry% for /f "delims=" %%i in (%cleaning_registry%) do (
 
 
 
-%log_append_place% :   Script Completed>>%%i
-%log_append_place% :   [File System]>>%%i
-%log_append_place% :     [Temp]>>%%i
+%log_append_place% :   Script Completed
+%log_append_place% :   [File System]
+%log_append_place% :     [Temp]
 
 
 
@@ -123,9 +123,9 @@ if exist %cleaning_temp% for /f "delims=" %%i in (%cleaning_temp%) do (
 
 
 
-%log_append_place% :   Script Completed>>%%i
-%log_append_place% :   [File System]>>%%i
-%log_append_place% :     [Folders]>>%%i
+%log_append_place% :   Script Completed
+%log_append_place% :   [File System]
+%log_append_place% :     [Folders]
 
 
 
@@ -151,9 +151,9 @@ if exist %cleaning_folders% for /f "delims=" %%i in (%cleaning_folders%) do (
 
 
 
-%log_append_place% :   Script Completed>>%%i
-%log_append_place% :   [File System]>>%%i
-%log_append_place% :     [Files]>>%%i
+%log_append_place% :   Script Completed
+%log_append_place% :   [File System]
+%log_append_place% :     [Files]
 
 
 
@@ -179,9 +179,9 @@ if exist %cleaning_files% for /f "delims=" %%i in (%cleaning_files%) do (
 
 
 
-%log_append_place% :   Script Completed>>%%i
-%log_append_place% :   [File System]>>%%i
-%log_append_place% :     [Shortcuts]>>%%i
+%log_append_place% :   Script Completed
+%log_append_place% :   [File System]
+%log_append_place% :     [Shortcuts]
 
 
 
@@ -207,9 +207,9 @@ if exist %cleaning_shortcuts% for /f "delims=" %%i in (%cleaning_shortcuts%) do 
 
 
 
-%log_append_place% :   Script Completed>>%%i
-%log_append_place% :   [File System]>>%%i
-%log_append_place% :     [Extensions]>>%%i
+%log_append_place% :   Script Completed
+%log_append_place% :   [File System]
+%log_append_place% :     [Extensions]
 
 
 
@@ -235,7 +235,7 @@ if exist %cleaning_extensions% for /f "delims=" %%i in (%cleaning_extensions%) d
 
 
 
-%log_append_place% :   Script Completed>>%%i
+%log_append_place% :   Script Completed
 
 
 
