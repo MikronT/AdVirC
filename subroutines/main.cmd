@@ -36,6 +36,7 @@ set settings=%dataDir%\settings\settings.ini
 
 set cleaning_filesToRemove=temp\filesToRemove.db
 set cleaning_rebootScript=temp\rebootScript.cmd
+set cleaning_rebootScriptTask=temp\rebootScriptTask.xml
 
 set cleaning_extensions=temp\cleaning\extensions.db
 set cleaning_files=temp\cleaning\files.db
