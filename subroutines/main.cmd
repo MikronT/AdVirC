@@ -342,10 +342,10 @@ call :menu_main_tips
 
 
 if "%command%" == "1" call :menu_cleaning
-if "%command%" == "2" rem call :menu_exceptions
+if "%command%" == "2" call :menu_exceptions
 if "%command%" == "3" call :databases_update
 if "%command%" == "4" call :menu_databases_import
-if "%command%" == "5" rem call :menu_help
+if "%command%" == "5" call :menu_help
 if "%command%" == "6" call :menu_report
 if "%command%" == "7" call :menu_about
 if "%command%" == "8" call :menu_settings
@@ -435,6 +435,22 @@ goto :menu_cleaning
 
 
 :menu_exceptions
+%log_append_place% :   [Exceptions Menu]
+%input_clear%
+%logo%
+echo.%language_menu_exceptions01%
+echo.%language_menu_exceptions02%
+echo.
+echo.%language_back%
+echo.
+echo.
+echo.
+%input%
+
+
+
+if "%command%" == "0" ( %input_clear% & exit /b )
+if "%command%" == "1" rem
 goto :menu_exceptions
 
 
@@ -486,6 +502,22 @@ goto :menu_databases_import
 
 
 :menu_help
+%log_append_place% :   [Help Menu]
+%input_clear%
+%logo%
+echo.%language_menu_help01%
+echo.%language_menu_help02%
+echo.
+echo.%language_back%
+echo.
+echo.
+echo.
+%input%
+
+
+
+if "%command%" == "0" ( %input_clear% & exit /b )
+if "%command%" == "1" rem
 goto :menu_help
 
 
