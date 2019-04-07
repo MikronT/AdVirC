@@ -347,7 +347,7 @@ if "%command%" == "3" call :databases_update
 if "%command%" == "4" call :menu_databases_import
 if "%command%" == "5" rem call :menu_help
 if "%command%" == "6" call :menu_report
-if "%command%" == "7" rem call :menu_about
+if "%command%" == "7" call :menu_about
 if "%command%" == "8" call :menu_settings
 if "%command%" == "9" call :menu_dataManagement
 if /i "%command%" == "A" (
@@ -524,6 +524,39 @@ goto :menu_report
 
 
 :menu_about
+%log_append_place% :   [About Menu]
+
+if "%setting_debug%" == "true" if exist "%dataDir%\databases\original\databases.version" for /f "delims=" %%i in (%dataDir%\databases\original\databases.version) do set databases_version_code=%%i
+
+%input_clear%
+%logo%
+echo.%language_menu_about01%
+echo.
+echo.  ^(i^) %program_version_name%
+
+if "%setting_debug%" == "true" (
+  call echo.%language_info_versionCode_program%
+  if exist "%dataDir%\databases\original\databases.version" call echo.%language_info_versionCode_databases%
+)
+
+echo.
+echo.  ^(i^) MikronT ^(github.com/MikronT^)
+echo.
+echo.
+echo.
+echo.%language_menu_about02%
+echo.%language_menu_about03%
+echo.
+echo.%language_back%
+echo.
+echo.
+echo.
+%input%
+
+
+
+if "%command%" == "0" ( %input_clear% & exit /b )
+if "%command%" == "1" start notepad "%cd%\license.txt"
 goto :menu_about
 
 

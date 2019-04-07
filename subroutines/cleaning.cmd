@@ -16,7 +16,6 @@ for %%i in (%cleaning_filesToRemove% %cleaning_rebootScript% %cleaning_rebootScr
 
 echo.@echo off>%cleaning_rebootScript%
 echo.chcp 65001>>%cleaning_rebootScript%
-
 %loadingUpdate% 1
 
 
