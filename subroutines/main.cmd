@@ -825,6 +825,35 @@ exit /b
 
 
 
+:menu_theme
+%log_append_place% :   [Theme Menu]
+%input_clear%
+%logo%
+echo.%language_menu_theme01%
+echo.%language_menu_theme02%
+echo.%language_menu_theme03%
+echo.%language_menu_theme04%
+echo.
+echo.%language_back%
+echo.
+echo.
+echo.
+%input%
+
+
+
+if "%command%" == "0" ( %input_clear% & exit /b )
+if "%command%" == "1" rem
+if "%command%" == "2" rem
+if "%command%" == "3" rem
+exit /b
+
+
+
+
+
+
+
 :menu_dataManagement
 %log_append_place% :   [Data Management Menu]
 %input_clear%
