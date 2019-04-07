@@ -563,6 +563,8 @@ if "%setting_debug%" == "true" if exist "%dataDir%\databases\original\databases.
 %input_clear%
 %logo%
 echo.%language_menu_about01%
+echo.%language_menu_about02%
+echo.%language_menu_about03%
 echo.
 echo.  ^(i^) %program_version_name%
 
@@ -576,8 +578,7 @@ echo.  ^(i^) MikronT ^(github.com/MikronT^)
 echo.
 echo.
 echo.
-echo.%language_menu_about02%
-echo.%language_menu_about03%
+echo.%language_menu_about04%
 echo.
 echo.%language_back%
 echo.
