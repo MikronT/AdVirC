@@ -221,8 +221,10 @@ echo.%language_initialization2%
 echo.
 echo.  ^(i^) %program_version_name%
 
-if "%setting_debug%" == "true" call echo.%language_info_versionCode_program%
-if "%setting_debug%" == "true" if exist "%dataDir%\databases\original\databases.version" call echo.%language_info_versionCode_databases%
+if "%setting_debug%" == "true" (
+  call echo.%language_info_versionCode_program%
+  if exist "%dataDir%\databases\original\databases.version" call echo.%language_info_versionCode_databases%
+)
 
 set stringBuilder_string=%language_info_language%
 if "%setting_language%" == "english" (

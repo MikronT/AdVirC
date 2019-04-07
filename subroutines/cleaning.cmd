@@ -188,8 +188,8 @@ echo.del /q "%winDir%\System32\Tasks\%program_name% Reboot Script Task">>%cleani
 
 
 
-echo.Objects found: %counter_foundObjects%.>>%log%
-echo.Objects deleted: %counter_deletedObjects%.>>%log%
+echo.Objects found: %counter_foundObjects%>>%log%
+echo.Objects deleted: %counter_deletedObjects%>>%log%
 
 echo.%language_cleaning_reboot01%
 echo.%language_cleaning_reboot02%

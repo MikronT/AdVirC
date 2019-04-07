@@ -14,7 +14,7 @@
 
 ### Version name: *AdVirC v2.0 Pre-Alpha*
 
-AdVirC (AdVirC Removal Tool or AdVirC RT) is a free **open source** console utility for cleaning PCs from Adware, Malware, Trojans, Miners and rubbish for Windows 10.
+AdVirC (AdVirC Removal Tool or AdVirC RT) is a free **open source** console program for cleaning PCs from Adware, Malware, Trojans, Miners and rubbish for Windows 10.
 
 *If you have ads, third-party programs or your computer live your life, I may be able to help you.*
 
