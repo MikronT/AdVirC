@@ -463,9 +463,6 @@ goto :menu_exceptions
 
 :menu_exceptions_new
 %log_append_place% :     [New Exception Menu]
-
-set counter_page=1
-
 %input_clear%
 %logo%
 echo.%language_menu_exceptions_new01%
@@ -488,27 +485,10 @@ if "%databases_notExist_error%" == "1" (
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-if "%command%" == "P" set /a counter_page=-=1
-if "%command%" == "N" set /a counter_page=+=1
-
-
-
-setlocal EnableDelayedExpansion
-set exceptionKeyword=%command%
 
 if exist %dataDir%\databases\rewrited\dirs\temp.db (
-  %input_clear%
-  %logo%
-  echo.%language_menu_exceptions_new03%
-  echo.
   call :menu_exceptions_new_viewPager
-  echo.
-  echo.%language_menu_exceptions_new04%
-  echo.
-  %input%
 ) else set databases_notExist_error=1
-
-endlocal
 goto :menu_exceptions_new
 
 
@@ -518,13 +498,41 @@ goto :menu_exceptions_new
 
 
 :menu_exceptions_new_viewPager
-set counter_viewPager=0
+%log_append_place% :       [New Exception ViewPager Menu]
+
+setlocal EnableDelayedExpansion
+set counter_viewPager_element=0
+set counter_viewPager_page=0
+set counter_viewPager_page_next=10
+set exceptionKeyword=%command%
+
+%input_clear%
+%logo%
+echo.%language_menu_exceptions_new03%
+echo.
 
 for /f "eol=# delims=" %%i in (%dataDir%\databases\original\fileList.db) do for /f "eol=- delims=" %%j in ('find /i "%exceptionKeyword%" %dataDir%\databases\rewrited\%%i') do (
-  set /a counter_viewPager+=1
-  if !counter_viewPager! GEQ %counter_page% echo.%%j
+  if !counter_viewPager_element! GEQ %counter_viewPager_page% if !counter_viewPager_element! LSS %counter_viewPager_page_next% echo.    %counter_viewPager_element%  %%j
+  set /a counter_viewPager_element+=1
 )
-exit /b
+
+echo.
+echo.%language_menu_exceptions_new04%
+echo.
+%input%
+
+if "%command%" == "0" ( %input_clear% & exit /b )
+if "%command%" == "P" (
+  set /a counter_viewPager_page-=10
+  set /a counter_viewPager_page_next=%counter_viewPager_page%+10
+)
+if "%command%" == "N" (
+  set /a counter_viewPager_page+=10
+  set /a counter_viewPager_page_next=%counter_viewPager_page%+10
+)
+
+endlocal
+goto :menu_exceptions_new_viewPager
 
 
 
@@ -540,7 +548,7 @@ echo.%language_menu_exceptions_defined01%
 echo.%language_menu_exceptions_defined02%
 echo.
 
-set counter_viewPager=0
+set counter_viewPager_element=0
 if exist %dataDir%\settings\exceptions.db (
   for /f "delims=" %%i in (%dataDir%\settings\exceptions.db) do (
     rem
