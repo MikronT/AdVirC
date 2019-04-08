@@ -7,7 +7,6 @@ chcp 65001>nul
 
 :cycle
 mode con:cols=62 lines=7
-color 0b
 
 set /a counter_percents=%counter_loading%*2
 title %program_name% ^| Loading: %counter_percents%%%...
@@ -80,6 +79,7 @@ goto :checkEngine
 :checkEngine
 if exist temp (
   (for /f "delims=" %%i in (temp\counter_loading) do set counter_loading=%%i)>nul 2>nul
+  color 0b
 ) else color 0c
 
 if "%counter_loading%" == "stop" exit
