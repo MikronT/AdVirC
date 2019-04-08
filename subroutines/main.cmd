@@ -463,6 +463,9 @@ goto :menu_exceptions
 
 :menu_exceptions_new
 %log_append_place% :     [New Exception Menu]
+
+set counter_page=1
+
 %input_clear%
 %logo%
 echo.%language_menu_exceptions_new01%
@@ -485,13 +488,13 @@ if "%databases_notExist_error%" == "1" (
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-if "%command%" == "P" set /a counter_menu_exceptions_new_page=-=1
-if "%command%" == "N" set /a counter_menu_exceptions_new_page=+=1
+if "%command%" == "P" set /a counter_page=-=1
+if "%command%" == "N" set /a counter_page=+=1
 
 
 
 setlocal EnableDelayedExpansion
-rem set keyword=%command%
+set exceptionKeyword=%command%
 
 if exist %dataDir%\databases\rewrited\dirs\temp.db (
   %input_clear%
@@ -515,13 +518,13 @@ goto :menu_exceptions_new
 
 
 :menu_exceptions_new_viewPager
-set counter_menu_exceptions_new_viewPager=0
+set counter_viewPager=0
 
-for /f "eol=# delims=" %%i in (%dataDir%\databases\original\fileList.db) do for /f "eol=- delims=" %%j in ('find /i "%command%" %dataDir%\databases\rewrited\%%i') do (
-  set /a counter_menu_exceptions_new_viewPager+=1
-  if !counter_menu_exceptions_new_viewPager! GEQ 0 echo.%%j
+for /f "eol=# delims=" %%i in (%dataDir%\databases\original\fileList.db) do for /f "eol=- delims=" %%j in ('find /i "%exceptionKeyword%" %dataDir%\databases\rewrited\%%i') do (
+  set /a counter_viewPager+=1
+  if !counter_viewPager! GEQ %counter_page% echo.%%j
 )
-goto :menu_exceptions_new_viewPager
+exit /b
 
 
 
@@ -537,7 +540,7 @@ echo.%language_menu_exceptions_defined01%
 echo.%language_menu_exceptions_defined02%
 echo.
 
-set counter_menu_exceptions_defined_viewPager=0
+set counter_viewPager=0
 if exist %dataDir%\settings\exceptions.db (
   for /f "delims=" %%i in (%dataDir%\settings\exceptions.db) do (
     rem
