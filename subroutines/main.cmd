@@ -440,6 +440,7 @@ goto :menu_cleaning
 %logo%
 echo.%language_menu_exceptions01%
 echo.%language_menu_exceptions02%
+echo.%language_menu_exceptions03%
 echo.
 echo.%language_back%
 echo.
@@ -451,7 +452,38 @@ echo.
 
 if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" rem
+if "%command%" == "2" call :menu_exceptions_defined
 goto :menu_exceptions
+
+
+
+
+
+
+
+:menu_exceptions_defined
+%log_append_place% :   [Defined Exceptions Menu]
+%input_clear%
+%logo%
+echo.%language_menu_exceptions_defined01%
+echo.%language_menu_exceptions_defined02%
+
+set counter_exceptions=0
+for /f "delims=" %%i in (%dataDir%\settings\exceptions.db) do (
+  rem
+)
+
+echo.
+echo.%language_back%
+echo.
+echo.
+echo.
+%input%
+
+
+
+if "%command%" == "0" ( %input_clear% & exit /b )
+goto :menu_exceptions_defined
 
 
 

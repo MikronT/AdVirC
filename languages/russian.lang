@@ -62,6 +62,21 @@ menu_cleaning02=  ^(1^) Запустить сканирование
 
 
 
+menu_exceptions01=  Меню Исключений
+menu_exceptions02=  ^(1^) Новое исключение
+menu_exceptions03=  ^(2^) Просмотреть определенные исключения
+
+
+
+
+
+menu_exceptions_defined01=  Меню Определенных Исключений
+menu_exceptions_defined02=  Выберите исключение, которое вы хотите удалить.
+
+
+
+
+
 menu_databases_import01=  Меню Импорта Баз Данных
 menu_databases_import02=  ^(1^) Запустить импорт
 menu_databases_import03=  Подсказка: Чтобы импортировать базы данных в программу, загрузите их на рабочий стол.

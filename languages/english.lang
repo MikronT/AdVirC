@@ -62,6 +62,21 @@ menu_cleaning02=  ^(1^) Run scanning
 
 
 
+menu_exceptions01=  Exceptions Menu
+menu_exceptions02=  ^(1^) New exception
+menu_exceptions03=  ^(2^) View defined exceptions
+
+
+
+
+
+menu_exceptions_defined01=  Defined Exceptions Menu
+menu_exceptions_defined02=  Select the exception you want to remove.
+
+
+
+
+
 menu_databases_import01=  Databases Import Menu
 menu_databases_import02=  ^(1^) Run import
 menu_databases_import03=  Tip: To import databases into the program, upload them on to your desktop.
