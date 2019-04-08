@@ -539,6 +539,17 @@ if /i "%command%" == "N" (
   set /a counter_viewPager_page+=10
   set /a counter_viewPager_page_next+=10
 )
+if /i "%command%" NEQ "P" if /i "%command%" NEQ "N" (
+  setlocal EnableDelayedExpansion
+  set counter_viewPager_element=1
+  for /f "eol=# delims=" %%i in (%dataDir%\databases\original\fileList.db) do for /f "eol=- delims=" %%j in ('find /i "%exceptionKeyword%" %dataDir%\databases\rewrited\%%i') do (
+    if !counter_viewPager_element! GEQ !counter_viewPager_page! if !counter_viewPager_element! LSS !counter_viewPager_page_next! (
+      if "%command%" == "!counter_viewPager_element!" echo.%%j>>%dataDir%\settings\exceptions.db
+    )
+    set /a counter_viewPager_element+=1
+  )
+  endlocal
+)
 goto :menu_exceptions_new_viewPager
 
 
