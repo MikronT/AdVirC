@@ -19,7 +19,7 @@ if exist temp\return_update_databases_available del /q temp\return_update_databa
 
 if "%key_import%" == "true" (
   set key_import=false
-  copy /y "%location_desktop%\%program_name%Databases v2.0.zip" "%update_databases_output%">>%log_debug%
+  copy /y "%location_desktop%\%program_name%Databases v2.0.zip" %update_databases_output%>>%log_debug%
   %loadingUpdate% 25
   goto :unzip
 )
@@ -33,7 +33,7 @@ if "%key_import%" == "true" (
 %loadingUpdate% 10
 echo.%language_databases_downloading%
 
-%module_wget% "%update_databases_url%" --output-document="%update_databases_output%"
+%module_wget% "%update_databases_url%" --output-document=%update_databases_output%
 
 for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir %update_databases_output%') do if "%%i" == "1" set databases_lenghtReturn=%%j
 if "%databases_lenghtReturn%" == "0" ( call :error %language_module_wget_error% & exit /b )

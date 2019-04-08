@@ -119,7 +119,7 @@ if exist "%dataDir%\databases\original\databases.version" (
 if "%key_skipFilesChecking%" NEQ "true" (
   for /f "eol=# delims=" %%i in (files\fileList.db) do if not exist "%%i" call echo.%%i>>temp\corruptedFilesList.db
   for /f "eol=# delims=" %%i in (files\fileList.db) do if not exist "%%i" goto :diagnostic
-  if not exist "files\fileList.db" (
+  if not exist files\fileList.db (
     echo.files\fileList.db>>temp\corruptedFilesList.db
     echo.and maybe others...>>temp\corruptedFilesList.db
     goto :diagnostic
@@ -147,7 +147,7 @@ call :settings_apply
 
 
 if "%setting_logging%" == "true" (
-  if exist "%log%" %log_append_delimiter% %log%
+  if exist %log% %log_append_delimiter% %log%
 
   echo.Log ^| %program_version_name% ^| %currentDate%>>%log%
   echo.>>%log%
@@ -157,7 +157,7 @@ if "%setting_logging%" == "true" (
   %loadingUpdate% 3
 
   if "%setting_debug%" == "true" (
-    if exist "%log_debug%" %log_append_delimiter% %log_debug%
+    if exist %log_debug% %log_append_delimiter% %log_debug%
 
     echo.Debug Log ^| %program_version_name% ^| %program_version_code% ^| %currentDate%>>%log_debug%
     echo.>>%log_debug%
@@ -223,7 +223,7 @@ echo.  ^(i^) %program_version_name%
 
 if "%setting_debug%" == "true" (
   call echo.%language_info_versionCode_program%
-  if exist "%dataDir%\databases\original\databases.version" call echo.%language_info_versionCode_databases%
+  if exist %dataDir%\databases\original\databases.version call echo.%language_info_versionCode_databases%
 )
 
 set stringBuilder_string=%language_info_language%
@@ -494,7 +494,7 @@ echo.%language_menu_exceptions_defined02%
 echo.
 
 set counter_exceptions=0
-if exist "%dataDir%\settings\exceptions.db" (
+if exist %dataDir%\settings\exceptions.db (
   for /f "delims=" %%i in (%dataDir%\settings\exceptions.db) do (
     rem
   )
@@ -617,7 +617,7 @@ goto :menu_report
 :menu_about
 %log_append_place% :   [About Menu]
 
-if "%setting_debug%" == "true" if exist "%dataDir%\databases\original\databases.version" for /f "delims=" %%i in (%dataDir%\databases\original\databases.version) do set databases_version_code=%%i
+if "%setting_debug%" == "true" if exist %dataDir%\databases\original\databases.version for /f "delims=" %%i in (%dataDir%\databases\original\databases.version) do set databases_version_code=%%i
 
 %input_clear%
 %logo%
@@ -629,7 +629,7 @@ echo.  ^(i^) %program_version_name%
 
 if "%setting_debug%" == "true" (
   call echo.%language_info_versionCode_program%
-  if exist "%dataDir%\databases\original\databases.version" call echo.%language_info_versionCode_databases%
+  if exist %dataDir%\databases\original\databases.version call echo.%language_info_versionCode_databases%
 )
 
 echo.
@@ -936,14 +936,14 @@ echo.
 
 if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" for /f "delims=" %%i in ('dir /b temp') do if "%%i" NEQ "counter_loading" (
-  rd /s /q "temp\%%i">nul 2>nul
-  del /q "temp\%%i">nul 2>nul
+  rd /s /q temp\%%i>nul 2>nul
+  del /q temp\%%i>nul 2>nul
 )
-if "%command%" == "2" if exist "%dataDir%\logs"      rd /s /q "%dataDir%\logs"
-if "%command%" == "3" if exist "%dataDir%\reports"   rd /s /q "%dataDir%\reports"
-if "%command%" == "4" if exist "%dataDir%\databases" rd /s /q "%dataDir%\databases"
-if "%command%" == "5" if exist "%dataDir%\settings"  rd /s /q "%dataDir%\settings"
-if "%command%" == "6" if exist "%dataDir%\backups"   rd /s /q "%dataDir%\backups"
+if "%command%" == "2" if exist %dataDir%\logs      rd /s /q %dataDir%\logs
+if "%command%" == "3" if exist %dataDir%\reports   rd /s /q %dataDir%\reports
+if "%command%" == "4" if exist %dataDir%\databases rd /s /q %dataDir%\databases
+if "%command%" == "5" if exist %dataDir%\settings  rd /s /q %dataDir%\settings
+if "%command%" == "6" if exist %dataDir%\backups   rd /s /q %dataDir%\backups
 
 call :settings_apply
 goto :menu_dataManagement

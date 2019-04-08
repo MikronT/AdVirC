@@ -130,7 +130,7 @@ for /f "delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" ""
 
 
 
-copy /y "%cleaning_rebootScript%" "%temp%\%program_name%RebootScript.cmd">>%log_debug%
+copy /y %cleaning_rebootScript% "%temp%\%program_name%RebootScript.cmd">>%log_debug%
 
 echo.^<?xml version="1.0" encoding="UTF-16"?^>>%cleaning_rebootScriptTask%
 echo.^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%cleaning_rebootScriptTask%
@@ -175,7 +175,7 @@ echo.  ^</Actions^>>>%cleaning_rebootScriptTask%
 echo.^</Task^>>>%cleaning_rebootScriptTask%
 
 set errorLevel=
-schtasks /create /tn "%program_name% Reboot Script Task" /xml "temp\rebootScriptTask.xml" /ru system /f>nul 2>nul
+schtasks /create /tn "%program_name% Reboot Script Task" /xml temp\rebootScriptTask.xml /ru system /f>nul 2>nul
 if "%errorLevel%" NEQ "0" echo.%language_cleaning_taskCreating_error%
 
 echo.del /q "%winDir%\System32\Tasks\%program_name% Reboot Script Task">>%cleaning_rebootScript%
