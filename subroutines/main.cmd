@@ -463,6 +463,11 @@ goto :menu_exceptions
 
 :menu_exceptions_new
 %log_append_place% :     [New Exception Menu]
+
+set counter_viewPager_element=0
+set counter_viewPager_page=0
+set counter_viewPager_page_next=10
+
 %input_clear%
 %logo%
 echo.%language_menu_exceptions_new01%
@@ -486,6 +491,7 @@ if "%databases_notExist_error%" == "1" (
 
 if "%command%" == "0" ( %input_clear% & exit /b )
 
+set exceptionKeyword=%command%
 if exist %dataDir%\databases\rewrited\dirs\temp.db (
   call :menu_exceptions_new_viewPager
 ) else set databases_notExist_error=1
@@ -501,10 +507,6 @@ goto :menu_exceptions_new
 %log_append_place% :       [New Exception ViewPager Menu]
 
 setlocal EnableDelayedExpansion
-set counter_viewPager_element=0
-set counter_viewPager_page=0
-set counter_viewPager_page_next=10
-set exceptionKeyword=%command%
 
 %input_clear%
 %logo%
@@ -522,11 +524,11 @@ echo.
 %input%
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-if "%command%" == "P" (
+if /i "%command%" == "P" (
   set /a counter_viewPager_page-=10
   set /a counter_viewPager_page_next=%counter_viewPager_page%+10
 )
-if "%command%" == "N" (
+if /i "%command%" == "N" (
   set /a counter_viewPager_page+=10
   set /a counter_viewPager_page_next=%counter_viewPager_page%+10
 )
