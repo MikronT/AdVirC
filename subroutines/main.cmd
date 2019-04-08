@@ -451,7 +451,7 @@ echo.
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-if "%command%" == "1" rem
+if "%command%" == "1" call :menu_exceptions_new
 if "%command%" == "2" call :menu_exceptions_defined
 goto :menu_exceptions
 
@@ -472,11 +472,24 @@ echo.%language_back%
 echo.
 echo.
 echo.
+if "%databases_notExist_error%" == "1" (
+  color 0c
+  set databases_notExist_error=0
+  echo.%language_databases_notExist_error%
+  echo.
+  echo.
+  echo.
+)
 %input%
 
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
+
+%logo%
+if exist %dataDir%\databases\rewrited\dirs\temp.db (
+  rem 
+) else set databases_notExist_error=1
 goto :menu_exceptions_new
 
 

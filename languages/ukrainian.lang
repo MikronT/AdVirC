@@ -218,7 +218,7 @@ cleaning_reboot04=  ^(^!^) Перезагрузка комп'ютера буде
 
 cleaning_taskCreating_error=  ^(^!^) Помилка при створення завдання для перезавантаження^!
 databases_import_error=  ^(^!^) Помилка^! Немає баз даних^!
-databases_notExist_error=  ^(^!^) Спочатку оновіть вірусні бази^!
+databases_notExist_error=  ^(^!^) Спочатку завантажне вірусні бази^!
 databases_update_error=  ^(^!^) Бази даних не були оновлені^!
 module_unZip_error=^(^!^) Помилка розпаковки^! Будь ласка, перезапустіть %program_name%^!
 module_wget_error=^(^!^) Помилка завантаження^! Перевірте підключення до Інтернету^!
