@@ -467,11 +467,14 @@ goto :menu_exceptions
 %logo%
 echo.%language_menu_exceptions_defined01%
 echo.%language_menu_exceptions_defined02%
+echo.
 
 set counter_exceptions=0
-for /f "delims=" %%i in (%dataDir%\settings\exceptions.db) do (
-  rem
-)
+if exist "%dataDir%\settings\exceptions.db" (
+  for /f "delims=" %%i in (%dataDir%\settings\exceptions.db) do (
+    rem
+  )
+) else echo.%language_menu_exceptions_defined03%
 
 echo.
 echo.%language_back%
