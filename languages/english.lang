@@ -72,6 +72,8 @@ menu_exceptions03=  ^(2^) View defined exceptions
 
 menu_exceptions_new01=  New Exception Menu
 menu_exceptions_new02=  Enter a keyword to find items in the databases you want to exclude.
+menu_exceptions_new03=  Select an item
+menu_exceptions_new04=  ^(P^) Previous page                                           ^(N^) Next page
 
 
 
