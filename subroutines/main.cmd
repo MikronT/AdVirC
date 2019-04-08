@@ -537,7 +537,7 @@ echo.%language_menu_exceptions_defined01%
 echo.%language_menu_exceptions_defined02%
 echo.
 
-set counter_exceptions=0
+set counter_menu_exceptions_defined_viewPager=0
 if exist %dataDir%\settings\exceptions.db (
   for /f "delims=" %%i in (%dataDir%\settings\exceptions.db) do (
     rem
