@@ -512,7 +512,7 @@ echo.%language_menu_exceptions_new03%
 echo.
 
 for /f "eol=# delims=" %%i in (%dataDir%\databases\original\fileList.db) do for /f "eol=- delims=" %%j in ('find /i "%exceptionKeyword%" %dataDir%\databases\rewrited\%%i') do (
-  if !counter_viewPager_element! GEQ %counter_viewPager_page% if !counter_viewPager_element! LSS %counter_viewPager_page_next% echo.    %counter_viewPager_element%  %%j
+  if !counter_viewPager_element! GEQ %counter_viewPager_page% if !counter_viewPager_element! LSS %counter_viewPager_page_next% echo.    !counter_viewPager_element!  %%j
   set /a counter_viewPager_element+=1
 )
 
