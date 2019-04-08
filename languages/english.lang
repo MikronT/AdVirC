@@ -70,6 +70,13 @@ menu_exceptions03=  ^(2^) View defined exceptions
 
 
 
+menu_exceptions_new01=  New Exception Menu
+menu_exceptions_new02=  Enter a keyword to find items in the databases you want to exclude.
+
+
+
+
+
 menu_exceptions_defined01=  Defined Exceptions Menu
 menu_exceptions_defined02=  Select the exception you want to remove.
 menu_exceptions_defined03=  ...Nothing interest...

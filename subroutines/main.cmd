@@ -461,6 +461,30 @@ goto :menu_exceptions
 
 
 
+:menu_exceptions_new
+%log_append_place% :     [New Exception Menu]
+%input_clear%
+%logo%
+echo.%language_menu_exceptions_new01%
+echo.%language_menu_exceptions_new02%
+echo.
+echo.%language_back%
+echo.
+echo.
+echo.
+%input%
+
+
+
+if "%command%" == "0" ( %input_clear% & exit /b )
+goto :menu_exceptions_new
+
+
+
+
+
+
+
 :menu_exceptions_defined
 %log_append_place% :   [Defined Exceptions Menu]
 %input_clear%
