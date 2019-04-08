@@ -486,7 +486,7 @@ goto :menu_exceptions_new
 
 
 :menu_exceptions_defined
-%log_append_place% :   [Defined Exceptions Menu]
+%log_append_place% :     [Defined Exceptions Menu]
 %input_clear%
 %logo%
 echo.%language_menu_exceptions_defined01%
