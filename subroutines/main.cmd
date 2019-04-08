@@ -514,6 +514,21 @@ goto :menu_exceptions_new
 
 
 
+:menu_exceptions_new_viewPager
+set counter_menu_exceptions_new_viewPager=0
+
+for /f "eol=# delims=" %%i in (%dataDir%\databases\original\fileList.db) do for /f "eol=- delims=" %%j in ('find /i "%command%" %dataDir%\databases\rewrited\%%i') do (
+  set /a counter_menu_exceptions_new_viewPager+=1
+  if !counter_menu_exceptions_new_viewPager! GEQ 0 echo.%%j
+)
+goto :menu_exceptions_new_viewPager
+
+
+
+
+
+
+
 :menu_exceptions_defined
 %log_append_place% :     [Defined Exceptions Menu]
 %input_clear%
