@@ -1,16 +1,17 @@
 @echo off
 chcp 65001>nul
 
-mode con:cols=62 lines=7
-color 0b
-
 
 
 
 
 :cycle
+mode con:cols=62 lines=7
+color 0b
+
 set /a counter_percents=%counter_loading%*2
 title %program_name% ^| Loading: %counter_percents%%%...
+
 cls
 echo.
                            echo.   ╔══════════════════════════════════════════════════════╗
@@ -77,7 +78,9 @@ goto :checkEngine
 
 
 :checkEngine
-(for /f "delims=" %%i in (temp\counter_loading) do set counter_loading=%%i)>nul 2>nul
+if exist temp (
+  (for /f "delims=" %%i in (temp\counter_loading) do set counter_loading=%%i)>nul 2>nul
+) else color 0c
 
 if "%counter_loading%" == "stop" exit
 if "%counter_loading%" NEQ "%counter_loading_last%" goto :cycle
