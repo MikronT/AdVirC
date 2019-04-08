@@ -485,19 +485,27 @@ if "%databases_notExist_error%" == "1" (
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-set keyword=%command%
+if "%command%" == "P" set /a counter_menu_exceptions_new_page=-=1
+if "%command%" == "N" set /a counter_menu_exceptions_new_page=+=1
+
+
+
+setlocal EnableDelayedExpansion
+rem set keyword=%command%
 
 if exist %dataDir%\databases\rewrited\dirs\temp.db (
-  for /f "eol=# delims=" %%i in (%dataDir%\databases\original\fileList.db) do find /i "%keyword%" %dataDir%\databases\rewrited\%%i
   %input_clear%
   %logo%
   echo.%language_menu_exceptions_new03%
   echo.
+  call :menu_exceptions_new_viewPager
   echo.
   echo.%language_menu_exceptions_new04%
   echo.
   %input%
 ) else set databases_notExist_error=1
+
+endlocal
 goto :menu_exceptions_new
 
 
