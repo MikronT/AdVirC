@@ -485,11 +485,12 @@ if "%databases_notExist_error%" == "1" (
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
+set keyword=%command%
 
 %input_clear%
 %logo%
 if exist %dataDir%\databases\rewrited\dirs\temp.db (
-  for /f "eol=# delims=" %%i in (%dataDir%\databases\original\fileList.db) do for /f "delims=" %%j in (%dataDir%\databases\rewrited\%%i) do echo.%%j | find /i "%command%"
+  for /f "eol=# delims=" %%i in (%dataDir%\databases\original\fileList.db) do find /i "%keyword%" %dataDir%\databases\rewrited\%%i
   %input%
 ) else set databases_notExist_error=1
 goto :menu_exceptions_new
