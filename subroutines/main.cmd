@@ -532,20 +532,21 @@ goto :menu_exceptions_new_viewPager
 
 :menu_exceptions_defined
 %log_append_place% :     [Defined Exceptions Menu]
+
+%viewPager% initiate %dataDir%\settings\exceptions.db
+
 %input_clear%
 %logo%
 echo.%language_menu_exceptions_defined01%
 echo.%language_menu_exceptions_defined02%
 echo.
 
-set counter_viewPager_element=0
 if exist %dataDir%\settings\exceptions.db (
-  for /f "delims=" %%i in (%dataDir%\settings\exceptions.db) do (
-    rem
-  )
+  %viewPager% generate
 ) else echo.%language_menu_exceptions_defined03%
 
 echo.
+echo.%language_menu_exceptions_new04%
 echo.%language_back%
 echo.
 echo.
@@ -555,6 +556,9 @@ echo.
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
+
+%viewPager% control
+%viewPager% modify remove %dataDir%\settings\exceptions.db
 goto :menu_exceptions_defined
 
 
