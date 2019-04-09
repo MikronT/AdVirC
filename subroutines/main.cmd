@@ -500,7 +500,7 @@ goto :menu_exceptions_new
 
 
 :menu_exceptions_new_selection
-%log_append_place% :       [New Exception ViewPager Menu]
+%log_append_place% :       [New Exception Selection Menu]
 %input_clear%
 %logo%
 echo.%language_menu_exceptions_new03%
