@@ -489,7 +489,7 @@ if "%command%" == "0" ( %input_clear% & exit /b )
 
 if exist %dataDir%\databases\rewrited\dirs\temp.db (
   %viewPager% initiate %dataDir%\databases\original\fileList.db %dataDir%\databases\rewrited
-  call :menu_exceptions_new_viewPager
+  call :menu_exceptions_new_selection
 ) else set databases_notExist_error=1
 goto :menu_exceptions_new
 
@@ -499,7 +499,7 @@ goto :menu_exceptions_new
 
 
 
-:menu_exceptions_new_viewPager
+:menu_exceptions_new_selection
 %log_append_place% :       [New Exception ViewPager Menu]
 %input_clear%
 %logo%
@@ -522,7 +522,7 @@ if "%command%" == "0" ( %input_clear% & exit /b )
 
 %viewPager% control
 %viewPager% modify add %dataDir%\settings\exceptions.db
-goto :menu_exceptions_new_viewPager
+goto :menu_exceptions_new_selection
 
 
 
