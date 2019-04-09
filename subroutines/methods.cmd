@@ -212,53 +212,69 @@ exit /b
 
 
 :viewPager
-if "%1" == "initiate" (
-  set counter_viewPager_page=1
-  set counter_viewPager_page_next=11
+if "%1" == "initiate" call :viewPager_initiate %2 %3
+if "%1" == "generate" call :viewPager_generate
+if "%1" == "control"  call :viewPager_control
+if "%1" == "modify"   call :viewPager_modify %2 %3
+exit /b
 
-  set viewPager_keyword=%command%
-  set viewPager_fileList=%2
-  set viewPager_fileDir=%3
-)
 
-if "%1" == "control" (
-  if /i "%command%" == "P" (
-    set /a counter_viewPager_page-=10
-    set /a counter_viewPager_page_next-=10
+
+:viewPager_initiate
+set counter_viewPager_page=1
+set counter_viewPager_page_next=11
+
+set viewPager_keyword=%command%
+set viewPager_fileList=%1
+set viewPager_fileDir=%2
+exit /b
+
+
+
+:viewPager_generate
+setlocal EnableDelayedExpansion
+set counter_viewPager_element=1
+
+for /f "eol=# delims=" %%i in (%viewPager_fileList%) do for /f "eol=- delims=" %%j in ('find /i "%viewPager_keyword%" %viewPager_fileDir%\%%i') do (
+  if !counter_viewPager_element! GEQ !counter_viewPager_page! if !counter_viewPager_element! LSS !counter_viewPager_page_next! (
+    if !counter_viewPager_element! GEQ 1    if !counter_viewPager_element! LSS 10    echo.     !counter_viewPager_element!  %%j
+    if !counter_viewPager_element! GEQ 10   if !counter_viewPager_element! LSS 100   echo.    !counter_viewPager_element!  %%j
+    if !counter_viewPager_element! GEQ 100  if !counter_viewPager_element! LSS 1000  echo.   !counter_viewPager_element!  %%j
+    if !counter_viewPager_element! GEQ 1000 if !counter_viewPager_element! LSS 10000 echo.  !counter_viewPager_element!  %%j
   )
-  if /i "%command%" == "N" (
-    set /a counter_viewPager_page+=10
-    set /a counter_viewPager_page_next+=10
-  )
+  set /a counter_viewPager_element+=1
 )
+endlocal
+exit /b
+
+
+
+:viewPager_control
+if /i "%command%" == "P" (
+  set /a counter_viewPager_page-=10
+  set /a counter_viewPager_page_next-=10
+)
+if /i "%command%" == "N" (
+  set /a counter_viewPager_page+=10
+  set /a counter_viewPager_page_next+=10
+)
+exit /b
+
+
+
+:viewPager_modify
+if /i "%command%" == "P" exit /b
+if /i "%command%" == "N" exit /b
 
 setlocal EnableDelayedExpansion
+set counter_viewPager_element=1
 
-if "%1" == "generate" (
-  set counter_viewPager_element=1
-
-  for /f "eol=# delims=" %%i in (%viewPager_fileList%) do for /f "eol=- delims=" %%j in ('find /i "%viewPager_keyword%" %viewPager_fileDir%\%%i') do (
-    if !counter_viewPager_element! GEQ !counter_viewPager_page! if !counter_viewPager_element! LSS !counter_viewPager_page_next! (
-      if !counter_viewPager_element! GEQ 1    if !counter_viewPager_element! LSS 10    echo.     !counter_viewPager_element!  %%j
-      if !counter_viewPager_element! GEQ 10   if !counter_viewPager_element! LSS 100   echo.    !counter_viewPager_element!  %%j
-      if !counter_viewPager_element! GEQ 100  if !counter_viewPager_element! LSS 1000  echo.   !counter_viewPager_element!  %%j
-      if !counter_viewPager_element! GEQ 1000 if !counter_viewPager_element! LSS 10000 echo.  !counter_viewPager_element!  %%j
-    )
-    set /a counter_viewPager_element+=1
+for /f "eol=# delims=" %%i in (%viewPager_fileList%) do for /f "eol=- delims=" %%j in ('find /i "%viewPager_keyword%" %viewPager_fileDir%\%%i') do (
+  if !counter_viewPager_element! GEQ !counter_viewPager_page! if !counter_viewPager_element! LSS !counter_viewPager_page_next! (
+    if "%1" == "add"    if "%command%" == "!counter_viewPager_element!" echo.%%j>>"%2"
+    if "%1" == "remove" rem
   )
+  set /a counter_viewPager_element+=1
 )
-
-if "%1" == "modify" if /i "%command%" NEQ "P" if /i "%command%" NEQ "N" (
-  set counter_viewPager_element=1
-
-  for /f "eol=# delims=" %%i in (%viewPager_fileList%) do for /f "eol=- delims=" %%j in ('find /i "%viewPager_keyword%" %viewPager_fileDir%\%%i') do (
-    if !counter_viewPager_element! GEQ !counter_viewPager_page! if !counter_viewPager_element! LSS !counter_viewPager_page_next! (
-      if "%2" == "add"    if "%command%" == "!counter_viewPager_element!" echo.%%j>>"%3"
-      if "%2" == "remove" rem
-    )
-    set /a counter_viewPager_element+=1
-  )
-)
-
 endlocal
 exit /b
