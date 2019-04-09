@@ -222,11 +222,11 @@ if "%1" == "initiate" (
 )
 
 if "%1" == "control" (
-  if /i "%2" == "P" (
+  if /i "%command%" == "P" (
     set /a counter_viewPager_page-=10
     set /a counter_viewPager_page_next-=10
   )
-  if /i "%2" == "N" (
+  if /i "%command%" == "N" (
     set /a counter_viewPager_page+=10
     set /a counter_viewPager_page_next+=10
   )
