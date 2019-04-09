@@ -488,6 +488,7 @@ if "%databases_notExist_error%" == "1" (
 if "%command%" == "0" ( %input_clear% & exit /b )
 
 if exist %dataDir%\databases\rewrited\dirs\temp.db (
+  %viewPager% initiate %dataDir%\databases\original\fileList.db %dataDir%\databases\rewrited
   call :menu_exceptions_new_viewPager
 ) else set databases_notExist_error=1
 goto :menu_exceptions_new
@@ -500,9 +501,6 @@ goto :menu_exceptions_new
 
 :menu_exceptions_new_viewPager
 %log_append_place% :       [New Exception ViewPager Menu]
-
-%viewPager% initiate %dataDir%\databases\original\fileList.db %dataDir%\databases\rewrited
-
 %input_clear%
 %logo%
 echo.%language_menu_exceptions_new03%
@@ -521,15 +519,8 @@ echo.
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-if /i "%command%" == "P" (
-  set /a counter_viewPager_page-=10
-  set /a counter_viewPager_page_next-=10
-)
-if /i "%command%" == "N" (
-  set /a counter_viewPager_page+=10
-  set /a counter_viewPager_page_next+=10
-)
 
+%viewPager% control
 %viewPager% modify add %dataDir%\settings\exceptions.db
 goto :menu_exceptions_new_viewPager
 

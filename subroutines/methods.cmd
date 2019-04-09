@@ -248,5 +248,17 @@ if "%1" == "generate" (
   )
 )
 
+if "%1" == "modify" if /i "%command%" NEQ "P" if /i "%command%" NEQ "N" (
+  set counter_viewPager_element=1
+
+  for /f "eol=# delims=" %%i in (%viewPager_fileList%) do for /f "eol=- delims=" %%j in ('find /i "%viewPager_keyword%" %viewPager_fileDir%\%%i') do (
+    if !counter_viewPager_element! GEQ !counter_viewPager_page! if !counter_viewPager_element! LSS !counter_viewPager_page_next! (
+      if "%2" == "add"    if "%command%" == "!counter_viewPager_element!" echo.%%j>>"%3"
+      if "%2" == "remove" rem
+    )
+    set /a counter_viewPager_element+=1
+  )
+)
+
 endlocal
 exit /b
