@@ -212,10 +212,7 @@ exit /b
 
 
 :viewPager
-if "%1" == "initiate" call :viewPager_initiate %2 %3
-if "%1" == "generate" call :viewPager_generate
-if "%1" == "control"  call :viewPager_control
-if "%1" == "modify"   call :viewPager_modify %2 %3
+call :viewPager_%*
 exit /b
 
 
