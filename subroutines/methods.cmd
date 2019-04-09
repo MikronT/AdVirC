@@ -224,6 +224,14 @@ set counter_viewPager_page_next=11
 set viewPager_keyword=%command%
 set viewPager_fileList=%1
 set viewPager_fileDir=%2
+
+if "%viewPager_fileDir%" == "" (
+  set viewPager_generate_addition=
+  set viewPager_element=%%i
+) else (
+  set viewPager_generate_addition=for /f "eol=- delims=" %%j in ^('find /i "%viewPager_keyword%" %viewPager_fileDir%\%%i'^) do
+  set viewPager_element=%%j
+)
 exit /b
 
 
@@ -232,12 +240,12 @@ exit /b
 setlocal EnableDelayedExpansion
 set counter_viewPager_element=1
 
-for /f "eol=# delims=" %%i in (%viewPager_fileList%) do for /f "eol=- delims=" %%j in ('find /i "%viewPager_keyword%" %viewPager_fileDir%\%%i') do (
+for /f "eol=# delims=" %%i in (%viewPager_fileList%) do %viewPager_generate_addition% (
   if !counter_viewPager_element! GEQ !counter_viewPager_page! if !counter_viewPager_element! LSS !counter_viewPager_page_next! (
-    if !counter_viewPager_element! GEQ 1    if !counter_viewPager_element! LSS 10    echo.     !counter_viewPager_element!  %%j
-    if !counter_viewPager_element! GEQ 10   if !counter_viewPager_element! LSS 100   echo.    !counter_viewPager_element!  %%j
-    if !counter_viewPager_element! GEQ 100  if !counter_viewPager_element! LSS 1000  echo.   !counter_viewPager_element!  %%j
-    if !counter_viewPager_element! GEQ 1000 if !counter_viewPager_element! LSS 10000 echo.  !counter_viewPager_element!  %%j
+    if !counter_viewPager_element! GEQ 1    if !counter_viewPager_element! LSS 10    echo.     !counter_viewPager_element!  %viewPager_element%
+    if !counter_viewPager_element! GEQ 10   if !counter_viewPager_element! LSS 100   echo.    !counter_viewPager_element!  %viewPager_element%
+    if !counter_viewPager_element! GEQ 100  if !counter_viewPager_element! LSS 1000  echo.   !counter_viewPager_element!  %viewPager_element%
+    if !counter_viewPager_element! GEQ 1000 if !counter_viewPager_element! LSS 10000 echo.  !counter_viewPager_element!  %viewPager_element%
   )
   set /a counter_viewPager_element+=1
 )
@@ -266,9 +274,9 @@ if /i "%command%" == "N" exit /b
 setlocal EnableDelayedExpansion
 set counter_viewPager_element=1
 
-for /f "eol=# delims=" %%i in (%viewPager_fileList%) do for /f "eol=- delims=" %%j in ('find /i "%viewPager_keyword%" %viewPager_fileDir%\%%i') do (
+for /f "eol=# delims=" %%i in (%viewPager_fileList%) do %viewPager_generate_addition% (
   if !counter_viewPager_element! GEQ !counter_viewPager_page! if !counter_viewPager_element! LSS !counter_viewPager_page_next! (
-    if "%1" == "add"    if "%command%" == "!counter_viewPager_element!" echo.%%j>>"%2"
+    if "%1" == "add"    if "%command%" == "!counter_viewPager_element!" echo.%viewPager_element%>>"%2"
     if "%1" == "remove" rem
   )
   set /a counter_viewPager_element+=1
