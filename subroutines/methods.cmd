@@ -253,8 +253,8 @@ endlocal
 
 echo.
 
-echo.%language_viewPager_previous%
-echo.%language_viewPager_next%
+echo.%language_viewPager_control_previous%
+echo.%language_viewPager_control_next%
 exit /b
 
 
