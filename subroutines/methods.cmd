@@ -238,23 +238,27 @@ exit /b
 
 :viewPager_generate
 setlocal EnableDelayedExpansion
-set counter_viewPager_element=1
+set counter_viewPager_element=0
 
 for /f "eol=# delims=" %%i in (%viewPager_fileList%) do %viewPager_generate_addition% (
+  set /a counter_viewPager_element+=1
   if !counter_viewPager_element! GEQ !counter_viewPager_page! if !counter_viewPager_element! LSS !counter_viewPager_page_next! (
     if !counter_viewPager_element! GEQ 1    if !counter_viewPager_element! LSS 10    echo.     !counter_viewPager_element!  %viewPager_element%
     if !counter_viewPager_element! GEQ 10   if !counter_viewPager_element! LSS 100   echo.    !counter_viewPager_element!  %viewPager_element%
     if !counter_viewPager_element! GEQ 100  if !counter_viewPager_element! LSS 1000  echo.   !counter_viewPager_element!  %viewPager_element%
     if !counter_viewPager_element! GEQ 1000 if !counter_viewPager_element! LSS 10000 echo.  !counter_viewPager_element!  %viewPager_element%
   )
-  set /a counter_viewPager_element+=1
 )
-endlocal
+
+set /a counter_viewPager_k=%counter_viewPager_element%-%counter_viewPager_page%
 
 echo.
+       if %counter_viewPager_element% LSS 11 ( rem
+) else if %counter_viewPager_page%      == 1 ( echo.%language_viewPager_control_next%
+) else if %counter_viewPager_k%       LSS 10 ( echo.%language_viewPager_control_previous%
+) else echo.%language_viewPager_control_previous% %language_viewPager_control_next%
 
-echo.%language_viewPager_control_previous%
-echo.%language_viewPager_control_next%
+endlocal
 exit /b
 
 
