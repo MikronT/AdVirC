@@ -503,6 +503,7 @@ goto :menu_exceptions_new
 %log_append_place% :       [New Exception Selection Menu]
 %input_clear%
 %logo%
+echo.%language_menu_exceptions_new01%
 echo.%language_menu_exceptions_new03%
 echo.
 
