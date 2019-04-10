@@ -188,7 +188,7 @@ if "%setting_logging%" == "true" (
 
 
 
-echo.%language_initialization%
+echo.%language_initialization01%
 %loadingUpdate% 1
 
 
@@ -218,7 +218,7 @@ if "%setting_logging%" == "true" (
 
 
 %logo%
-echo.%language_initialization2%
+echo.%language_initialization02%
 echo.
 echo.  ^(i^) %program_version_name%
 
