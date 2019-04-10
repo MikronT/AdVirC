@@ -254,7 +254,7 @@ set /a counter_viewPager_k=%counter_viewPager_element%-%counter_viewPager_page%
 
 echo.
        if %counter_viewPager_element% LSS 11 ( rem
-) else if %counter_viewPager_page%      == 1 ( echo.%language_viewPager_control_next%
+) else if %counter_viewPager_page%    ==   1 ( echo.%language_viewPager_control_next%
 ) else if %counter_viewPager_k%       LSS 10 ( echo.%language_viewPager_control_previous%
 ) else echo.%language_viewPager_control_previous% %language_viewPager_control_next%
 
@@ -281,14 +281,14 @@ if /i "%command%" == "P" exit /b
 if /i "%command%" == "N" exit /b
 
 setlocal EnableDelayedExpansion
-set counter_viewPager_element=1
+set counter_viewPager_element=0
 
 for /f "eol=# delims=" %%i in (%viewPager_fileList%) do %viewPager_generate_addition% (
+  set /a counter_viewPager_element+=1
   if !counter_viewPager_element! GEQ !counter_viewPager_page! if !counter_viewPager_element! LSS !counter_viewPager_page_next! (
     if "%1" == "add"    if "%command%" == "!counter_viewPager_element!" echo.%viewPager_element%>>"%2"
     if "%1" == "remove" rem
   )
-  set /a counter_viewPager_element+=1
 )
 endlocal
 exit /b
