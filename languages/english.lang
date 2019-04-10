@@ -1,6 +1,9 @@
 back=  ^(0^) Back
 input=^(^>^) Enter the command ^> 
 
+viewPager_nothing=  ...Nothing interest...
+viewPager_control_previous=  ^(P^) Previous page                                         
+viewPager_control_next=  ^(N^) Next page
 
 
 
@@ -74,7 +77,6 @@ menu_exceptions03=  ^(2^) View defined exceptions
 menu_exceptions_new01=  New Exception Menu
 menu_exceptions_new02=  Enter a keyword to find items in the databases you want to exclude.
 menu_exceptions_new03=  Select an item
-menu_exceptions_new04=  ^(P^) Previous page                                           ^(N^) Next page
 
 
 
@@ -82,7 +84,6 @@ menu_exceptions_new04=  ^(P^) Previous page                                     
 
 menu_exceptions_defined01=  Defined Exceptions Menu
 menu_exceptions_defined02=  Select the exception you want to remove.
-menu_exceptions_defined03=  ...Nothing interest...
 
 
 

@@ -1,6 +1,9 @@
 back=  ^(0^) Назад
 input=^(^>^) Введите команду ^> 
 
+viewPager_nothing=  ...Ничего интересного...
+viewPager_control_previous=  ^(P^) Прошлая страница                                      
+viewPager_control_next=  ^(N^) Следующая страница
 
 
 
@@ -74,7 +77,6 @@ menu_exceptions03=  ^(2^) Просмотреть определенные иск
 menu_exceptions_new01=  Меню Нового Исключения
 menu_exceptions_new02=  Введите ключевое слово, чтобы найти элементы в базах данных, которые вы хотите исключить.
 menu_exceptions_new03=  Выберите элемент
-menu_exceptions_new04=  ^(P^) Прошлая страница                                        ^(N^) Следующая страница
 
 
 
@@ -82,7 +84,6 @@ menu_exceptions_new04=  ^(P^) Прошлая страница                   
 
 menu_exceptions_defined01=  Меню Определенных Исключений
 menu_exceptions_defined02=  Выберите исключение, которое вы хотите удалить.
-menu_exceptions_defined03=  ...Ничего интересного...
 
 
 

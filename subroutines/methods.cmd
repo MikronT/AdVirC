@@ -250,6 +250,11 @@ for /f "eol=# delims=" %%i in (%viewPager_fileList%) do %viewPager_generate_addi
   set /a counter_viewPager_element+=1
 )
 endlocal
+
+echo.
+
+echo.%language_viewPager_previous%
+echo.%language_viewPager_next%
 exit /b
 
 

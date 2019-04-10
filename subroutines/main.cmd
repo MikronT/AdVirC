@@ -509,8 +509,6 @@ echo.
 
 %viewPager% generate
 
-echo.
-echo.%language_menu_exceptions_new04%
 echo.%language_back%
 echo.
 echo.
@@ -546,8 +544,6 @@ if exist %dataDir%\settings\exceptions.db (
   %viewPager% generate
 ) else echo.%language_menu_exceptions_defined03%
 
-echo.
-echo.%language_menu_exceptions_new04%
 echo.%language_back%
 echo.
 echo.
