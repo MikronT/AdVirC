@@ -2,7 +2,7 @@ back=  ^(0^) Назад
 input=^(^>^) Введите команду ^> 
 
 viewPager_nothing=  ...Ничего интересного...
-viewPager_control_previous=  ^(P^) Прошлая страница                                      
+viewPager_control_previous=  ^(P^) Прошлая страница                                     
 viewPager_control_next=  ^(N^) Следующая страница
 
 
