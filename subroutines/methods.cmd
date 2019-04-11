@@ -258,21 +258,43 @@ echo.
 ) else if %counter_viewPager_k%       LSS 10 ( echo.%language_viewPager_control_previous%
 ) else echo.%language_viewPager_control_previous% %language_viewPager_control_next%
 
+echo.!counter_viewPager_element!>  temp\counter_viewPager_element
+echo.!counter_viewPager_k!>        temp\counter_viewPager_k
+echo.!counter_viewPager_page!>     temp\counter_viewPager_page
+echo.!counter_viewPager_page_next!>temp\counter_viewPager_page_next
+
 endlocal
 exit /b
 
 
 
 :viewPager_control
-if /i "%command%" == "P" (
-  set /a counter_viewPager_page-=10
-  set /a counter_viewPager_page_next-=10
-  exit /b
-)
-if /i "%command%" == "N" (
-  set /a counter_viewPager_page+=10
-  set /a counter_viewPager_page_next+=10
-  exit /b
+for %%i in (counter_viewPager_element counter_viewPager_k counter_viewPager_page counter_viewPager_page_next) do for /f "delims=" %%j in (temp\%%i) do set %%i=%%j
+
+if %counter_viewPager_element% LSS 11 ( rem
+) else if %counter_viewPager_page% == 1 (
+  if /i "%command%" == "N" (
+    set /a counter_viewPager_page+=10
+    set /a counter_viewPager_page_next+=10
+    exit /b
+  )
+) else if %counter_viewPager_k% LSS 10 (
+  if /i "%command%" == "P" (
+    set /a counter_viewPager_page-=10
+    set /a counter_viewPager_page_next-=10
+    exit /b
+  )
+) else (
+  if /i "%command%" == "P" (
+    set /a counter_viewPager_page-=10
+    set /a counter_viewPager_page_next-=10
+    exit /b
+  )
+  if /i "%command%" == "N" (
+    set /a counter_viewPager_page+=10
+    set /a counter_viewPager_page_next+=10
+    exit /b
+  )
 )
 
 setlocal EnableDelayedExpansion
