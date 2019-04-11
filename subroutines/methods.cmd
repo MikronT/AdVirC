@@ -280,9 +280,11 @@ set counter_viewPager_element=0
 
 for /f "eol=# delims=" %%i in (%viewPager_fileList%) do %viewPager_generate_addition% (
   set /a counter_viewPager_element+=1
-  if !counter_viewPager_element! GEQ !counter_viewPager_page! if !counter_viewPager_element! LSS !counter_viewPager_page_next! (
-    if "%1" == "add"    if "%command%" == "!counter_viewPager_element!" echo.%viewPager_element%>>"%2"
-    if "%1" == "remove" rem
+  if !counter_viewPager_element! GEQ !counter_viewPager_page! if !counter_viewPager_element! LSS !counter_viewPager_page_next! if "%command%" == "!counter_viewPager_element!" (
+    if "%1" == "add"    echo.%viewPager_element%>>%2
+    if "%1" == "remove" (
+
+    )
   )
 )
 
