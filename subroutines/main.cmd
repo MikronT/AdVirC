@@ -632,10 +632,23 @@ echo.
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
+if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" if "%command%" NEQ "4" if "%command%" NEQ "5" if "%command%" NEQ "6" if "%command%" NEQ "7" if "%command%" NEQ "8" if "%command%" NEQ "9" if /i "%command%" NEQ "A" if "%command%" NEQ "#" goto :menu_help
 
 %logo%
 echo.%language_menu_help01%
 echo.
+
+if "%command%" == "1" rem
+if "%command%" == "2" rem
+if "%command%" == "3" rem
+if "%command%" == "4" rem
+if "%command%" == "5" rem
+if "%command%" == "6" rem
+if "%command%" == "7" rem
+if "%command%" == "8" rem
+if "%command%" == "9" rem
+if /i "%command%" == "A" rem
+if "%command%" == "#" rem
 
 echo.
 echo.
