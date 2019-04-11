@@ -541,8 +541,9 @@ echo.
 
 if exist %settings_exceptions% (
   %viewPager% generate
-) else echo.%viewPager_nothing%
+) else echo.%language_viewPager_nothing%
 
+echo.
 echo.%language_back%
 echo.
 echo.
