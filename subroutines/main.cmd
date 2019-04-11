@@ -611,6 +611,19 @@ goto :menu_databases_import
 echo.%language_menu_help01%
 echo.%language_menu_help02%
 echo.
+echo.%language_menu_main01%
+echo.%language_menu_main02%
+echo.%language_menu_main03%
+echo.%language_menu_main04%
+echo.%language_menu_main05%
+echo.%language_menu_main06%
+echo.%language_menu_main07%
+echo.
+echo.%language_menu_main09%
+echo.%language_menu_main10%
+echo.%language_menu_main11%
+echo.%language_menu_main12%
+echo.
 echo.%language_back%
 echo.
 echo.
@@ -620,7 +633,16 @@ echo.
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-if "%command%" == "1" rem
+
+%logo%
+echo.%language_menu_help01%
+echo.
+
+echo.
+echo.
+echo.
+echo.%language_menu_help03%
+pause>nul
 goto :menu_help
 
 

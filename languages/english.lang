@@ -97,6 +97,14 @@ menu_databases_import03=  Tip: To import databases into the program, upload them
 
 
 
+menu_help01=  Help Menu
+menu_help02=  Select the menu item, to get help.
+menu_help03=  Press Enter
+
+
+
+
+
 menu_report01=  Reports Menu
 menu_report02=  ^(1^) Send report
 
