@@ -34,6 +34,7 @@ set setting_update_program_auto=true
 set setting_update_program_remind=true
 
 set settings=%dataDir%\settings\settings.ini
+set settings_exceptions=%dataDir%\settings\exceptions.db
 
 set cleaning_filesToRemove=temp\filesToRemove.db
 set cleaning_rebootScript=temp\rebootScript.cmd
@@ -453,7 +454,10 @@ echo.
 
 if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" call :menu_exceptions_new
-if "%command%" == "2" call :menu_exceptions_defined
+if "%command%" == "2" (
+  %viewPager% initiate %settings_exceptions%
+  call :menu_exceptions_defined
+)
 goto :menu_exceptions
 
 
@@ -518,9 +522,7 @@ echo.
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-
-%viewPager% control
-%viewPager% modify add %dataDir%\settings\exceptions.db
+%viewPager% control add %settings_exceptions%
 goto :menu_exceptions_new_selection
 
 
@@ -531,16 +533,13 @@ goto :menu_exceptions_new_selection
 
 :menu_exceptions_defined
 %log_append_place% :     [Defined Exceptions Menu]
-
-%viewPager% initiate %dataDir%\settings\exceptions.db
-
 %input_clear%
 %logo%
 echo.%language_menu_exceptions_defined01%
 echo.%language_menu_exceptions_defined02%
 echo.
 
-if exist %dataDir%\settings\exceptions.db (
+if exist %settings_exceptions% (
   %viewPager% generate
 ) else echo.%language_menu_exceptions_defined03%
 
@@ -553,9 +552,7 @@ echo.
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-
-%viewPager% control
-%viewPager% modify remove %dataDir%\settings\exceptions.db
+%viewPager% control remove %settings_exceptions%
 goto :menu_exceptions_defined
 
 

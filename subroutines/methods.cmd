@@ -267,18 +267,13 @@ exit /b
 if /i "%command%" == "P" (
   set /a counter_viewPager_page-=10
   set /a counter_viewPager_page_next-=10
+  exit /b
 )
 if /i "%command%" == "N" (
   set /a counter_viewPager_page+=10
   set /a counter_viewPager_page_next+=10
+  exit /b
 )
-exit /b
-
-
-
-:viewPager_modify
-if /i "%command%" == "P" exit /b
-if /i "%command%" == "N" exit /b
 
 setlocal EnableDelayedExpansion
 set counter_viewPager_element=0
@@ -290,5 +285,6 @@ for /f "eol=# delims=" %%i in (%viewPager_fileList%) do %viewPager_generate_addi
     if "%1" == "remove" rem
   )
 )
+
 endlocal
 exit /b
