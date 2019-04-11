@@ -541,7 +541,7 @@ echo.
 
 if exist %settings_exceptions% (
   %viewPager% generate
-) else echo.%language_menu_exceptions_defined03%
+) else echo.%viewPager_nothing%
 
 echo.%language_back%
 echo.
@@ -552,7 +552,7 @@ echo.
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-%viewPager% control remove %settings_exceptions%
+if exist %settings_exceptions% %viewPager% control remove %settings_exceptions%
 goto :menu_exceptions_defined
 
 
