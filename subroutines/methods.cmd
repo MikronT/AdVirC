@@ -82,6 +82,8 @@ exit /b
 chcp 65001>nul
 color 0b
 
+if "%3" == "onlyLogo" ( call :logo_%1%2 & exit /b )
+
 if "%1" == "main" (
   mode con:cols=124 lines=36
   title %program_version_name%

@@ -638,7 +638,14 @@ if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" if "%comman
 echo.%language_menu_help01%
 echo.
 
-if "%command%" == "1" rem
+if "%command%" == "1" (
+  echo.
+  echo.  %language_menu_cleaning01%
+  echo.  %language_menu_cleaning02%
+  echo.
+  echo.
+  %logo_log% onlyLogo
+)
 if "%command%" == "2" rem
 if "%command%" == "3" rem
 if "%command%" == "4" rem
