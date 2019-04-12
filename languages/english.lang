@@ -105,8 +105,8 @@ menu_help_cleaning_perform01=  This option runs the %program_name%'s main featur
 menu_help_cleaning_perform02=  It can clean your system of 85% of the most popular garbage and viruses.
 menu_help_cleaning_perform03=  In the next menu you must confirm your choice.
 menu_help_cleaning_perform04=  After the log window appears, you can see all the garbage that %program_name% has detected on your system.
-menu_help_cleaning_perform05=  Next %program_name% will ask you...
-menu_help_cleaning_perform06=  
+menu_help_cleaning_perform05=  At the same time, you can see the object counter in the main window.
+menu_help_cleaning_perform06=  Next %program_name% will ask you...
 
 menu_help_cleaning_exceptions01=
 

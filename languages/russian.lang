@@ -105,7 +105,8 @@ menu_help_cleaning_perform01=  Эта опция запускает основн
 menu_help_cleaning_perform02=  Это может очистить вашу систему от 85% самых популярных мусора и вирусов.
 menu_help_cleaning_perform03=  В следующем меню вы должны подтвердить свой выбор.
 menu_help_cleaning_perform04=  После появления окна журнала вы можете увидеть весь мусор, обнаруженный %program_name% в вашей системе..
-menu_help_cleaning_perform05=  Далее %program_name% спросит вас...
+menu_help_cleaning_perform05=  В то же время вы можете увидеть счетчик объектов в главном окне.
+menu_help_cleaning_perform06=  Далее %program_name% спросит вас...
 
 
 

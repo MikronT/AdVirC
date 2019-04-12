@@ -649,6 +649,9 @@ if "%command%" == "1" (
   call echo.%language_menu_help_cleaning_perform04%
   echo.
   %logo_log% onlyLogo
+  echo.
+  echo.%language_menu_help_cleaning_perform05%
+  echo.%language_menu_help_cleaning_perform06%
 )
 if "%command%" == "2" rem
 if "%command%" == "3" rem
