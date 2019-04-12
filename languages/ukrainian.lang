@@ -101,6 +101,12 @@ menu_help01=  Меню Допомоги
 menu_help02=  Виберіть елемент меню, щоб отримати допомогу.
 menu_help03=  Натисніть Enter
 
+menu_help_cleaning_perform01=  Ця опція запускає основну функцію %program_name%.
+menu_help_cleaning_perform02=  Це може очистити вашу систему від 85% найпопулярніших сміття і вірусів.
+menu_help_cleaning_perform03=  У наступному меню ви повинні підтвердити свій вибір.
+menu_help_cleaning_perform04=  Після появи вікна журналу ви можете побачити все сміття, виявлений %program_name% у вашій системі..
+menu_help_cleaning_perform05=  Далі %program_name% запитає вас...
+
 
 
 
