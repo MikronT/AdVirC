@@ -641,11 +641,11 @@ echo.
 if "%command%" == "1" (
   call echo.%language_menu_help_cleaning_perform01%
   echo.%language_menu_help_cleaning_perform02%
+  echo.%language_menu_help_cleaning_perform03%
   echo.
   echo.  %language_menu_cleaning01%
   echo.  %language_menu_cleaning02%
   echo.
-  echo.%language_menu_help_cleaning_perform03%
   call echo.%language_menu_help_cleaning_perform04%
   echo.
   %logo_log% onlyLogo
