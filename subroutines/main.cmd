@@ -654,9 +654,11 @@ if "%command%" == "1" (
   call :menu_help_pageTemplate
 
   call echo.%language_menu_help_cleaning_perform06%
-  call echo.%language_cleaning_editing01%
-  echo.%language_cleaning_editing02%
-  echo.%language_cleaning_editing03%
+  echo.
+  call echo.  %language_cleaning_editing01%
+  echo.  %language_cleaning_editing02%
+  echo.  %language_cleaning_editing03%
+  echo.
 )
 if "%command%" == "2" rem
 if "%command%" == "3" rem
