@@ -106,7 +106,7 @@ menu_help_cleaning_perform02=  In the next menu you must confirm your choice.
 menu_help_cleaning_perform03=  After the log window appears, you can see all the garbage that %program_name% has detected on your system.
 menu_help_cleaning_perform04=  At the same time, you can see the object counter in the main window.
 menu_help_cleaning_perform05=  When the log window disappears, %program_name% will ask you...
-menu_help_cleaning_perform06=  If you agree, the program will show you the list of objects found and will offer to remove everything you need from this list.
+menu_help_cleaning_perform06=  If you agree, the program will show you the list of objects found and will offer to remove from the list everything you
 
 menu_help_cleaning_exceptions01=
 
