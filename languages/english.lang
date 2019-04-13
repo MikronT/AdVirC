@@ -107,6 +107,12 @@ menu_help_cleaning_perform03=  After the log window appears, you can see all the
 menu_help_cleaning_perform04=  At the same time, you can see the object counter in the main window.
 menu_help_cleaning_perform05=  When the log window disappears, %program_name% will ask you...
 menu_help_cleaning_perform06=  If you agree, the program will show you the list of objects found and will offer to remove from the list everything you
+menu_help_cleaning_perform07=  need. Otherwise, the program will continue cleaning.
+menu_help_cleaning_perform08=  At the end you can find the total number of found and deleted objects.
+menu_help_cleaning_perform09=  After that, the program will ask you to restart the computer.
+menu_help_cleaning_perform10=  
+menu_help_cleaning_perform11=  
+menu_help_cleaning_perform12=  
 
 menu_help_cleaning_exceptions01=
 

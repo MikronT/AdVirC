@@ -107,6 +107,12 @@ menu_help_cleaning_perform03=  После появления окна журна
 menu_help_cleaning_perform04=  В то же время Вы можете увидеть счетчик объектов в главном окне.
 menu_help_cleaning_perform05=  Когда окно журнала исчезнет, %program_name% спросит Вас...
 menu_help_cleaning_perform06=  Если Вы согласны, программа покажет Вам список найденных объектов и предложит удалить из этого списка все, что Вам
+menu_help_cleaning_perform07=  нужно. В противном случае программа продолжит очистку.
+menu_help_cleaning_perform08=  В конце Вы можете найти общее количество найденных и удаленных объектов.
+menu_help_cleaning_perform09=  После этого программа попросит Вас перезагрузить компьютер.
+menu_help_cleaning_perform10=  
+menu_help_cleaning_perform11=  
+menu_help_cleaning_perform12=  
 
 
 

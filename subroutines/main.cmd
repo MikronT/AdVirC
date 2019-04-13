@@ -659,6 +659,17 @@ if "%command%" == "1" (
   echo.  %language_cleaning_editing03%
   echo.
   echo.%language_menu_help_cleaning_perform06%
+  echo.%language_menu_help_cleaning_perform07%
+  echo.%language_menu_help_cleaning_perform08%
+  echo.
+  call echo.  %language_cleaning_foundObjects%
+  call echo.  %language_cleaning_deletedObjects%
+  echo.
+  echo.%language_menu_help_cleaning_perform09%
+  echo.
+  echo.  %language_cleaning_reboot01%
+  echo.  %language_cleaning_reboot02%
+  echo.  %language_cleaning_reboot03%
 )
 if "%command%" == "2" rem
 if "%command%" == "3" rem
