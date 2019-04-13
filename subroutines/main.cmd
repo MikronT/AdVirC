@@ -634,9 +634,7 @@ echo.
 if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" if "%command%" NEQ "4" if "%command%" NEQ "5" if "%command%" NEQ "6" if "%command%" NEQ "7" if "%command%" NEQ "8" if "%command%" NEQ "9" if /i "%command%" NEQ "A" if "%command%" NEQ "#" goto :menu_help
 
-%logo%
-echo.%language_menu_help01%
-echo.
+call :menu_help_pageTemplate begin
 
 if "%command%" == "1" (
   call echo.%language_menu_help_cleaning_perform01%
@@ -652,6 +650,8 @@ if "%command%" == "1" (
   echo.
   echo.%language_menu_help_cleaning_perform05%
   call echo.%language_menu_help_cleaning_perform06%
+
+  call :menu_help_pageTemplate
 )
 if "%command%" == "2" rem
 if "%command%" == "3" rem
@@ -664,12 +664,30 @@ if "%command%" == "9" rem
 if /i "%command%" == "A" rem
 if "%command%" == "#" rem
 
-echo.
-echo.
-echo.
-echo.%language_menu_help03%
-pause>nul
+call :menu_help_pageTemplate end
 goto :menu_help
+
+
+
+
+
+
+
+:menu_help_pageTemplate
+if "%1" NEQ "begin" (
+  echo.
+  echo.
+  echo.
+  echo.%language_menu_help03%
+  pause>nul
+)
+
+if "%1" NEQ "end" (
+  %logo%
+  echo.%language_menu_help01%
+  echo.
+)
+exit /b
 
 
 
