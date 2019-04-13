@@ -639,26 +639,26 @@ call :menu_help_pageTemplate begin
 if "%command%" == "1" (
   call echo.%language_menu_help_cleaning_perform01%
   echo.%language_menu_help_cleaning_perform02%
-  echo.%language_menu_help_cleaning_perform03%
   echo.
   echo.  %language_menu_cleaning01%
   echo.  %language_menu_cleaning02%
   echo.
-  call echo.%language_menu_help_cleaning_perform04%
+  call echo.%language_menu_help_cleaning_perform03%
   echo.
   %logo_log% onlyLogo
   echo.
-  echo.%language_menu_help_cleaning_perform05%
-  call echo.%language_menu_help_cleaning_perform06%
+  echo.%language_menu_help_cleaning_perform04%
+  call echo.%language_menu_help_cleaning_perform05%
 
   call :menu_help_pageTemplate
 
-  call echo.%language_menu_help_cleaning_perform06%
+  call echo.%language_menu_help_cleaning_perform05%
   echo.
   call echo.  %language_cleaning_editing01%
   echo.  %language_cleaning_editing02%
   echo.  %language_cleaning_editing03%
   echo.
+  echo.%language_menu_help_cleaning_perform06%
 )
 if "%command%" == "2" rem
 if "%command%" == "3" rem
