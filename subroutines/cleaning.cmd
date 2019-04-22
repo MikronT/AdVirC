@@ -140,7 +140,7 @@ start /wait subroutines\cleaning\rules.cmd
 
 
 
-for /f "eol=# delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" "">>%log_debug%
+if exist %cleaning_filesToRemove% for /f "eol=# delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" "">>%log_debug%
 %loadingUpdate% 2
 
 
