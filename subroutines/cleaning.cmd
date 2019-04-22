@@ -56,6 +56,8 @@ goto :scanning_checkEngine
 %log_append_place% :   [Editing]
 %input_clear%
 %logo%
+call echo.%language_cleaning_foundObjects%
+echo.
 call echo.%language_cleaning_editing01%
 echo.%language_cleaning_editing02%
 echo.%language_cleaning_editing03%
