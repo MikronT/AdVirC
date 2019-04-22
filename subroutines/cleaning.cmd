@@ -38,12 +38,12 @@ goto :scanning_checkEngine
 
 
 :scanning_checkEngine
+%module_sleep% 1
+
 (for /f "delims=" %%i in (temp\counter_foundObjects) do set counter_foundObjects=%%i)>nul 2>nul
 
 if exist temp\return_scanningCompleted goto :exceptions
 if "%counter_foundObjects%" NEQ "%counter_foundObjects_last%" goto :scanning_cycle
-
-%module_sleep% 1
 goto :scanning_checkEngine
 
 
@@ -119,12 +119,12 @@ goto :deleting_checkEngine
 
 
 :deleting_checkEngine
+%module_sleep% 1
+
 (for /f "delims=" %%i in (temp\counter_deletedObjects) do set counter_deletedObjects=%%i)>nul 2>nul
 
 if exist temp\return_deletingCompleted goto :rules
 if "%counter_deletedObjects%" NEQ "%counter_deletedObjects_last%" goto :deleting_cycle
-
-%module_sleep% 1
 goto :deleting_checkEngine
 
 

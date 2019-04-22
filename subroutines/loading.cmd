@@ -77,6 +77,8 @@ goto :checkEngine
 
 
 :checkEngine
+%module_sleep% -m 250
+
 if exist temp (
   (for /f "delims=" %%i in (temp\counter_loading) do set counter_loading=%%i)>nul 2>nul
   color 0b
@@ -84,6 +86,4 @@ if exist temp (
 
 if "%counter_loading%" == "stop" exit
 if "%counter_loading%" NEQ "%counter_loading_last%" goto :cycle
-
-%module_sleep% -m 250
 goto :checkEngine
