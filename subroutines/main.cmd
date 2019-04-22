@@ -248,9 +248,9 @@ if "%setting_firstRun%" == "true" (
   echo.%language_info_registryBackup_creating%
   if not exist %dataDir%\backups\registry md %dataDir%\backups\registry>nul 2>nul
   reg export HKLM %dataDir%\backups\registry\HKLM.reg /y>>%log_debug%
-  %loadingUpdate% 6
+  %loadingUpdate% 7
   reg export HKU  %dataDir%\backups\registry\HKU.reg  /y>>%log_debug%
-  %loadingUpdate% 5
+  %loadingUpdate% 8
   echo.%language_info_registryBackup_created%
   echo.
 ) else %loadingUpdate% 15
