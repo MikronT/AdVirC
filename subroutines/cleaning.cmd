@@ -57,7 +57,13 @@ for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_
   copy /y %%i %%i.old>>%log_debug%
   del /q %%i
 
-  for /f "eol=# delims=" %%j in (%dataDir%\settings\exceptions.db) do for /f "eol=# delims=" %%k in (%%i.old) do if /i "%%j" NEQ "%%k" echo.%%k>>%%i
+  for /f "eol=# delims=" %%j in (%dataDir%\settings\exceptions.db) do (
+    for /f "eol=# delims=" %%k in (%%i.old) do (
+      for /f "delims=" %%l in ('echo.%%k ^| find /i /v "%%j"') do (
+        echo.%%l>>%%i
+      )
+    )
+  )
 
   del /q %%i.old
 )
