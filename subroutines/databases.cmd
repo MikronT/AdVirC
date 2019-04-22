@@ -82,7 +82,7 @@ echo.%language_databases_rewriting%
 
 for /f "delims=" %%i in ('dir /a:d /b %dataDir%\databases\original') do md %dataDir%\databases\rewrited\%%i>nul 2>>%log_debug%
 
-(for /f "eol=# delims=" %%i in (%dataDir%\databases\original\fileList.db) do for /f "delims=" %%j in (%dataDir%\databases\original\%%i) do call echo.%%j>>%dataDir%\databases\rewrited\%%i)>>%log_debug%
+(for /f "eol=# delims=" %%i in (%dataDir%\databases\original\fileList.db) do for /f "eol=# delims=" %%j in (%dataDir%\databases\original\%%i) do call echo.%%j>>%dataDir%\databases\rewrited\%%i)>>%log_debug%
 %loadingUpdate% 1
 
 
@@ -90,16 +90,16 @@ for /f "delims=" %%i in ('dir /a:d /b %dataDir%\databases\original') do md %data
 for /f "delims=" %%i in ('dir "%systemDrive%\Users" /a:d /b') do if exist "%systemDrive%\Users\%%i" echo.%systemDrive%\Users\%%i>>%dataDir%\databases\rewrited\dirs\userProfile.db
 %loadingUpdate% 1
 
-for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\userProfile.db) do for %%j in (Local LocalLow Roaming) do if exist "%%i\AppData\%%j" echo.%%i\AppData\%%j>>%dataDir%\databases\rewrited\dirs\appData.db
+for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\userProfile.db) do for %%j in (Local LocalLow Roaming) do if exist "%%i\AppData\%%j" echo.%%i\AppData\%%j>>%dataDir%\databases\rewrited\dirs\appData.db
 %loadingUpdate% 1
 
-for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\userProfile.db) do if exist "%%i\Desktop" echo.%%i\Desktop>>%dataDir%\databases\rewrited\dirs\browsersShortcuts.db
+for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\userProfile.db) do if exist "%%i\Desktop" echo.%%i\Desktop>>%dataDir%\databases\rewrited\dirs\browsersShortcuts.db
 %loadingUpdate% 1
 
-for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do if exist "%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" echo.%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar>>%dataDir%\databases\rewrited\dirs\browsersShortcuts.db
+for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do if exist "%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" echo.%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar>>%dataDir%\databases\rewrited\dirs\browsersShortcuts.db
 %loadingUpdate% 1
 
-for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do (
+for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do (
   if exist "%%i\Microsoft\Internet Explorer\Quick Launch" echo.%%i\Microsoft\Internet Explorer\Quick Launch>>%dataDir%\databases\rewrited\dirs\shortcuts.db
   if exist "%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\Start Menu" echo.%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\Start Menu>>%dataDir%\databases\rewrited\dirs\shortcuts.db
   if exist "%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\StartMenu" echo.%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\StartMenu>>%dataDir%\databases\rewrited\dirs\shortcuts.db
