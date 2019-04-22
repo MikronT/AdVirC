@@ -56,7 +56,7 @@ goto :scanning_checkEngine
 echo.
 echo.%language_cleaning_exceptionsRewriting%
 
-for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" (
+if exist %dataDir%\settings\exceptions.db for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" (
   for /f "eol=# delims=" %%j in (%dataDir%\settings\exceptions.db) do (
     copy /y %%i %%i.old>>%log_debug%
     del /q %%i
