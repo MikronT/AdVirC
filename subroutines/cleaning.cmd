@@ -123,7 +123,7 @@ start /wait subroutines\cleaning\rules.cmd
 
 
 
-for /f "delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" "">>%log_debug%
+for /f "eol=# delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" "">>%log_debug%
 %loadingUpdate% 2
 
 
