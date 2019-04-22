@@ -63,7 +63,7 @@ for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_
   for /f "eol=# delims=" %%j in (%dataDir%\settings\exceptions.db) do for /f "eol=- delims=" %%l in ('find /i /v "%%j" %%i.old') do echo.%%k>>%%i
 
   del /q %%i.old
-)
+)>nul 2 >nul
 %loadingUpdate% 3 force
 
 
