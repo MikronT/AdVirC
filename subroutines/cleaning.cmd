@@ -53,6 +53,9 @@ goto :scanning_checkEngine
 
 
 :exceptions
+echo.
+echo.%language_cleaning_exceptionsRewriting%
+
 for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do (
   copy /y %%i %%i.old>>%log_debug%
   del /q %%i

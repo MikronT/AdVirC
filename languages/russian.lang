@@ -240,6 +240,8 @@ cleaning_experimental=  Применение экспериментальных 
 cleaning_foundObjects=  ^(i^) Найдено объектов: %counter_foundObjects%.
 cleaning_deletedObjects=  ^(i^) Удалено объектов: %counter_deletedObjects%.
 
+cleaning_exceptionsRewriting=  ^(i^) Перезапись списков. Пожалуйста, подождите...
+
 cleaning_editing01=  ^(?^) Не хотите ли проверить, что %program_name% нашёл?
 cleaning_editing02=      ^(1^) Проверить
 cleaning_editing03=      ^(2^) Пропустить
