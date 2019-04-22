@@ -40,11 +40,20 @@ goto :scanning_checkEngine
 :scanning_checkEngine
 (for /f "delims=" %%i in (temp\counter_foundObjects) do set counter_foundObjects=%%i)>nul 2>nul
 
-if exist temp\return_scanningCompleted goto :editing
+if exist temp\return_scanningCompleted goto :exceptions
 if "%counter_foundObjects%" NEQ "%counter_foundObjects_last%" goto :scanning_cycle
 
 %module_sleep% 1
 goto :scanning_checkEngine
+
+
+
+
+
+
+
+:exceptions
+%loadingUpdate% 3 force
 
 
 
@@ -76,7 +85,7 @@ if "%command%" == "1" (
 
   for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
 ) else if "%command%" NEQ "2" goto :editing
-%loadingUpdate% 6 force
+%loadingUpdate% 3 force
 
 
 
