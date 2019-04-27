@@ -252,6 +252,8 @@ for /f "eol=# delims=" %%i in (%viewPager_fileList%) do %viewPager_generate_addi
   )
 )
 
+if %counter_viewPager_element% LSS %counter_viewPager_page% exit /b 4417
+
 set /a counter_viewPager_k=%counter_viewPager_element%-%counter_viewPager_page%
 
 echo.

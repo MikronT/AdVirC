@@ -508,6 +508,11 @@ echo.%language_menu_exceptions_new03%
 echo.
 
 %viewPager% generate
+if "!errorLevel!" == "4417" (
+  set /a counter_viewPager_page-=10
+  set /a counter_viewPager_page_next-=10
+  goto :menu_exceptions_new_selection
+)
 
 echo.%language_back%
 echo.
@@ -535,9 +540,18 @@ echo.%language_menu_exceptions_defined01%
 echo.%language_menu_exceptions_defined02%
 echo.
 
+setlocal EnableDelayedExpansion
+
 if exist %settings_exceptions% (
   %viewPager% generate
+  if "!errorLevel!" == "4417" (
+    set /a counter_viewPager_page-=10
+    set /a counter_viewPager_page_next-=10
+    goto :menu_exceptions_defined
+  )
 ) else echo.%language_viewPager_nothing%
+
+endlocal
 
 echo.
 echo.%language_back%
