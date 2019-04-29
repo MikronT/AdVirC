@@ -110,8 +110,8 @@ menu_help_cleaning_perform06=  If you agree, the program will show you the list 
 menu_help_cleaning_perform07=  need. Otherwise, the program will continue cleaning.
 menu_help_cleaning_perform08=  At the end you can find the total number of found and deleted objects.
 menu_help_cleaning_perform09=  After that, the program will ask you to restart the computer.
-menu_help_cleaning_perform10=  
-menu_help_cleaning_perform11=  
+menu_help_cleaning_perform10=  During the restart, most objects will be deleted.
+menu_help_cleaning_perform11=  To be sure, you can repeat the scan after a reboot.
 
 menu_help_cleaning_exceptions01=  
 
