@@ -113,7 +113,9 @@ menu_help_cleaning_perform09=  After that, the program will ask you to restart t
 menu_help_cleaning_perform10=  During the restart, most objects will be deleted.
 menu_help_cleaning_perform11=  To be sure, you can repeat the scan after a reboot.
 
-menu_help_cleaning_exceptions01=  
+menu_help_cleaning_exceptions01=  In this menu you can set exceptions. They will be taken into account when scanning and will not appear in the lists
+menu_help_cleaning_exceptions02=  of objects found.
+menu_help_cleaning_exceptions03=  To add an exception, enter the keyword ^(the shorter the better^).
 
 menu_help_databases_update01=  
 

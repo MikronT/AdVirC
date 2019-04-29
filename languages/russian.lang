@@ -113,7 +113,9 @@ menu_help_cleaning_perform09=  После этого программа попр
 menu_help_cleaning_perform10=  Во время перезапуска большинство объектов будут удалены.
 menu_help_cleaning_perform11=  Для уверенности можно повторить сканирование после перезагрузки.
 
-menu_help_cleaning_exceptions01=  
+menu_help_cleaning_exceptions01=  В этом меню можно установить исключения. Они будут учтены при сканировании и не будут появляться в списках найденных
+menu_help_cleaning_exceptions02=  объектов.
+menu_help_cleaning_exceptions03=  Для добавления исключения введите ключевое слово ^(чем короче, тем лучше^).
 
 menu_help_databases_update01=  
 
