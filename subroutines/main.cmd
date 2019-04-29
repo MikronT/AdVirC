@@ -688,7 +688,15 @@ if "%command%" == "1" (
 if "%command%" == "2" (
   echo.%language_menu_help_cleaning_exceptions01%
   echo.%language_menu_help_cleaning_exceptions02%
+  echo.
+  echo.  %language_menu_exceptions01%
+  echo.  %language_menu_exceptions02%
+  echo.  %language_menu_exceptions03%
+  echo.
   echo.%language_menu_help_cleaning_exceptions03%
+  echo.
+  echo.  %language_menu_exceptions_new01%
+  echo.  %language_menu_exceptions_new02%
 )
 if "%command%" == "3" (
   echo.%language_menu_help_databases_update01%
@@ -697,12 +705,20 @@ if "%command%" == "3" (
 if "%command%" == "4" (
   echo.%language_menu_help_databases_import01%
   echo.%language_menu_help_databases_import02%
+  echo.
   echo.%language_menu_help_databases_import03%
   call echo.%language_menu_help_databases_import04%
+  echo.
+  echo.  %language_menu_databases_import01%
+  echo.  %language_menu_databases_import02%
+  echo.  %language_menu_databases_import03%
 )
 if "%command%" == "6" (
   echo.%language_menu_help_support_report01%
   call echo.%language_menu_help_support_report02%
+  echo.
+  echo.  %language_menu_report01%
+  echo.  %language_menu_report02%
 )
 if "%command%" == "8" rem
 if "%command%" == "9" rem
