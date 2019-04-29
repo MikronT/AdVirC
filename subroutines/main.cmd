@@ -641,7 +641,7 @@ echo.
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" if "%command%" NEQ "4" if "%command%" NEQ "5" if "%command%" NEQ "6" if "%command%" NEQ "7" if "%command%" NEQ "8" if "%command%" NEQ "9" if /i "%command%" NEQ "A" if "%command%" NEQ "#" goto :menu_help
+if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" if "%command%" NEQ "4" if "%command%" NEQ "6" if "%command%" NEQ "8" if "%command%" NEQ "9" if /i "%command%" NEQ "A" if "%command%" NEQ "#" goto :menu_help
 
 call :menu_help_pageTemplate begin
 
@@ -698,14 +698,12 @@ if "%command%" == "4" (
   echo.%language_menu_help_databases_import01%
   echo.%language_menu_help_databases_import02%
   echo.%language_menu_help_databases_import03%
-  echo.%language_menu_help_databases_import04%
+  call echo.%language_menu_help_databases_import04%
 )
-if "%command%" == "5" (
+if "%command%" == "6" (
   echo.%language_menu_help_support_report01%
-  echo.%language_menu_help_support_report02%
+  call echo.%language_menu_help_support_report02%
 )
-if "%command%" == "6" rem
-if "%command%" == "7" rem
 if "%command%" == "8" rem
 if "%command%" == "9" rem
 if /i "%command%" == "A" rem
