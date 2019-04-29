@@ -123,7 +123,7 @@ menu_help_databases_update02=  After downloading you will become available all t
 menu_help_databases_import01=  Here you can import already loaded databases.
 menu_help_databases_import02=  May be required if there is no Internet connection.
 menu_help_databases_import03=  Download the databases to the desktop and start the import.
-menu_help_databases_import04=  The name of the database file should be strictly as follows: %update_databases_output%.
+menu_help_databases_import04=  The name of the database file should be strictly as follows: %program_name%Databases.zip.
 
 menu_help_support_report01=  To diagnose an application, a developer would like to receive work logs.
 menu_help_support_report02=  This feature sends %program_name% logs to improve it.
