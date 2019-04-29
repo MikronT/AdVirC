@@ -631,7 +631,6 @@ echo.  %language_menu_main07%
 echo.
 echo.  %language_menu_main09%
 echo.  %language_menu_main11%
-echo.  %language_menu_main12%
 echo.
 echo.%language_back%
 echo.

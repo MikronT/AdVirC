@@ -128,8 +128,6 @@ menu_help_databases_import04=  Имя файла с базами данных д
 menu_help_support_report01=  Для диагностики приложения разработчик хотел бы получить логи работы.
 menu_help_support_report02=  Эта функция отправляет журналы работы %program_name% для ее улучшения.
 
-menu_help_support_about01=  
-
 menu_help_program_settings01=  
 
 menu_help_program_dataManagement01=  
