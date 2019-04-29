@@ -125,7 +125,8 @@ menu_help_databases_import02=  May be required if there is no Internet connectio
 menu_help_databases_import03=  Download the databases to the desktop and start the import.
 menu_help_databases_import04=  The name of the database file should be strictly as follows: %update_databases_output%.
 
-menu_help_support_report01=  
+menu_help_support_report01=  To diagnose an application, a developer would like to receive work logs.
+menu_help_support_report02=  This feature sends %program_name% logs to improve it.
 
 menu_help_support_about01=  
 

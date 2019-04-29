@@ -125,7 +125,8 @@ menu_help_databases_import02=  Може знадобитись у випадку
 menu_help_databases_import03=  Завантажте бази даних на робочий стіл і запустіть імпорт.
 menu_help_databases_import04=  Ім'я файлу з базами даних повинне бути строго таким: %update_databases_output%.
 
-menu_help_support_report01=  
+menu_help_support_report01=  Для діагностики програми розробник хотів би отримати логи роботи.
+menu_help_support_report02=  Ця функція відправляє журнали роботи %program_name% для її покращення.
 
 menu_help_support_about01=  
 
