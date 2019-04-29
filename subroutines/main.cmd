@@ -679,11 +679,31 @@ if "%command%" == "1" (
   echo.  %language_cleaning_reboot01%
   echo.  %language_cleaning_reboot02%
   echo.  %language_cleaning_reboot03%
+
+  call :menu_help_pageTemplate
+
+  echo.%language_menu_help_cleaning_perform10%
+  echo.%language_menu_help_cleaning_perform11%
 )
-if "%command%" == "2" rem
-if "%command%" == "3" rem
-if "%command%" == "4" rem
-if "%command%" == "5" rem
+if "%command%" == "2" (
+  echo.%language_menu_help_cleaning_exceptions01%
+  echo.%language_menu_help_cleaning_exceptions02%
+  echo.%language_menu_help_cleaning_exceptions03%
+)
+if "%command%" == "3" (
+  echo.%language_menu_help_databases_update01%
+  echo.%language_menu_help_databases_update02%
+)
+if "%command%" == "4" (
+  echo.%language_menu_help_databases_import01%
+  echo.%language_menu_help_databases_import02%
+  echo.%language_menu_help_databases_import03%
+  echo.%language_menu_help_databases_import04%
+)
+if "%command%" == "5" (
+  echo.%language_menu_help_support_report01%
+  echo.%language_menu_help_support_report02%
+)
 if "%command%" == "6" rem
 if "%command%" == "7" rem
 if "%command%" == "8" rem
