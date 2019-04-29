@@ -120,7 +120,10 @@ menu_help_cleaning_exceptions03=  To add an exception, enter the keyword ^(the s
 menu_help_databases_update01=  This option will automatically update the database ^(or load if there is none^).
 menu_help_databases_update02=  After downloading you will become available all the functions of the program.
 
-menu_help_databases_import01=  
+menu_help_databases_import01=  Here you can import already loaded databases.
+menu_help_databases_import02=  May be required if there is no Internet connection.
+menu_help_databases_import03=  Download the databases to the desktop and start the import.
+menu_help_databases_import04=  The name of the database file should be strictly as follows: %update_databases_output%.
 
 menu_help_support_report01=  
 

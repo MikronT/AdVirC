@@ -120,7 +120,10 @@ menu_help_cleaning_exceptions03=  Для додавання виключення
 menu_help_databases_update01=  Ця опція автоматично оновить бази даних ^(або завантажить у випадку відсутності^).
 menu_help_databases_update02=  Після завантаження Вам стануть доступні усі функції програми.
 
-menu_help_databases_import01=  
+menu_help_databases_import01=  Тут Ви зможете імпортувати уже завантажені бази даних.
+menu_help_databases_import02=  Може знадобитись у випадку відсутності з'єднання з Інтернетом.
+menu_help_databases_import03=  Завантажте бази даних на робочий стіл і запустіть імпорт.
+menu_help_databases_import04=  Ім'я файлу з базами даних повинне бути строго таким: %update_databases_output%.
 
 menu_help_support_report01=  
 
