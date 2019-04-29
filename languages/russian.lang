@@ -117,7 +117,8 @@ menu_help_cleaning_exceptions01=  В этом меню можно установ
 menu_help_cleaning_exceptions02=  объектов.
 menu_help_cleaning_exceptions03=  Для добавления исключения введите ключевое слово ^(чем короче, тем лучше^).
 
-menu_help_databases_update01=  
+menu_help_databases_update01=  Эта опция автоматически обновит базы данных ^(или загрузит в случае отсутствия^).
+menu_help_databases_update02=  После загрузки Вам станут доступны все функции программы.
 
 menu_help_databases_import01=  
 

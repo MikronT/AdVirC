@@ -117,7 +117,8 @@ menu_help_cleaning_exceptions01=  In this menu you can set exceptions. They will
 menu_help_cleaning_exceptions02=  of objects found.
 menu_help_cleaning_exceptions03=  To add an exception, enter the keyword ^(the shorter the better^).
 
-menu_help_databases_update01=  
+menu_help_databases_update01=  This option will automatically update the database ^(or load if there is none^).
+menu_help_databases_update02=  After downloading you will become available all the functions of the program.
 
 menu_help_databases_import01=  
 
