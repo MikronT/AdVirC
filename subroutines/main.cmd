@@ -1184,6 +1184,8 @@ for /f "tokens=1-8 delims=." %%i in (%dataDir%\databases\original\databases.vers
   set databases_version_code_level7=%%o
   set databases_version_code_level8=%%p
 )
+
+start /wait /b %update% --key_check=databases
 for /f "tokens=1-3 delims= " %%i in (%update_databases_version_output%) do (
   if /i "%%i" == "%setting_update_channel%" (
     for /f "tokens=1-8 delims=." %%l in ("%%j") do (
