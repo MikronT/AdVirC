@@ -138,7 +138,8 @@ menu_help_program_dataManagement01=  Menu for managing program data.
 menu_help_program_dataManagement02=  You can clear log files, reports, temporary files and others.
 menu_help_program_dataManagement03=  Select the desired menu item and the corresponding files will be deleted.
 
-menu_help_program_update01=  
+menu_help_program_update01=  This option starts the update check and, if available, automatically download and install ones.
+menu_help_program_update02=  If nothing happened, then there is no updates.
 
 menu_help_program_uninstall01=  
 

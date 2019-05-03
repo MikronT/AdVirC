@@ -138,7 +138,8 @@ menu_help_program_dataManagement01=  Меню для управления дан
 menu_help_program_dataManagement02=  Вы можете очистить файлы логов, отчетов, временные файлы и другие.
 menu_help_program_dataManagement03=  Выберите необходимый Вам пункт меню и соответствующие файлы будут удалены.
 
-menu_help_program_update01=  
+menu_help_program_update01=  Данная опция запускает проверку обновлений и, при их наличии, автоматически загружает и устанавливает доступные.
+menu_help_program_update02=  Если ничего не произошло, то обновлений нет.
 
 menu_help_program_uninstall01=  
 
