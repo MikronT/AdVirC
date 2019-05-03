@@ -141,7 +141,8 @@ menu_help_program_dataManagement03=  Select the desired menu item and the corres
 menu_help_program_update01=  This option starts the update check and, if available, automatically download and install ones.
 menu_help_program_update02=  If nothing happened, then there is no updates.
 
-menu_help_program_uninstall01=  
+menu_help_program_uninstall01=  This item will open %program_name%'s uninstall menu.
+menu_help_program_uninstall02=  After confirmation, %program_name% will delete itself.
 
 
 
