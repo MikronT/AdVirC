@@ -36,7 +36,7 @@ if "%windowsVersionID%" == "1809" (
   set /p command=%input_backspace%  %language_input%
 ) else set /p command=%input_backspace%   %language_input%
 
-if "%command%" == "0" exit /b
+if "%command%" == "0" ( set command= & exit /b )
 if "%command%" NEQ "1" goto :uninstallQuestion
 
 
