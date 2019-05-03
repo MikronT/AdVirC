@@ -720,7 +720,6 @@ if "%command%" == "6" (
   echo.  %language_menu_report01%
   echo.  %language_menu_report02%
 )
-if "%command%" == "9" rem
 if /i "%command%" == "A" rem
 if "%command%" == "#" rem
 if "%command%" == "8" (
@@ -739,6 +738,19 @@ if "%command%" == "8" (
   echo.  %language_menu_update_channel04%
   echo.
   call echo.%language_menu_help_program_settings05%
+)
+if "%command%" == "9" (
+  echo.%language_menu_help_program_dataManagement01%
+  echo.%language_menu_help_program_dataManagement02%
+  echo.
+  echo.  %language_menu_dataManagement02%
+  echo.  %language_menu_dataManagement03%
+  echo.  %language_menu_dataManagement04%
+  echo.  %language_menu_dataManagement05%
+  echo.  %language_menu_dataManagement06%
+  echo.  %language_menu_dataManagement07%
+  echo.
+  echo.%language_menu_help_program_dataManagement03%
 )
 
 call :menu_help_pageTemplate end
