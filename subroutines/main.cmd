@@ -720,7 +720,6 @@ if "%command%" == "6" (
   echo.  %language_menu_report01%
   echo.  %language_menu_report02%
 )
-if "%command%" == "#" rem
 if "%command%" == "8" (
   call echo.%language_menu_help_program_settings01%
   echo.%language_menu_help_program_settings02%
@@ -754,6 +753,10 @@ if "%command%" == "9" (
 if /i "%command%" == "A" (
   echo.%language_menu_help_program_update01%
   echo.%language_menu_help_program_update02%
+)
+if "%command%" == "#" (
+  call echo.%language_menu_help_program_uninstall01%
+  call echo.%language_menu_help_program_uninstall02%
 )
 
 call :menu_help_pageTemplate end
