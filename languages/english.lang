@@ -134,7 +134,9 @@ menu_help_program_settings03=  By selecting the appropriate option, you change i
 menu_help_program_settings04=  The language and update channel choice brings up separate menus, because these options have several meanings.
 menu_help_program_settings05=  Settings are stored in the folder: %~dp0%settings%.
 
-menu_help_program_dataManagement01=  
+menu_help_program_dataManagement01=  Menu for managing program data.
+menu_help_program_dataManagement02=  You can clear log files, reports, temporary files and others.
+menu_help_program_dataManagement03=  Select the desired menu item and the corresponding files will be deleted.
 
 menu_help_program_update01=  
 
