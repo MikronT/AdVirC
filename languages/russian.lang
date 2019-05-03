@@ -128,7 +128,11 @@ menu_help_databases_import04=  Имя файла с базами данных д
 menu_help_support_report01=  Для диагностики приложения разработчик хотел бы получить логи работы.
 menu_help_support_report02=  Эта функция отправляет журналы работы %program_name% для ее улучшения.
 
-menu_help_program_settings01=  
+menu_help_program_settings01=  Меню поможет Вам настроить %program_name% на Ваш вкус.
+menu_help_program_settings02=  На слабых компьютерах отключение некоторых опций может существенно ускорить очистку, например логирование.
+menu_help_program_settings03=  Выбирая соответствующую опцию, Вы меняете ее значение на противоположное.
+menu_help_program_settings04=  Выбор языка и канала обновления выводит отдельные меню, потому что эти параметры имеют несколько значений.
+menu_help_program_settings05=  Настройки сохраняются в папке: %~dp0%settings%.
 
 menu_help_program_dataManagement01=  
 
