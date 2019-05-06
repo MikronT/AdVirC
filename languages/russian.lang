@@ -4,6 +4,7 @@ input=^(^>^) Введите команду ^>
 viewPager_nothing=  ...Ничего интересного...
 viewPager_control_previous=  ^(P^) Прошлая страница                                     
 viewPager_control_next=  ^(N^) Следующая страница
+viewPager_control_undo=  ^(U^) Отменить последние изменение
 
 
 

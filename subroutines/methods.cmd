@@ -262,6 +262,9 @@ echo.
 ) else if %counter_viewPager_k%       LSS 10 ( echo.%language_viewPager_control_previous%
 ) else echo.%language_viewPager_control_previous% %language_viewPager_control_next%
 
+if exist temp\viewPager_file_lastChanged for /f "delims=" %%i in (temp\viewPager_file_lastChanged) do set viewPager_file_lastChanged=%%i
+if "!viewPager_file_lastChanged!" == "true" echo.%language_viewPager_control_undo%
+
 echo.!counter_viewPager_element!>  temp\counter_viewPager_element
 echo.!counter_viewPager_k!>        temp\counter_viewPager_k
 echo.!counter_viewPager_page!>     temp\counter_viewPager_page
@@ -273,7 +276,7 @@ exit /b
 
 
 :viewPager_control
-for %%i in (counter_viewPager_element counter_viewPager_k counter_viewPager_page counter_viewPager_page_next) do for /f "delims=" %%j in (temp\%%i) do set %%i=%%j
+for %%i in (counter_viewPager_element counter_viewPager_k counter_viewPager_page counter_viewPager_page_next viewPager_file_lastChanged) do if exist temp\%%i for /f "delims=" %%j in (temp\%%i) do set %%i=%%j
 
 if %counter_viewPager_element% LSS 11 ( rem
 ) else if %counter_viewPager_page% == 1 (
@@ -301,6 +304,15 @@ if %counter_viewPager_element% LSS 11 ( rem
   )
 )
 
+if /i "%command%" == "U" if "%viewPager_file_lastChanged%" == "true" (
+  copy /y %2.old %2>>%log_debug%
+  del /q %2.old
+
+  set viewPager_file_lastChanged=false
+  echo.!viewPager_file_lastChanged!>temp\viewPager_file_lastChanged
+  exit /b
+)
+
 setlocal EnableDelayedExpansion
 set counter_viewPager_element=0
 
@@ -318,8 +330,11 @@ for /f "eol=# delims=" %%i in (%viewPager_fileList%) do %viewPager_generate_addi
         if "!counter_viewPager_element!" NEQ "!counter_viewPager_element_remove!" echo.%%j>>%2
       )
 
-      copy /y %2.old temp\>>%log_debug%
-      del /q %2.old
+      rem copy /y %2.old temp\>>%log_debug%
+      rem del /q %2.old
+
+      set viewPager_file_lastChanged=true
+      echo.!viewPager_file_lastChanged!>temp\viewPager_file_lastChanged
     )
   )
 )
