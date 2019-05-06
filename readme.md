@@ -37,7 +37,9 @@ Utility is in Pre-Alpha-period, so there may be false positives and program erro
   - autoupdate for program and databases with reminder
   - update channel
 - Exceptions for cleaning
+<!--
 - Report collecting and autosending
+-->
 - About and help menus
 
 

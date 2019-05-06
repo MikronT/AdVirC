@@ -24,8 +24,8 @@ set setting_firstRun=true
 set setting_language=default
 set setting_logging=true
 set setting_logging_advanced=true
-set setting_reports_autoSend=true
-set setting_reports_collect=true
+set setting_reports_autoSend=false
+set setting_reports_collect=false
 set setting_tipOfTheDay=true
 set setting_update_channel=nightly
 set setting_update_databases_auto=true
@@ -329,7 +329,7 @@ echo.%language_menu_main07%
 echo.%language_menu_main08%
 echo.%language_menu_main09%
 echo.%language_menu_main10%
-echo.%language_menu_main11%
+rem echo.%language_menu_main11%
 echo.%language_menu_main12%
 echo.
 echo.
@@ -344,11 +344,11 @@ if "%command%" == "2" call :menu_exceptions
 if "%command%" == "3" call :databases_update
 if "%command%" == "4" call :menu_databases_import
 if "%command%" == "5" call :menu_help
-if "%command%" == "6" call :menu_report
-if "%command%" == "7" call :menu_about
-if "%command%" == "8" call :menu_settings
-if "%command%" == "9" call :menu_dataManagement
-if /i "%command%" == "A" (
+if "%command%" == "666" call :menu_report
+if "%command%" == "6" call :menu_about
+if "%command%" == "7" call :menu_settings
+if "%command%" == "8" call :menu_dataManagement
+if "%command%" == "9" (
   start /wait /b %update% --key_check=program
   start /wait /b %update% --key_update=program
 )
@@ -922,16 +922,16 @@ if "%setting_update_databases_remind%" == "true" (
 ) else call %stringBuilder% %language_menu_setting_disabled%
 echo.%stringBuilder_string%
 
-echo.%language_menu_settings13%
-echo.%language_menu_settings15%
+rem echo.%language_menu_settings13%
+rem echo.%language_menu_settings15%
 
-if "%setting_reports_collect%" == "true" (
-  call echo.%language_menu_settings17% %language_menu_setting_enabled%
-) else call echo.%language_menu_settings17% %language_menu_setting_disabled%
+rem if "%setting_reports_collect%" == "true" (
+rem   call echo.%language_menu_settings17% %language_menu_setting_enabled%
+rem ) else call echo.%language_menu_settings17% %language_menu_setting_disabled%
 
-if "%setting_reports_autoSend%" == "true" (
-  call echo.%language_menu_settings19% %language_menu_setting_enabled%
-) else call echo.%language_menu_settings19% %language_menu_setting_disabled%
+rem if "%setting_reports_autoSend%" == "true" (
+rem   call echo.%language_menu_settings19% %language_menu_setting_enabled%
+rem ) else call echo.%language_menu_settings19% %language_menu_setting_disabled%
 
 echo.
 echo.%language_back%

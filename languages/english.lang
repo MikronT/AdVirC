@@ -34,17 +34,17 @@ info_registryBackup_created=  ^(^i^) Backup copy of the Windows registry is succ
 
 
 menu_main01=  Security Features                                           Program
-menu_main02=  ^(1^) Perform cleaning system                                 ^(8^) Settings
-menu_main03=  ^(2^) Exceptions                                              ^(9^) Data management
+menu_main02=  ^(1^) Perform cleaning system                                 ^(7^) Settings
+menu_main03=  ^(2^) Exceptions                                              ^(8^) Data management
 menu_main04=
-menu_main05=  Databases                                                   ^(A^) Update
+menu_main05=  Databases                                                   ^(9^) Update
 menu_main06=  ^(3^) Update databases                                        ^(#^) Uninstall
 menu_main07=  ^(4^) Import databases
 menu_main08=                                                              ^(0^) Exit
 menu_main09=  Support
 menu_main10=  ^(5^) Help
 menu_main11=  ^(6^) Send report
-menu_main12=  ^(7^) About
+menu_main12=  ^(6^) About
 
 menu_main_update_databases_available=  ^(i^) Databases update is now available^! Update it using menu item ^(3^).
 menu_main_update_program_available=  ^(i^) %program_name% update is now available^! Update it using menu item ^(9^).
