@@ -75,10 +75,10 @@ set update_databases_version_output=temp\%program_name%Databases.version
 set update_databases_version_url=https://drive.google.com/uc?export=download^^^&id=1ene7znlMRqGpXFQqgBFZfFCghN8FBF1O
 
 set update_program_output=temp\%program_name%.zip
-set update_program_url=https://drive.google.com/uc?export=download^^^&id=1ssADcfpKfFf9mjtVuL9lQ7NLoc4comTh
+set update_program_url=https://drive.google.com/uc?export=download^^^&id=1ithl15gsBdGRzSC13zEP98s4LeP2Z_PB
 
 set update_databases_output=temp\%program_name%Databases.zip
-set update_databases_url=https://drive.google.com/uc?export=download^^^&id=1u1mKCVHfk3LS8zFJ97gxLQ9f_UsH_zsy
+set update_databases_url=https://drive.google.com/uc?export=download^^^&id=1yDLbetVLq0OSjEVbgaTcMgsUU2MtWLZp
 
 
 
