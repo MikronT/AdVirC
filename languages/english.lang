@@ -47,7 +47,7 @@ menu_main11=  ^(6^) Send report
 menu_main12=  ^(7^) About
 
 menu_main_update_databases_available=  ^(i^) Databases update is now available^! Update it using menu item ^(3^).
-menu_main_update_program_available=  ^(i^) %program_name% update is now available^!
+menu_main_update_program_available=  ^(i^) %program_name% update is now available^! Update it using menu item ^(9^).
 
 menu_main_firstRunTip=  ^(i^) Close the program only using menu item ^(0^), otherwise the program may be damaged^!
 
