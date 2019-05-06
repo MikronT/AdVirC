@@ -553,7 +553,6 @@ if exist %settings_exceptions% (
 
 endlocal
 
-echo.
 echo.%language_back%
 echo.
 echo.
