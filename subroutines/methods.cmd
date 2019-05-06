@@ -330,9 +330,6 @@ for /f "eol=# delims=" %%i in (%viewPager_fileList%) do %viewPager_generate_addi
         if "!counter_viewPager_element!" NEQ "!counter_viewPager_element_remove!" echo.%%j>>%2
       )
 
-      rem copy /y %2.old temp\>>%log_debug%
-      rem del /q %2.old
-
       set viewPager_file_lastChanged=true
       echo.!viewPager_file_lastChanged!>temp\viewPager_file_lastChanged
     )
