@@ -1,11 +1,11 @@
 @echo off
 chcp 65001>nul
 
+if defined key_target goto :program_update
+
 for /f "tokens=1 delims=- " %%i in ("%*") do (
   >nul set %%i
 )
-
-if "%key_target%" NEQ "" goto :program_update
 
 %log_append_place% : [Update]
 
