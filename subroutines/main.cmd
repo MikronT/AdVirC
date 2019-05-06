@@ -19,18 +19,18 @@ set module_shortcut=subroutines\modules\shortcut.exe /a:c
 set module_unZip=subroutines\modules\unzip.exe -qq
 set module_wget=subroutines\modules\wget.exe --quiet --no-check-certificate --tries=1
 
-set setting_debug=true
+set setting_debug=false
 set setting_firstRun=true
 set setting_language=default
 set setting_logging=true
-set setting_logging_advanced=true
+set setting_logging_advanced=false
 set setting_reports_autoSend=false
 set setting_reports_collect=false
 set setting_tipOfTheDay=true
-set setting_update_channel=nightly
+set setting_update_channel=release
 set setting_update_databases_auto=true
 set setting_update_databases_remind=true
-set setting_update_program_auto=true
+set setting_update_program_auto=false
 set setting_update_program_remind=true
 
 set settings=%dataDir%\settings\settings.ini
