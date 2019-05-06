@@ -276,6 +276,8 @@ exit /b
 
 
 :viewPager_control
+if "%command%" == "" exit /b
+
 for %%i in (counter_viewPager_element counter_viewPager_k counter_viewPager_page counter_viewPager_page_next) do for /f "delims=" %%j in (temp\%%i) do set %%i=%%j
 
 if %counter_viewPager_element% LSS 11 ( rem
