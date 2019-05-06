@@ -224,8 +224,9 @@ set counter_viewPager_page=1
 set counter_viewPager_page_next=11
 
 set viewPager_keyword=%command%
-set viewPager_fileList=%1
-set viewPager_fileDir=%2
+set viewPager_output=%1
+set viewPager_fileList=%2
+set viewPager_fileDir=%3
 
 if "%viewPager_fileDir%" == "" (
   set viewPager_generate_addition=
@@ -305,10 +306,10 @@ if %counter_viewPager_element% LSS 11 ( rem
   )
 )
 
-  copy /y %2.old %2>>%log_debug%
-  del /q %2.old
 rem if /i "%command%" == "U" if "%viewPager_file_lastChanged%" == "true" (
 if /i "%command%" == "U" if exist %viewPager_output%.old (
+  copy /y %viewPager_output%.old %viewPager_output%>>%log_debug%
+  del /q %viewPager_output%.old
 
   rem set viewPager_file_lastChanged=false
   rem echo.!viewPager_file_lastChanged!>temp\viewPager_file_lastChanged
@@ -321,15 +322,17 @@ set counter_viewPager_element=0
 for /f "eol=# delims=" %%i in (%viewPager_fileList%) do %viewPager_generate_addition% (
   set /a counter_viewPager_element+=1
   if !counter_viewPager_element! GEQ !counter_viewPager_page! if !counter_viewPager_element! LSS !counter_viewPager_page_next! if "%command%" == "!counter_viewPager_element!" (
-    if "%1" == "add"    echo.%viewPager_element%>>%2
+    if "%1" == "add"    (
+      echo.%viewPager_element%>>%viewPager_output%
+    )
     if "%1" == "remove" (
       set counter_viewPager_element_remove=0
-      copy /y %2 %2.old>>%log_debug%
-      del /q %2
+      copy /y %viewPager_output% %viewPager_output%.old>>%log_debug%
+      del /q %viewPager_output%
 
-      for /f "delims=" %%j in (%2.old) do (
+      for /f "delims=" %%j in (%viewPager_output%.old) do (
         set /a counter_viewPager_element_remove+=1
-        if "!counter_viewPager_element!" NEQ "!counter_viewPager_element_remove!" echo.%%j>>%2
+        if "!counter_viewPager_element!" NEQ "!counter_viewPager_element_remove!" echo.%%j>>%viewPager_output%
       )
 
       rem set viewPager_file_lastChanged=true

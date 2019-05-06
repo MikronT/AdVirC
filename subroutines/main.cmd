@@ -451,7 +451,7 @@ echo.
 if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" call :menu_exceptions_new
 if "%command%" == "2" (
-  %viewPager% initiate %settings_exceptions%
+  %viewPager% initiate %settings_exceptions% %settings_exceptions%
   call :menu_exceptions_defined
 )
 goto :menu_exceptions
@@ -488,7 +488,7 @@ if "%databases_notExist_error%" == "1" (
 if "%command%" == "0" ( %input_clear% & exit /b )
 
 if exist %dataDir%\databases\rewrited\dirs\temp.db (
-  %viewPager% initiate %dataDir%\databases\original\fileList.db %dataDir%\databases\rewrited
+  %viewPager% initiate %settings_exceptions% %dataDir%\databases\original\fileList.db %dataDir%\databases\rewrited
   call :menu_exceptions_new_selection
 ) else set databases_notExist_error=1
 goto :menu_exceptions_new
@@ -523,7 +523,7 @@ echo.
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-%viewPager% control add %settings_exceptions%
+%viewPager% control add
 goto :menu_exceptions_new_selection
 
 
@@ -563,7 +563,7 @@ echo.
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-if exist %settings_exceptions% %viewPager% control remove %settings_exceptions%
+if exist %settings_exceptions% %viewPager% control remove
 goto :menu_exceptions_defined
 
 
