@@ -323,6 +323,8 @@ for /f "eol=# delims=" %%i in (%viewPager_fileList%) do %viewPager_generate_addi
   set /a counter_viewPager_element+=1
   if !counter_viewPager_element! GEQ !counter_viewPager_page! if !counter_viewPager_element! LSS !counter_viewPager_page_next! if "%command%" == "!counter_viewPager_element!" (
     if "%1" == "add"    (
+      copy /y %viewPager_output% %viewPager_output%.old>>%log_debug%
+
       echo.%viewPager_element%>>%viewPager_output%
     )
     if "%1" == "remove" (
