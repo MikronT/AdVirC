@@ -514,6 +514,7 @@ if "!errorLevel!" == "4417" (
   goto :menu_exceptions_new_selection
 )
 
+echo.
 echo.%language_back%
 echo.
 echo.
@@ -553,6 +554,7 @@ if exist %settings_exceptions% (
 
 endlocal
 
+echo.
 echo.%language_back%
 echo.
 echo.
