@@ -103,5 +103,5 @@ for /f "delims=" %%i in ('dir /b update') do (
 pushd "%key_target%"
 set key_target=4417
 start /wait cmd /c setupEnd.cmd
-start starter.cmd --key_wait=20
+start starter.cmd --key_wait=1
 exit
