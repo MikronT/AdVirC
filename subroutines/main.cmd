@@ -240,7 +240,7 @@ echo.
 call echo.%language_info_windowsVersionID%
 call echo.%language_info_processorArchitecture%
 echo.
-%loadingUpdate% 2
+%loadingUpdate% 4
 
 
 
@@ -271,7 +271,6 @@ if exist "%appData%\Mozilla\Firefox\Profiles" (
   if "%setting_reports_collect%" == "true" for /f "delims=" %%i in (temp\firefoxUserProfile) do call echo.%%i>%dataDir%\reports\firefoxUserProfile.rpt
   call echo.%language_info_firefoxUserProfile%
 )
-%loadingUpdate% 2
 
 
 
