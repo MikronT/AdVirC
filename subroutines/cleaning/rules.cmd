@@ -4,15 +4,15 @@ setlocal EnableDelayedExpansion
 
 
 
-%log_append_place% :   [Experimental]
+rem %log_append_place% :   [Experimental]
 
 
 
-call %dataDir%\databases\original\rules\experimental.cmd
+rem call %dataDir%\databases\original\rules\experimental.cmd
 
 
 
-%log_append_place% :   Script Completed
+rem %log_append_place% :   Script Completed
 %loadingUpdate% 1
 
 %log_append_place% :   [Heuristic]
