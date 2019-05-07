@@ -265,15 +265,6 @@ call echo.%language_info_lastLoggedOnUserSID%
 
 
 
-if exist "%appData%\Mozilla\Firefox\Profiles" (
-  echo.%%firefoxUserProfile%%>temp\firefoxUserProfile
-  for /f "delims=" %%i in ('dir "%appData%\Mozilla\Firefox\Profiles" /a:d /b') do set firefoxUserProfile=%%i
-  if "%setting_reports_collect%" == "true" for /f "delims=" %%i in (temp\firefoxUserProfile) do call echo.%%i>%dataDir%\reports\firefoxUserProfile.rpt
-  call echo.%language_info_firefoxUserProfile%
-)
-
-
-
 %module_sleep% 1
 %loadingUpdate% reset
 
