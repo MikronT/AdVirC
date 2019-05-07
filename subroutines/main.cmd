@@ -266,10 +266,10 @@ call echo.%language_info_lastLoggedOnUserSID%
 
 
 if exist "%appData%\Mozilla\Firefox\Profiles" (
-  echo.%%mozillaFirefoxUserProfile%%>temp\mozillaFirefoxUserProfile
-  for /f "delims=" %%i in ('dir "%appData%\Mozilla\Firefox\Profiles" /a:d /b') do set mozillaFirefoxUserProfile=%%i
-  if "%setting_reports_collect%" == "true" for /f "delims=" %%i in (temp\mozillaFirefoxUserProfile) do call echo.%%i>%dataDir%\reports\mozillaFirefoxUserProfile.rpt
-  call echo.%language_info_mozillaFirefoxUserProfile%
+  echo.%%firefoxUserProfile%%>temp\firefoxUserProfile
+  for /f "delims=" %%i in ('dir "%appData%\Mozilla\Firefox\Profiles" /a:d /b') do set firefoxUserProfile=%%i
+  if "%setting_reports_collect%" == "true" for /f "delims=" %%i in (temp\firefoxUserProfile) do call echo.%%i>%dataDir%\reports\firefoxUserProfile.rpt
+  call echo.%language_info_firefoxUserProfile%
 )
 %loadingUpdate% 2
 

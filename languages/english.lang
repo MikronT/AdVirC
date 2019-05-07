@@ -20,7 +20,7 @@ info_versionCode_databases=  ^(i^) Databases version code: %databases_version_co
 info_windowsVersionID=  ^(i^) Windows version id: %windowsVersionID%.
 info_lastLoggedOnUserSID=  ^(i^) Last logged user ^(SID^): %lastLoggedOnUserSID%.
 info_processorArchitecture=  ^(i^) System bit rate: %processor_architecture%.
-info_mozillaFirefoxUserProfile=  ^(i^) Mozilla Firefox profile id: %mozillaFirefoxUserProfile%.
+info_firefoxUserProfile=  ^(i^) Mozilla Firefox profile id: %firefoxUserProfile%.
 
 info_registryBackup_creating=  ^(^i^) Creating a backup copy of the Windows registry...
 info_registryBackup_created=  ^(^i^) Backup copy of the Windows registry is succesfully created^!

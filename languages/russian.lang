@@ -20,7 +20,7 @@ info_versionCode_databases=  ^(i^) Код версии баз данных: %dat
 info_windowsVersionID=  ^(i^) Идентификатор версии Windows: %windowsVersionID%.
 info_lastLoggedOnUserSID=  ^(i^) Последний зарегистрированный пользователь ^(SID^): %lastLoggedOnUserSID%.
 info_processorArchitecture=  ^(i^) Разрядность операционной системы: %processor_architecture%.
-info_mozillaFirefoxUserProfile=  ^(i^) Идентификатор профиля Mozilla Firefox: %mozillaFirefoxUserProfile%.
+info_firefoxUserProfile=  ^(i^) Идентификатор профиля Mozilla Firefox: %firefoxUserProfile%.
 
 info_registryBackup_creating=  ^(^i^) Создание резервной копии реестра Windows...
 info_registryBackup_created=  ^(^i^) Резервная копия реестра Windows успешно создана^!
