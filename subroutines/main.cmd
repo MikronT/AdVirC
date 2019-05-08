@@ -441,11 +441,11 @@ echo.
 
 if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" (
-  call subroutines\cleaning.cmd --key_auto=true
+  call subroutines\cleaning.cmd --key_auto=false
   %input_clear% & exit /b
 )
 if "%command%" == "2" (
-  call subroutines\cleaning.cmd --key_auto=false
+  call subroutines\cleaning.cmd --key_auto=true
   %input_clear% & exit /b
 )
 goto :menu_cleaning_preparing
