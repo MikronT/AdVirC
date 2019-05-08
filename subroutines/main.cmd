@@ -411,8 +411,7 @@ echo.
 if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" (
   call subroutines\cleaning.cmd
-  %input_clear%
-  exit /b
+  %input_clear% & exit /b
 )
 goto :menu_cleaning
 
