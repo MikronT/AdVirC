@@ -1,7 +1,16 @@
 @%logo%
 %log_append_place% : [Cleaning]
 
-if not exist %dataDir%\databases\rewrited\dirs\temp.db (
+for /f "tokens=1,* delims=- " %%i in ("%*") do (
+  >nul set %%i
+)
+
+if not exist %dataDir%\databases\rewrited\dirs\temp.db if "%key_silent%" == "true" (
+  if exist "%location_desktop%\%program_name%Databases v2.0.zip" (
+         call subroutines\main.cmd :databases_update --key_import=true
+  ) else call subroutines\main.cmd :databases_update
+  pause
+) else (
   echo.%language_databases_notExist_error%
   %module_sleep% 1
   exit /b

@@ -1,4 +1,5 @@
 @%logo%
+if "%*" NEQ "" call %* & exit /b
 %loadingUpdate% 3
 
 
