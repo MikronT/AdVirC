@@ -66,6 +66,15 @@ menu_cleaning02=  ^(1^) Запустити сканування
 
 
 
+menu_cleaning_preparing01=  Меню Підготовки Очистки
+menu_cleaning_preparing02=  Тут Ви можете вибрати режим очистки, який Ви хочете.
+menu_cleaning_preparing03=  ^(1^) Нормальний ^(зі всіма сповіщеннями і варіантами вибору^)
+menu_cleaning_preparing04=  ^(2^) Автоматичний ^(очищає Ваш комп'ютер тихо^)
+
+
+
+
+
 menu_exceptions01=  Меню Виключень
 menu_exceptions02=  ^(1^) Нове виключення
 menu_exceptions03=  ^(2^) Переглянути призначені виключення

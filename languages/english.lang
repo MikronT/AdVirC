@@ -66,7 +66,7 @@ menu_cleaning02=  ^(1^) Run scanning
 
 
 
-menu_cleaning_preparing01=  Cleaning Menu
+menu_cleaning_preparing01=  Cleaning Preparing Menu
 menu_cleaning_preparing02=  Here you can select the cleaning mode you want.
 menu_cleaning_preparing03=  ^(1^) Normal ^(with all messages and choices^)
 menu_cleaning_preparing04=  ^(2^) Automatic ^(cleans up your PC silently^)
