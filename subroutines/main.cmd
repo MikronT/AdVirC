@@ -422,6 +422,40 @@ goto :menu_cleaning
 
 
 
+:menu_cleaning_preparing
+%log_append_place% :     [Cleaning Preparing Menu]
+%input_clear%
+%logo%
+echo.%language_menu_cleaning_preparing01%
+echo.%language_menu_cleaning_preparing02%
+echo.%language_menu_cleaning_preparing03%
+echo.%language_menu_cleaning_preparing04%
+echo.
+echo.%language_back%
+echo.
+echo.
+echo.
+%input%
+
+
+
+if "%command%" == "0" ( %input_clear% & exit /b )
+if "%command%" == "1" (
+  call subroutines\cleaning.cmd --key_auto=true
+  %input_clear% & exit /b
+)
+if "%command%" == "2" (
+  call subroutines\cleaning.cmd --key_auto=false
+  %input_clear% & exit /b
+)
+goto :menu_cleaning_preparing
+
+
+
+
+
+
+
 :menu_exceptions
 %log_append_place% :   [Exceptions Menu]
 %input_clear%
