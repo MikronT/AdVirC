@@ -594,8 +594,7 @@ if "%command%" == "1" (
     goto :menu_databases_import
   )
   call :databases_update --key_import=true
-  %input_clear%
-  exit /b
+  %input_clear% & exit /b
 )
 goto :menu_databases_import
 
@@ -799,8 +798,7 @@ echo.
 if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" (
   systeminfo>%dataDir%\reports\systemInfo.rpt >nul 2>nul
-  %input_clear%
-  exit /b
+  %input_clear% & exit /b
 )
 goto :menu_report
 
