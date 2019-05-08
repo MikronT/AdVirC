@@ -60,16 +60,9 @@ menu_main_tipOfTheDay04=  ^(i^) You can close the loading window, if you do not 
 
 
 menu_cleaning01=  Cleaning Menu
-menu_cleaning02=  ^(1^) Run scanning
-
-
-
-
-
-menu_cleaning_preparing01=  Cleaning Preparing Menu
-menu_cleaning_preparing02=  Here you can select the cleaning mode you want.
-menu_cleaning_preparing03=  ^(1^) Normal ^(with all messages and choices^)
-menu_cleaning_preparing04=  ^(2^) Automatic ^(cleans up your PC silently^)
+menu_cleaning02=  To run scanning select the cleaning mode you want.
+menu_cleaning03=  ^(1^) Normal ^(with all messages and choices^)
+menu_cleaning04=  ^(2^) Automatic ^(cleans up your PC silently^)
 
 
 
