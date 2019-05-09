@@ -178,9 +178,12 @@ menu_settings10=                               ^(9^) Напоминать про
 menu_settings11=  ^(5^) Подсказка Дня:
 menu_settings12=                         ^(#^) Напоминать про обновления баз данных:
 menu_settings13=
-menu_settings15=  Отчёты
-menu_settings17=  ^(A^) Сбор отчётов:
-menu_settings19=  ^(B^) Автоотправка отчётов:
+menu_settings15=  Правила
+# menu_settings15=  Правила                                                     Отчёты
+menu_settings17=  ^(A^) Экспериментальные:
+menu_settings18=                     ^(C^) Сбор отчётов:
+menu_settings19=  ^(B^) Эвристические:
+menu_settings20=                         ^(D^) Автоотправка отчётов:
 
 menu_setting_disabled=отключено      
 menu_setting_enabled=включено       

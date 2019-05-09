@@ -178,9 +178,12 @@ menu_settings10=                                 ^(9^) Remind for %program_name%
 menu_settings11=  ^(5^) Tip of the Day:
 menu_settings12=                        ^(#^) Remind for databases updates:
 menu_settings13=
-menu_settings15=  Report
-menu_settings17=  ^(A^) Collecting reports:
-menu_settings19=  ^(B^) Autosend reports:
+menu_settings15=  Rules
+# menu_settings15=  Rules                                                       Reports
+menu_settings17=  ^(A^) Experimental:
+menu_settings18=                          ^(C^) Collecting reports:
+menu_settings19=  ^(B^) Heuristic:
+menu_settings20=                             ^(D^) Autosend reports:
 
 menu_setting_disabled=disabled       
 menu_setting_enabled=enabled        
