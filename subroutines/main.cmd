@@ -919,16 +919,36 @@ if "%setting_update_databases_remind%" == "true" (
 ) else call %stringBuilder% %language_menu_setting_disabled%
 echo.%stringBuilder_string%
 
-rem echo.%language_menu_settings13%
-rem echo.%language_menu_settings15%
+echo.%language_menu_settings13%
+echo.%language_menu_settings15%
 
+if "%setting_cleaningRule_experimental%" == "true" (
+  call echo.%language_menu_settings17% %language_menu_setting_enabled%
+) else call echo.%language_menu_settings17% %language_menu_setting_disabled%
+
+if "%setting_cleaningRule_heuristic%" == "true" (
+  call echo.%language_menu_settings19% %language_menu_setting_enabled%
+) else call echo.%language_menu_settings19% %language_menu_setting_disabled%
+
+rem set stringBuilder_string=%language_menu_settings17%
+rem if "%setting_cleaningRule_experimental%" == "true" (
+rem   call %stringBuilder% %language_menu_setting_enabled%
+rem ) else call %stringBuilder% %language_menu_setting_disabled%
+rem call %stringBuilder% %language_menu_settings18%
 rem if "%setting_reports_collect%" == "true" (
-rem   call echo.%language_menu_settings17% %language_menu_setting_enabled%
-rem ) else call echo.%language_menu_settings17% %language_menu_setting_disabled%
+rem   call %stringBuilder% %language_menu_setting_enabled%
+rem ) else call %stringBuilder% %language_menu_setting_disabled%
+rem echo.%stringBuilder_string%
 
+rem set stringBuilder_string=%language_menu_settings19%
+rem if "%setting_cleaningRule_heuristic%" == "true" (
+rem   call %stringBuilder% %language_menu_setting_enabled%
+rem ) else call %stringBuilder% %language_menu_setting_disabled%
+rem call %stringBuilder% %language_menu_settings20%
 rem if "%setting_reports_autoSend%" == "true" (
-rem   call echo.%language_menu_settings19% %language_menu_setting_enabled%
-rem ) else call echo.%language_menu_settings19% %language_menu_setting_disabled%
+rem   call %stringBuilder% %language_menu_setting_enabled%
+rem ) else call %stringBuilder% %language_menu_setting_disabled%
+rem echo.%stringBuilder_string%
 
 echo.
 echo.%language_back%
@@ -995,13 +1015,25 @@ if "%command%" == "#" if "%setting_update_databases_remind%" == "true" (
   set setting_update_databases_remind=true
 ) else set setting_update_databases_remind=true
 
-if /i "%command%" == "A" if "%setting_reports_collect%" == "true" (
+if /i "%command%" == "A" if "%setting_cleaningRule_experimental%" == "true" (
+  set setting_cleaningRule_experimental=false
+) else if "%setting_cleaningRule_experimental%" == "false" (
+  set setting_cleaningRule_experimental=true
+) else set setting_cleaningRule_experimental=false
+
+if /i "%command%" == "B" if "%setting_cleaningRule_heuristic%" == "true" (
+  set setting_cleaningRule_heuristic=false
+) else if "%setting_cleaningRule_heuristic%" == "false" (
+  set setting_cleaningRule_heuristic=true
+) else set setting_cleaningRule_heuristic=true
+
+if /i "%command%" == "C" if "%setting_reports_collect%" == "true" (
   set setting_reports_collect=false
 ) else if "%setting_reports_collect%" == "false" (
   set setting_reports_collect=true
 ) else set setting_reports_collect=true
 
-if /i "%command%" == "B" if "%setting_reports_autoSend%" == "true" (
+if /i "%command%" == "D" if "%setting_reports_autoSend%" == "true" (
   set setting_reports_autoSend=false
 ) else if "%setting_reports_autoSend%" == "false" (
   set setting_reports_autoSend=true
