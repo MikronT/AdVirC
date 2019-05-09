@@ -82,6 +82,7 @@ if exist %dataDir%\settings\exceptions.db for %%i in (%cleaning_extensions% %cle
 
 
 call :menu_editing
+%loadingUpdate% 3 force
 
 
 
@@ -234,7 +235,7 @@ exit /b
 
 
 :menu_editing
-%log_append_place% :   [Editing]
+%log_append_place% :   [Editing Menu]
 %input_clear%
 %logo%
 call echo.%language_cleaning_foundObjects%
@@ -249,13 +250,22 @@ echo.
 
 
 
-if "%command%" == "1" (
-  %logo%
-  echo.%language_cleaning_editing04%
-  echo.%language_cleaning_editing05%
-  pause>nul
+if "%command%" == "1" call :menu_editing_list
+if "%command%" == "2" exit /b
+goto :menu_editing
 
-  for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
-) else if "%command%" NEQ "2" goto :menu_editing
-%loadingUpdate% 3 force
+
+
+
+
+
+
+:menu_editing_list
+%logo%
+echo.%language_cleaning_editing04%
+echo.%language_cleaning_editing05%
+pause>nul
+
+for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
 exit /b
+goto :menu_editing_list
