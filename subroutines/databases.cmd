@@ -5,8 +5,8 @@ echo.
 %log_append_place% : [Databases]
 
 for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
-  >nul set %%i
-  >nul set %%j
+  if "%%i" NEQ "" set %%i
+  if "%%j" NEQ "" set %%j
 )
 
 if exist temp\return_update_databases_available del /q temp\return_update_databases_available
