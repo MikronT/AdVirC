@@ -1250,22 +1250,7 @@ for /f "tokens=1-8 delims=." %%i in (%dataDir%\databases\original\databases.vers
   set databases_version_code_level8=%%p
 )
 
-start /wait /b %update% --key_check=databases
-for /f "tokens=1-3 delims= " %%i in (%update_databases_version_output%) do (
-  if /i "%%i" == "%setting_update_channel%" (
-    for /f "tokens=1-8 delims=." %%l in ("%%j") do (
-             if "%%l" NEQ "" if %%l GTR %databases_version_code_level1% ( echo.>temp\return_update_databases_available
-      ) else if "%%m" NEQ "" if %%m GTR %databases_version_code_level2% ( echo.>temp\return_update_databases_available
-      ) else if "%%n" NEQ "" if %%n GTR %databases_version_code_level3% ( echo.>temp\return_update_databases_available
-      ) else if "%%o" NEQ "" if %%o GTR %databases_version_code_level4% ( echo.>temp\return_update_databases_available
-      ) else if "%%p" NEQ "" if %%p GTR %databases_version_code_level5% ( echo.>temp\return_update_databases_available
-      ) else if "%%q" NEQ "" if %%q GTR %databases_version_code_level6% ( echo.>temp\return_update_databases_available
-      ) else if "%%r" NEQ "" if %%r GTR %databases_version_code_level7% ( echo.>temp\return_update_databases_available
-      ) else if "%%s" NEQ "" if %%s GTR %databases_version_code_level8% ( echo.>temp\return_update_databases_available
-      )
-    )
-  )
-)
+if "%setting_update_databases_remind%" == "true" start /wait /b %update% --key_check=databases
 exit /b
 
 

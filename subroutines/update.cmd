@@ -33,7 +33,7 @@ if "%key_check%" == "databases" (
   )
 )
 
-if "%key_update%" == "databases" if exist temp\return_update_databases_available call subroutines\databases.cmd
+if "%key_update%" == "databases" if exist temp\return_update_databases_available call subroutines\main.cmd :databases_update
 
 
 
