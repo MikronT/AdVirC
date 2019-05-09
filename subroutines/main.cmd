@@ -953,13 +953,13 @@ if "%command%" == "3" if "%setting_logging_advanced%" == "true" (
   set setting_logging_advanced=false
 ) else if "%setting_logging_advanced%" == "false" (
   set setting_logging_advanced=true
-) else set setting_logging_advanced=true
+) else set setting_logging_advanced=false
 
 if "%command%" == "4" if "%setting_debug%" == "true" (
   set setting_debug=false
 ) else if "%setting_debug%" == "false" (
   set setting_debug=true
-) else set setting_debug=true
+) else set setting_debug=false
 
 if "%command%" == "5" if "%setting_tipOfTheDay%" == "true" (
   set setting_tipOfTheDay=false
@@ -973,7 +973,7 @@ if "%command%" == "7" if "%setting_update_program_auto%" == "true" (
   set setting_update_program_auto=false
 ) else if "%setting_update_program_auto%" == "false" (
   set setting_update_program_auto=true
-) else set setting_update_program_auto=true
+) else set setting_update_program_auto=false
 
 if "%command%" == "8" if "%setting_update_databases_auto%" == "true" (
   set setting_update_databases_auto=false
