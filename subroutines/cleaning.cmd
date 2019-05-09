@@ -14,7 +14,7 @@ if not exist %dataDir%\databases\rewrited\dirs\temp.db if "%key_auto%" == "true"
   exit /b
 )
 
-if not exist temp\cleaning md temp\cleaning>nul 2>nul
+if not exist temp\cleaning md temp\cleaning
 
 set counter_foundObjects=0
 set counter_deletedObjects=0
