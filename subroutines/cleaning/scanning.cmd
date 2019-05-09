@@ -490,7 +490,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\programFiles.db) do (
 
 endlocal
 echo.>temp\return_scanningCompleted
-%module_sleep% 3
+%module_sleep% 5
 exit
 
 

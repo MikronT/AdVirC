@@ -30,5 +30,5 @@ call %dataDir%\databases\original\rules\heuristic.cmd
 
 
 endlocal
-%module_sleep% 3
+%module_sleep% 5
 exit

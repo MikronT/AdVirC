@@ -258,5 +258,5 @@ if exist %cleaning_extensions% for /f "delims=" %%i in (%cleaning_extensions%) d
 
 endlocal
 echo.>temp\return_deletingCompleted
-%module_sleep% 3
+%module_sleep% 5
 exit
