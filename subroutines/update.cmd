@@ -3,9 +3,7 @@ chcp 65001>nul
 
 if "%key_target%" NEQ "" if "%key_target%" NEQ "4417" goto :program_update
 
-for /f "tokens=1 delims=- " %%i in ("%*") do (
-  >nul set %%i
-)
+for /f "tokens=1 delims=- " %%i in ("%*") do if "%%i" NEQ "" set %%i
 
 %log_append_place% : [Update]
 
