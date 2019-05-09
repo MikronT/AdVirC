@@ -1,9 +1,7 @@
 @%logo%
 %log_append_place% : [Cleaning]
 
-for /f "tokens=1,* delims=- " %%i in ("%*") do (
-  >nul set %%i
-)
+for /f "tokens=1,* delims=- " %%i in ("%*") do if "%%i" NEQ "" set %%i
 
 if not exist %dataDir%\databases\rewrited\dirs\temp.db if "%key_auto%" == "true" (
   if exist "%location_desktop%\%program_name%Databases v2.0.zip" (
