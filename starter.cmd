@@ -27,8 +27,8 @@ set module_sleep=subroutines\modules\sleep.exe
 set key_wait=0
 
 for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
-  >nul set %%i
-  >nul set %%j
+  if "%%i" NEQ "" set %%i
+  if "%%j" NEQ "" set %%j
 )
 
 
