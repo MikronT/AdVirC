@@ -233,6 +233,7 @@ if "%key_auto%" NEQ "true" (
   echo.%language_cleaning_reboot04%
   %module_sleep% 5
 ) else (
+  echo.%language_cleaning_reboot05%
   %module_sleep% 30
 )
 

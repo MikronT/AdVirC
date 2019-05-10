@@ -272,6 +272,7 @@ cleaning_reboot01=  ^(^!^) Warning^!
 cleaning_reboot02=      The computer will restart^!
 cleaning_reboot03=      Save your data and press ENTER.
 cleaning_reboot04=  ^(^!^) The computer will restart after 5 seconds...
+cleaning_reboot05=  ^(^!^) The computer will restart after 30 seconds...
 
 
 
