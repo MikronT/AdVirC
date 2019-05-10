@@ -82,29 +82,31 @@ if exist %dataDir%\settings\exceptions.db for %%i in (%cleaning_extensions% %cle
 
 
 :editing
-%log_append_place% :   [Editing]
-%input_clear%
-%logo%
-call echo.%language_cleaning_foundObjects%
-echo.
-call echo.%language_cleaning_editing01%
-echo.%language_cleaning_editing02%
-echo.%language_cleaning_editing03%
-echo.
-echo.
-echo.
-%input%
-
-
-
-if "%command%" == "1" (
+if "%key_auto%" NEQ "true" (
+  %log_append_place% :   [Editing]
+  %input_clear%
   %logo%
-  echo.%language_cleaning_editing04%
-  echo.%language_cleaning_editing05%
-  pause>nul
+  call echo.%language_cleaning_foundObjects%
+  echo.
+  call echo.%language_cleaning_editing01%
+  echo.%language_cleaning_editing02%
+  echo.%language_cleaning_editing03%
+  echo.
+  echo.
+  echo.
+  %input%
 
-  for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
-) else if "%command%" NEQ "2" goto :editing
+
+
+  if "%command%" == "1" (
+    %logo%
+    echo.%language_cleaning_editing04%
+    echo.%language_cleaning_editing05%
+    pause>nul
+  
+    for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
+  ) else if "%command%" NEQ "2" goto :editing
+)
 %loadingUpdate% 3 force
 
 
@@ -220,15 +222,19 @@ echo.del /q "%winDir%\System32\Tasks\%program_name% Reboot Script Task">>%cleani
 
 echo.Objects found: %counter_foundObjects%>>%log%
 echo.Objects deleted: %counter_deletedObjects%>>%log%
-
-echo.%language_cleaning_reboot01%
-echo.%language_cleaning_reboot02%
-echo.%language_cleaning_reboot03%
 %loadingUpdate% 1
-pause>nul
 
-echo.%language_cleaning_reboot04%
-%module_sleep% 5
+if "%key_auto%" NEQ "true" (
+  echo.%language_cleaning_reboot01%
+  echo.%language_cleaning_reboot02%
+  echo.%language_cleaning_reboot03%
+  pause>nul
+
+  echo.%language_cleaning_reboot04%
+  %module_sleep% 5
+) else (
+  %module_sleep% 30
+)
 
 echo.>temp\return_reboot
 exit /b
