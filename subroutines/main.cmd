@@ -337,7 +337,6 @@ if "%command%" == "2" call :menu_exceptions
 if "%command%" == "3" call :databases_update
 if "%command%" == "4" call :menu_databases_import
 if "%command%" == "5" call :menu_help
-if "%command%" == "666" call :menu_report
 if "%command%" == "6" call :menu_about
 if "%command%" == "7" call :menu_settings
 if "%command%" == "8" call :menu_dataManagement
@@ -774,34 +773,6 @@ if "%1" NEQ "end" (
   echo.
 )
 exit /b
-
-
-
-
-
-
-
-:menu_report
-%log_append_place% :   [Report Menu]
-%input_clear%
-%logo%
-echo.%language_menu_report01%
-echo.%language_menu_report02%
-echo.
-echo.%language_back%
-echo.
-echo.
-echo.
-%input%
-
-
-
-if "%command%" == "0" ( %input_clear% & exit /b )
-if "%command%" == "1" (
-  systeminfo>%dataDir%\reports\systemInfo.rpt >nul 2>nul
-  %input_clear% & exit /b
-)
-goto :menu_report
 
 
 
