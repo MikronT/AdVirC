@@ -322,8 +322,7 @@ echo.%language_menu_main07%
 echo.%language_menu_main08%
 echo.%language_menu_main09%
 echo.%language_menu_main10%
-rem echo.%language_menu_main11%
-echo.%language_menu_main12%
+echo.%language_menu_main11%
 echo.
 echo.
 echo.
