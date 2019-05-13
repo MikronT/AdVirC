@@ -262,7 +262,6 @@ if "%setting_firstRun%" == "true" (
 
 echo.%%lastLoggedOnUserSID%%>temp\lastLoggedOnUserSID
 for /f "tokens=2*" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI /v LastLoggedOnUserSID') do set lastLoggedOnUserSID=%%j
-if "%setting_reports_collect%" == "true" for /f "delims=" %%i in (temp\lastLoggedOnUserSID) do call echo.%%i>%dataDir%\reports\lastLoggedOnUserSID.rpt
 call echo.%language_info_lastLoggedOnUserSID%
 %loadingUpdate% 2
 
@@ -1152,8 +1151,6 @@ if "%setting_logging%" == "true" (
   set log=nul
   set log_debug=nul
 )
-
-if "%setting_reports_collect%" == "true" if not exist %dataDir%\reports md %dataDir%\reports>nul 2>nul
 exit /b
 
 
