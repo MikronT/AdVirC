@@ -42,8 +42,7 @@ menu_main07=  ^(4^) Import databases
 menu_main08=                                                              ^(0^) Exit
 menu_main09=  Support
 menu_main10=  ^(5^) Help
-menu_main11=  ^(6^) Send report
-menu_main12=  ^(6^) About
+menu_main11=  ^(6^) About
 
 menu_main_update_databases_available=  ^(i^) Databases update is now available^! Update it using menu item ^(3^).
 menu_main_update_program_available=  ^(i^) %program_name% update is now available^! Update it using menu item ^(9^).
@@ -127,9 +126,6 @@ menu_help_databases_import02=  May be required if there is no Internet connectio
 menu_help_databases_import03=  Download the databases to the desktop and start the import.
 menu_help_databases_import04=  The name of the database file should be strictly as follows: %program_name%Databases.zip.
 
-menu_help_support_report01=  To diagnose an application, a developer would like to receive work logs.
-menu_help_support_report02=  This feature sends %program_name% logs to improve it.
-
 menu_help_program_settings01=  The menu will help you to customize the %program_name% to your taste.
 menu_help_program_settings02=  On weak computers, disabling some settings can significantly speed up cleanup, such as logging.
 menu_help_program_settings03=  By selecting the appropriate option, you change its value to the opposite.
@@ -145,13 +141,6 @@ menu_help_program_update02=  If nothing happened, then there is no updates.
 
 menu_help_program_uninstall01=  This item will open %program_name%'s uninstall menu.
 menu_help_program_uninstall02=  After confirmation, %program_name% will delete itself.
-
-
-
-
-
-menu_report01=  Reports Menu
-menu_report02=  ^(1^) Send report
 
 
 

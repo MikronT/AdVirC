@@ -42,8 +42,7 @@ menu_main07=  ^(4^) Импортировать
 menu_main08=                                                              ^(0^) Выход
 menu_main09=  Поддержка
 menu_main10=  ^(5^) Помощь
-menu_main11=  ^(6^) Отправить отчёт
-menu_main12=  ^(6^) Про программу
+menu_main11=  ^(6^) Про программу
 
 menu_main_update_databases_available=  ^(i^) Доступно обновление баз данных^! Обновите их используя пункт меню ^(3^).
 menu_main_update_program_available=  ^(i^) Доступно обновление %program_name%^! Обновите её используя пункт меню ^(9^).
@@ -127,9 +126,6 @@ menu_help_databases_import02=  Может потребоваться в случ
 menu_help_databases_import03=  Загрузите базы данных на рабочий стол и запустите импорт.
 menu_help_databases_import04=  Имя файла с базами данных должно быть строго следующим: %program_name%Databases.zip.
 
-menu_help_support_report01=  Для диагностики приложения разработчик хотел бы получить логи работы.
-menu_help_support_report02=  Эта функция отправляет журналы работы %program_name% для ее улучшения.
-
 menu_help_program_settings01=  Меню поможет Вам настроить %program_name% на Ваш вкус.
 menu_help_program_settings02=  На слабых компьютерах отключение некоторых опций может существенно ускорить очистку, например логирование.
 menu_help_program_settings03=  Выбирая соответствующую опцию, Вы меняете ее значение на противоположное.
@@ -145,13 +141,6 @@ menu_help_program_update02=  Если ничего не произошло, то
 
 menu_help_program_uninstall01=  Этот пункт откроет меню деинсталляции %program_name%.
 menu_help_program_uninstall02=  После подтверждения %program_name% самоудалиться.
-
-
-
-
-
-menu_report01=  Меню Отчётов
-menu_report02=  ^(1^) Отправить отчёт
 
 
 
