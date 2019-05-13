@@ -970,18 +970,6 @@ if /i "%command%" == "B" if "%setting_cleaningRule_heuristic%" == "true" (
   set setting_cleaningRule_heuristic=true
 ) else set setting_cleaningRule_heuristic=true
 
-if /i "%command%" == "C" if "%setting_reports_collect%" == "true" (
-  set setting_reports_collect=false
-) else if "%setting_reports_collect%" == "false" (
-  set setting_reports_collect=true
-) else set setting_reports_collect=true
-
-if /i "%command%" == "D" if "%setting_reports_autoSend%" == "true" (
-  set setting_reports_autoSend=false
-) else if "%setting_reports_autoSend%" == "false" (
-  set setting_reports_autoSend=true
-) else set setting_reports_autoSend=true
-
 call :settings_apply
 call :settings_save
 goto :menu_settings
