@@ -168,11 +168,8 @@ menu_settings11=  ^(5^) Підказка Дня:
 menu_settings12=                          ^(#^) Нагадувати про оновлення баз даних:
 menu_settings13=
 menu_settings15=  Правила
-# menu_settings15=  Правила                                                     Звіти
 menu_settings17=  ^(A^) Експериментальні:
-menu_settings18=                      ^(C^) Збір звітів:
 menu_settings19=  ^(B^) Евристичні:
-menu_settings20=                            ^(D^) Автовідправка звітів:
 
 menu_setting_disabled=вимкнено       
 menu_setting_enabled=увімкнено      

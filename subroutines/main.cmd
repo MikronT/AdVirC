@@ -894,26 +894,6 @@ if "%setting_cleaningRule_heuristic%" == "true" (
   call echo.%language_menu_settings19% %language_menu_setting_enabled%
 ) else call echo.%language_menu_settings19% %language_menu_setting_disabled%
 
-rem set stringBuilder_string=%language_menu_settings17%
-rem if "%setting_cleaningRule_experimental%" == "true" (
-rem   call %stringBuilder% %language_menu_setting_enabled%
-rem ) else call %stringBuilder% %language_menu_setting_disabled%
-rem call %stringBuilder% %language_menu_settings18%
-rem if "%setting_reports_collect%" == "true" (
-rem   call %stringBuilder% %language_menu_setting_enabled%
-rem ) else call %stringBuilder% %language_menu_setting_disabled%
-rem echo.%stringBuilder_string%
-
-rem set stringBuilder_string=%language_menu_settings19%
-rem if "%setting_cleaningRule_heuristic%" == "true" (
-rem   call %stringBuilder% %language_menu_setting_enabled%
-rem ) else call %stringBuilder% %language_menu_setting_disabled%
-rem call %stringBuilder% %language_menu_settings20%
-rem if "%setting_reports_autoSend%" == "true" (
-rem   call %stringBuilder% %language_menu_setting_enabled%
-rem ) else call %stringBuilder% %language_menu_setting_disabled%
-rem echo.%stringBuilder_string%
-
 echo.
 echo.%language_back%
 echo.
