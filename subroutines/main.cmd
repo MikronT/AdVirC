@@ -711,14 +711,7 @@ if "%command%" == "4" (
   echo.  %language_menu_databases_import02%
   echo.  %language_menu_databases_import03%
 )
-if "%command%" == "6" (
-  echo.%language_menu_help_support_report01%
-  call echo.%language_menu_help_support_report02%
-  echo.
-  echo.  %language_menu_report01%
-  echo.  %language_menu_report02%
-)
-if "%command%" == "8" (
+if "%command%" == "7" (
   call echo.%language_menu_help_program_settings01%
   echo.%language_menu_help_program_settings02%
   echo.%language_menu_help_program_settings03%
@@ -735,7 +728,7 @@ if "%command%" == "8" (
   echo.
   call echo.%language_menu_help_program_settings05%
 )
-if "%command%" == "9" (
+if "%command%" == "8" (
   echo.%language_menu_help_program_dataManagement01%
   echo.%language_menu_help_program_dataManagement02%
   echo.
@@ -748,7 +741,7 @@ if "%command%" == "9" (
   echo.
   echo.%language_menu_help_program_dataManagement03%
 )
-if /i "%command%" == "A" (
+if /i "%command%" == "9" (
   echo.%language_menu_help_program_update01%
   echo.%language_menu_help_program_update02%
 )
