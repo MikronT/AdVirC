@@ -625,9 +625,6 @@ echo.  %language_menu_main05%
 echo.  %language_menu_main06%
 echo.  %language_menu_main07%
 echo.
-echo.  %language_menu_main09%
-echo.  %language_menu_main11%
-echo.
 echo.%language_back%
 echo.
 echo.
@@ -637,7 +634,7 @@ echo.
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" if "%command%" NEQ "4" if "%command%" NEQ "6" if "%command%" NEQ "8" if "%command%" NEQ "9" if /i "%command%" NEQ "A" if "%command%" NEQ "#" goto :menu_help
+if "%command%" NEQ "1" if "%command%" NEQ "2" if "%command%" NEQ "3" if "%command%" NEQ "4" if "%command%" NEQ "7" if "%command%" NEQ "8" if "%command%" NEQ "9" if "%command%" NEQ "#" goto :menu_help
 
 call :menu_help_pageTemplate begin
 
@@ -739,7 +736,7 @@ if "%command%" == "8" (
   echo.
   echo.%language_menu_help_program_dataManagement03%
 )
-if /i "%command%" == "9" (
+if "%command%" == "9" (
   echo.%language_menu_help_program_update01%
   echo.%language_menu_help_program_update02%
 )
