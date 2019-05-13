@@ -1089,7 +1089,6 @@ echo.%language_menu_dataManagement03%
 echo.%language_menu_dataManagement04%
 echo.%language_menu_dataManagement05%
 echo.%language_menu_dataManagement06%
-echo.%language_menu_dataManagement07%
 echo.
 echo.%language_back%
 echo.
@@ -1105,10 +1104,9 @@ if "%command%" == "1" for /f "delims=" %%i in ('dir /b temp') do if "%%i" NEQ "c
   del /q temp\%%i>nul 2>nul
 )
 if "%command%" == "2" if exist %dataDir%\logs      rd /s /q %dataDir%\logs
-if "%command%" == "3" if exist %dataDir%\reports   rd /s /q %dataDir%\reports
-if "%command%" == "4" if exist %dataDir%\databases rd /s /q %dataDir%\databases
-if "%command%" == "5" if exist %dataDir%\settings  rd /s /q %dataDir%\settings
-if "%command%" == "6" if exist %dataDir%\backups   rd /s /q %dataDir%\backups
+if "%command%" == "3" if exist %dataDir%\databases rd /s /q %dataDir%\databases
+if "%command%" == "4" if exist %dataDir%\settings  rd /s /q %dataDir%\settings
+if "%command%" == "5" if exist %dataDir%\backups   rd /s /q %dataDir%\backups
 
 call :settings_apply
 goto :menu_dataManagement
