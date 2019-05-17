@@ -63,7 +63,6 @@ md %dataDir%\databases\original>nul 2>>%log_debug%
 if not exist %dataDir%\databases\original\license.txt ( call :error %language_module_unZip_error% & exit /b )
 
 %loadingUpdate% 4
-%module_sleep% 1
 
 del /q %update_databases_output%
 
