@@ -77,9 +77,15 @@ set update_databases_version_url=https://drive.google.com/uc?export=download^^^&
 
 set update_program_output=temp\%program_name%.zip
 set update_program_url=https://drive.google.com/uc?export=download^^^&id=1ithl15gsBdGRzSC13zEP98s4LeP2Z_PB
+set update_program_url_release=https://drive.google.com/uc?export=download^^^&id=1ithl15gsBdGRzSC13zEP98s4LeP2Z_PB
+set update_program_url_beta=https://drive.google.com/uc?export=download^^^&id=12dw__c80MEL5-47di6XKSyZ3bgsDuUTv
+set update_program_url_nightly=https://drive.google.com/uc?export=download^^^&id=1SrUFMV-hHGXm1-0gdgqdmZ6KoHNwoT-n
 
 set update_databases_output=temp\%program_name%Databases.zip
 set update_databases_url=https://drive.google.com/uc?export=download^^^&id=1yDLbetVLq0OSjEVbgaTcMgsUU2MtWLZp
+set update_databases_url_release=https://drive.google.com/uc?export=download^^^&id=1yDLbetVLq0OSjEVbgaTcMgsUU2MtWLZp
+set update_databases_url_beta=https://drive.google.com/uc?export=download^^^&id=1E8cgGbR14ZcdudNdAVVqzRLo-ijH8zM1
+set update_databases_url_nightly=https://drive.google.com/uc?export=download^^^&id=1wOEuF5polVS5eUYLTVzZC280lqYgoxVo
 
 
 
