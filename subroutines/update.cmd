@@ -60,17 +60,21 @@ if "%key_check%" == "program" (
   )
 )
 
+setlocal EnableDelayedExpansion
+
 if "%key_update%" == "program" if exist temp\return_update_program_available (
   if exist "%temp%\%program_name%-Update" rd /s /q "%temp%\%program_name%-Update"
   md "%temp%\%program_name%-Update\update"
 
-  %module_wget% "%update_program_url%" --output-document=%update_program_output%
+  %module_wget% "!update_databases_url_%setting_update_channel%!" --output-document=%update_databases_output%
 
   copy /y "%~dpnx0"               "%temp%\%program_name%-Update">nul
   copy /y %update_program_output% "%temp%\%program_name%-Update\update.zip">nul
 
   echo.>temp\return_update
 )
+
+endlocal
 
 set key_check=
 set key_update=
