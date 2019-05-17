@@ -93,6 +93,7 @@ menu_exceptions_defined02=  Select the exception you want to remove.
 menu_databases_import01=  Databases Import Menu
 menu_databases_import02=  ^(1^) Run import
 menu_databases_import03=  Tip: To import databases into the program, upload them on to your desktop.
+menu_databases_import04=  According to your settings, the name of the file with databases should be as follows:
 
 
 
