@@ -40,7 +40,6 @@ if "%databases_lenghtReturn%" == "0" ( call :error %language_module_wget_error% 
 
 echo.%language_databases_downloading_success%
 echo.
-%module_sleep% 1
 %loadingUpdate% 15
 
 
