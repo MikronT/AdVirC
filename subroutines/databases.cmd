@@ -19,7 +19,7 @@ if exist temp\return_update_databases_available del /q temp\return_update_databa
 
 if "%key_import%" == "true" (
   set key_import=false
-  copy /y "%location_desktop%\%program_name%Databases v2.0.zip" %update_databases_output%>>%log_debug%
+  copy /y "%location_desktop%\%program_name%Databases-%setting_update_channel%.zip" %update_databases_output%>>%log_debug%
   %loadingUpdate% 25
   goto :unzip
 )

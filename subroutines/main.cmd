@@ -579,6 +579,7 @@ goto :menu_exceptions_defined
 echo.%language_menu_databases_import01%
 echo.%language_menu_databases_import02%
 echo.%language_menu_databases_import03%
+echo.%language_menu_databases_import04% %program_name%Databases-%setting_update_channel%.zip
 echo.
 echo.%language_back%
 echo.
@@ -598,7 +599,7 @@ if "%databases_import_error%" == "1" (
 
 if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" (
-  if not exist "%location_desktop%\%program_name%Databases v2.0.zip" (
+  if not exist "%location_desktop%\%program_name%Databases-%setting_update_channel%.zip" (
     set databases_import_error=1
     goto :menu_databases_import
   )
