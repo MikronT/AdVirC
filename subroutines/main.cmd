@@ -1080,7 +1080,76 @@ if "%command%" == "3" set setting_theme=5d
 if "%command%" == "4" set setting_theme=1f
 if "%command%" == "5" set setting_theme=0e
 if "%command%" == "6" set setting_theme=d0
+if "%command%" == "7" call :menu_theme_custom
 goto :menu_theme
+
+
+
+
+
+
+
+:menu_theme_custom
+%log_append_place% :   [Theme Customization Menu]
+%input_clear%
+%logo%
+echo.%language_menu_theme10%
+echo.%language_menu_theme11%
+echo.%language_menu_theme12%
+echo.%language_menu_theme13%
+echo.%language_menu_theme14%
+echo.%language_menu_theme15%
+echo.%language_menu_theme16%
+echo.%language_menu_theme17%
+echo.%language_menu_theme18%
+echo.%language_menu_theme19%
+echo.%language_menu_theme20%
+echo.%language_menu_theme21%
+echo.%language_menu_theme22%
+echo.%language_menu_theme23%
+echo.%language_menu_theme24%
+echo.%language_menu_theme25%
+echo.
+echo.%language_back%
+echo.
+echo.
+echo.
+%input%
+
+
+
+if "%command%" == "0" ( %input_clear% & exit /b )
+if "%command%" == "1" set theme_background=0
+if "%command%" == "2" set theme_background=1
+if "%command%" == "3" set theme_background=2
+if "%command%" == "4" set theme_background=3
+if "%command%" == "5" set theme_background=4
+if "%command%" == "6" set theme_background=5
+if "%command%" == "7" set theme_background=6
+if "%command%" == "8" set theme_background=7
+if "%command%" == "9" set theme_background=8
+if /i "%command%" == "A" set theme_background=9
+if /i "%command%" == "B" set theme_background=b
+if /i "%command%" == "C" set theme_background=d
+if /i "%command%" == "D" set theme_background=e
+if /i "%command%" == "E" set theme_background=f
+if /i "%command%" == "F" set theme_font=0
+if /i "%command%" == "G" set theme_font=1
+if /i "%command%" == "H" set theme_font=2
+if /i "%command%" == "I" set theme_font=3
+if /i "%command%" == "J" set theme_font=4
+if /i "%command%" == "K" set theme_font=5
+if /i "%command%" == "L" set theme_font=6
+if /i "%command%" == "M" set theme_font=7
+if /i "%command%" == "N" set theme_font=8
+if /i "%command%" == "O" set theme_font=9
+if /i "%command%" == "P" set theme_font=b
+if /i "%command%" == "Q" set theme_font=d
+if /i "%command%" == "R" set theme_font=e
+if /i "%command%" == "S" set theme_font=f
+
+if "%theme_background%" NEQ "" if "%theme_font%" NEQ "" set setting_theme=%theme_background%%theme_font%
+goto :menu_theme_custom
 
 
 

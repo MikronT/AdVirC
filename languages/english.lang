@@ -211,22 +211,22 @@ menu_theme07=  ^(5^) Yellow-Black
 menu_theme08=  ^(6^) Black-Pink
 menu_theme09=  ^(7^) Custom
 
-menu_theme10=  Custom Theme Menu
+menu_theme10=  Theme Customization Menu
 menu_theme11=  Choose the background ^(left^) and font color ^(right^).
-menu_theme12=  ^(1^) Black                                                   ^(1^) Black
-menu_theme13=  ^(2^) Blue                                                    ^(2^) Blue
-menu_theme14=  ^(3^) Green                                                   ^(3^) Green
-menu_theme15=  ^(4^) Cyan                                                    ^(4^) Cyan
-menu_theme16=  ^(5^) Red                                                     ^(5^) Red
-menu_theme17=  ^(6^) Purple                                                  ^(6^) Purple
-menu_theme18=  ^(7^) Yellow                                                  ^(7^) Yellow
-menu_theme19=  ^(8^) Light White                                             ^(8^) Light White
-menu_theme20=  ^(9^) Gray                                                    ^(9^) Gray
-menu_theme21=  ^(A^) Light Blue                                              ^(A^) Light Blue
-menu_theme22=  ^(B^) Light Cyan                                              ^(B^) Light Cyan
-menu_theme23=  ^(C^) Light Purple                                            ^(C^) Light Purple
-menu_theme24=  ^(D^) Light Yellow                                            ^(D^) Light Yellow
-menu_theme25=  ^(E^) White                                                   ^(E^) White
+menu_theme12=  ^(1^) Black                                                   ^(F^) Black
+menu_theme13=  ^(2^) Blue                                                    ^(G^) Blue
+menu_theme14=  ^(3^) Green                                                   ^(H^) Green
+menu_theme15=  ^(4^) Cyan                                                    ^(I^) Cyan
+menu_theme16=  ^(5^) Red                                                     ^(J^) Red
+menu_theme17=  ^(6^) Purple                                                  ^(K^) Purple
+menu_theme18=  ^(7^) Yellow                                                  ^(L^) Yellow
+menu_theme19=  ^(8^) Light White                                             ^(M^) Light White
+menu_theme20=  ^(9^) Gray                                                    ^(N^) Gray
+menu_theme21=  ^(A^) Light Blue                                              ^(O^) Light Blue
+menu_theme22=  ^(B^) Light Cyan                                              ^(P^) Light Cyan
+menu_theme23=  ^(C^) Light Purple                                            ^(Q^) Light Purple
+menu_theme24=  ^(D^) Light Yellow                                            ^(R^) Light Yellow
+menu_theme25=  ^(E^) White                                                   ^(S^) White
 
 
 
