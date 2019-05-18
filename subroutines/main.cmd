@@ -1076,7 +1076,10 @@ echo.
 if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" set setting_theme=0b
 if "%command%" == "2" set setting_theme=b0
-if "%command%" == "3" set setting_theme=76
+if "%command%" == "3" set setting_theme=5d
+if "%command%" == "4" set setting_theme=1f
+if "%command%" == "5" set setting_theme=0e
+if "%command%" == "6" set setting_theme=d0
 goto :menu_theme
 
 
