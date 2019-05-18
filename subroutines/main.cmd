@@ -1240,6 +1240,10 @@ goto :diagnostic
 if "%setting_firstRun%" == "true" set setting_firstRun=false
 call :settings_save
 
+%log_append_line% %log_debug% 1
+echo.Environment Variables:>>%log_debug%
+set>>%log_debug%
+
 %loadingUpdate% stop
 
 if exist %dataDir%\backups\consoleSettings.reg reg import %dataDir%\backups\consoleSettings.reg 2>nul
