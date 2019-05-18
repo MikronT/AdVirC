@@ -17,13 +17,13 @@ set program_name=AdVirC
 set program_version_code=2.0.0.1.2.0
 set program_version_name=%program_name% v2.0 Alpha 2 [MikronT]
 
-set dataDir=data
-
 set method=call subroutines\methods.cmd
 set logo=%method% :logo main 1
 set loadingUpdate=%method% :loadingUpdate
 
 set module_sleep=subroutines\modules\sleep.exe
+
+set dataDir=data
 set key_wait=0
 
 for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
