@@ -1057,6 +1057,11 @@ echo.%language_menu_theme01%
 echo.%language_menu_theme02%
 echo.%language_menu_theme03%
 echo.%language_menu_theme04%
+echo.%language_menu_theme05%
+echo.%language_menu_theme06%
+echo.%language_menu_theme07%
+echo.%language_menu_theme08%
+echo.%language_menu_theme09%
 echo.
 echo.%language_back%
 echo.
