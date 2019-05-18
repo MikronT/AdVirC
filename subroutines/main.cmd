@@ -1242,7 +1242,7 @@ call :settings_save
 
 %loadingUpdate% stop
 
-if exist %dataDir%\backups\consoleSettingsBackup.reg reg import %dataDir%\backups\consoleSettingsBackup.reg 2>nul
+if exist %dataDir%\backups\consoleSettings.reg reg import %dataDir%\backups\consoleSettings.reg 2>nul
 
 %module_sleep% -m 300
 

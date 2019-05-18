@@ -46,7 +46,7 @@ if not exist %dataDir%\backups md %dataDir%\backups>nul 2>nul
 
 
 
-reg export HKCU\Console\%%SystemRoot%%_system32_cmd.exe %dataDir%\backups\consoleSettingsBackup.reg /y >nul
+reg export HKCU\Console\%%SystemRoot%%_system32_cmd.exe %dataDir%\backups\consoleSettings.reg /y >nul
 reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v CodePage         /t REG_DWORD /d 65001      /f >nul
 reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v ColorTable00     /t REG_DWORD /d 0          /f >nul
 reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v FaceName         /t REG_SZ    /d Consolas   /f >nul
