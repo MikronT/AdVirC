@@ -882,14 +882,15 @@ echo.%stringBuilder_string%
 
 echo.%language_menu_settings13%
 echo.%language_menu_settings15%
+echo.%language_menu_settings17%
 
 if "%setting_cleaningRule_experimental%" == "true" (
-  call echo.%language_menu_settings17% %language_menu_setting_enabled%
-) else call echo.%language_menu_settings17% %language_menu_setting_disabled%
-
-if "%setting_cleaningRule_heuristic%" == "true" (
   call echo.%language_menu_settings19% %language_menu_setting_enabled%
 ) else call echo.%language_menu_settings19% %language_menu_setting_disabled%
+
+if "%setting_cleaningRule_heuristic%" == "true" (
+  call echo.%language_menu_settings21% %language_menu_setting_enabled%
+) else call echo.%language_menu_settings21% %language_menu_setting_disabled%
 
 echo.
 echo.%language_back%
@@ -930,39 +931,41 @@ if "%command%" == "5" if "%setting_tipOfTheDay%" == "true" (
   set setting_tipOfTheDay=true
 ) else set setting_tipOfTheDay=true
 
-if "%command%" == "6" call :menu_update_channel
+if "%command%" == "6" call :menu_theme
 
-if "%command%" == "7" if "%setting_update_program_auto%" == "true" (
+if "%command%" == "7" call :menu_update_channel
+
+if "%command%" == "8" if "%setting_update_program_auto%" == "true" (
   set setting_update_program_auto=false
 ) else if "%setting_update_program_auto%" == "false" (
   set setting_update_program_auto=true
 ) else set setting_update_program_auto=false
 
-if "%command%" == "8" if "%setting_update_databases_auto%" == "true" (
+if "%command%" == "9" if "%setting_update_databases_auto%" == "true" (
   set setting_update_databases_auto=false
 ) else if "%setting_update_databases_auto%" == "false" (
   set setting_update_databases_auto=true
 ) else set setting_update_databases_auto=true
 
-if "%command%" == "9" if "%setting_update_program_remind%" == "true" (
+if /i "%command%" == "A" if "%setting_update_program_remind%" == "true" (
   set setting_update_program_remind=false
 ) else if "%setting_update_program_remind%" == "false" (
   set setting_update_program_remind=true
 ) else set setting_update_program_remind=true
 
-if "%command%" == "#" if "%setting_update_databases_remind%" == "true" (
+if /i "%command%" == "B" if "%setting_update_databases_remind%" == "true" (
   set setting_update_databases_remind=false
 ) else if "%setting_update_databases_remind%" == "false" (
   set setting_update_databases_remind=true
 ) else set setting_update_databases_remind=true
 
-if /i "%command%" == "A" if "%setting_cleaningRule_experimental%" == "true" (
+if /i "%command%" == "C" if "%setting_cleaningRule_experimental%" == "true" (
   set setting_cleaningRule_experimental=false
 ) else if "%setting_cleaningRule_experimental%" == "false" (
   set setting_cleaningRule_experimental=true
 ) else set setting_cleaningRule_experimental=false
 
-if /i "%command%" == "B" if "%setting_cleaningRule_heuristic%" == "true" (
+if /i "%command%" == "D" if "%setting_cleaningRule_heuristic%" == "true" (
   set setting_cleaningRule_heuristic=false
 ) else if "%setting_cleaningRule_heuristic%" == "false" (
   set setting_cleaningRule_heuristic=true
