@@ -84,6 +84,9 @@ if exist %cleaning_processes% for /f "delims=" %%i in (%cleaning_processes%) do 
 
 if exist %cleaning_registry% for /f "delims=" %%i in (%cleaning_registry%) do (
   set errorLevel=
+  if "%cleaningRule_experimental%" == "true" (
+    reg export %%i %dataDir%\backups\registry_%currentDate%.reg /y>>%log_debug%
+  )
   reg delete %%i /f>>%log_debug%
   if "!errorLevel!" == "0" (
     echo.    - %%i>>%log%
