@@ -199,7 +199,7 @@ menu_update_channel04=  ^(3^) Нічні ^(всі нові можливості,
 
 menu_dataManagement01=  Меню Керування Даними Програми
 menu_dataManagement02=  ^(1^) Очистити тимчасові файли                                ^(6^) Видалити старі
-menu_dataManagement03=  ^(2^) Очистити логи
+menu_dataManagement03=  ^(2^) Очистити логи                                           ^(7^) Видалити все
 menu_dataManagement04=  ^(3^) Очистити бази даних
 menu_dataManagement05=  ^(4^) Очистити налаштування
 menu_dataManagement06=  ^(5^) Очистити резервні копії
