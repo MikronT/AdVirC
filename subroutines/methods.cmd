@@ -80,7 +80,7 @@ exit /b
 :logo
 @echo off
 chcp 65001>nul
-(color %setting_theme%)
+(color %setting_theme%)>nul
 
 if "%3" == "onlyLogo" ( call :logo_%1%2 & exit /b )
 
