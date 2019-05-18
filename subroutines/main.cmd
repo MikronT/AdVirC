@@ -1106,6 +1106,10 @@ if "%command%" == "2" if exist %dataDir%\logs      rd /s /q %dataDir%\logs
 if "%command%" == "3" if exist %dataDir%\databases rd /s /q %dataDir%\databases
 if "%command%" == "4" if exist %dataDir%\settings  rd /s /q %dataDir%\settings
 if "%command%" == "5" if exist %dataDir%\backups   rd /s /q %dataDir%\backups
+if "%command%" == "6" (
+  for /f "delims=" %%i in ('dir /b %dataDir%\logs') do if "%%i" NEQ "%program_name%_%currentDate%.log" if "%%i" NEQ "%program_name%_%currentDate%_debug.log" del /q "%dataDir%\logs\%%i"
+  for /f "delims=" %%i in ('dir /b %dataDir%\backups') do if "%%i" NEQ "registry_%currentDate%.reg" if "%%i" NEQ "consoleSettings.reg" del /q "%dataDir%\backups\%%i"
+)
 
 call :settings_apply
 goto :menu_dataManagement
