@@ -81,7 +81,7 @@ goto :checkEngine
 
 if exist temp (
   (for /f "delims=" %%i in (temp\counter_loading) do set counter_loading=%%i)>nul 2>nul
-  color 0b
+  (color %setting_theme%)
 ) else color c
 
 if "%counter_loading%" == "stop" exit

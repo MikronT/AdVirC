@@ -1144,6 +1144,7 @@ echo.language=%setting_language%>>%settings%
 echo.logging=%setting_logging%>>%settings%
 echo.logging_advanced=%setting_logging_advanced%>>%settings%
 echo.tipOfTheDay=%setting_tipOfTheDay%>>%settings%
+echo.theme=%setting_theme%>>%settings%
 echo.update_channel=%setting_update_channel%>>%settings%
 echo.update_databases_auto=%setting_update_databases_auto%>>%settings%
 echo.update_databases_remind=%setting_update_databases_remind%>>%settings%
