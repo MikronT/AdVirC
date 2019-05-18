@@ -1071,9 +1071,9 @@ echo.
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-if "%command%" == "1" rem
-if "%command%" == "2" rem
-if "%command%" == "3" rem
+if "%command%" == "1" set setting_theme=0b
+if "%command%" == "2" set setting_theme=b0
+if "%command%" == "3" set setting_theme=76
 goto :menu_theme
 
 
