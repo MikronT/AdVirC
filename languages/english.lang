@@ -200,6 +200,34 @@ menu_update_channel04=  ^(3^) Nightly ^(all new features, not stable^)
 
 
 
+menu_theme01=  Theme Menu
+menu_theme02=  ^(1^) 
+menu_theme03=  
+menu_theme04=  
+menu_theme05=  
+menu_theme06=  
+menu_theme07=  
+menu_theme08=  
+menu_theme09=  
+menu_theme10=  
+menu_theme11=  
+menu_theme12=  
+menu_theme13=  
+menu_theme14=  
+menu_theme15=  
+menu_theme16=  
+menu_theme17=  
+menu_theme18=  
+menu_theme19=  
+menu_theme20=  
+menu_theme21=  
+menu_theme22=  
+menu_theme23=  
+
+
+
+
+
 menu_dataManagement01=  Program Data Management Menu
 menu_dataManagement02=  ^(1^) Clear temporary files                                   ^(6^) Remove old
 menu_dataManagement03=  ^(2^) Clear logs                                              ^(7^) Remove all
