@@ -471,7 +471,7 @@ echo.
 echo.
 echo.
 if "%databases_notExist_error%" == "1" (
-  color 0c
+  color c
   set databases_notExist_error=0
   echo.%language_databases_notExist_error%
   echo.
@@ -584,7 +584,7 @@ echo.
 echo.
 echo.
 if "%databases_import_error%" == "1" (
-  color 0c
+  color c
   set databases_import_error=0
   echo.%language_databases_import_error%
   echo.
@@ -1222,7 +1222,7 @@ for /f "delims=" %%i in (temp\corruptedFilesList.db) do echo.- %%i>>%log_diagnos
 
 %logo%
 %loadingUpdate% reset
-color 0c
+color c
 echo.  ^(^!^) %program_name% Diagnostic: Program Corrupted^!
 echo.  ^(^!^) Reinstall %program_name%^!
 echo.
