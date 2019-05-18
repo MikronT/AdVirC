@@ -34,7 +34,6 @@ set setting_update_databases_remind=true
 set setting_update_program_auto=false
 set setting_update_program_remind=true
 
-set settings=%dataDir%\settings\settings.ini
 set settings_exceptions=%dataDir%\settings\exceptions.db
 
 set cleaning_filesToRemove=temp\filesToRemove.db
