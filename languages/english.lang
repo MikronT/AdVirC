@@ -192,15 +192,6 @@ menu_language01=  Language Selection Menu
 
 
 
-menu_update_channel01=  Update Channel Menu
-menu_update_channel02=  ^(1^) Release ^(stable^)
-menu_update_channel03=  ^(2^) Beta ^(some new features, but before final tests^)
-menu_update_channel04=  ^(3^) Nightly ^(all new features, not stable^)
-
-
-
-
-
 menu_theme01=  Theme Menu
 menu_theme02=  Here you can customize the appearance of the program.
 menu_theme03=  ^(1^) Default
@@ -227,6 +218,15 @@ menu_theme22=  ^(B^) Light Cyan                                              ^(P
 menu_theme23=  ^(C^) Light Purple                                            ^(Q^) Light Purple
 menu_theme24=  ^(D^) Light Yellow                                            ^(R^) Light Yellow
 menu_theme25=  ^(E^) White                                                   ^(S^) White
+
+
+
+
+
+menu_update_channel01=  Update Channel Menu
+menu_update_channel02=  ^(1^) Release ^(stable^)
+menu_update_channel03=  ^(2^) Beta ^(some new features, but before final tests^)
+menu_update_channel04=  ^(3^) Nightly ^(all new features, not stable^)
 
 
 
