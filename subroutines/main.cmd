@@ -1169,6 +1169,9 @@ if "%setting_logging%" == "true" (
   set log=nul
   set log_debug=nul
 )
+
+for /f "delims=" %%i in ('color %setting_theme%') do set setting_theme=0b
+echo.%setting_theme%>temp\theme
 exit /b
 
 

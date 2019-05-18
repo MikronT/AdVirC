@@ -79,6 +79,8 @@ goto :checkEngine
 :checkEngine
 %module_sleep% -m 250
 
+if exist temp\theme for /f "delims=" %%i in (temp\theme) do set setting_theme=%%i
+
 if exist temp (
   (for /f "delims=" %%i in (temp\counter_loading) do set counter_loading=%%i)>nul 2>nul
   color %setting_theme%
