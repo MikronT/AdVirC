@@ -1075,7 +1075,7 @@ if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" rem
 if "%command%" == "2" rem
 if "%command%" == "3" rem
-exit /b
+goto :menu_theme
 
 
 
