@@ -202,30 +202,30 @@ menu_update_channel04=  ^(3^) Nightly ^(all new features, not stable^)
 
 menu_theme01=  Theme Menu
 menu_theme02=  Here you can customize the appearance of the program.
-menu_theme03=  ^(1^) 
-menu_theme04=  ^(2^) 
-menu_theme05=  ^(3^) 
-menu_theme06=  ^(4^) 
-menu_theme07=  ^(5^) 
-menu_theme08=  ^(6^) 
-menu_theme09=  ^(7^) 
+menu_theme03=  ^(1^) Default
+menu_theme04=  ^(2^) Inverted
+menu_theme05=  ^(3^) Negative
+menu_theme06=  ^(4^) XP
+menu_theme07=  ^(5^) Yellow-Black
+menu_theme08=  ^(6^) Black-Pink
+menu_theme09=  ^(7^) Custom
 
-menu_theme10=  
-menu_theme11=  
-menu_theme12=  
-menu_theme13=  
-menu_theme14=  
-menu_theme15=  
-menu_theme16=  
-menu_theme17=  
-menu_theme18=  
-menu_theme19=  
-menu_theme20=  
-menu_theme21=  
-menu_theme22=  
-menu_theme23=  
-menu_theme24=  
-menu_theme25=  
+menu_theme10=  Custom Theme Menu
+menu_theme11=  Choose the background ^(left^) and font color ^(right^).
+menu_theme12=  ^(1^) Black                                                   ^(1^) Black
+menu_theme13=  ^(2^) Blue                                                    ^(2^) Blue
+menu_theme14=  ^(3^) Green                                                   ^(3^) Green
+menu_theme15=  ^(4^) Cyan                                                    ^(4^) Cyan
+menu_theme16=  ^(5^) Red                                                     ^(5^) Red
+menu_theme17=  ^(6^) Purple                                                  ^(6^) Purple
+menu_theme18=  ^(7^) Yellow                                                  ^(7^) Yellow
+menu_theme19=  ^(8^) Light White                                             ^(8^) Light White
+menu_theme20=  ^(9^) Gray                                                    ^(9^) Gray
+menu_theme21=  ^(A^) Light Blue                                              ^(A^) Light Blue
+menu_theme22=  ^(B^) Light Cyan                                              ^(B^) Light Cyan
+menu_theme23=  ^(C^) Light Purple                                            ^(C^) Light Purple
+menu_theme24=  ^(D^) Light Yellow                                            ^(D^) Light Yellow
+menu_theme25=  ^(E^) White                                                   ^(E^) White
 
 
 
