@@ -1117,6 +1117,7 @@ if "%command%" == "7" (
   if exist %dataDir%\backups   rd /s /q %dataDir%\backups
 )
 if "%command%" == "8" start explorer "%cd%\%dataDir%"
+if "%command%" == "9" start explorer "%cd%\temp"
 
 call :settings_apply
 goto :menu_dataManagement
