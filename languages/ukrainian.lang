@@ -167,7 +167,7 @@ menu_settings09=  ^(4^) Налагодження:
 menu_settings10=                          ^(A^) Нагадувати про оновлення %program_name%:
 menu_settings11=  ^(5^) Підказка Дня:
 menu_settings12=                          ^(B^) Нагадувати про оновлення баз даних:
-menu_settings13=  ^(6^) Зовнішній вигляд
+menu_settings13=  ^(6^) Оформлення
 menu_settings15=
 menu_settings17=  Правила
 menu_settings19=  ^(C^) Експериментальні:
@@ -189,7 +189,7 @@ menu_language01=  Меню Вибору Мови
 
 
 
-menu_appearance01=  Меню Зовнішнього Вигляду
+menu_appearance01=  Меню Оформлення
 menu_appearance02=  Тут Ви можете налаштувати зовнішній вигляд програми.
 menu_appearance03=  Тема                                                        Стиль Логотипу
 menu_appearance04=  ^(1^) За замовчуванням                                        ^(8^) За замовчуванням
