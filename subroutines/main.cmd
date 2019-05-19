@@ -1076,12 +1076,12 @@ echo.
 
 
 if "%command%" == "0" ( %input_clear% & exit /b )
-if "%command%" == "1" set setting_theme=0b
-if "%command%" == "2" set setting_theme=b0
-if "%command%" == "3" set setting_theme=5d
-if "%command%" == "4" set setting_theme=1f
-if "%command%" == "5" set setting_theme=0e
-if "%command%" == "6" set setting_theme=d0
+if "%command%" == "1" set setting_appearance_theme=0b
+if "%command%" == "2" set setting_appearance_theme=b0
+if "%command%" == "3" set setting_appearance_theme=5d
+if "%command%" == "4" set setting_appearance_theme=1f
+if "%command%" == "5" set setting_appearance_theme=0e
+if "%command%" == "6" set setting_appearance_theme=d0
 if "%command%" == "7" call :menu_appearance_customTheme
 goto :menu_appearance
 
@@ -1150,7 +1150,7 @@ if /i "%command%" == "Q" set theme_font=d
 if /i "%command%" == "R" set theme_font=e
 if /i "%command%" == "S" set theme_font=f
 
-if "%theme_background%" NEQ "" if "%theme_font%" NEQ "" set setting_theme=%theme_background%%theme_font%
+if "%theme_background%" NEQ "" if "%theme_font%" NEQ "" set setting_appearance_theme=%theme_background%%theme_font%
 goto :menu_appearance_customTheme
 
 
@@ -1221,7 +1221,7 @@ echo.language=%setting_language%>>%settings%
 echo.logging=%setting_logging%>>%settings%
 echo.logging_advanced=%setting_logging_advanced%>>%settings%
 echo.tipOfTheDay=%setting_tipOfTheDay%>>%settings%
-echo.theme=%setting_theme%>>%settings%
+echo.theme=%setting_appearance_theme%>>%settings%
 echo.update_channel=%setting_update_channel%>>%settings%
 echo.update_databases_auto=%setting_update_databases_auto%>>%settings%
 echo.update_databases_remind=%setting_update_databases_remind%>>%settings%
@@ -1247,8 +1247,8 @@ if "%setting_logging%" == "true" (
   set log_debug=nul
 )
 
-for /f "delims=" %%i in ('color %setting_theme%') do set setting_theme=0b
-echo.%setting_theme%>temp\theme
+for /f "delims=" %%i in ('color %setting_appearance_theme%') do set setting_appearance_theme=0b
+echo.%setting_appearance_theme%>temp\theme
 exit /b
 
 
