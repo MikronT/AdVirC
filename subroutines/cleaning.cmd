@@ -23,6 +23,11 @@ for %%i in (%cleaning_filesToRemove% %cleaning_rebootScript% %cleaning_rebootScr
 
 echo.@echo off>%cleaning_rebootScript%
 echo.chcp 65001>>%cleaning_rebootScript%
+
+if not exist %dataDir%\backups\registry_%currentDate%.reg (
+  echo.Windows Registry Editor Version 5.00>%dataDir%\backups\registry_%currentDate%.reg
+  echo.>>%dataDir%\backups\registry_%currentDate%.reg
+)
 %loadingUpdate% 1
 
 
