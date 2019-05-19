@@ -1082,7 +1082,7 @@ if "%command%" == "3" set setting_appearance_theme=5d
 if "%command%" == "4" set setting_appearance_theme=1f
 if "%command%" == "5" set setting_appearance_theme=0e
 if "%command%" == "6" set setting_appearance_theme=d0
-if "%command%" == "7" call :menu_appearance_customTheme
+if "%command%" == "7" call :menu_appearance_custom_theme
 if "%command%" == "8" set setting_appearance_logo=Ш
 if "%command%" == "9" set setting_appearance_logo=■
 if /i "%command%" == "A" set setting_appearance_logo=█
@@ -1096,26 +1096,26 @@ goto :menu_appearance
 
 
 
-:menu_appearance_customTheme
+:menu_appearance_custom_theme
 %log_append_place% :   [Theme Customization Menu]
 %input_clear%
 %logo%
-echo.%language_menu_appearance_customTheme01%
-echo.%language_menu_appearance_customTheme02%
-echo.%language_menu_appearance_customTheme03%
-echo.%language_menu_appearance_customTheme04%
-echo.%language_menu_appearance_customTheme05%
-echo.%language_menu_appearance_customTheme06%
-echo.%language_menu_appearance_customTheme07%
-echo.%language_menu_appearance_customTheme08%
-echo.%language_menu_appearance_customTheme09%
-echo.%language_menu_appearance_customTheme10%
-echo.%language_menu_appearance_customTheme11%
-echo.%language_menu_appearance_customTheme12%
-echo.%language_menu_appearance_customTheme13%
-echo.%language_menu_appearance_customTheme14%
-echo.%language_menu_appearance_customTheme15%
-echo.%language_menu_appearance_customTheme16%
+echo.%language_menu_appearance_custom_theme01%
+echo.%language_menu_appearance_custom_theme02%
+echo.%language_menu_appearance_custom_theme03%
+echo.%language_menu_appearance_custom_theme04%
+echo.%language_menu_appearance_custom_theme05%
+echo.%language_menu_appearance_custom_theme06%
+echo.%language_menu_appearance_custom_theme07%
+echo.%language_menu_appearance_custom_theme08%
+echo.%language_menu_appearance_custom_theme09%
+echo.%language_menu_appearance_custom_theme10%
+echo.%language_menu_appearance_custom_theme11%
+echo.%language_menu_appearance_custom_theme12%
+echo.%language_menu_appearance_custom_theme13%
+echo.%language_menu_appearance_custom_theme14%
+echo.%language_menu_appearance_custom_theme15%
+echo.%language_menu_appearance_custom_theme16%
 echo.
 echo.%language_back%
 echo.
@@ -1156,7 +1156,7 @@ if /i "%command%" == "R" set theme_font=e
 if /i "%command%" == "S" set theme_font=f
 
 if "%theme_background%" NEQ "" if "%theme_font%" NEQ "" set setting_appearance_theme=%theme_background%%theme_font%
-goto :menu_appearance_customTheme
+goto :menu_appearance_custom_theme
 
 
 
