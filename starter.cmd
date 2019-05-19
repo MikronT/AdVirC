@@ -50,7 +50,6 @@ md temp>nul 2>nul
 if "%setting_appearance_logo%"       == "0" set setting_appearance_logo=Ш
 if "%setting_appearance_logo:~1,1%"  NEQ "" set setting_appearance_logo=Ш
 if "%setting_appearance_theme:~2,1%" NEQ "" set setting_appearance_theme=0b
-call subroutines\main.cmd :settings_save
 
 if not exist %dataDir%\backups md %dataDir%\backups>nul 2>nul
 
