@@ -47,6 +47,7 @@ if "%key_wait%" NEQ "0" %module_sleep% %key_wait%
 if exist temp rd /s /q temp
 md temp>nul 2>nul
 
+if "%setting_appearance_logo%"       == "0" set setting_appearance_logo=Ш
 if "%setting_appearance_logo:~1,1%"  NEQ "" set setting_appearance_logo=Ш
 if "%setting_appearance_theme:~2,1%" NEQ "" set setting_appearance_theme=0b
 call subroutines\main.cmd :settings_save
