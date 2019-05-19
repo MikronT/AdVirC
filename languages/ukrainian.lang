@@ -225,6 +225,13 @@ menu_appearance_custom_theme16=  ^(E^) Білий                               
 
 
 
+menu_appearance_custom_logo01=  Меню Налаштування Логотипу
+menu_appearance_custom_logo02=  Напишіть тут символ, який ви хочете бачити в логотипі.
+
+
+
+
+
 menu_update_channel01=  Меню Каналу Оновлення
 menu_update_channel02=  ^(1^) Реліз ^(стабільні^)
 menu_update_channel03=  ^(2^) Бета ^(деякі нові можливості, але до остаточних тестів^)

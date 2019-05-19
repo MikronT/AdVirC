@@ -228,6 +228,13 @@ menu_appearance_custom_theme16=  ^(E^) White                                    
 
 
 
+menu_appearance_custom_logo01=  Logo Customization Menu
+menu_appearance_custom_logo02=  Write here the symbol you want to see in logo.
+
+
+
+
+
 menu_update_channel01=  Update Channel Menu
 menu_update_channel02=  ^(1^) Release ^(stable^)
 menu_update_channel03=  ^(2^) Beta ^(some new features, but before final tests^)
