@@ -1186,6 +1186,7 @@ echo.
 
 
 set setting_appearance_logo=%command%
+%input_clear%
 exit /b
 
 
