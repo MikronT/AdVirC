@@ -1248,7 +1248,7 @@ if "%setting_logging%" == "true" (
 )
 
 for /f "delims=" %%i in ('color %setting_appearance_theme%') do set setting_appearance_theme=0b
-echo.%setting_appearance_theme%>temp\theme
+echo.%setting_appearance_theme%>temp\appearance_theme
 exit /b
 
 

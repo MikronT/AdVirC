@@ -79,9 +79,9 @@ goto :checkEngine
 :checkEngine
 %module_sleep% -m 250
 
-if exist temp\theme (
-  for /f "delims=" %%i in (temp\theme) do set setting_appearance_theme=%%i
-  del /q temp\theme
+if exist temp\appearance_theme (
+  for /f "delims=" %%i in (temp\appearance_theme) do set setting_appearance_theme=%%i
+  del /q temp\appearance_theme
 )
 
 if exist temp (
