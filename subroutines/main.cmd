@@ -1065,6 +1065,7 @@ echo.%language_menu_appearance06%
 echo.%language_menu_appearance07%
 echo.%language_menu_appearance08%
 echo.%language_menu_appearance09%
+echo.%language_menu_appearance10%
 echo.
 echo.%language_back%
 echo.
