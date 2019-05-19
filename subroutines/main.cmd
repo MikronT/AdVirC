@@ -932,7 +932,7 @@ if "%command%" == "5" if "%setting_tipOfTheDay%" == "true" (
   set setting_tipOfTheDay=true
 ) else set setting_tipOfTheDay=true
 
-if "%command%" == "6" call :menu_theme
+if "%command%" == "6" call :menu_appearance
 
 if "%command%" == "7" call :menu_update_channel
 
@@ -1052,19 +1052,19 @@ exit /b
 
 
 
-:menu_theme
-%log_append_place% :   [Theme Menu]
+:menu_appearance
+%log_append_place% :   [Appearance Menu]
 %input_clear%
 %logo%
-echo.%language_menu_theme01%
-echo.%language_menu_theme02%
-echo.%language_menu_theme03%
-echo.%language_menu_theme04%
-echo.%language_menu_theme05%
-echo.%language_menu_theme06%
-echo.%language_menu_theme07%
-echo.%language_menu_theme08%
-echo.%language_menu_theme09%
+echo.%language_menu_appearance01%
+echo.%language_menu_appearance02%
+echo.%language_menu_appearance03%
+echo.%language_menu_appearance04%
+echo.%language_menu_appearance05%
+echo.%language_menu_appearance06%
+echo.%language_menu_appearance07%
+echo.%language_menu_appearance08%
+echo.%language_menu_appearance09%
 echo.
 echo.%language_back%
 echo.
@@ -1081,8 +1081,8 @@ if "%command%" == "3" set setting_theme=5d
 if "%command%" == "4" set setting_theme=1f
 if "%command%" == "5" set setting_theme=0e
 if "%command%" == "6" set setting_theme=d0
-if "%command%" == "7" call :menu_theme_custom
-goto :menu_theme
+if "%command%" == "7" call :menu_appearance_customTheme
+goto :menu_appearance
 
 
 
@@ -1090,26 +1090,26 @@ goto :menu_theme
 
 
 
-:menu_theme_custom
+:menu_appearance_customTheme
 %log_append_place% :   [Theme Customization Menu]
 %input_clear%
 %logo%
-echo.%language_menu_theme10%
-echo.%language_menu_theme11%
-echo.%language_menu_theme12%
-echo.%language_menu_theme13%
-echo.%language_menu_theme14%
-echo.%language_menu_theme15%
-echo.%language_menu_theme16%
-echo.%language_menu_theme17%
-echo.%language_menu_theme18%
-echo.%language_menu_theme19%
-echo.%language_menu_theme20%
-echo.%language_menu_theme21%
-echo.%language_menu_theme22%
-echo.%language_menu_theme23%
-echo.%language_menu_theme24%
-echo.%language_menu_theme25%
+echo.%language_menu_appearance10%
+echo.%language_menu_appearance11%
+echo.%language_menu_appearance12%
+echo.%language_menu_appearance13%
+echo.%language_menu_appearance14%
+echo.%language_menu_appearance15%
+echo.%language_menu_appearance16%
+echo.%language_menu_appearance17%
+echo.%language_menu_appearance18%
+echo.%language_menu_appearance19%
+echo.%language_menu_appearance20%
+echo.%language_menu_appearance21%
+echo.%language_menu_appearance22%
+echo.%language_menu_appearance23%
+echo.%language_menu_appearance24%
+echo.%language_menu_appearance25%
 echo.
 echo.%language_back%
 echo.
@@ -1150,7 +1150,7 @@ if /i "%command%" == "R" set theme_font=e
 if /i "%command%" == "S" set theme_font=f
 
 if "%theme_background%" NEQ "" if "%theme_font%" NEQ "" set setting_theme=%theme_background%%theme_font%
-goto :menu_theme_custom
+goto :menu_appearance_customTheme
 
 
 

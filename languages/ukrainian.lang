@@ -189,32 +189,32 @@ menu_language01=  Меню Вибору Мови
 
 
 
-menu_theme01=  Меню Теми
-menu_theme02=  Тут Ви можете налаштувати зовнішній вигляд програми.
-menu_theme03=  ^(1^) За замовчуванням
-menu_theme04=  ^(2^) Інвертована
-menu_theme05=  ^(3^) Рожеве Життя
-menu_theme06=  ^(4^) Windows XP
-menu_theme07=  ^(5^) Жовто-Чорна
-menu_theme08=  ^(6^) Чорно-Рожева
-menu_theme09=  ^(7^) Настроювана
+menu_appearance01=  Меню Зовнішнього Вигляду
+menu_appearance02=  Тут Ви можете налаштувати зовнішній вигляд програми.
+menu_appearance03=  ^(1^) За замовчуванням
+menu_appearance04=  ^(2^) Інвертована
+menu_appearance05=  ^(3^) Рожеве Життя
+menu_appearance06=  ^(4^) Windows XP
+menu_appearance07=  ^(5^) Жовто-Чорна
+menu_appearance08=  ^(6^) Чорно-Рожева
+menu_appearance09=  ^(7^) Настроювана
 
-menu_theme10=  Меню Налаштування Теми
-menu_theme11=  Виберіть фон ^(зліва^) і колір шрифту ^(справа^).
-menu_theme12=  ^(1^) Чорний                                                  ^(F^) Чорний
-menu_theme13=  ^(2^) Синій                                                   ^(G^) Синій
-menu_theme14=  ^(3^) Зелений                                                 ^(H^) Зелений
-menu_theme15=  ^(4^) Голубий                                                 ^(I^) Голубий
-menu_theme16=  ^(5^) Червоний                                                ^(J^) Червоний
-menu_theme17=  ^(6^) Фіолетовий                                              ^(K^) Фіолетовий
-menu_theme18=  ^(7^) Жовтий                                                  ^(L^) Жовтий
-menu_theme19=  ^(8^) Світло сірий                                            ^(M^) Світло сірий
-menu_theme20=  ^(9^) Сірий                                                   ^(N^) Сірий
-menu_theme21=  ^(A^) Світло синій                                            ^(O^) Світло синій
-menu_theme22=  ^(B^) Світло голубий                                          ^(P^) Світло голубий
-menu_theme23=  ^(C^) Світло фіолетовий                                       ^(Q^) Світло фіолетовий
-menu_theme24=  ^(D^) Світло жовтий                                           ^(R^) Світло жовтий
-menu_theme25=  ^(E^) Білий                                                   ^(S^) Білий
+menu_appearance10=  Меню Налаштування Теми
+menu_appearance11=  Виберіть фон ^(зліва^) і колір шрифту ^(справа^).
+menu_appearance12=  ^(1^) Чорний                                                  ^(F^) Чорний
+menu_appearance13=  ^(2^) Синій                                                   ^(G^) Синій
+menu_appearance14=  ^(3^) Зелений                                                 ^(H^) Зелений
+menu_appearance15=  ^(4^) Голубий                                                 ^(I^) Голубий
+menu_appearance16=  ^(5^) Червоний                                                ^(J^) Червоний
+menu_appearance17=  ^(6^) Фіолетовий                                              ^(K^) Фіолетовий
+menu_appearance18=  ^(7^) Жовтий                                                  ^(L^) Жовтий
+menu_appearance19=  ^(8^) Світло сірий                                            ^(M^) Світло сірий
+menu_appearance20=  ^(9^) Сірий                                                   ^(N^) Сірий
+menu_appearance21=  ^(A^) Світло синій                                            ^(O^) Світло синій
+menu_appearance22=  ^(B^) Світло голубий                                          ^(P^) Світло голубий
+menu_appearance23=  ^(C^) Світло фіолетовий                                       ^(Q^) Світло фіолетовий
+menu_appearance24=  ^(D^) Світло жовтий                                           ^(R^) Світло жовтий
+menu_appearance25=  ^(E^) Білий                                                   ^(S^) Білий
 
 
 

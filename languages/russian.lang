@@ -189,32 +189,32 @@ menu_language01=  Меню Выбора Языка
 
 
 
-menu_theme01=  Меню Темы
-menu_theme02=  Здесь Вы можете настроить внешний вид программы.
-menu_theme03=  ^(1^) По умолчанию
-menu_theme04=  ^(2^) Инвертированная
-menu_theme05=  ^(3^) Розовая Жизнь
-menu_theme06=  ^(4^) Windows XP
-menu_theme07=  ^(5^) Желто-Черная
-menu_theme08=  ^(6^) Черно-Розовая
-menu_theme09=  ^(7^) Настраиваемая
+menu_appearance01=  Меню Внешнего Вида
+menu_appearance02=  Здесь Вы можете настроить внешний вид программы.
+menu_appearance03=  ^(1^) По умолчанию
+menu_appearance04=  ^(2^) Инвертированная
+menu_appearance05=  ^(3^) Розовая Жизнь
+menu_appearance06=  ^(4^) Windows XP
+menu_appearance07=  ^(5^) Желто-Черная
+menu_appearance08=  ^(6^) Черно-Розовая
+menu_appearance09=  ^(7^) Настраиваемая
 
-menu_theme10=  Меню Настройки Темы
-menu_theme11=  Выберите фон ^(слева^) и цвет шрифта ^(справа^).
-menu_theme12=  ^(1^) Чёрный                                                  ^(F^) Чёрный
-menu_theme13=  ^(2^) Синий                                                   ^(G^) Синий
-menu_theme14=  ^(3^) Зелёный                                                 ^(H^) Зелёный
-menu_theme15=  ^(4^) Голубой                                                 ^(I^) Голубой
-menu_theme16=  ^(5^) Красный                                                 ^(J^) Красный
-menu_theme17=  ^(6^) Фиолетовый                                              ^(K^) Фиолетовый
-menu_theme18=  ^(7^) Желтый                                                  ^(L^) Желтый
-menu_theme19=  ^(8^) Светло серый                                            ^(M^) Светло серый
-menu_theme20=  ^(9^) Серый                                                   ^(N^) Серый
-menu_theme21=  ^(A^) Светло синий                                            ^(O^) Светло синий
-menu_theme22=  ^(B^) Светло голубой                                          ^(P^) Светло голубой
-menu_theme23=  ^(C^) Светло фиолетовый                                       ^(Q^) Светло фиолетовый
-menu_theme24=  ^(D^) Светло желтый                                           ^(R^) Светло желтый
-menu_theme25=  ^(E^) Белый                                                   ^(S^) Белый
+menu_appearance10=  Меню Настройки Темы
+menu_appearance11=  Выберите фон ^(слева^) и цвет шрифта ^(справа^).
+menu_appearance12=  ^(1^) Чёрный                                                  ^(F^) Чёрный
+menu_appearance13=  ^(2^) Синий                                                   ^(G^) Синий
+menu_appearance14=  ^(3^) Зелёный                                                 ^(H^) Зелёный
+menu_appearance15=  ^(4^) Голубой                                                 ^(I^) Голубой
+menu_appearance16=  ^(5^) Красный                                                 ^(J^) Красный
+menu_appearance17=  ^(6^) Фиолетовый                                              ^(K^) Фиолетовый
+menu_appearance18=  ^(7^) Желтый                                                  ^(L^) Желтый
+menu_appearance19=  ^(8^) Светло серый                                            ^(M^) Светло серый
+menu_appearance20=  ^(9^) Серый                                                   ^(N^) Серый
+menu_appearance21=  ^(A^) Светло синий                                            ^(O^) Светло синий
+menu_appearance22=  ^(B^) Светло голубой                                          ^(P^) Светло голубой
+menu_appearance23=  ^(C^) Светло фиолетовый                                       ^(Q^) Светло фиолетовый
+menu_appearance24=  ^(D^) Светло желтый                                           ^(R^) Светло желтый
+menu_appearance25=  ^(E^) Белый                                                   ^(S^) Белый
 
 
 
