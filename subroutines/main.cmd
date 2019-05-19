@@ -1282,9 +1282,8 @@ if "%setting_logging%" == "true" (
   set log_debug=nul
 )
 
-if "%setting_appearance_logo:~1,1%" NEQ "" set setting_appearance_logo=Ш
-
-for /f "delims=" %%i in ('color %setting_appearance_theme%') do set setting_appearance_theme=0b
+if "%setting_appearance_logo:~1,1%"  NEQ "" set setting_appearance_logo=Ш
+if "%setting_appearance_theme:~2,1%" NEQ "" set setting_appearance_theme=0b
 echo.%setting_appearance_theme%>temp\appearance_theme
 exit /b
 
