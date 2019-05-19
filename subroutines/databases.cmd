@@ -37,8 +37,7 @@ setlocal EnableDelayedExpansion
 %module_wget% "!update_databases_url_%setting_update_channel%!" --output-document=%update_databases_output%
 endlocal
 
-for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir %update_databases_output%') do if "%%i" == "1" set databases_lenghtReturn=%%j
-if "%databases_lenghtReturn%" == "0" ( call :error %language_module_wget_error% & exit /b )
+for %%i in (%update_databases_output%) do if "%%~zi" == "0" ( call :error %language_module_wget_error% & exit /b 4417 )
 
 echo.%language_databases_downloading_success%
 echo.
