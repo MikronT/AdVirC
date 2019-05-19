@@ -192,13 +192,13 @@ menu_language01=  Меню Вибору Мови
 menu_appearance01=  Меню Зовнішнього Вигляду
 menu_appearance02=  Тут Ви можете налаштувати зовнішній вигляд програми.
 menu_appearance03=  Тема                                                        Стиль Логотипу
-menu_appearance04=  ^(1^) За замовчуванням                                        ^(8^) ШШШШШШ
+menu_appearance04=  ^(1^) За замовчуванням                                        ^(8^) За замовчуванням
 menu_appearance05=  ^(2^) Інвертована                                             ^(9^) ■■■■■■
-menu_appearance06=  ^(3^) Рожеве Життя                                            ^(A^) ██████
+menu_appearance06=  ^(3^) Рожеве Життя                                            ^(A^) ♥♥♥♥♥♥
 menu_appearance07=  ^(4^) Windows XP                                              ^(B^) □□□□□□
 menu_appearance08=  ^(5^) Жовто-Чорна                                             ^(C^) ●●●●●●
-menu_appearance09=  ^(6^) Чорно-Рожева
-menu_appearance10=  ^(7^) Настроювана
+menu_appearance09=  ^(6^) Чорно-Рожева                                            ^(D^) ╋╋╋╋╋╋
+menu_appearance10=  ^(7^) Настроювана                                             ^(E^) Настроюваний
 
 
 
