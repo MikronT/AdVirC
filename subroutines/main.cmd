@@ -1058,6 +1058,7 @@ exit /b
 %logo%
 echo.%language_menu_appearance01%
 echo.%language_menu_appearance02%
+echo.
 echo.%language_menu_appearance03%
 echo.%language_menu_appearance04%
 echo.%language_menu_appearance05%
