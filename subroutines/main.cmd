@@ -508,6 +508,7 @@ echo.
 if "!errorLevel!" == "4417" (
   set /a counter_viewPager_page-=10
   set /a counter_viewPager_page_next-=10
+  set errorLevel=
   goto :menu_exceptions_new_selection
 )
 
@@ -545,6 +546,7 @@ if exist %settings_exceptions% (
   if "!errorLevel!" == "4417" (
     set /a counter_viewPager_page-=10
     set /a counter_viewPager_page_next-=10
+    set errorLevel=
     goto :menu_exceptions_defined
   )
 ) else echo.%language_viewPager_nothing%
@@ -1298,7 +1300,7 @@ exit /b
 
 :databases_update
 call subroutines\databases.cmd %*
-if "%errorLevel%" == "4417" exit /b
+if "%errorLevel%" == "4417" ( set errorLevel= & exit /b )
 
 for /f "delims="             %%i in (%dataDir%\databases\original\databases.version) do set databases_version_code=%%i
 for /f "tokens=1-8 delims=." %%i in (%dataDir%\databases\original\databases.version) do (
