@@ -23,7 +23,7 @@ set loadingUpdate=%method% :loadingUpdate
 
 set module_sleep=subroutines\modules\sleep.exe
 
-set setting_theme=0b
+set setting_appearance_theme=0b
 
 set dataDir=data
 set settings=%dataDir%\settings\settings.ini
@@ -46,7 +46,7 @@ if "%key_wait%" NEQ "0" %module_sleep% %key_wait%
 if exist temp rd /s /q temp
 md temp>nul 2>nul
 
-for /f "delims=" %%i in ('color %setting_theme%') do set setting_theme=0b
+for /f "delims=" %%i in ('color %setting_appearance_theme%') do set setting_appearance_theme=0b
 
 if not exist %dataDir%\backups md %dataDir%\backups>nul 2>nul
 
