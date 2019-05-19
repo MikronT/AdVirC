@@ -116,117 +116,12 @@ exit /b
 
 
 
-:logo_main1
-echo.                        ШШ              ШШШШ  ШШШШ               ШШШШШШ 
-echo.   ШШ                  ШШШШ     ШШШШШ    ШШ    ШШ ШШШШ ШШШШ     ШШ    ШШ
-echo.     ШШ               ШШ  ШШ    ШШ  ШШ    ШШ  ШШ   ШШ  ШШ  ШШ   ШШ      
-echo.       ШШ            ШШШШШШШШ   ШШ  ШШ     ШШШШ    ШШ  ШШ  ШШ   ШШ      
-echo.     ШШ             ШШШ    ШШШ  ШШ  ШШ      ШШ     ШШ  ШШШШШ    ШШ    ШШ
-echo.   ШШ     ¬¬¬¬¬¬¬  ШШШШШ  ШШШШШ ШШШШ       ШШШШ   ШШШШ ШШ  ШШ    ШШШШШШ 
-exit /b
-
-
-
-:logo_main2
-echo.                        ■■              ■■■■  ■■■■               ■■■■■■ 
-echo.   ■■                  ■■■■     ■■■■■    ■■    ■■ ■■■■ ■■■■     ■■    ■■
-echo.     ■■               ■■  ■■    ■■  ■■    ■■  ■■   ■■  ■■  ■■   ■■      
-echo.       ■■            ■■■■■■■■   ■■  ■■     ■■■■    ■■  ■■  ■■   ■■      
-echo.     ■■             ■■■    ■■■  ■■  ■■      ■■     ■■  ■■■■■    ■■    ■■
-echo.   ■■     ¬¬¬¬¬¬¬  ■■■■■  ■■■■■ ■■■■       ■■■■   ■■■■ ■■  ■■    ■■■■■■ 
-exit /b
-
-
-
-:logo_main3
-echo.                        ██              ████  ████               ██████ 
-echo.   ██                  ████     █████    ██    ██ ████ ████     ██    ██
-echo.     ██               ██  ██    ██  ██    ██  ██   ██  ██  ██   ██      
-echo.       ██            ████████   ██  ██     ████    ██  ██  ██   ██      
-echo.     ██             ███    ███  ██  ██      ██     ██  █████    ██    ██
-echo.   ██     ¬¬¬¬¬¬¬  █████  █████ ████       ████   ████ ██  ██    ██████ 
-exit /b
-
-
-
-:logo_main4
-echo.                        □□              □□□□  □□□□               □□□□□□ 
-echo.   □□                  □□□□     □□□□□    □□    □□ □□□□ □□□□     □□    □□
-echo.     □□               □□  □□    □□  □□    □□  □□   □□  □□  □□   □□      
-echo.       □□            □□□□□□□□   □□  □□     □□□□    □□  □□  □□   □□      
-echo.     □□             □□□    □□□  □□  □□      □□     □□  □□□□□    □□    □□
-echo.   □□     ¬¬¬¬¬¬¬  □□□□□  □□□□□ □□□□       □□□□   □□□□ □□  □□    □□□□□□ 
-exit /b
-
-
-
-:logo_main5
-echo.                        ●●              ●●●●  ●●●●               ●●●●●● 
-echo.   ●●                  ●●●●     ●●●●●    ●●    ●● ●●●● ●●●●     ●●    ●●
-echo.     ●●               ●●  ●●    ●●  ●●    ●●  ●●   ●●  ●●  ●●   ●●      
-echo.       ●●            ●●●●●●●●   ●●  ●●     ●●●●    ●●  ●●  ●●   ●●      
-echo.     ●●             ●●●    ●●●  ●●  ●●      ●●     ●●  ●●●●●    ●●    ●●
-echo.   ●●     ¬¬¬¬¬¬¬  ●●●●●  ●●●●● ●●●●       ●●●●   ●●●● ●●  ●●    ●●●●●● 
-exit /b
-
-
-
 :logo_log
 echo.   %setting_appearance_logo%%setting_appearance_logo%         %setting_appearance_logo%%setting_appearance_logo% %setting_appearance_logo%%setting_appearance_logo%      %setting_appearance_logo%%setting_appearance_logo% %setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%   %setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%      %setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%   %setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo% 
 echo.     %setting_appearance_logo%%setting_appearance_logo%      %setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo% %setting_appearance_logo%%setting_appearance_logo%    %setting_appearance_logo%%setting_appearance_logo% %setting_appearance_logo%%setting_appearance_logo%  %setting_appearance_logo%%setting_appearance_logo%    %setting_appearance_logo%%setting_appearance_logo%      %setting_appearance_logo%%setting_appearance_logo%    %setting_appearance_logo%%setting_appearance_logo% %setting_appearance_logo%%setting_appearance_logo%      
 echo.       %setting_appearance_logo%%setting_appearance_logo%   %setting_appearance_logo%%setting_appearance_logo%  %setting_appearance_logo%%setting_appearance_logo% %setting_appearance_logo%%setting_appearance_logo%  %setting_appearance_logo%%setting_appearance_logo% %setting_appearance_logo%%setting_appearance_logo%         %setting_appearance_logo%%setting_appearance_logo%      %setting_appearance_logo%%setting_appearance_logo%    %setting_appearance_logo%%setting_appearance_logo% %setting_appearance_logo%%setting_appearance_logo%  %setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%
 echo.     %setting_appearance_logo%%setting_appearance_logo%    %setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo% %setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo% %setting_appearance_logo%%setting_appearance_logo%  %setting_appearance_logo%%setting_appearance_logo%      %setting_appearance_logo%%setting_appearance_logo%    %setting_appearance_logo% %setting_appearance_logo%%setting_appearance_logo%    %setting_appearance_logo%%setting_appearance_logo% %setting_appearance_logo%%setting_appearance_logo%    %setting_appearance_logo%%setting_appearance_logo%
 echo.   %setting_appearance_logo%%setting_appearance_logo%     %setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%    %setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo% %setting_appearance_logo%%setting_appearance_logo% %setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%       %setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%  %setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%   %setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo%%setting_appearance_logo% 
-exit /b
-
-
-
-:logo_log1
-echo.   ШШ         ШШ ШШ      ШШ ШШШШШ   ШШШШ      ШШШШШШ   ШШШШШШ 
-echo.     ШШ      ШШШШ ШШ    ШШ ШШ  ШШ    ШШ      ШШ    ШШ ШШ      
-echo.       ШШ   ШШ  ШШ ШШ  ШШ ШШ         ШШ      ШШ    ШШ ШШ  ШШШШ
-echo.     ШШ    ШШШШШШШШ ШШШШ ШШ  ШШ      ШШ    Ш ШШ    ШШ ШШ    ШШ
-echo.   ШШ     ШШШ    ШШШ ШШ ШШШШШ       ШШШШШШШШ  ШШШШШШ   ШШШШШШ 
-exit /b
-
-
-
-:logo_log2
-echo.   ■■         ■■ ■■      ■■  ■■■■■   ■■■■      ■■■■■■   ■■■■■■ 
-echo.     ■■      ■■■■ ■■    ■■ ■■   ■■    ■■      ■■    ■■ ■■      
-echo.       ■■   ■■  ■■ ■■  ■■ ■■          ■■      ■■    ■■ ■■  ■■■■
-echo.     ■■    ■■■■■■■■ ■■■■ ■■  ■■       ■■    ■ ■■    ■■ ■■    ■■
-echo.   ■■     ■■■    ■■■ ■■ ■■■■■        ■■■■■■■■  ■■■■■■   ■■■■■■ 
-exit /b
-
-
-
-:logo_log3
-echo.   ██         ██ ██      ██ █████   ████      ██████   ██████ 
-echo.     ██      ████ ██    ██ ██  ██    ██      ██    ██ ██      
-echo.       ██   ██  ██ ██  ██ ██         ██      ██    ██ ██  ████
-echo.     ██    ████████ ████ ██  ██      ██    █ ██    ██ ██    ██
-echo.   ██     ███    ███ ██ █████       ████████  ██████   ██████ 
-exit /b
-
-
-
-:logo_log4
-echo.   □□         □□ □□      □□ □□□□□   □□□□      □□□□□□   □□□□□□ 
-echo.     □□      □□□□ □□    □□ □□  □□    □□      □□    □□ □□      
-echo.       □□   □□  □□ □□  □□ □□         □□      □□    □□ □□  □□□□
-echo.     □□    □□□□□□□□ □□□□ □□  □□      □□    □ □□    □□ □□    □□
-echo.   □□     □□□    □□□ □□ □□□□□       □□□□□□□□  □□□□□□   □□□□□□ 
-exit /b
-
-
-
-:logo_main5
-echo.   ●●         ●● ●●      ●● ●●●●●   ●●●●      ●●●●●●   ●●●●●● 
-echo.     ●●      ●●●● ●●    ●● ●●  ●●    ●●      ●●    ●● ●●      
-echo.       ●●   ●●  ●● ●●  ●● ●●         ●●      ●●    ●● ●●  ●●●●
-echo.     ●●    ●●●●●●●● ●●●● ●●  ●●      ●●    ● ●●    ●● ●●    ●●
-echo.   ●●     ●●●    ●●● ●● ●●●●●       ●●●●●●●●  ●●●●●●   ●●●●●● 
 exit /b
 
 
