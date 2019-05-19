@@ -18,7 +18,7 @@ set program_version_code=2.0.0.1.2.0
 set program_version_name=%program_name% v2.0 Alpha 2 [MikronT]
 
 set method=call subroutines\methods.cmd
-set logo=%method% :logo main 1
+set logo=%method% :logo main
 set loadingUpdate=%method% :loadingUpdate
 
 set module_sleep=subroutines\modules\sleep.exe

@@ -8,7 +8,7 @@ set input=%method% :input
 set log_append_delimiter=%method% :log_append_delimiter
 set log_append_line=%method% :log_append_line
 set log_append_place=%method% :log_append_place
-set logo_log=%method% :logo log 1
+set logo_log=%method% :logo log
 set viewPager=%method% :viewPager
 
 set input_clear=set command=
