@@ -23,6 +23,7 @@ set loadingUpdate=%method% :loadingUpdate
 
 set module_sleep=subroutines\modules\sleep.exe
 
+set setting_appearance_logo=Ш
 set setting_appearance_theme=0b
 
 set dataDir=data

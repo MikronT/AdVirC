@@ -1213,6 +1213,7 @@ goto :menu_dataManagement
 if not exist %dataDir%\settings md %dataDir%\settings>nul 2>nul
 
 echo.# %program_name% Settings #>%settings%
+echo.appearance_logo=%setting_appearance_logo%>>%settings%
 echo.appearance_theme=%setting_appearance_theme%>>%settings%
 echo.cleaningRule_experimental=%setting_cleaningRule_experimental%>>%settings%
 echo.cleaningRule_heuristic=%setting_cleaningRule_heuristic%>>%settings%
