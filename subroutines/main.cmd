@@ -1177,8 +1177,6 @@ goto :menu_appearance_custom_theme
 echo.%language_menu_appearance_custom_logo01%
 echo.%language_menu_appearance_custom_logo02%
 echo.
-echo.%language_back%
-echo.
 echo.
 echo.
 %input%
