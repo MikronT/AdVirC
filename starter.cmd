@@ -47,6 +47,7 @@ if "%key_wait%" NEQ "0" %module_sleep% %key_wait%
 if exist temp rd /s /q temp
 md temp>nul 2>nul
 
+if "%setting_appearance_logo:~1,1%" NEQ "" set setting_appearance_logo=Ш
 for /f "delims=" %%i in ('color %setting_appearance_theme%') do set setting_appearance_theme=0b
 
 if not exist %dataDir%\backups md %dataDir%\backups>nul 2>nul
