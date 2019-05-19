@@ -1213,6 +1213,7 @@ goto :menu_dataManagement
 if not exist %dataDir%\settings md %dataDir%\settings>nul 2>nul
 
 echo.# %program_name% Settings #>%settings%
+echo.appearance_theme=%setting_appearance_theme%>>%settings%
 echo.cleaningRule_experimental=%setting_cleaningRule_experimental%>>%settings%
 echo.cleaningRule_heuristic=%setting_cleaningRule_heuristic%>>%settings%
 echo.debug=%setting_debug%>>%settings%
@@ -1221,7 +1222,6 @@ echo.language=%setting_language%>>%settings%
 echo.logging=%setting_logging%>>%settings%
 echo.logging_advanced=%setting_logging_advanced%>>%settings%
 echo.tipOfTheDay=%setting_tipOfTheDay%>>%settings%
-echo.theme=%setting_appearance_theme%>>%settings%
 echo.update_channel=%setting_update_channel%>>%settings%
 echo.update_databases_auto=%setting_update_databases_auto%>>%settings%
 echo.update_databases_remind=%setting_update_databases_remind%>>%settings%
