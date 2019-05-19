@@ -199,22 +199,26 @@ menu_appearance07=  ^(5^) Желто-Черная
 menu_appearance08=  ^(6^) Черно-Розовая
 menu_appearance09=  ^(7^) Настраиваемая
 
-menu_appearance10=  Меню Настройки Темы
-menu_appearance11=  Выберите фон ^(слева^) и цвет шрифта ^(справа^).
-menu_appearance12=  ^(1^) Чёрный                                                  ^(F^) Чёрный
-menu_appearance13=  ^(2^) Синий                                                   ^(G^) Синий
-menu_appearance14=  ^(3^) Зелёный                                                 ^(H^) Зелёный
-menu_appearance15=  ^(4^) Голубой                                                 ^(I^) Голубой
-menu_appearance16=  ^(5^) Красный                                                 ^(J^) Красный
-menu_appearance17=  ^(6^) Фиолетовый                                              ^(K^) Фиолетовый
-menu_appearance18=  ^(7^) Желтый                                                  ^(L^) Желтый
-menu_appearance19=  ^(8^) Светло серый                                            ^(M^) Светло серый
-menu_appearance20=  ^(9^) Серый                                                   ^(N^) Серый
-menu_appearance21=  ^(A^) Светло синий                                            ^(O^) Светло синий
-menu_appearance22=  ^(B^) Светло голубой                                          ^(P^) Светло голубой
-menu_appearance23=  ^(C^) Светло фиолетовый                                       ^(Q^) Светло фиолетовый
-menu_appearance24=  ^(D^) Светло желтый                                           ^(R^) Светло желтый
-menu_appearance25=  ^(E^) Белый                                                   ^(S^) Белый
+
+
+
+
+menu_appearance_customTheme01=  Меню Настройки Темы
+menu_appearance_customTheme02=  Выберите фон ^(слева^) и цвет шрифта ^(справа^).
+menu_appearance_customTheme03=  ^(1^) Чёрный                                                  ^(F^) Чёрный
+menu_appearance_customTheme04=  ^(2^) Синий                                                   ^(G^) Синий
+menu_appearance_customTheme05=  ^(3^) Зелёный                                                 ^(H^) Зелёный
+menu_appearance_customTheme06=  ^(4^) Голубой                                                 ^(I^) Голубой
+menu_appearance_customTheme07=  ^(5^) Красный                                                 ^(J^) Красный
+menu_appearance_customTheme08=  ^(6^) Фиолетовый                                              ^(K^) Фиолетовый
+menu_appearance_customTheme09=  ^(7^) Желтый                                                  ^(L^) Желтый
+menu_appearance_customTheme10=  ^(8^) Светло серый                                            ^(M^) Светло серый
+menu_appearance_customTheme11=  ^(9^) Серый                                                   ^(N^) Серый
+menu_appearance_customTheme12=  ^(A^) Светло синий                                            ^(O^) Светло синий
+menu_appearance_customTheme13=  ^(B^) Светло голубой                                          ^(P^) Светло голубой
+menu_appearance_customTheme14=  ^(C^) Светло фиолетовый                                       ^(Q^) Светло фиолетовый
+menu_appearance_customTheme15=  ^(D^) Светло желтый                                           ^(R^) Светло желтый
+menu_appearance_customTheme16=  ^(E^) Белый                                                   ^(S^) Белый
 
 
 

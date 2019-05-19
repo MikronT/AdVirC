@@ -199,22 +199,26 @@ menu_appearance07=  ^(5^) Жовто-Чорна
 menu_appearance08=  ^(6^) Чорно-Рожева
 menu_appearance09=  ^(7^) Настроювана
 
-menu_appearance10=  Меню Налаштування Теми
-menu_appearance11=  Виберіть фон ^(зліва^) і колір шрифту ^(справа^).
-menu_appearance12=  ^(1^) Чорний                                                  ^(F^) Чорний
-menu_appearance13=  ^(2^) Синій                                                   ^(G^) Синій
-menu_appearance14=  ^(3^) Зелений                                                 ^(H^) Зелений
-menu_appearance15=  ^(4^) Голубий                                                 ^(I^) Голубий
-menu_appearance16=  ^(5^) Червоний                                                ^(J^) Червоний
-menu_appearance17=  ^(6^) Фіолетовий                                              ^(K^) Фіолетовий
-menu_appearance18=  ^(7^) Жовтий                                                  ^(L^) Жовтий
-menu_appearance19=  ^(8^) Світло сірий                                            ^(M^) Світло сірий
-menu_appearance20=  ^(9^) Сірий                                                   ^(N^) Сірий
-menu_appearance21=  ^(A^) Світло синій                                            ^(O^) Світло синій
-menu_appearance22=  ^(B^) Світло голубий                                          ^(P^) Світло голубий
-menu_appearance23=  ^(C^) Світло фіолетовий                                       ^(Q^) Світло фіолетовий
-menu_appearance24=  ^(D^) Світло жовтий                                           ^(R^) Світло жовтий
-menu_appearance25=  ^(E^) Білий                                                   ^(S^) Білий
+
+
+
+
+menu_appearance_customTheme01=  Меню Налаштування Теми
+menu_appearance_customTheme02=  Виберіть фон ^(зліва^) і колір шрифту ^(справа^).
+menu_appearance_customTheme03=  ^(1^) Чорний                                                  ^(F^) Чорний
+menu_appearance_customTheme04=  ^(2^) Синій                                                   ^(G^) Синій
+menu_appearance_customTheme05=  ^(3^) Зелений                                                 ^(H^) Зелений
+menu_appearance_customTheme06=  ^(4^) Голубий                                                 ^(I^) Голубий
+menu_appearance_customTheme07=  ^(5^) Червоний                                                ^(J^) Червоний
+menu_appearance_customTheme08=  ^(6^) Фіолетовий                                              ^(K^) Фіолетовий
+menu_appearance_customTheme09=  ^(7^) Жовтий                                                  ^(L^) Жовтий
+menu_appearance_customTheme10=  ^(8^) Світло сірий                                            ^(M^) Світло сірий
+menu_appearance_customTheme11=  ^(9^) Сірий                                                   ^(N^) Сірий
+menu_appearance_customTheme12=  ^(A^) Світло синій                                            ^(O^) Світло синій
+menu_appearance_customTheme13=  ^(B^) Світло голубий                                          ^(P^) Світло голубий
+menu_appearance_customTheme14=  ^(C^) Світло фіолетовий                                       ^(Q^) Світло фіолетовий
+menu_appearance_customTheme15=  ^(D^) Світло жовтий                                           ^(R^) Світло жовтий
+menu_appearance_customTheme16=  ^(E^) Білий                                                   ^(S^) Білий
 
 
 

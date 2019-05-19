@@ -202,22 +202,26 @@ menu_appearance07=  ^(5^) Yellow-Black
 menu_appearance08=  ^(6^) Black-Pink
 menu_appearance09=  ^(7^) Custom
 
-menu_appearance10=  Theme Customization Menu
-menu_appearance11=  Choose the background ^(left^) and font color ^(right^).
-menu_appearance12=  ^(1^) Black                                                   ^(F^) Black
-menu_appearance13=  ^(2^) Blue                                                    ^(G^) Blue
-menu_appearance14=  ^(3^) Green                                                   ^(H^) Green
-menu_appearance15=  ^(4^) Cyan                                                    ^(I^) Cyan
-menu_appearance16=  ^(5^) Red                                                     ^(J^) Red
-menu_appearance17=  ^(6^) Purple                                                  ^(K^) Purple
-menu_appearance18=  ^(7^) Yellow                                                  ^(L^) Yellow
-menu_appearance19=  ^(8^) Light white                                             ^(M^) Light white
-menu_appearance20=  ^(9^) Gray                                                    ^(N^) Gray
-menu_appearance21=  ^(A^) Light blue                                              ^(O^) Light blue
-menu_appearance22=  ^(B^) Light cyan                                              ^(P^) Light cyan
-menu_appearance23=  ^(C^) Light purple                                            ^(Q^) Light purple
-menu_appearance24=  ^(D^) Light yellow                                            ^(R^) Light yellow
-menu_appearance25=  ^(E^) White                                                   ^(S^) White
+
+
+
+
+menu_appearance_customTheme01=  Theme Customization Menu
+menu_appearance_customTheme02=  Choose the background ^(left^) and font color ^(right^).
+menu_appearance_customTheme03=  ^(1^) Black                                                   ^(F^) Black
+menu_appearance_customTheme04=  ^(2^) Blue                                                    ^(G^) Blue
+menu_appearance_customTheme05=  ^(3^) Green                                                   ^(H^) Green
+menu_appearance_customTheme06=  ^(4^) Cyan                                                    ^(I^) Cyan
+menu_appearance_customTheme07=  ^(5^) Red                                                     ^(J^) Red
+menu_appearance_customTheme08=  ^(6^) Purple                                                  ^(K^) Purple
+menu_appearance_customTheme09=  ^(7^) Yellow                                                  ^(L^) Yellow
+menu_appearance_customTheme10=  ^(8^) Light white                                             ^(M^) Light white
+menu_appearance_customTheme11=  ^(9^) Gray                                                    ^(N^) Gray
+menu_appearance_customTheme12=  ^(A^) Light blue                                              ^(O^) Light blue
+menu_appearance_customTheme13=  ^(B^) Light cyan                                              ^(P^) Light cyan
+menu_appearance_customTheme14=  ^(C^) Light purple                                            ^(Q^) Light purple
+menu_appearance_customTheme15=  ^(D^) Light yellow                                            ^(R^) Light yellow
+menu_appearance_customTheme16=  ^(E^) White                                                   ^(S^) White
 
 
 
