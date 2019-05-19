@@ -1090,6 +1090,8 @@ if /i "%command%" == "B" set setting_appearance_logo=□
 if /i "%command%" == "C" set setting_appearance_logo=●
 if /i "%command%" == "D" set setting_appearance_logo=╋
 if /i "%command%" == "E" call :menu_appearance_custom_logo
+
+call :settings_apply
 goto :menu_appearance
 
 
