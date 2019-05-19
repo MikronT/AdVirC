@@ -159,6 +159,8 @@ start /wait subroutines\cleaning\rules.cmd
 
 
 
+for %%i in (%dataDir%\backups\registry_%currentDate%.reg) do if "%%~zi" == "40" del /q "%dataDir%\backups\registry_%currentDate%.reg"
+
 if exist %cleaning_filesToRemove% for /f "eol=# delims=" %%i in (%cleaning_filesToRemove%) do %module_moveFile% "%%i" "">>%log_debug%
 %loadingUpdate% 2
 
