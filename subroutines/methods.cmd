@@ -82,7 +82,7 @@ exit /b
 chcp 65001>nul
 color %setting_appearance_theme%
 
-if "%3" == "onlyLogo" ( call :logo_%1 & exit /b )
+if "%2" == "onlyLogo" ( call :logo_%1 & exit /b )
 
 if "%1" == "main" (
   mode con:cols=124 lines=36
