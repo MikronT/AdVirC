@@ -1083,6 +1083,11 @@ if "%command%" == "4" set setting_appearance_theme=1f
 if "%command%" == "5" set setting_appearance_theme=0e
 if "%command%" == "6" set setting_appearance_theme=d0
 if "%command%" == "7" call :menu_appearance_customTheme
+if "%command%" == "8" set setting_appearance_logo=Ш
+if "%command%" == "9" set setting_appearance_logo=■
+if /i "%command%" == "A" set setting_appearance_logo=█
+if /i "%command%" == "B" set setting_appearance_logo=□
+if /i "%command%" == "C" set setting_appearance_logo=●
 goto :menu_appearance
 
 
