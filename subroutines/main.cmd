@@ -1298,6 +1298,8 @@ exit /b
 
 :databases_update
 call subroutines\databases.cmd %*
+if "%errorLevel%" == "4417" exit /b
+
 for /f "delims="             %%i in (%dataDir%\databases\original\databases.version) do set databases_version_code=%%i
 for /f "tokens=1-8 delims=." %%i in (%dataDir%\databases\original\databases.version) do (
   set databases_version_code_level1=%%i
