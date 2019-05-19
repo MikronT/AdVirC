@@ -1053,7 +1053,7 @@ exit /b
 
 
 :menu_appearance
-%log_append_place% :   [Appearance Menu]
+%log_append_place% :     [Appearance Menu]
 %input_clear%
 %logo%
 echo.%language_menu_appearance01%
@@ -1101,7 +1101,7 @@ goto :menu_appearance
 
 
 :menu_appearance_custom_theme
-%log_append_place% :   [Theme Customization Menu]
+%log_append_place% :       [Theme Customization Menu]
 %input_clear%
 %logo%
 echo.%language_menu_appearance_custom_theme01%
