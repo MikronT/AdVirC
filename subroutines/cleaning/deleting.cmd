@@ -84,10 +84,9 @@ if exist %cleaning_processes% for /f "delims=" %%i in (%cleaning_processes%) do 
 
 if exist %cleaning_registry% for /f "delims=" %%i in (%cleaning_registry%) do (
   set errorLevel=
-  if "%cleaningRule_experimental%" == "true" (
-    reg export %%i temp\registryBackupBuffer.reg /y>>%log_debug%
-    for /f "delims=" %%r in (temp\registryBackupBuffer.reg) do echo.%%r>>%dataDir%\backups\registry_%currentDate%.reg
-  )
+  reg export %%i temp\registryBackupBuffer.reg /y>>%log_debug%
+  type temp\registryBackupBuffer.reg | find /v "Windows Registry Editor Version 5.00">>%dataDir%\backups\registry_%currentDate%.reg
+
   reg delete %%i /f>>%log_debug%
   if "!errorLevel!" == "0" (
     echo.    - %%i>>%log%
