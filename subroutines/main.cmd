@@ -723,7 +723,8 @@ if "%command%" == "7" (
   echo.  %language_menu_update_channel03%
   echo.  %language_menu_update_channel04%
   echo.
-  call echo.%language_menu_help_program_settings05%
+  echo.%language_menu_help_program_settings05%
+  echo.    %~dp0%settings%
 )
 if "%command%" == "8" (
   echo.%language_menu_help_program_dataManagement01%

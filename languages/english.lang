@@ -130,8 +130,8 @@ menu_help_databases_import04=  The name of the database file should be strictly 
 menu_help_program_settings01=  The menu will help you to customize the %program_name% to your taste.
 menu_help_program_settings02=  On weak computers, disabling some settings can significantly speed up cleanup, such as logging.
 menu_help_program_settings03=  By selecting the appropriate option, you change its value to the opposite.
-menu_help_program_settings04=  The language and update channel choice brings up separate menus, because these options have several meanings.
-menu_help_program_settings05=  Settings are stored in the folder: %~dp0%settings%.
+menu_help_program_settings04=  The language, appearance and update channel choice brings up separate menus, because these options have several meanings.
+menu_help_program_settings05=  Settings are stored in the folder:
 
 menu_help_program_dataManagement01=  Menu for managing program data.
 menu_help_program_dataManagement02=  You can clear log files, reports, temporary files and others.
