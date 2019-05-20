@@ -347,6 +347,7 @@ if "%command%" == "9" (
 )
 if "%command%" == "#" call uninstall.cmd
 if "%command%" == "0" call :exit
+if "%command%" == "4417" call :easterEgg
 goto :menu_main
 
 
@@ -1242,6 +1243,27 @@ if "%command%" == "9" start explorer "%cd%\temp"
 
 call :settings_apply
 goto :menu_dataManagement
+
+
+
+
+
+
+
+:easterEgg
+%log_append_place% :   [Easter Egg]
+%input_clear%
+
+title %program_name% hacks your machine...
+
+setlocal EnableDelayedExpansion
+for /l %%z in (10,-1,1) do for %%i in (0 1 2 3 4 5 6 7 8 9 a b c d e f) do for %%j in (0 1 2 3 4 5 6 7 8 9 a b c d e f) do if "%%i" NEQ "%%j" (
+  echo.!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!!random!
+  color %%i%%j
+  %module_sleep% -m 1
+)
+endlocal
+exit /b
 
 
 
