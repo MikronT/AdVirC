@@ -122,13 +122,11 @@ if exist %cleaning_temp% for /f "delims=" %%i in (%cleaning_temp%) do (
     ) else (
       echo.    - %%i>>%log%
       echo.[Temp] %%i
-      set /a counter_deletedObjects+=1
     )
   ) else (
     echo.    [Warning] Not Found - %%i>>%log%
     echo.[Warning] [Temp] %%i
   )
-  echo.!counter_deletedObjects!>temp\counter_deletedObjects
   md "%%i">nul 2>nul
 )
 

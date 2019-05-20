@@ -118,7 +118,6 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\temp.db) do (
   if exist "%%i" (
     call :cleaning_scanning_subroutine Temp %cleaning_temp% %%i
   ) else if "%setting_logging_advanced%" == "true" echo.Not Found - %%i>>%log_debug%
-  echo.!counter_foundObjects!>temp\counter_foundObjects
 )
 
 
@@ -430,5 +429,5 @@ for /f "tokens=1,2,* delims= " %%i in ("%*") do (
   echo.    - %%k>>%log%
   echo.[%%i] %%k
 )
-set /a counter_foundObjects+=1
+if "%%i" NEQ "Temp" set /a counter_foundObjects+=1
 exit /b
