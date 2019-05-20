@@ -271,6 +271,11 @@ call echo.%language_info_lastLoggedOnUserSID%
 
 %module_sleep% 1
 %loadingUpdate% reset
+
+
+
+if "%setting_update_program_auto%" == "true"   start /wait /b %update% --key_update=program
+if "%setting_update_databases_auto%" == "true" if not exist temp\return_update start /wait /b %update% --key_update=databases
 goto :menu_main
 
 
