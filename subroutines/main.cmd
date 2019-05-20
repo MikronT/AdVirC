@@ -1381,9 +1381,19 @@ goto :diagnostic
 if "%setting_firstRun%" == "true" set setting_firstRun=false
 call :settings_save
 
-%log_append_line% %log_debug% 1
-echo.Environment Variables:>>%log_debug%
-set>>%log_debug%
+if "%setting_logging_advanced%" == "true" (
+  %log_append_line% %log_debug% 1
+  echo.Settings:>>%log_debug%
+  type %settings%>>%log_debug%
+
+  %log_append_line% %log_debug% 1
+  echo.Input History:>>%log_debug%
+  doskey /history>>%log_debug%
+
+  %log_append_line% %log_debug% 1
+  echo.Environment Variables:>>%log_debug%
+  set>>%log_debug%
+)
 
 %loadingUpdate% stop
 
