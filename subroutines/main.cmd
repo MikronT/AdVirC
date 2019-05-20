@@ -306,10 +306,11 @@ goto :menu_main
 %log_append_place% : [Main Menu]
 
 %loadingUpdate% reset
-call :settings_save
 
 if exist temp\return_reboot call :exit reboot
 if exist temp\return_update call :exit update
+
+call :settings_save
 
 %input_clear%
 %logo%
