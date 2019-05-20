@@ -198,13 +198,13 @@ echo.%language_initialization01%
 
 
 
-if "%setting_update_databases_auto%" == "true" (
-  start /b %update% --key_check=databases
-) else if "%setting_update_databases_remind%" == "true" start /b %update% --key_check=databases
-
 if "%setting_update_program_auto%" == "true" (
   start /b %update% --key_check=program
 ) else if "%setting_update_program_remind%" == "true" start /b %update% --key_check=program
+
+if "%setting_update_databases_auto%" == "true" (
+  start /b %update% --key_check=databases
+) else if "%setting_update_databases_remind%" == "true" start /b %update% --key_check=databases
 %loadingUpdate% 2
 
 
@@ -274,7 +274,7 @@ call echo.%language_info_lastLoggedOnUserSID%
 
 
 
-if "%setting_update_databases_auto%" == "true" start /wait /b %update% --key_update=databases
+if "%setting_update_databases_auto%" == "true" if not exist temp\return_update start /wait /b %update% --key_update=databases
 if "%setting_update_program_auto%" == "true"   start /wait /b %update% --key_update=program
 goto :menu_main
 
