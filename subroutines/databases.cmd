@@ -50,7 +50,6 @@ echo.
 
 
 :unzip
-%loadingUpdate% 4
 echo.%language_databases_unpacking%
 
 rd /s /q %dataDir%\databases>nul 2>>%log_debug%
@@ -69,7 +68,7 @@ del /q %update_databases_output%
 
 echo.%language_databases_unpacking_success%
 echo.
-%loadingUpdate% 3
+%loadingUpdate% 2
 
 
 
@@ -82,7 +81,7 @@ echo.%language_databases_rewriting%
 for /f "delims=" %%i in ('dir /a:d /b %dataDir%\databases\original') do md %dataDir%\databases\rewrited\%%i>nul 2>>%log_debug%
 
 (for /f "eol=# delims=" %%i in (%dataDir%\databases\original\fileList.db) do for /f "eol=# delims=" %%j in (%dataDir%\databases\original\%%i) do call echo.%%j>>%dataDir%\databases\rewrited\%%i)>>%log_debug%
-%loadingUpdate% 1
+%loadingUpdate% 2
 
 
 
@@ -128,6 +127,7 @@ for /f "delims=" %%i in ('reg query HKU') do (
   reg query %%i\Software\Software\Classes>nul 2>>%log_debug%
   if "!errorLevel!" == "0" echo.%%i\Software\Software\Classes>>%dataDir%\databases\rewrited\dirs\classes.db
 
+  %loadingUpdate% 2
 
   set errorLevel=
   reg query %%i>nul 2>>%log_debug%
