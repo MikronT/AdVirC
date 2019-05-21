@@ -106,12 +106,13 @@ for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do 
   if exist "%%i\Microsoft\Windows\Start Menu" echo.%%i\Microsoft\Windows\Start Menu>>%dataDir%\databases\rewrited\dirs\shortcuts.db
   if exist "%%i\Microsoft\Windows\Start Menu\Programs" echo.%%i\Microsoft\Windows\Start Menu\Programs>>%dataDir%\databases\rewrited\dirs\shortcuts.db
 )
+%loadingUpdate% 3
 
 if exist "%appData%\Mozilla\Firefox\Profiles" for /f "delims=" %%i in ('dir "%appData%\Mozilla\Firefox\Profiles" /a:d /b') do (
   for /f "eol=# delims=" %%j in (%dataDir%\databases\original\files\appData-firefoxUserProfile.db)   do echo.Mozilla\Firefox\Profiles\%%i\%%j>>%dataDir%\databases\rewrited\files\appData.db
   for /f "eol=# delims=" %%j in (%dataDir%\databases\original\folders\appData-firefoxUserProfile.db) do echo.Mozilla\Firefox\Profiles\%%i\%%j>>%dataDir%\databases\rewrited\folders\appData.db
 )
-%loadingUpdate% 3
+%loadingUpdate% 2
 
 setlocal EnableDelayedExpansion
 for /f "delims=" %%i in ('reg query HKU') do (
