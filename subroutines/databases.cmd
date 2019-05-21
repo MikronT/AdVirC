@@ -112,6 +112,8 @@ if exist "%appData%\Mozilla\Firefox\Profiles" for /f "delims=" %%i in ('dir "%ap
   for /f "eol=# delims=" %%j in (%dataDir%\databases\original\files\appData-firefoxUserProfile.db)   do echo.Mozilla\Firefox\Profiles\%%i\%%j>>%dataDir%\databases\rewrited\files\appData.db
   for /f "eol=# delims=" %%j in (%dataDir%\databases\original\folders\appData-firefoxUserProfile.db) do echo.Mozilla\Firefox\Profiles\%%i\%%j>>%dataDir%\databases\rewrited\folders\appData.db
 )
+
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\folders\extensions.db) do echo.Software\Google\Chrome\Extensions\%%i>>%dataDir%\databases\rewrited\registry\appData.db
 %loadingUpdate% 2
 
 setlocal EnableDelayedExpansion
