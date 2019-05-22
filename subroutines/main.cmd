@@ -1,6 +1,6 @@
 @%logo%
 if "%*" NEQ "" ( call %* & exit /b )
-%loadingUpdate% 3
+%loadingUpdate% 5
 
 
 
@@ -116,7 +116,7 @@ if exist "%dataDir%\databases\original\databases.version" (
     if "%%p" NEQ "" set databases_version_code_level8=%%p
   )
 )
-%loadingUpdate% 4
+%loadingUpdate% 7
 
 
 
@@ -143,12 +143,12 @@ for /f "eol=# tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
   set location_%%i=%%k
   (for /f "skip=2 tokens=2,* delims= " %%l in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v %%j') do call set location_%%i=%%m)>nul 2>nul
 )
-%loadingUpdate% 3
+%loadingUpdate% 4
 
 
 
 call :settings_apply
-%loadingUpdate% 2
+%loadingUpdate% 1
 
 
 
@@ -187,9 +187,9 @@ if "%setting_logging%" == "true" (
     echo.- Searches location:    %location_searches%>>%log_debug%
     echo.- Videos location:      %location_videos%>>%log_debug%
     %log_append_line% %log_debug% 1
-    %loadingUpdate% 3
-  ) else %loadingUpdate% 6
-) else %loadingUpdate% 9
+    %loadingUpdate% 4
+  ) else %loadingUpdate% 7
+) else %loadingUpdate% 10
 
 
 
@@ -205,7 +205,7 @@ if "%setting_update_program_auto%" == "true" (
 if "%setting_update_databases_auto%" == "true" (
   start /b %update% --key_check=databases
 ) else if "%setting_update_databases_remind%" == "true" start /b %update% --key_check=databases
-%loadingUpdate% 2
+%loadingUpdate% 8
 
 
 
@@ -216,7 +216,7 @@ if "%setting_logging%" == "true" (
   echo.Language:           %setting_language%>>%log%
   %log_append_line% %log% 1
 )
-%loadingUpdate% 2
+%loadingUpdate% 3
 
 
 
@@ -244,7 +244,6 @@ echo.
 call echo.%language_info_windowsVersionID%
 call echo.%language_info_processorArchitecture%
 echo.
-%loadingUpdate% 4
 
 
 
@@ -258,7 +257,7 @@ rem   %loadingUpdate% 8
 rem   echo.%language_info_registryBackup_created%
 rem   echo.
 rem ) else %loadingUpdate% 15
-%loadingUpdate% 15
+%loadingUpdate% 6
 
 
 
