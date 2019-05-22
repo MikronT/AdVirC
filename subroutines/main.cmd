@@ -141,7 +141,7 @@ call :language_import
 if exist "%settings%" for /f "eol=# delims=" %%i in (%settings%) do set setting_%%i
 for /f "eol=# tokens=1,2,* delims=;" %%i in (files\userShellFolders.db) do (
   set location_%%i=%%k
-  (for /f "skip=2 tokens=2,* delims= " %%l in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v %%j') do set location_%%i=%%m)>nul 2>nul
+  (for /f "skip=2 tokens=2,* delims= " %%l in ('reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v %%j') do call set location_%%i=%%m)>nul 2>nul
 )
 %loadingUpdate% 3
 
