@@ -244,19 +244,6 @@ echo.
 call echo.%language_info_windowsVersionID%
 call echo.%language_info_processorArchitecture%
 echo.
-
-
-
-rem if "%setting_firstRun%" == "true" (
-rem   echo.%language_info_registryBackup_creating%
-rem   if not exist %dataDir%\backups\registry md %dataDir%\backups\registry>nul 2>nul
-rem   reg export HKLM %dataDir%\backups\registry\HKLM.reg /y>>%log_debug%
-rem   %loadingUpdate% 7
-rem   reg export HKU  %dataDir%\backups\registry\HKU.reg  /y>>%log_debug%
-rem   %loadingUpdate% 8
-rem   echo.%language_info_registryBackup_created%
-rem   echo.
-rem ) else %loadingUpdate% 15
 %loadingUpdate% 6
 
 
