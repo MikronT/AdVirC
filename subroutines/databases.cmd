@@ -30,18 +30,18 @@ if "%key_import%" == "true" (
 
 
 
-%loadingUpdate% 10
 echo.%language_databases_downloading%
 
 setlocal EnableDelayedExpansion
 %module_wget% "!update_databases_url_%setting_update_channel%!" --output-document=%update_databases_output%
 endlocal
+%loadingUpdate% 20
 
 for %%i in (%update_databases_output%) do if "%%~zi" == "0" ( call :error %language_module_wget_error% & exit /b 4417 )
 
 echo.%language_databases_downloading_success%
 echo.
-%loadingUpdate% 15
+%loadingUpdate% 5
 
 
 
@@ -55,14 +55,14 @@ echo.%language_databases_unpacking%
 rd /s /q %dataDir%\databases>nul 2>>%log_debug%
 
 %module_sleep% 1
-%loadingUpdate% 4
+%loadingUpdate% 2
 
 md %dataDir%\databases\original>nul 2>>%log_debug%
 %module_unZip% -o %update_databases_output% -d %dataDir%\databases\original
 
 if not exist %dataDir%\databases\original\license.txt ( call :error %language_module_unZip_error% & exit /b )
 
-%loadingUpdate% 4
+%loadingUpdate% 6
 
 del /q %update_databases_output%
 
@@ -130,8 +130,6 @@ for /f "delims=" %%i in ('reg query HKU') do (
   reg query %%i\Software\Software\Classes>nul 2>>%log_debug%
   if "!errorLevel!" == "0" echo.%%i\Software\Software\Classes>>%dataDir%\databases\rewrited\dirs\classes.db
 
-  %loadingUpdate% 2
-
   set errorLevel=
   reg query %%i>nul 2>>%log_debug%
   if "!errorLevel!" == "0" echo.%%i>>%dataDir%\databases\rewrited\dirs\keys.db
@@ -148,7 +146,7 @@ endlocal
 
 echo.%language_databases_rewriting_success%
 echo.
-%loadingUpdate% 2
+%loadingUpdate% 4
 
 
 
