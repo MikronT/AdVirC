@@ -20,6 +20,10 @@ if "%key_check%" == "program" (
   for /f "tokens=1-3 delims= " %%i in (%update_program_version_output%) do (
     if /i "%%i" == "%setting_update_channel%" (
       for /f "tokens=1-7 delims=." %%l in ("%%j") do (
+        if "%%r" NEQ "" ( set update_program_version_number=%%l%%m%%n%%o%%p%%q%%r
+        ) else set update_program_version_number=%%l%%m%%n%%o%%p%%q000
+
+        for /f "delims=" %%z in ('%isLarger% !update_program_version_number! %program_version_number%') do if "%%z" == "true" echo.>temp\return_update_program_available
       )
     )
   )
@@ -48,6 +52,16 @@ setlocal EnableDelayedExpansion
 if "%key_check%" == "databases" (
   %module_wget% "%update_databases_version_url%" --output-document=%update_databases_version_output%
 
+  for /f "tokens=1-3 delims= " %%i in (%update_databases_version_output%) do (
+    if /i "%%i" == "%setting_update_channel%" (
+      for /f "tokens=1-8 delims=." %%l in ("%%j") do (
+        if "%%s" NEQ "" ( set update_databases_version_number=%%l%%m%%n%%o%%p%%q%%r%%s
+        ) else set update_databases_version_number=%%l%%m%%n%%o%%p%%q000
+
+        for /f "delims=" %%z in ('%isLarger% !update_databases_version_number! %databases_version_number%') do if "%%z" == "true" echo.>temp\return_update_databases_available
+      )
+    )
+  )
 )
 endlocal
 
