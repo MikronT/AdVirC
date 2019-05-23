@@ -51,23 +51,7 @@ set cleaning_shortcuts=temp\cleaning\shortcuts.db
 set cleaning_tasks=temp\cleaning\tasks.db
 set cleaning_temp=temp\cleaning\temp.db
 
-set program_version_code_level1=0
-set program_version_code_level2=0
-set program_version_code_level3=0
-set program_version_code_level4=0
-set program_version_code_level5=0
-set program_version_code_level6=0
-set program_version_code_level7=0
-
 set databases_version_code=0
-set databases_version_code_level1=0
-set databases_version_code_level2=0
-set databases_version_code_level3=0
-set databases_version_code_level4=0
-set databases_version_code_level5=0
-set databases_version_code_level6=0
-set databases_version_code_level7=0
-set databases_version_code_level8=0
 
 set update_program_version_output=temp\%program_name%.version
 set update_program_version_url=https://drive.google.com/uc?export=download^^^&id=1ZCUccG0U3VoePdTmwqQmid3d7vlQZWGY
