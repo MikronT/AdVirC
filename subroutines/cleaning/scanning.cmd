@@ -429,5 +429,5 @@ for /f "tokens=1,2,* delims= " %%i in ("%*") do (
   echo.    - %%k>>%log%
   echo.[%%i] %%k
 )
-if "%%i" NEQ "Temp" set /a counter_foundObjects+=1
+if "%1" NEQ "Temp" set /a counter_foundObjects+=1
 exit /b
