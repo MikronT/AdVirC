@@ -40,7 +40,6 @@ if "%key_update%" == "program" if exist temp\return_update_program_available (
 
   echo.>temp\return_update
 )
-endlocal
 
 
 
@@ -48,7 +47,6 @@ endlocal
 
 
 
-setlocal EnableDelayedExpansion
 if "%key_check%" == "databases" (
   %module_wget% "%update_databases_version_url%" --output-document=%update_databases_version_output%
 
@@ -69,7 +67,6 @@ if "%key_update%" == "databases" if exist temp\return_update_databases_available
 
 set key_check=
 set key_update=
-
 exit
 
 
