@@ -13,6 +13,7 @@ for /f "tokens=1 delims=- " %%i in ("%*") do if "%%i" NEQ "" set %%i
 
 
 
+setlocal EnableDelayedExpansion
 if "%key_check%" == "program" (
   %module_wget% "%update_program_version_url%" --output-document=%update_program_version_output%
 
@@ -35,11 +36,26 @@ if "%key_update%" == "program" if exist temp\return_update_program_available (
 
   echo.>temp\return_update
 )
-
 endlocal
+
+
+
+
+
+
+
+setlocal EnableDelayedExpansion
+if "%key_check%" == "databases" (
+  %module_wget% "%update_databases_version_url%" --output-document=%update_databases_version_output%
+
+)
+endlocal
+
+if "%key_update%" == "databases" if exist temp\return_update_databases_available call subroutines\main.cmd :databases_update
 
 set key_check=
 set key_update=
+
 exit
 
 
