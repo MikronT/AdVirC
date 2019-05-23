@@ -95,26 +95,15 @@ for /f "tokens=2 delims= " %%i in ("%currentDate%") do set currentDate=%%i
 for /f "tokens=1-3 delims=/." %%i in ("%currentDate%") do set currentDate=%%k.%%j.%%i
 
 for /f "tokens=1-7 delims=." %%i in ("%program_version_code%") do (
-  if "%%i" NEQ "" set program_version_code_level1=%%i
-  if "%%j" NEQ "" set program_version_code_level2=%%j
-  if "%%k" NEQ "" set program_version_code_level3=%%k
-  if "%%l" NEQ "" set program_version_code_level4=%%l
-  if "%%m" NEQ "" set program_version_code_level5=%%m
-  if "%%n" NEQ "" set program_version_code_level6=%%n
-  if "%%o" NEQ "" set program_version_code_level7=%%o
+  if "%%o" NEQ "" ( set program_version_number=%%i%%j%%k%%l%%m%%n%%o
+  ) else set program_version_number=%%i%%j%%k%%l%%m%%n000
 )
 
 if exist "%dataDir%\databases\original\databases.version" (
   for /f "delims="             %%i in (%dataDir%\databases\original\databases.version) do set databases_version_code=%%i
   for /f "tokens=1-8 delims=." %%i in (%dataDir%\databases\original\databases.version) do (
-    if "%%i" NEQ "" set databases_version_code_level1=%%i
-    if "%%j" NEQ "" set databases_version_code_level2=%%j
-    if "%%k" NEQ "" set databases_version_code_level3=%%k
-    if "%%l" NEQ "" set databases_version_code_level4=%%l
-    if "%%m" NEQ "" set databases_version_code_level5=%%m
-    if "%%n" NEQ "" set databases_version_code_level6=%%n
-    if "%%o" NEQ "" set databases_version_code_level7=%%o
-    if "%%p" NEQ "" set databases_version_code_level8=%%p
+    if "%%p" NEQ "" ( set databases_version_number=%%i%%j%%k%%l%%m%%n%%o%%p
+    ) else set databases_version_number=%%i%%j%%k%%l%%m%%n%%o000
   )
 )
 %loadingUpdate% 7
