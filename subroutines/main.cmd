@@ -1303,16 +1303,14 @@ exit /b
 call subroutines\databases.cmd %*
 if "%errorLevel%" == "4417" ( set errorLevel= & exit /b )
 
-for /f "delims="             %%i in (%dataDir%\databases\original\databases.version) do set databases_version_code=%%i
-for /f "tokens=1-8 delims=." %%i in (%dataDir%\databases\original\databases.version) do (
-  set databases_version_code_level1=%%i
-  set databases_version_code_level2=%%j
-  set databases_version_code_level3=%%k
-  set databases_version_code_level4=%%l
-  set databases_version_code_level5=%%m
-  set databases_version_code_level6=%%n
-  set databases_version_code_level7=%%o
-  set databases_version_code_level8=%%p
+if exist "%dataDir%\databases\original\databases.version" (
+  for /f "tokens=1-8 delims=." %%i in (%dataDir%\databases\original\databases.version) do (
+    if "%%p" NEQ "" ( set databases_version_code=%%i.%%j.%%k.%%l.%%m.%%n.%%o.%%p
+    ) else set databases_version_code=%%i.%%j.%%k.%%l.%%m.%%n.%%o
+
+    if "%%p" NEQ "" ( set databases_version_number=%%i%%j%%k%%l%%m%%n%%o%%p
+    ) else set databases_version_number=%%i%%j%%k%%l%%m%%n%%o000
+  )
 )
 
 if "%setting_update_databases_remind%" == "true" start /wait /b %update% --key_check=databases
