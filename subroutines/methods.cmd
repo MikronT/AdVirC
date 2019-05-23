@@ -27,8 +27,10 @@ set number2=%2
 
 setlocal EnableExtensions EnableDelayedExpansion
 
-for /l %%a in (0,1,9) do set number1=!number1:%%a=%%a !
-for /l %%a in (0,1,9) do set number2=!number2:%%a=%%a !
+for /l %%a in (0,1,9) do (
+  set number1=!number1:%%a=%%a !
+  set number2=!number2:%%a=%%a !
+)
 
 for %%a in (!number1!) do set /a number1counter+=1 & set !number1counter!number1=%%a
 for %%a in (!number2!) do set /a number2counter+=1 & set !number2counter!number2=%%a
