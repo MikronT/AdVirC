@@ -100,8 +100,10 @@ for /f "tokens=1-7 delims=." %%i in ("%program_version_code%") do (
 )
 
 if exist "%dataDir%\databases\original\databases.version" (
-  for /f "delims="             %%i in (%dataDir%\databases\original\databases.version) do set databases_version_code=%%i
   for /f "tokens=1-8 delims=." %%i in (%dataDir%\databases\original\databases.version) do (
+    if "%%p" NEQ "" ( set databases_version_code=%%i.%%j.%%k.%%l.%%m.%%n.%%o.%%p
+    ) else set databases_version_code=%%i.%%j.%%k.%%l.%%m.%%n.%%o
+
     if "%%p" NEQ "" ( set databases_version_number=%%i%%j%%k%%l%%m%%n%%o%%p
     ) else set databases_version_number=%%i%%j%%k%%l%%m%%n%%o000
   )
