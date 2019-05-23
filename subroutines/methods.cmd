@@ -21,6 +21,47 @@ exit /b
 
 
 
+:isLarger
+set number1=%1
+set number2=%2
+
+setlocal EnableExtensions EnableDelayedExpansion
+
+for /l %%a in (0,1,9) do set number1=!number1:%%a=%%a !
+for /l %%a in (0,1,9) do set number2=!number2:%%a=%%a !
+
+for %%a in (!number1!) do set /a number1counter+=1 & set !number1counter!number1=%%a
+for %%a in (!number2!) do set /a number2counter+=1 & set !number2counter!number2=%%a
+
+if %number1counter% NEQ %number2counter% if %number1counter% GTR %number2counter% (
+  echo.true
+  exit /b
+) else (
+  echo.false
+  exit /b
+)
+
+for /l %%a in (1,1,%number1counter%) do (
+  if !%%anumber1! NEQ !%%anumber2! if !%%anumber1! GTR !%%anumber2! (
+    echo.true
+    exit /b
+  ) else (
+    echo.false
+    exit /b
+  )
+)
+
+echo.equal
+
+endlocal
+exit /b
+
+
+
+
+
+
+
 :loadingUpdate
 if "%1" == "reset" (
   set counter_loading=0

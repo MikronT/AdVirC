@@ -5,6 +5,7 @@ if "%*" NEQ "" ( call %* & exit /b )
 
 
 set input=%method% :input
+set isLarger=%method% :isLarger
 set log_append_delimiter=%method% :log_append_delimiter
 set log_append_line=%method% :log_append_line
 set log_append_place=%method% :log_append_place
