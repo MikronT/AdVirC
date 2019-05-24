@@ -33,9 +33,10 @@ echo.
 echo.
 echo.
 
-:input
-if "%windowsVersionID%" == "1809" (
-  set /p command=%input_backspace%  %language_input%
+if "%windowsVersionID%" NEQ "" (
+  if %windowsVersionID% GEQ 1809 (
+    set /p command=%input_backspace%  %language_input%
+  ) else set /p command=%input_backspace%   %language_input%
 ) else set /p command=%input_backspace%   %language_input%
 
 if "%command%" == "0" ( set command= & exit /b )
