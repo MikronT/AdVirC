@@ -1,12 +1,14 @@
 @echo off
 chcp 65001>nul
 
+setlocal EnableDelayedExpansion
 net session>nul 2>nul
 if %errorLevel% GEQ 1 (
   echo.^(^!^) Please, run as Admin^!
   timeout /nobreak /t 3 >nul
   exit
 )
+endlocal
 
 %~d0
 cd "%~dp0"
