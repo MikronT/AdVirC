@@ -3,10 +3,13 @@ chcp 65001>nul
 
 setlocal EnableDelayedExpansion
 net session>nul 2>nul
-  timeout /nobreak /t 1 >nul
-  exit
 if !errorLevel! GEQ 1 (
   echo.^(^^^!^) Please, run as Admin^^^!
+  timeout /nobreak /t 1 >nul
+
+  echo.^(^?^) Run anyway^? [Y/N]
+  choice /c yn /d n /t 3 /n /m " > "
+  if "!errorLevel!" NEQ "1" exit
 )
 endlocal
 
