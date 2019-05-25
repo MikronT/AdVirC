@@ -8,7 +8,7 @@ if !errorLevel! GEQ 1 (
   timeout /nobreak /t 1 >nul
 
   echo.^(^?^) Run anyway^? [Y/N]
-  choice /c yn /d n /t 3 /n /m " > "
+  choice /c yn /d n /t 2 /n /m " > "
   if "!errorLevel!" NEQ "1" exit
 )
 endlocal
