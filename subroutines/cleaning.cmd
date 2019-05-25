@@ -110,8 +110,8 @@ if "%key_auto%" NEQ "true" (
     echo.%language_cleaning_editing05%
     pause>nul
   
-    for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
-  ) else if "%command%" NEQ "2" goto :editing
+    for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
+  ) else if "%command%" NEQ "2" goto :cleaning_actions
 )
 %loadingUpdate% 3 force
 
