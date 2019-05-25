@@ -175,12 +175,12 @@ echo.%language_initialization01%
 
 
 if "%setting_update_program_auto%" == "true" (
-  start /b %update% --key_check=program
-) else if "%setting_update_program_remind%" == "true" start /b %update% --key_check=program
+  start /b %update% --check=program
+) else if "%setting_update_program_remind%" == "true" start /b %update% --check=program
 
 if "%setting_update_databases_auto%" == "true" (
-  start /b %update% --key_check=databases
-) else if "%setting_update_databases_remind%" == "true" start /b %update% --key_check=databases
+  start /b %update% --check=databases
+) else if "%setting_update_databases_remind%" == "true" start /b %update% --check=databases
 %loadingUpdate% 8
 
 
@@ -236,8 +236,8 @@ call echo.%language_info_lastLoggedOnUserSID%
 
 
 
-if "%setting_update_program_auto%" == "true"   start /wait /b %update% --key_update=program
-if "%setting_update_databases_auto%" == "true" if not exist temp\return_update start /wait /b %update% --key_update=databases
+if "%setting_update_program_auto%" == "true"   start /wait /b %update% --update=program
+if "%setting_update_databases_auto%" == "true" if not exist temp\return_update start /wait /b %update% --update=databases
 goto :menu_main
 
 
@@ -304,8 +304,8 @@ if "%command%" == "6" call :menu_about
 if "%command%" == "7" call :menu_settings
 if "%command%" == "8" call :menu_dataManagement
 if "%command%" == "9" (
-  start /wait /b %update% --key_check=program
-  start /wait /b %update% --key_update=program
+  start /wait /b %update% --check=program
+  start /wait /b %update% --update=program
 )
 if "%command%" == "#" call uninstall.cmd
 if "%command%" == "0" call :exit
@@ -378,11 +378,11 @@ echo.
 
 if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" (
-  call subroutines\cleaning.cmd --key_auto=false
+  call subroutines\cleaning.cmd --auto=false
   %input_clear% & exit /b
 )
 if "%command%" == "2" (
-  call subroutines\cleaning.cmd --key_auto=true
+  call subroutines\cleaning.cmd --auto=true
   %input_clear% & exit /b
 )
 goto :menu_cleaning
@@ -567,7 +567,7 @@ if "%command%" == "1" (
     set databases_import_error=1
     goto :menu_databases_import
   )
-  call :databases_update --key_import=true
+  call :databases_update --import=true
   %input_clear% & exit /b
 )
 goto :menu_databases_import
@@ -1297,7 +1297,7 @@ if exist "%dataDir%\databases\original\databases.version" (
   )
 )
 
-if "%setting_update_databases_remind%" == "true" start /wait /b %update% --key_check=databases
+if "%setting_update_databases_remind%" == "true" start /wait /b %update% --check=databases
 exit /b
 
 
@@ -1348,7 +1348,7 @@ set /p command=%input_backspace%   ^(^>^) Enter the number of command ^>
 if "%command%" == "0" call :exit
 if "%command%" == "1" (
   echo.Starting without some files>>%log_diagnostic%
-  start starter.cmd --key_wait=5 --key_skipFilesChecking=true
+  start starter.cmd --wait=5 --skipFilesChecking=true
   call :exit
 )
 goto :diagnostic

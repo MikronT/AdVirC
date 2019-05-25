@@ -3,7 +3,7 @@ chcp 65001>nul
 
 if "%key_target%" NEQ "" if "%key_target%" NEQ "4417" goto :program_update
 
-for /f "tokens=1 delims=- " %%i in ("%*") do if "%%i" NEQ "" set %%i
+for /f "tokens=1 delims=- " %%i in ("%*") do if "%%i" NEQ "" set key_%%i
 
 %log_append_place% : [Update]
 
@@ -94,5 +94,5 @@ for /f "delims=" %%i in ('dir /b update') do (
 pushd "%key_target%"
 set key_target=4417
 start /wait cmd /c setupEnd.cmd
-start starter.cmd --key_wait=1
+start starter.cmd --wait=1
 exit

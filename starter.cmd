@@ -37,8 +37,8 @@ set settings=%dataDir%\settings\settings.ini
 set key_wait=0
 
 for /f "tokens=1,2,* delims=- " %%i in ("%*") do (
-  if "%%i" NEQ "" set %%i
-  if "%%j" NEQ "" set %%j
+  if "%%i" NEQ "" set key_%%i
+  if "%%j" NEQ "" set key_%%j
 )
 
 if exist "%settings%" for /f "eol=# delims=" %%i in (%settings%) do set setting_%%i

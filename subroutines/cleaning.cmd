@@ -1,11 +1,11 @@
 @%logo%
 %log_append_place% : [Cleaning]
 
-for /f "tokens=1,* delims=- " %%i in ("%*") do if "%%i" NEQ "" set %%i
+for /f "tokens=1,* delims=- " %%i in ("%*") do if "%%i" NEQ "" set key_%%i
 
 if not exist %dataDir%\databases\rewrited\dirs\temp.db if "%key_auto%" == "true" (
   if exist "%location_desktop%\%program_name%Databases v2.0.zip" (
-         call subroutines\main.cmd :databases_update --key_import=true
+         call subroutines\main.cmd :databases_update --import=true
   ) else call subroutines\main.cmd :databases_update
   %loadingUpdate% reset
 ) else (
