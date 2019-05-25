@@ -84,6 +84,7 @@ if exist %dataDir%\settings\exceptions.db for %%i in (%cleaning_extensions% %cle
   )
 )
 %loadingUpdate% 3 force
+if "%key_auto%" == "true" goto :deleting
 
 
 
@@ -92,32 +93,32 @@ if exist %dataDir%\settings\exceptions.db for %%i in (%cleaning_extensions% %cle
 
 
 :cleaning_actions
-if "%key_auto%" NEQ "true" (
-  %log_append_place% :   [Cleaning Actions]
-  %input_clear%
+%log_append_place% :   [Cleaning Actions]
+%input_clear%
+%logo%
+call echo.%language_cleaning_foundObjects%
+echo.
+echo.%language_cleaning_actions01%
+call echo.%language_cleaning_actions02%
+echo.%language_cleaning_actions03%
+echo.
+echo.
+echo.
+%input%
+
+
+
+if "%command%" == "1" (
   %logo%
-  call echo.%language_cleaning_foundObjects%
-  echo.
-  echo.%language_cleaning_actions01%
-  call echo.%language_cleaning_actions02%
-  echo.%language_cleaning_actions03%
-  echo.
-  echo.
-  echo.
-  %input%
+  echo.%language_cleaning_actions04%
+  echo.%language_cleaning_actions05%
+  pause>nul
 
-
-
-  if "%command%" == "1" (
-    %logo%
-    echo.%language_cleaning_actions04%
-    echo.%language_cleaning_actions05%
-    pause>nul
-  
-    for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
-    goto :cleaning_actions
-  ) else if "%command%" NEQ "2" goto :cleaning_actions
+  for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
+  goto :cleaning_actions
 )
+if "%command%" == "2" goto :deleting
+goto :cleaning_actions
 
 
 
