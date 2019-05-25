@@ -87,16 +87,16 @@ if exist %dataDir%\settings\exceptions.db for %%i in (%cleaning_extensions% %cle
 
 
 
-:editing
+:cleaning_actions
 if "%key_auto%" NEQ "true" (
-  %log_append_place% :   [Editing]
+  %log_append_place% :   [Cleaning Actions]
   %input_clear%
   %logo%
   call echo.%language_cleaning_foundObjects%
   echo.
-  call echo.%language_cleaning_editing01%
-  echo.%language_cleaning_editing02%
-  echo.%language_cleaning_editing03%
+  echo.%language_cleaning_actions01%
+  call echo.%language_cleaning_actions02%
+  echo.%language_cleaning_actions03%
   echo.
   echo.
   echo.
@@ -106,8 +106,8 @@ if "%key_auto%" NEQ "true" (
 
   if "%command%" == "1" (
     %logo%
-    echo.%language_cleaning_editing04%
-    echo.%language_cleaning_editing05%
+    echo.%language_cleaning_actions04%
+    echo.%language_cleaning_actions05%
     pause>nul
   
     for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
