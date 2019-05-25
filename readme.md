@@ -42,7 +42,7 @@ Utility is in Alpha-period, so there may be false positives and program errors. 
 
 
 ## Keys
-| Key Name          | Option          | Description                           |
+| Key               | Option          | Description                           |
 |-------------------|-----------------|---------------------------------------|
 | filesChecking     | [boolean] false | to skip startup files checking        |
 | wait              | [integer] 5     | start delay in seconds (default is 0) |
@@ -51,7 +51,7 @@ Utility is in Alpha-period, so there may be false positives and program errors. 
 Run Command Prompt as admin and enter the command like this:
 
 ```
-"[Path]\starter.cmd" --key_[KeyName]=[Options] --key_[KeyName2]=[Options]
+"[Path]\starter.cmd" --[Key1]=[Option] --[Key2]=[Option]
 
 "C:\Users\Admin\Desktop\AdVirC\starter.cmd" --filesChecking=true --wait=20
 ```
