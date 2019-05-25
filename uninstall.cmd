@@ -11,6 +11,7 @@ set dataDir=data
 set uninstallDirectory=%cd%
 
 if "%setting_appearance_logo:~0,1%" == "" set setting_appearance_logo=Ш
+if "%setting_appearance_logo%"      == "" set setting_appearance_logo=Ш
 
 for /f %%i in ('"prompt $h & echo on & for %%j in (1) do rem"') do set input_backspace=%%i
 for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ReleaseId') do set windowsVersionID=%%i
