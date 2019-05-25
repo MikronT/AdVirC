@@ -42,10 +42,10 @@ Utility is in Alpha-period, so there may be false positives and program errors. 
 
 
 ## Keys
-| Key Name          | Option         | Description                           |
-|-------------------|----------------|---------------------------------------|
-| wait              | [integer] 5    | start delay in seconds (default is 0) |
-| skipFilesChecking | [boolean] true | to skip startup files checking        |
+| Key Name          | Option          | Description                           |
+|-------------------|-----------------|---------------------------------------|
+| filesChecking     | [boolean] false | to skip startup files checking        |
+| wait              | [integer] 5     | start delay in seconds (default is 0) |
 
 ### How to run AdVirC with specified keys?
 Run Command Prompt as admin and enter the command like this:
@@ -53,7 +53,7 @@ Run Command Prompt as admin and enter the command like this:
 ```
 "[Path]\starter.cmd" --key_[KeyName]=[Options] --key_[KeyName2]=[Options]
 
-"C:\Users\Admin\Desktop\AdVirC\starter.cmd" --key_wait=20 --key_skipFilesChecking=true
+"C:\Users\Admin\Desktop\AdVirC\starter.cmd" --filesChecking=true --wait=20
 ```
 
 | Syntax marking | Description                   |
