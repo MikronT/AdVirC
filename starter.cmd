@@ -34,7 +34,7 @@ set setting_appearance_theme=0b
 set dataDir=data
 set settings=%dataDir%\settings\settings.ini
 
-set key_skipFilesChecking=false
+set key_filesChecking=true
 set key_wait=0
 
 for /f "tokens=1,2,* delims=- " %%i in ("%*") do (

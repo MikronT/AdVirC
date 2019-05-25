@@ -98,7 +98,7 @@ if exist "%dataDir%\databases\original\databases.version" (
 
 
 
-if "%key_skipFilesChecking%" NEQ "true" (
+if "%key_filesChecking%" == "true" (
   for /f "eol=# delims=" %%i in (files\fileList.db) do if not exist "%%i" call echo.%%i>>temp\corruptedFilesList.db
   for /f "eol=# delims=" %%i in (files\fileList.db) do if not exist "%%i" goto :diagnostic
   if not exist files\fileList.db (
