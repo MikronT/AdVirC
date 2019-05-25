@@ -292,11 +292,11 @@ cleaning_deletedObjects=  ^(i^) Objects deleted: %counter_deletedObjects%.
 
 cleaning_exceptionsRewriting=  ^(i^) Rewriting lists. Please, wait...
 
-cleaning_editing01=  ^(?^) Do you want to check what %program_name% found?
-cleaning_editing02=      ^(1^) Check
-cleaning_editing03=      ^(2^) Skip
-cleaning_editing04=  ^(i^) Now you must remove all what you need.
-cleaning_editing05=      Press Enter to start.
+cleaning_actions01=  ^(?^) What you want to do?
+cleaning_actions02=      ^(1^) Check what the %program_name% found
+cleaning_actions03=      ^(2^) Run the removing
+cleaning_actions04=  ^(i^) Now you must remove all what you need from lists.
+cleaning_actions05=      Press Enter to start.
 
 cleaning_reboot01=  ^(^!^) Warning^!
 cleaning_reboot02=      The computer will restart^!

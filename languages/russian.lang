@@ -289,11 +289,11 @@ cleaning_deletedObjects=  ^(i^) Удалено объектов: %counter_delete
 
 cleaning_exceptionsRewriting=  ^(i^) Перезапись списков. Пожалуйста, подождите...
 
-cleaning_editing01=  ^(?^) Не хотите ли проверить, что %program_name% нашёл?
-cleaning_editing02=      ^(1^) Проверить
-cleaning_editing03=      ^(2^) Пропустить
-cleaning_editing04=  ^(i^) Сейчас Вам нужно удалить всё, что Вам нужно.
-cleaning_editing05=      Нажмите Enter, чтобы начать.
+cleaning_actions01=  ^(?^) Что Вы хотите сделать?
+cleaning_actions02=      ^(1^) Проверить, что %program_name% нашёл
+cleaning_actions03=      ^(2^) Запустить удаление
+cleaning_actions04=  ^(i^) Сейчас Вам нужно удалить со списков всё, что Вам нужно.
+cleaning_actions05=      Нажмите Enter, чтобы начать.
 
 cleaning_reboot01=  ^(^!^) Внимание^!
 cleaning_reboot02=      Перезагрузка компьютера^!
