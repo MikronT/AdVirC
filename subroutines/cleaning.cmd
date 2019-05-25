@@ -66,7 +66,7 @@ goto :scanning_checkEngine
 
 :exceptions
 if "%counter_foundObjects%" == "0" (
-  %loadingUpdate% 6 force
+  %loadingUpdate% 3 force
   goto :deleting
 )
 
@@ -118,7 +118,6 @@ if "%key_auto%" NEQ "true" (
     goto :cleaning_actions
   ) else if "%command%" NEQ "2" goto :cleaning_actions
 )
-%loadingUpdate% 3 force
 
 
 
@@ -127,6 +126,7 @@ if "%key_auto%" NEQ "true" (
 
 
 :deleting
+%loadingUpdate% 3 force
 start subroutines\cleaning\deleting.cmd
 
 
