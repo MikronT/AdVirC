@@ -83,13 +83,12 @@ if exist %cleaning_processes% for /f "delims=" %%i in (%cleaning_processes%) do 
 
 
 if exist %cleaning_registry% for /f "delims=" %%i in (%cleaning_registry%) do (
-  set errorLevel=
-
   for /f "tokens=1,* delims=/" %%z in ("%%i") do (
     reg export %%z temp\registryBackupBuffer.reg /y>>%log_debug%
     type temp\registryBackupBuffer.reg | find /v "Windows Registry Editor Version 5.00">>%dataDir%\backups\registry_%currentDate%.reg
   )
 
+  set errorLevel=
   reg delete %%i /f>>%log_debug%
   if "!errorLevel!" == "0" (
     echo.    - %%i>>%log%
