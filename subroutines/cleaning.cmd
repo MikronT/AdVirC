@@ -115,6 +115,7 @@ if "%key_auto%" NEQ "true" (
     pause>nul
   
     for %%i in (%cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks%) do if exist "%%i" call start /wait notepad "%cd%\%%i"
+    goto :cleaning_actions
   ) else if "%command%" NEQ "2" goto :cleaning_actions
 )
 %loadingUpdate% 3 force
