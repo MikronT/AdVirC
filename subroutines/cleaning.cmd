@@ -128,8 +128,10 @@ start subroutines\cleaning\deleting.cmd
 
 :deleting_cycle
 %logo%
-call echo.%language_cleaning_foundObjects%
-call echo.%language_cleaning_deletedObjects%
+if "%counter_foundObjects%" NEQ "0" (
+  call echo.%language_cleaning_foundObjects%
+  call echo.%language_cleaning_deletedObjects%
+)
 
 set counter_deletedObjects_last=%counter_deletedObjects%
 goto :deleting_checkEngine
