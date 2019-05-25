@@ -35,9 +35,9 @@ echo.
 
 if "%windowsVersionID%" NEQ "" (
   if %windowsVersionID% GEQ 1809 (
-    set /p command=%input_backspace%  %language_input%
-  ) else set /p command=%input_backspace%   %language_input%
-) else set /p command=%input_backspace%   %language_input%
+    set /p command=%input_backspace%  ^(^>^) Enter the command ^> 
+  ) else set /p command=%input_backspace%   ^(^>^) Enter the command ^> 
+) else set /p command=%input_backspace%   ^(^>^) Enter the command ^> 
 
 if "%command%" == "0" ( set command= & exit /b )
 if "%command%" NEQ "1" goto :uninstallQuestion
