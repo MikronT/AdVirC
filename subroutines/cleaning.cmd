@@ -65,6 +65,7 @@ goto :scanning_checkEngine
 
 
 :exceptions
+if "%counter_foundObjects%" == "0" goto :deleting
 echo.
 echo.%language_cleaning_exceptionsRewriting%
 
