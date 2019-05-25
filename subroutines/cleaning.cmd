@@ -121,6 +121,7 @@ if "%key_auto%" NEQ "true" (
 
 
 
+:deleting
 start subroutines\cleaning\deleting.cmd
 
 
