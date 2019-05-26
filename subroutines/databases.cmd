@@ -94,7 +94,6 @@ for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\userProfile.db)
 
 for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\userProfile.db) do if exist "%%i\Desktop" echo.%%i\Desktop>>%dataDir%\databases\rewrited\dirs\browsersShortcuts.db
 
-for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do if exist "%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" echo.%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar>>%dataDir%\databases\rewrited\dirs\browsersShortcuts.db
 %loadingUpdate% 2
 
 
