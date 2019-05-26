@@ -91,13 +91,11 @@ for /f "delims=" %%i in ('dir "%systemDrive%\Users" /a:d /b') do if exist "%syst
 %loadingUpdate% 1
 
 for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\userProfile.db) do for %%j in (Local LocalLow Roaming) do if exist "%%i\AppData\%%j" echo.%%i\AppData\%%j>>%dataDir%\databases\rewrited\dirs\appData.db
-%loadingUpdate% 1
 
 for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\userProfile.db) do if exist "%%i\Desktop" echo.%%i\Desktop>>%dataDir%\databases\rewrited\dirs\browsersShortcuts.db
-%loadingUpdate% 1
 
 for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do if exist "%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" echo.%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar>>%dataDir%\databases\rewrited\dirs\browsersShortcuts.db
-%loadingUpdate% 1
+%loadingUpdate% 2
 
 
 
@@ -119,11 +117,16 @@ if exist "%appData%\Mozilla\Firefox\Profiles" for /f "delims=" %%i in ('dir "%ap
   for /f "eol=# delims=" %%j in (%dataDir%\databases\rewrited\files\appData-firefoxUserProfile.db)   do echo.Mozilla\Firefox\Profiles\%%i\%%j>>%dataDir%\databases\rewrited\files\appData.db
   for /f "eol=# delims=" %%j in (%dataDir%\databases\rewrited\folders\appData-firefoxUserProfile.db) do echo.Mozilla\Firefox\Profiles\%%i\%%j>>%dataDir%\databases\rewrited\folders\appData.db
 )
+%loadingUpdate% 1
 
 
 
 for /f "delims=" %%i in (%dataDir%\databases\rewrited\folders\extensions.db) do echo.Software\Google\Chrome\Extensions\%%i>>%dataDir%\databases\rewrited\registry\keys.db
-%loadingUpdate% 2
+%loadingUpdate% 1
+
+
+
+%loadingUpdate% 1
 
 
 
