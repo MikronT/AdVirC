@@ -128,6 +128,10 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\folders\extensions.db) do 
 
 
 
+for /l %%i in (1,1,30) do (
+  echo.Google\Chrome\User Data\Profile %%i\Extensions>>%dataDir%\databases\rewrited\dirs\extensions.db
+  echo.Google\Chrome\User Data\Profile %%i\Local Extension Settings>>%dataDir%\databases\rewrited\dirs\extensions.db
+)
 %loadingUpdate% 1
 
 
