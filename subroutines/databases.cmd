@@ -90,10 +90,11 @@ for /f "delims=" %%i in ('dir /a:d /b %dataDir%\databases\original') do md %data
 for /f "delims=" %%i in ('dir "%systemDrive%\Users" /a:d /b') do if exist "%systemDrive%\Users\%%i" echo.%systemDrive%\Users\%%i>>%dataDir%\databases\rewrited\dirs\userProfile.db
 %loadingUpdate% 1
 
-for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\userProfile.db) do for %%j in (Local LocalLow Roaming) do if exist "%%i\AppData\%%j" echo.%%i\AppData\%%j>>%dataDir%\databases\rewrited\dirs\appData.db
 
 
 for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\userProfile.db) do (
+  for %%j in (Local LocalLow Roaming) do if exist "%%i\AppData\%%j" echo.%%i\AppData\%%j>>%dataDir%\databases\rewrited\dirs\appData.db
+
   if exist "%%i\Desktop" if "%%i\Desktop" NEQ "%location_desktop%" echo.%%i\Desktop>>%dataDir%\databases\rewrited\dirs\shortcuts.db
 )
 %loadingUpdate% 2
