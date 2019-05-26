@@ -85,6 +85,8 @@ for /f "delims=" %%i in ('dir /a:d /b %dataDir%\databases\original') do md %data
 
 
 
+
+
 for /f "delims=" %%i in ('dir "%systemDrive%\Users" /a:d /b') do if exist "%systemDrive%\Users\%%i" echo.%systemDrive%\Users\%%i>>%dataDir%\databases\rewrited\dirs\userProfile.db
 %loadingUpdate% 1
 
@@ -97,24 +99,33 @@ for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\userProfile.db)
 for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do if exist "%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" echo.%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar>>%dataDir%\databases\rewrited\dirs\browsersShortcuts.db
 %loadingUpdate% 1
 
+
+
 for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do (
   if exist "%%i\Microsoft\Internet Explorer\Quick Launch" echo.%%i\Microsoft\Internet Explorer\Quick Launch>>%dataDir%\databases\rewrited\dirs\shortcuts.db
   if exist "%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\Start Menu" echo.%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\Start Menu>>%dataDir%\databases\rewrited\dirs\shortcuts.db
   if exist "%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\StartMenu" echo.%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\StartMenu>>%dataDir%\databases\rewrited\dirs\shortcuts.db
   if exist "%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" echo.%%i\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar>>%dataDir%\databases\rewrited\dirs\shortcuts.db
+
   if exist "%%i\Microsoft\Windows\SendTo" echo.%%i\Microsoft\Windows\SendTo>>%dataDir%\databases\rewrited\dirs\shortcuts.db
   if exist "%%i\Microsoft\Windows\Start Menu" echo.%%i\Microsoft\Windows\Start Menu>>%dataDir%\databases\rewrited\dirs\shortcuts.db
   if exist "%%i\Microsoft\Windows\Start Menu\Programs" echo.%%i\Microsoft\Windows\Start Menu\Programs>>%dataDir%\databases\rewrited\dirs\shortcuts.db
 )
 %loadingUpdate% 3
 
+
+
 if exist "%appData%\Mozilla\Firefox\Profiles" for /f "delims=" %%i in ('dir "%appData%\Mozilla\Firefox\Profiles" /a:d /b') do (
   for /f "eol=# delims=" %%j in (%dataDir%\databases\rewrited\files\appData-firefoxUserProfile.db)   do echo.Mozilla\Firefox\Profiles\%%i\%%j>>%dataDir%\databases\rewrited\files\appData.db
   for /f "eol=# delims=" %%j in (%dataDir%\databases\rewrited\folders\appData-firefoxUserProfile.db) do echo.Mozilla\Firefox\Profiles\%%i\%%j>>%dataDir%\databases\rewrited\folders\appData.db
 )
 
+
+
 for /f "delims=" %%i in (%dataDir%\databases\rewrited\folders\extensions.db) do echo.Software\Google\Chrome\Extensions\%%i>>%dataDir%\databases\rewrited\registry\keys.db
 %loadingUpdate% 2
+
+
 
 setlocal EnableDelayedExpansion
 for /f "delims=" %%i in ('reg query HKU') do (
@@ -129,6 +140,8 @@ for /f "delims=" %%i in ('reg query HKU') do (
   set errorLevel=
   reg query %%i\Software\Software\Classes>nul 2>>%log_debug%
   if "!errorLevel!" == "0" echo.%%i\Software\Software\Classes>>%dataDir%\databases\rewrited\dirs\classes.db
+
+
 
   set errorLevel=
   reg query %%i>nul 2>>%log_debug%
