@@ -624,9 +624,9 @@ if "%command%" == "1" (
 
   call echo.%language_menu_help_cleaning_perform05%
   echo.
-  call echo.  %language_cleaning_editing01%
-  echo.  %language_cleaning_editing02%
-  echo.  %language_cleaning_editing03%
+  echo.  %language_cleaning_actions01%
+  call echo.  %language_cleaning_actions02%
+  echo.  %language_cleaning_actions03%
   echo.
   echo.%language_menu_help_cleaning_perform06%
   echo.%language_menu_help_cleaning_perform07%
