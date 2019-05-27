@@ -12,7 +12,7 @@
 [![Status: Release](https://img.shields.io/badge/Status-Release-green.svg?style=for-the-badge)](#)
 -->
 
-### Version name: *AdVirC v2.0 Alpha 2*
+### Version name: *AdVirC v2.0 Beta 1*
 
 AdVirC (AdVirC Removal Tool or AdVirC RT) is a free **open source** console program for cleaning PCs from Adware, Malware, Trojans, Miners and rubbish for Windows 10.
 
@@ -20,7 +20,7 @@ AdVirC (AdVirC Removal Tool or AdVirC RT) is a free **open source** console prog
 
 *Developed only for Windows 10*
 
-Utility is in Alpha-period, so there may be false positives and program errors. Some features do not working or are not exist yet. You must be patient.
+Utility is in Beta-period, so there may be false positives and program errors. Some features do not working or are not exist yet. You must be patient.
 
 
 
@@ -81,6 +81,7 @@ Note: you can combine the keys as you wish.
 ## Version History
 | Date       | Version Name   | Version Code    |
 |------------|----------------|-----------------|
+| 27.05.2019 | v2.0 Beta 1    | 2.0.0.2.1.0     |
 | 13.05.2019 | v2.0 Alpha 2   | 2.0.0.1.2.0     |
 | 06.05.2019 | v2.0 Alpha 1   | 2.0.0.1.1.0     |
 | 27.11.2018 | v2.0 Pre-Alpha | 2.0.0.0.0.0     |
