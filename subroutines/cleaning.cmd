@@ -102,12 +102,15 @@ echo.%language_cleaning_actions01%
 call echo.%language_cleaning_actions02%
 echo.%language_cleaning_actions03%
 echo.
+echo.%language_back%
+echo.
 echo.
 echo.
 %input%
 
 
 
+if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" (
   %logo%
   echo.%language_cleaning_actions04%
