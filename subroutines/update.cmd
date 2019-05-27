@@ -54,7 +54,7 @@ if "%key_check%" == "databases" (
     if /i "%%i" == "%setting_update_channel%" (
       for /f "tokens=1-8 delims=." %%l in ("%%j") do (
         if "%%s" NEQ "" ( set update_databases_version_number=%%l%%m%%n%%o%%p%%q%%r%%s
-        ) else set update_databases_version_number=%%l%%m%%n%%o%%p%%q000
+        ) else set update_databases_version_number=%%l%%m%%n%%o%%p%%q%%r000
 
         for /f "delims=" %%z in ('%isLarger% !update_databases_version_number! %databases_version_number%') do if "%%z" == "true" echo.>temp\return_update_databases_available
       )
