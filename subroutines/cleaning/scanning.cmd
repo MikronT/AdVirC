@@ -11,7 +11,7 @@ setlocal EnableDelayedExpansion
 
 for /f "delims=" %%i in (%dataDir%\databases\rewrited\processes\services.db) do (
   set errorLevel=
-  sc query "%%i">>%log_debug%
+  sc query "%%i">nul
   if "!errorLevel!" == ""  call :cleaning_scanning_subroutine Service %cleaning_services% %%i
   if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Service %cleaning_services% %%i
   if "%setting_logging_advanced%" == "true" if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i>>%log_debug%
@@ -30,7 +30,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\processes\services.db) do 
 
 for /f "delims=" %%i in (%dataDir%\databases\rewrited\processes\tasks.db) do (
   set errorLevel=
-  schtasks /query /tn "%%i">nul 2>>%log_debug%
+  schtasks /query /tn "%%i">nul 2>nul
   if "!errorLevel!" == ""  call :cleaning_scanning_subroutine Task %cleaning_tasks% %%i
   if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Task %cleaning_tasks% %%i
   if "%setting_logging_advanced%" == "true" if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i>>%log_debug%
@@ -75,7 +75,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\processes\processes.db) do
 for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\classes.db) do (
   for /f "delims=" %%j in (%dataDir%\databases\rewrited\registry\classes.db) do (
     set errorLevel=
-    reg query "%%i\%%j">nul 2>>%log_debug%
+    reg query "%%i\%%j">nul 2>nul
     if "!errorLevel!" == ""  call :cleaning_scanning_subroutine Class %cleaning_registry% "%%i\%%j"
     if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Class %cleaning_registry% "%%i\%%j"
     if "%setting_logging_advanced%" == "true" if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i\%%j>>%log_debug%
@@ -96,7 +96,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\classes.db) do (
 for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\keys.db) do (
   for /f "delims=" %%j in (%dataDir%\databases\rewrited\registry\keys.db) do (
     set errorLevel=
-    reg query "%%i\%%j">nul 2>>%log_debug%
+    reg query "%%i\%%j">nul 2>nul
     if "!errorLevel!" == ""  call :cleaning_scanning_subroutine Key %cleaning_registry% "%%i\%%j"
     if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Key %cleaning_registry% "%%i\%%j"
     if "%setting_logging_advanced%" == "true" if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i\%%j>>%log_debug%
