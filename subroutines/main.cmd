@@ -22,7 +22,7 @@ set module_unZip=subroutines\modules\unzip.exe -qq
 set module_wget=subroutines\modules\wget.exe --quiet --no-check-certificate --tries=1
 
 set setting_cleaningRule_experimental=false
-set setting_cleaningRule_heuristic=true
+set setting_cleaningRule_heuristic=false
 set setting_debug=false
 set setting_firstRun=true
 set setting_language=default
