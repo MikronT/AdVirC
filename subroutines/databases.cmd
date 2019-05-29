@@ -110,6 +110,7 @@ for /f "eol=# delims=" %%i in (%dataDir%\databases\rewrited\dirs\appData.db) do 
   if exist "%%i\Microsoft\Windows\SendTo" echo.%%i\Microsoft\Windows\SendTo>>%dataDir%\databases\rewrited\dirs\shortcuts.db
   if exist "%%i\Microsoft\Windows\Start Menu" echo.%%i\Microsoft\Windows\Start Menu>>%dataDir%\databases\rewrited\dirs\shortcuts.db
   if exist "%%i\Microsoft\Windows\Start Menu\Programs" echo.%%i\Microsoft\Windows\Start Menu\Programs>>%dataDir%\databases\rewrited\dirs\shortcuts.db
+  if exist "%%i\Microsoft\Windows\Start Menu\Programs\StartUp" echo.%%i\Microsoft\Windows\Start Menu\Programs\StartUp>>%dataDir%\databases\rewrited\dirs\shortcuts.db
 )
 %loadingUpdate% 3
 
