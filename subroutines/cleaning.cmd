@@ -254,8 +254,12 @@ if "%errorLevel%" NEQ "0" if "%errorLevel%" NEQ "" echo.%language_cleaning_taskC
 
 
 
-echo.Objects found: %counter_foundObjects%>>%log%
+%logo%
+echo.Objects found:   %counter_foundObjects%>>%log%
 echo.Objects deleted: %counter_deletedObjects%>>%log%
+
+call echo.%language_cleaning_foundObjects%
+call echo.%language_cleaning_deletedObjects%
 %loadingUpdate% 1
 
 if "%key_auto%" NEQ "true" (
