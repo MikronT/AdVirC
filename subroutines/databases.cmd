@@ -87,7 +87,7 @@ for /f "delims=" %%i in ('dir /a:d /b %dataDir%\databases\original') do md %data
 
 
 
-for /f "delims=" %%i in ('dir /a:d /b "%systemDrive%\Users"') do if exist "%systemDrive%\Users\%%i" echo.%systemDrive%\Users\%%i>>%dataDir%\databases\rewrited\dirs\userProfile.db
+for /f "delims=" %%i in ('dir /a:d-l /b "%systemDrive%\Users"') do if exist "%systemDrive%\Users\%%i" echo.%systemDrive%\Users\%%i>>%dataDir%\databases\rewrited\dirs\userProfile.db
 %loadingUpdate% 1
 
 
