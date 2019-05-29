@@ -221,13 +221,13 @@ if exist %cleaning_filesToRemove% for /f "eol=# delims=" %%i in (%cleaning_files
 
 
 
+echo.del /q "%winDir%\System32\Tasks\%program_name% Reboot Script Task">>%cleaning_rebootScript%
+
 copy /y %cleaning_rebootScript% "%temp%\%program_name%RebootScript.cmd">>%log_debug%
 
 set errorLevel=
 schtasks /create /tn "%program_name% Reboot Script Task" /xml temp\rebootScriptTask.xml /ru system /f>nul 2>nul
 if "%errorLevel%" NEQ "0" if "%errorLevel%" NEQ "" echo.%language_cleaning_taskCreating_error%
-
-echo.del /q "%winDir%\System32\Tasks\%program_name% Reboot Script Task">>%cleaning_rebootScript%
 %loadingUpdate% 3
 
 
