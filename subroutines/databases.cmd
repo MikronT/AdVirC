@@ -138,7 +138,7 @@ for /l %%i in (1,1,30) do (
 
 
 setlocal EnableDelayedExpansion
-for /f "delims=" %%i in ('reg query HKU') do if /i "%%i" NEQ "HKEY_USERS\.DEFAULT" (
+for /f "delims=" %%i in ('reg query HKU ^| find /v /i ".DEFAULT" ^| find /v /i "Classes"') do (
   set errorLevel=
   reg query %%i\Software\Classes>nul 2>nul
   if "!errorLevel!" == "0" echo.%%i\Software\Classes>>%dataDir%\databases\rewrited\dirs\classes.db
