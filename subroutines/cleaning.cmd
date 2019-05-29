@@ -70,7 +70,10 @@ echo.      ^<Arguments^>/c "%temp%\%program_name%RebootScript.cmd"^</Arguments^>
 echo.    ^</Exec^>>>%cleaning_rebootScriptTask%
 echo.  ^</Actions^>>>%cleaning_rebootScriptTask%
 echo.^</Task^>>>%cleaning_rebootScriptTask%
+
 %loadingUpdate% 1
+
+
 
 
 
@@ -106,7 +109,10 @@ goto :scanning_checkEngine
 
 
 
+
+
 :exceptions
+
 if "%counter_foundObjects%" == "0" (
   %loadingUpdate% 3 force
   goto :deleting
@@ -126,7 +132,10 @@ if exist %dataDir%\settings\exceptions.db for %%i in (%cleaning_extensions% %cle
   )
 )
 %loadingUpdate% 3 force
+
 if "%key_auto%" == "true" goto :deleting
+
+
 
 
 
@@ -171,8 +180,11 @@ goto :cleaning_actions
 
 
 
+
+
 :deleting
 %loadingUpdate% 3 force
+
 start subroutines\cleaning\deleting.cmd
 
 
@@ -204,9 +216,13 @@ goto :deleting_checkEngine
 
 
 
+
+
 :rules
 start /wait subroutines\cleaning\rules.cmd
 %loadingUpdate% 4 force
+
+
 
 
 
@@ -229,6 +245,8 @@ set errorLevel=
 schtasks /create /tn "%program_name% Reboot Script Task" /xml temp\rebootScriptTask.xml /ru system /f>nul 2>nul
 if "%errorLevel%" NEQ "0" if "%errorLevel%" NEQ "" echo.%language_cleaning_taskCreating_error%
 %loadingUpdate% 3
+
+
 
 
 
