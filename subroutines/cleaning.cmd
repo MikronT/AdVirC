@@ -14,20 +14,62 @@ if not exist %dataDir%\databases\rewrited\dirs\temp.db if "%key_auto%" == "true"
   exit /b
 )
 
-if not exist temp\cleaning md temp\cleaning
-
 set counter_foundObjects=0
 set counter_deletedObjects=0
+
+if not exist temp\cleaning md temp\cleaning
+
+if not exist %dataDir%\backups\registry_%currentDate%.reg (
+  echo.Windows Registry Editor Version 5.00>%dataDir%\backups\registry_%currentDate%.reg
+  echo.>>%dataDir%\backups\registry_%currentDate%.reg
+)
 
 for %%i in (%cleaning_filesToRemove% %cleaning_rebootScript% %cleaning_rebootScriptTask% %cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" del /q "%%i"
 
 echo.@echo off>%cleaning_rebootScript%
 echo.chcp 65001>>%cleaning_rebootScript%
 
-if not exist %dataDir%\backups\registry_%currentDate%.reg (
-  echo.Windows Registry Editor Version 5.00>%dataDir%\backups\registry_%currentDate%.reg
-  echo.>>%dataDir%\backups\registry_%currentDate%.reg
-)
+echo.^<?xml version="1.0" encoding="UTF-16"?^>>%cleaning_rebootScriptTask%
+echo.^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%cleaning_rebootScriptTask%
+echo.  ^<Triggers^>>>%cleaning_rebootScriptTask%
+echo.    ^<LogonTrigger id="Trigger1"^>>>%cleaning_rebootScriptTask%
+echo.      ^<Enabled^>true^</Enabled^>>>%cleaning_rebootScriptTask%
+echo.    ^</LogonTrigger^>>>%cleaning_rebootScriptTask%
+echo.  ^</Triggers^>>>%cleaning_rebootScriptTask%
+echo.  ^<Principals^>>>%cleaning_rebootScriptTask%
+echo.    ^<Principal id="Principal1"^>>>%cleaning_rebootScriptTask%
+echo.      ^<LogonType^>InteractiveToken^</LogonType^>>>%cleaning_rebootScriptTask%
+echo.      ^<RunLevel^>HighestAvailable^</RunLevel^>>>%cleaning_rebootScriptTask%
+echo.    ^</Principal^>>>%cleaning_rebootScriptTask%
+echo.  ^</Principals^>>>%cleaning_rebootScriptTask%
+echo.  ^<Settings^>>>%cleaning_rebootScriptTask%
+echo.    ^<MultipleInstancesPolicy^>IgnoreNew^</MultipleInstancesPolicy^>>>%cleaning_rebootScriptTask%
+echo.    ^<DisallowStartIfOnBatteries^>false^</DisallowStartIfOnBatteries^>>>%cleaning_rebootScriptTask%
+echo.    ^<StopIfGoingOnBatteries^>true^</StopIfGoingOnBatteries^>>>%cleaning_rebootScriptTask%
+echo.    ^<AllowHardTerminate^>true^</AllowHardTerminate^>>>%cleaning_rebootScriptTask%
+echo.    ^<StartWhenAvailable^>true^</StartWhenAvailable^>>>%cleaning_rebootScriptTask%
+echo.    ^<RunOnlyIfNetworkAvailable^>false^</RunOnlyIfNetworkAvailable^>>>%cleaning_rebootScriptTask%
+echo.    ^<IdleSettings^>>>%cleaning_rebootScriptTask%
+echo.      ^<Duration^>PT10M^</Duration^>>>%cleaning_rebootScriptTask%
+echo.      ^<WaitTimeout^>PT1H^</WaitTimeout^>>>%cleaning_rebootScriptTask%
+echo.      ^<StopOnIdleEnd^>true^</StopOnIdleEnd^>>>%cleaning_rebootScriptTask%
+echo.      ^<RestartOnIdle^>false^</RestartOnIdle^>>>%cleaning_rebootScriptTask%
+echo.    ^</IdleSettings^>>>%cleaning_rebootScriptTask%
+echo.    ^<AllowStartOnDemand^>true^</AllowStartOnDemand^>>>%cleaning_rebootScriptTask%
+echo.    ^<Enabled^>true^</Enabled^>>>%cleaning_rebootScriptTask%
+echo.    ^<Hidden^>false^</Hidden^>>>%cleaning_rebootScriptTask%
+echo.    ^<RunOnlyIfIdle^>false^</RunOnlyIfIdle^>>>%cleaning_rebootScriptTask%
+echo.    ^<WakeToRun^>false^</WakeToRun^>>>%cleaning_rebootScriptTask%
+echo.    ^<ExecutionTimeLimit^>PT72H^</ExecutionTimeLimit^>>>%cleaning_rebootScriptTask%
+echo.    ^<Priority^>1^</Priority^>>>%cleaning_rebootScriptTask%
+echo.  ^</Settings^>>>%cleaning_rebootScriptTask%
+echo.  ^<Actions Context="Principal1"^>>>%cleaning_rebootScriptTask%
+echo.    ^<Exec^>>>%cleaning_rebootScriptTask%
+echo.      ^<Command^>%winDir%\System32\cmd.exe^</Command^>>>%cleaning_rebootScriptTask%
+echo.      ^<Arguments^>/c "%temp%\%program_name%RebootScript.cmd"^</Arguments^>>>%cleaning_rebootScriptTask%
+echo.    ^</Exec^>>>%cleaning_rebootScriptTask%
+echo.  ^</Actions^>>>%cleaning_rebootScriptTask%
+echo.^</Task^>>>%cleaning_rebootScriptTask%
 %loadingUpdate% 1
 
 
@@ -179,53 +221,7 @@ if exist %cleaning_filesToRemove% for /f "eol=# delims=" %%i in (%cleaning_files
 
 
 
-
-
-
-
 copy /y %cleaning_rebootScript% "%temp%\%program_name%RebootScript.cmd">>%log_debug%
-
-echo.^<?xml version="1.0" encoding="UTF-16"?^>>%cleaning_rebootScriptTask%
-echo.^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%cleaning_rebootScriptTask%
-echo.  ^<Triggers^>>>%cleaning_rebootScriptTask%
-echo.    ^<LogonTrigger id="Trigger1"^>>>%cleaning_rebootScriptTask%
-echo.      ^<Enabled^>true^</Enabled^>>>%cleaning_rebootScriptTask%
-echo.    ^</LogonTrigger^>>>%cleaning_rebootScriptTask%
-echo.  ^</Triggers^>>>%cleaning_rebootScriptTask%
-echo.  ^<Principals^>>>%cleaning_rebootScriptTask%
-echo.    ^<Principal id="Principal1"^>>>%cleaning_rebootScriptTask%
-echo.      ^<LogonType^>InteractiveToken^</LogonType^>>>%cleaning_rebootScriptTask%
-echo.      ^<RunLevel^>HighestAvailable^</RunLevel^>>>%cleaning_rebootScriptTask%
-echo.    ^</Principal^>>>%cleaning_rebootScriptTask%
-echo.  ^</Principals^>>>%cleaning_rebootScriptTask%
-echo.  ^<Settings^>>>%cleaning_rebootScriptTask%
-echo.    ^<MultipleInstancesPolicy^>IgnoreNew^</MultipleInstancesPolicy^>>>%cleaning_rebootScriptTask%
-echo.    ^<DisallowStartIfOnBatteries^>false^</DisallowStartIfOnBatteries^>>>%cleaning_rebootScriptTask%
-echo.    ^<StopIfGoingOnBatteries^>true^</StopIfGoingOnBatteries^>>>%cleaning_rebootScriptTask%
-echo.    ^<AllowHardTerminate^>true^</AllowHardTerminate^>>>%cleaning_rebootScriptTask%
-echo.    ^<StartWhenAvailable^>true^</StartWhenAvailable^>>>%cleaning_rebootScriptTask%
-echo.    ^<RunOnlyIfNetworkAvailable^>false^</RunOnlyIfNetworkAvailable^>>>%cleaning_rebootScriptTask%
-echo.    ^<IdleSettings^>>>%cleaning_rebootScriptTask%
-echo.      ^<Duration^>PT10M^</Duration^>>>%cleaning_rebootScriptTask%
-echo.      ^<WaitTimeout^>PT1H^</WaitTimeout^>>>%cleaning_rebootScriptTask%
-echo.      ^<StopOnIdleEnd^>true^</StopOnIdleEnd^>>>%cleaning_rebootScriptTask%
-echo.      ^<RestartOnIdle^>false^</RestartOnIdle^>>>%cleaning_rebootScriptTask%
-echo.    ^</IdleSettings^>>>%cleaning_rebootScriptTask%
-echo.    ^<AllowStartOnDemand^>true^</AllowStartOnDemand^>>>%cleaning_rebootScriptTask%
-echo.    ^<Enabled^>true^</Enabled^>>>%cleaning_rebootScriptTask%
-echo.    ^<Hidden^>false^</Hidden^>>>%cleaning_rebootScriptTask%
-echo.    ^<RunOnlyIfIdle^>false^</RunOnlyIfIdle^>>>%cleaning_rebootScriptTask%
-echo.    ^<WakeToRun^>false^</WakeToRun^>>>%cleaning_rebootScriptTask%
-echo.    ^<ExecutionTimeLimit^>PT72H^</ExecutionTimeLimit^>>>%cleaning_rebootScriptTask%
-echo.    ^<Priority^>1^</Priority^>>>%cleaning_rebootScriptTask%
-echo.  ^</Settings^>>>%cleaning_rebootScriptTask%
-echo.  ^<Actions Context="Principal1"^>>>%cleaning_rebootScriptTask%
-echo.    ^<Exec^>>>%cleaning_rebootScriptTask%
-echo.      ^<Command^>%winDir%\System32\cmd.exe^</Command^>>>%cleaning_rebootScriptTask%
-echo.      ^<Arguments^>/c "%temp%\%program_name%RebootScript.cmd"^</Arguments^>>>%cleaning_rebootScriptTask%
-echo.    ^</Exec^>>>%cleaning_rebootScriptTask%
-echo.  ^</Actions^>>>%cleaning_rebootScriptTask%
-echo.^</Task^>>>%cleaning_rebootScriptTask%
 
 set errorLevel=
 schtasks /create /tn "%program_name% Reboot Script Task" /xml temp\rebootScriptTask.xml /ru system /f>nul 2>nul

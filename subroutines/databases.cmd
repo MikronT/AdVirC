@@ -87,7 +87,7 @@ for /f "delims=" %%i in ('dir /a:d /b %dataDir%\databases\original') do md %data
 
 
 
-for /f "delims=" %%i in ('dir "%systemDrive%\Users" /a:d /b') do if exist "%systemDrive%\Users\%%i" echo.%systemDrive%\Users\%%i>>%dataDir%\databases\rewrited\dirs\userProfile.db
+for /f "delims=" %%i in ('dir /a:d /b "%systemDrive%\Users"') do if exist "%systemDrive%\Users\%%i" echo.%systemDrive%\Users\%%i>>%dataDir%\databases\rewrited\dirs\userProfile.db
 %loadingUpdate% 1
 
 
@@ -139,36 +139,36 @@ for /l %%i in (1,1,30) do (
 setlocal EnableDelayedExpansion
 for /f "delims=" %%i in ('reg query HKU') do (
   set errorLevel=
-  reg query %%i\Software\Classes>nul 2>>%log_debug%
+  reg query %%i\Software\Classes>nul 2>nul
   if "!errorLevel!" == "0" echo.%%i\Software\Classes>>%dataDir%\databases\rewrited\dirs\classes.db
 
   set errorLevel=
-  reg query %%i\Software\Classes\Software\Classes>nul 2>>%log_debug%
+  reg query %%i\Software\Classes\Software\Classes>nul 2>nul
   if "!errorLevel!" == "0" echo.%%i\Software\Classes\Software\Classes>>%dataDir%\databases\rewrited\dirs\classes.db
 
   set errorLevel=
-  reg query %%i\Software\Software\Classes>nul 2>>%log_debug%
+  reg query %%i\Software\Software\Classes>nul 2>nul
   if "!errorLevel!" == "0" echo.%%i\Software\Software\Classes>>%dataDir%\databases\rewrited\dirs\classes.db
 
 
 
   set errorLevel=
-  reg query %%i>nul 2>>%log_debug%
+  reg query %%i>nul 2>nul
   if "!errorLevel!" == "0" echo.%%i>>%dataDir%\databases\rewrited\dirs\keys.db
 
   set errorLevel=
-  reg query %%i\Software>nul 2>>%log_debug%
+  reg query %%i\Software>nul 2>nul
   if "!errorLevel!" == "0" echo.%%i\Software>>%dataDir%\databases\rewrited\dirs\keys.db
 
   set errorLevel=
-  reg query %%i\Software\Classes>nul 2>>%log_debug%
+  reg query %%i\Software\Classes>nul 2>nul
   if "!errorLevel!" == "0" echo.%%i\Software\Classes>>%dataDir%\databases\rewrited\dirs\keys.db
 )
 endlocal
+%loadingUpdate% 4
 
 echo.%language_databases_rewriting_success%
 echo.
-%loadingUpdate% 4
 
 
 
