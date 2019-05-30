@@ -1348,8 +1348,8 @@ set /p command=%input_backspace%   ^(^>^) Enter the number of command ^>
 if "%command%" == "0" call :exit
 if "%command%" == "1" (
   echo.Starting without some files>>%log_diagnostic%
-  start starter.cmd --wait=5 --skipFilesChecking=true
-  call :exit
+  start starter.cmd --wait=3 --filesChecking=false
+  call :exit diagnostic
 )
 goto :diagnostic
 
