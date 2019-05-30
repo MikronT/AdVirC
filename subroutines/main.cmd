@@ -1341,7 +1341,12 @@ echo.      ^(1^) Run
 echo.
 echo.
 echo.
-set /p command=%input_backspace%   ^(^>^) Enter the number of command ^> 
+
+if "%windowsVersionID%" NEQ "" (
+  if %windowsVersionID% GEQ 1809 (
+    set /p command=%input_backspace%  ^(^>^) Enter the number of command ^> 
+  ) else set /p command=%input_backspace%   ^(^>^) Enter the number of command ^> 
+) else set /p command=%input_backspace%   ^(^>^) Enter the number of command ^> 
 
 
 
