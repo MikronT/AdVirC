@@ -1319,6 +1319,8 @@ exit /b
 
 
 :diagnostic
+call :settings_apply
+
 set log_diagnostic=%dataDir%\logs\%program_name%_%currentDate%_diagnostic.log
 if not exist %dataDir%\logs md %dataDir%\logs
 
