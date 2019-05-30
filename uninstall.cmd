@@ -5,7 +5,7 @@ chcp 65001>nul
 cd "%~dp0"
 
 set program_name=AdVirC
-set program_version_name=%program_name% v2.0 Beta 1 Nightly 1 [MikronT]
+set program_version_name=%program_name% v2.0 Pre-Release 1 [MikronT]
 
 set dataDir=data
 set uninstallDirectory=%cd%
