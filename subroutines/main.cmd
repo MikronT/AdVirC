@@ -1234,7 +1234,7 @@ exit /b
 
 
 :settings_save
-if not exist %dataDir%\settings md %dataDir%\settings>nul 2>nul
+if not exist %dataDir%\settings md %dataDir%\settings
 
 echo.# %program_name% Settings #>%settings%
 echo.appearance_logo=%setting_appearance_logo%>>%settings%
@@ -1262,7 +1262,7 @@ exit /b
 
 :settings_apply
 if "%setting_logging%" == "true" (
-  if not exist %dataDir%\logs md %dataDir%\logs>nul 2>nul
+  if not exist %dataDir%\logs md %dataDir%\logs
   set log=%dataDir%\logs\%program_name%_%currentDate%.log
   if "%setting_debug%" == "true" (
     set log_debug=%dataDir%\logs\%program_name%_%currentDate%_debug.log
@@ -1320,7 +1320,7 @@ exit /b
 
 :diagnostic
 set log_diagnostic=%dataDir%\logs\%program_name%_%currentDate%_diagnostic.log
-if not exist %dataDir%\logs md %dataDir%\logs>nul 2>nul
+if not exist %dataDir%\logs md %dataDir%\logs
 
 echo.[Diagnostic]>>%log_diagnostic%
 echo.Missing Files:>>%log_diagnostic%
