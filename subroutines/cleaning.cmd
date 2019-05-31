@@ -222,7 +222,8 @@ goto :deleting_checkEngine
 :rules
 %loadingUpdate% 1 force
 
-start /wait subroutines\cleaning\rules.cmd
+if "%setting_cleaningRule_experimental%" == "true" (   start /wait subroutines\cleaning\rules.cmd
+) else if "%setting_cleaningRule_heuristic%" == "true" start /wait subroutines\cleaning\rules.cmd
 %loadingUpdate% 3 force
 
 
