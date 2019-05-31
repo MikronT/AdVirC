@@ -14,6 +14,8 @@ if not exist %dataDir%\databases\rewrited\dirs\temp.db if "%key_auto%" == "true"
   exit /b
 )
 
+start /min powershell "Exit"
+
 set counter_foundObjects=0
 set counter_deletedObjects=0
 
