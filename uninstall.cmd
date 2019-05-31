@@ -5,13 +5,13 @@ chcp 65001>nul
 cd "%~dp0"
 
 set program_name=AdVirC
-set program_version_name=%program_name% v2.0 Pre-Release 1 [MikronT]
+set program_version_name=%program_name% v2.0 Release [MikronT]
 
 set dataDir=data
 set uninstallDirectory=%cd%
 
-if "%setting_appearance_logo%"      == "" set setting_appearance_logo=Ш
-if "%setting_appearance_theme%"     == "" set setting_appearance_theme=0b
+if "%setting_appearance_logo%"  == "" set setting_appearance_logo=Ш
+if "%setting_appearance_theme%" == "" set setting_appearance_theme=0b
 
 for /f %%i in ('"prompt $h & echo on & for %%j in (1) do rem"') do set input_backspace=%%i
 for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ReleaseId') do set windowsVersionID=%%i

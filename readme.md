@@ -1,6 +1,6 @@
 # AdVirC
 
-[![Status: Pre-Release](https://img.shields.io/badge/Status-Pre--Release-yellow.svg?style=for-the-badge)](#)
+[![Status: Release](https://img.shields.io/badge/Status-Release-green.svg?style=for-the-badge)](#)
 [![Latest Release](https://img.shields.io/badge/Latest-Release-blue.svg?style=for-the-badge)](https://github.com/MikronT/AdVirC/releases/latest)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-black.svg?style=for-the-badge)](https://www.gnu.org/licenses/gpl-3.0)
 
@@ -8,11 +8,10 @@
 [![Status: Pre-Alpha](https://img.shields.io/badge/Status-Pre--Alpha-black.svg?style=for-the-badge)](#)
 [![Status: Alpha](https://img.shields.io/badge/Status-Alpha-red.svg?style=for-the-badge)](#)
 [![Status: Beta](https://img.shields.io/badge/Status-Beta-orange.svg?style=for-the-badge)](#)
-
-[![Status: Release](https://img.shields.io/badge/Status-Release-green.svg?style=for-the-badge)](#)
+[![Status: Pre-Release](https://img.shields.io/badge/Status-Pre--Release-yellow.svg?style=for-the-badge)](#)
 -->
 
-### Version name: *AdVirC v2.0 Pre-Release 1*
+### Version name: *AdVirC v2.0 Release*
 
 AdVirC (AdVirC Removal Tool or AdVirC RT) is a free **open source** console program for cleaning PCs from Adware, Malware, Trojans, Miners and rubbish for Windows 10.
 
@@ -20,7 +19,9 @@ AdVirC (AdVirC Removal Tool or AdVirC RT) is a free **open source** console prog
 
 *Developed only for Windows 10*
 
+<!--
 Utility is in Beta-period, so there may be false positives and program errors. Some features do not working or are not exist yet. You must be patient.
+-->
 
 
 
@@ -73,19 +74,20 @@ Note: you can combine the keys as you wish.
 ## Disclaimer
 - I can not guarantee 100% treatment. I must "catch" the virus, and only after the research the virus enters the database. It takes some time.
 - *I am not responsible for any damage to your computer.* I am not responsible for any lost files or data.
-- Everything that removes the utility is considered to be viral and adware. If you need it, download again.
+- Everything that removes the utility is considered to be viral and adware. If you need it, download again or exclude from cleaning.
 - It is my hobby, not work.
 
 
 
 ## Version History
-| Date       | Version Name       | Version Code    |
-|------------|--------------------|-----------------|
-| 30.05.2019 | v2.0 Pre-Release 1 | 2.0.0.3.1.0     |
-| 27.05.2019 | v2.0 Beta 1        | 2.0.0.2.1.0     |
-| 13.05.2019 | v2.0 Alpha 2       | 2.0.0.1.2.0     |
-| 06.05.2019 | v2.0 Alpha 1       | 2.0.0.1.1.0     |
-| 27.11.2018 | v2.0 Pre-Alpha     | 2.0.0.0.0.0     |
+| Date       | Version Name       | Version Code |
+|------------|--------------------|--------------|
+| 31.05.2019 | v2.0 Release       | 2.0.0.4.0.0  |
+| 30.05.2019 | v2.0 Pre-Release 1 | 2.0.0.3.1.0  |
+| 27.05.2019 | v2.0 Beta 1        | 2.0.0.2.1.0  |
+| 13.05.2019 | v2.0 Alpha 2       | 2.0.0.1.2.0  |
+| 06.05.2019 | v2.0 Alpha 1       | 2.0.0.1.1.0  |
+| 27.11.2018 | v2.0 Pre-Alpha     | 2.0.0.0.0.0  |
 
 <!--
 AdVirC v2.0 Alpha 1                2.0.0.1.1.0
