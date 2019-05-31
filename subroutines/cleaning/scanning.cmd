@@ -312,7 +312,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\shortcuts.db) do (
 
 
 
-for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\shortcuts.db) do (
+if "%setting_cleaningRule_heuristic%" == "true" for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\shortcuts.db) do (
   for /f "tokens=1,2,3* delims=;" %%j in (%dataDir%\databases\rewrited\files\browserShortcuts.db) do (
     if exist "%%i\%%j.lnk" (
       echo.del /s /q "%%i\%%j.lnk">>%cleaning_rebootScript%
