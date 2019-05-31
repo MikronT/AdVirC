@@ -301,6 +301,11 @@ cleaning_reboot03=      Збережіть свої дані і натисніт
 cleaning_reboot04=  ^(^!^) Перезагрузка комп'ютера буде виконана через 5 секунд...
 cleaning_reboot05=  ^(^!^) Перезагрузка комп'ютера буде виконана через 30 секунд...
 
+cleaning_reboot_shellMsg_info_title=Очистка завершена
+cleaning_reboot_shellMsg_info_text=Необхідна перезагрузка комп''ютера. Не забудьте зберегти свої дані!
+cleaning_reboot_shellMsg_warning_title=Перезагрузка через 30 секунд!
+cleaning_reboot_shellMsg_warning_text=Перезагрузка комп''ютера буде виконана через 30 секунд! Не забудьте зберегти свої дані!
+
 
 
 
