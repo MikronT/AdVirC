@@ -270,12 +270,14 @@ if "%key_auto%" NEQ "true" (
   echo.%language_cleaning_reboot01%
   echo.%language_cleaning_reboot02%
   echo.%language_cleaning_reboot03%
+  start /min powershell "Add-Type -AssemblyName System.Windows.Forms; $balloon = New-Object System.Windows.Forms.NotifyIcon; $path = (Get-Process -id $pid).Path; $balloon.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($path); $balloon.BalloonTipIcon = [System.Windows.Forms.ToolTipIcon]::Info; $balloon.BalloonTipText = '%language_cleaning_reboot_shellMsg_info_text%'; $balloon.BalloonTipTitle = """%language_cleaning_reboot_shellMsg_info_title%"""; $balloon.Visible = $true; $balloon.ShowBalloonTip(5000)"
   pause>nul
 
   echo.%language_cleaning_reboot04%
   %module_sleep% 5
 ) else (
   echo.%language_cleaning_reboot05%
+  start /min powershell "Add-Type -AssemblyName System.Windows.Forms; $balloon = New-Object System.Windows.Forms.NotifyIcon; $path = (Get-Process -id $pid).Path; $balloon.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($path); $balloon.BalloonTipIcon = [System.Windows.Forms.ToolTipIcon]::Warning; $balloon.BalloonTipText = '%language_cleaning_reboot_shellMsg_warning_text%'; $balloon.BalloonTipTitle = """%language_cleaning_reboot_shellMsg_warning_title%"""; $balloon.Visible = $true; $balloon.ShowBalloonTip(5000)"
   %module_sleep% 30
 )
 
