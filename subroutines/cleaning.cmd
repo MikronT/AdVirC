@@ -26,7 +26,7 @@ if not exist %dataDir%\backups\registry_%currentDate%.reg (
   echo.>>%dataDir%\backups\registry_%currentDate%.reg
 )
 
-for %%i in (%cleaning_filesToRemove% %cleaning_rebootScript% %cleaning_rebootScriptTask% %cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" del /q "%%i"
+for %%i in (temp\return_deletingCompleted temp\return_scanningCompleted %cleaning_filesToRemove% %cleaning_extensions% %cleaning_files% %cleaning_folders% %cleaning_processes% %cleaning_registry% %cleaning_services% %cleaning_shortcuts% %cleaning_tasks% %cleaning_temp%) do if exist "%%i" del /q "%%i"
 
 echo.@echo off>%cleaning_rebootScript%
 echo.chcp 65001>>%cleaning_rebootScript%
