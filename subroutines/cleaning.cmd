@@ -117,7 +117,7 @@ goto :scanning_checkEngine
 %loadingUpdate% 1 force
 
 if "%counter_foundObjects%" == "0" (
-  %loadingUpdate% 2
+  %loadingUpdate% 1
   goto :deleting
 )
 
@@ -135,7 +135,7 @@ if exist %dataDir%\settings\exceptions.db for %%i in (%cleaning_extensions% %cle
   )
 )
 
-%loadingUpdate% 2
+%loadingUpdate% 1
 if "%key_auto%" == "true" goto :deleting
 
 
@@ -186,7 +186,7 @@ goto :cleaning_actions
 
 
 :deleting
-%loadingUpdate% 3
+%loadingUpdate% 2
 
 start subroutines\cleaning\deleting.cmd
 

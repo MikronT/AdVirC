@@ -131,6 +131,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\keys.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
 
 %log_append_place% :   [Registry]
 %log_append_place% :     [Keys]
@@ -157,6 +158,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\keys.db) do (
 
 
 %log_append_place% :   Script Completed
+%loadingUpdate% 1
 
 %log_append_place% :   [File System]
 %log_append_place% :     [Temp]
