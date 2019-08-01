@@ -109,6 +109,55 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\keys.db) do (
 %log_append_place% :   Script Completed
 %loadingUpdate% 1
 
+%log_append_place% :   [Registry]
+%log_append_place% :     [Keys]
+%log_append_place% :       [Software]
+
+
+
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\keys.db) do (
+  for /f "delims=" %%j in (%dataDir%\databases\rewrited\dirs\keys-software.db) do (
+    for /f "delims=" %%k in (%dataDir%\databases\rewrited\registry\keys-software.db) do (
+      set errorLevel=
+      reg query "%%i\%%j\%%k">nul 2>nul
+      if "!errorLevel!" == ""  call :cleaning_scanning_subroutine Key %cleaning_registry% "%%i\%%j\%%k"
+      if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Key %cleaning_registry% "%%i\%%j\%%k"
+      if "%setting_logging_advanced%" == "true" if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i\%%j\%%k>>%log_debug%
+      echo.!counter_foundObjects!>temp\counter_foundObjects
+    )
+  )
+)
+
+
+
+%log_append_place% :   Script Completed
+
+%log_append_place% :   [Registry]
+%log_append_place% :     [Keys]
+%log_append_place% :       [Software]
+%log_append_place% :         [Run]
+
+
+
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\keys.db) do (
+  for /f "delims=" %%j in (%dataDir%\databases\rewrited\dirs\keys-software.db) do (
+    for /f "delims=" %%k in (%dataDir%\databases\rewrited\dirs\keys-software-run.db) do (
+      for /f "delims=" %%l in (%dataDir%\databases\rewrited\dirs\keys-software-runs.db) do (
+        for /f "delims=" %%m in (%dataDir%\databases\rewrited\registry\keys-software-run.db) do (
+          set errorLevel=
+          reg query "%%i\%%j\%%k\%%l\%%m">nul 2>nul
+          if "!errorLevel!" == ""  call :cleaning_scanning_subroutine Key %cleaning_registry% "%%i\%%j\%%k\%%l\%%m"
+          if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Key %cleaning_registry% "%%i\%%j\%%k\%%l\%%m"
+          if "%setting_logging_advanced%" == "true" if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i\%%j\%%k\%%l\%%m>>%log_debug%
+          echo.!counter_foundObjects!>temp\counter_foundObjects
+    )
+  )
+)
+
+
+
+%log_append_place% :   Script Completed
+
 %log_append_place% :   [File System]
 %log_append_place% :     [Temp]
 
