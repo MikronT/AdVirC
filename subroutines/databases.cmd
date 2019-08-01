@@ -157,10 +157,6 @@ for /f "delims=" %%i in ('reg query HKU ^| find /v /i ".DEFAULT" ^| find /v /i "
   reg query %%i\Software>nul 2>nul
   if "!errorLevel!" == "0" echo.%%i>>%dataDir%\databases\rewrited\dirs\keys.db
 
-  rem set errorLevel=
-  rem reg query %%i\Software\Software>nul 2>nul
-  rem if "!errorLevel!" == "0" echo.%%i\Software>>%dataDir%\databases\rewrited\dirs\keys.db
-
   set errorLevel=
   reg query %%i\Software\Classes\Software>nul 2>nul
   if "!errorLevel!" == "0" echo.%%i\Software\Classes>>%dataDir%\databases\rewrited\dirs\keys.db
