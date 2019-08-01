@@ -151,6 +151,9 @@ menu_about01=  About Menu
 menu_about02=  AdVirC ^(AdVirC Removal Tool or AdVirC RT^) is a free open source console program for cleaning PCs from Adware, Malware,
 menu_about03=    Trojans, Miners and rubbish for Windows 10.
 menu_about04=  ^(1^) View license
+menu_about05=  ^(2^) View program website
+menu_about06=  ^(3^) View program repository on GitHub
+menu_about07=  ^(4^) View database repository on GitHub
 
 
 

@@ -769,6 +769,9 @@ echo.
 echo.
 echo.
 echo.%language_menu_about04%
+echo.%language_menu_about05%
+echo.%language_menu_about06%
+echo.%language_menu_about07%
 echo.
 echo.%language_back%
 echo.
@@ -780,6 +783,9 @@ echo.
 
 if "%command%" == "0" ( %input_clear% & exit /b )
 if "%command%" == "1" start notepad "%cd%\license.txt"
+if "%command%" == "2" start "" "https://sites.google.com/view/advirc"
+if "%command%" == "3" start "" "https://github.com/MikronT/AdVirC"
+if "%command%" == "4" start "" "https://github.com/MikronT/AdVirCDatabases"
 goto :menu_about
 
 
