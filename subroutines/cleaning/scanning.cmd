@@ -60,7 +60,7 @@ if "%setting_debug%" == "true" (
 
 for /f "delims=" %%i in (%dataDir%\databases\rewrited\processes\processes.db) do (
   for /f "skip=3 delims= " %%j in ('tasklist /fi "imagename eq %%i"') do if "%%j" == "%%i" (
-    call :cleaning_scanning_subroutine %language_cleaning_label_process% %language_cleaning_label_process% %%i
+    call :cleaning_scanning_subroutine %language_cleaning_label_process% %cleaning_processes% %%i
   ) else if "%setting_logging_advanced%" == "true" echo.Not Found - %%i>>%log_debug%
   echo.!counter_foundObjects!>temp\counter_foundObjects
 )
