@@ -85,6 +85,7 @@ for /f "delims=" %%i in ('dir /a:-d /b update') do if exist "%key_target%\%%i" d
 
 xcopy /t /e /y "update" "%key_target%"
 for /f "eol=# delims=" %%i in (update\files\fileList.db) do copy /y "update\%%i" "%key_target%\%%i"
+if exist update\setupEnd.cmd copy /y "update\setupEnd.cmd" "%key_target%\setupEnd.cmd"
 
 pushd "%key_target%"
 set key_target=4417
