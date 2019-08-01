@@ -6,6 +6,7 @@ setlocal EnableDelayedExpansion
 
 %log_append_place% :   [Processes]
 %log_append_place% :     [Services]
+echo.%language_cleaning_deleting_services%
 
 
 
@@ -31,6 +32,7 @@ if exist %cleaning_services% for /f "delims=" %%i in (%cleaning_services%) do (
 
 %log_append_place% :   [Processes]
 %log_append_place% :     [Tasks]
+echo.%language_cleaning_deleting_tasks%
 
 
 
@@ -56,6 +58,7 @@ if exist %cleaning_tasks% for /f "delims=" %%i in (%cleaning_tasks%) do (
 
 %log_append_place% :   [Processes]
 %log_append_place% :     [Processes]
+echo.%language_cleaning_deleting_processes%
 
 
 
@@ -79,6 +82,7 @@ if exist %cleaning_processes% for /f "delims=" %%i in (%cleaning_processes%) do 
 %loadingUpdate% 1
 
 %log_append_place% :   [Registry]
+echo.%language_cleaning_deleting_registry%
 
 
 
@@ -109,6 +113,7 @@ if exist %cleaning_registry% for /f "delims=" %%i in (%cleaning_registry%) do (
 
 %log_append_place% :   [File System]
 %log_append_place% :     [Temp]
+echo.%language_cleaning_deleting_temp%
 
 
 
@@ -139,6 +144,7 @@ if exist %cleaning_temp% for /f "delims=" %%i in (%cleaning_temp%) do (
 
 %log_append_place% :   [File System]
 %log_append_place% :     [Folders]
+echo.%language_cleaning_deleting_folders%
 
 
 
@@ -169,6 +175,7 @@ if exist %cleaning_folders% for /f "delims=" %%i in (%cleaning_folders%) do (
 
 %log_append_place% :   [File System]
 %log_append_place% :     [Files]
+echo.%language_cleaning_deleting_files%
 
 
 
@@ -199,6 +206,7 @@ if exist %cleaning_files% for /f "delims=" %%i in (%cleaning_files%) do (
 
 %log_append_place% :   [File System]
 %log_append_place% :     [Shortcuts]
+echo.%language_cleaning_deleting_shortcuts%
 
 
 
@@ -229,6 +237,7 @@ if exist %cleaning_shortcuts% for /f "delims=" %%i in (%cleaning_shortcuts%) do 
 
 %log_append_place% :   [File System]
 %log_append_place% :     [Extensions]
+echo.%language_cleaning_deleting_extensions%
 
 
 

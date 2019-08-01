@@ -6,6 +6,7 @@ setlocal EnableDelayedExpansion
 
 %log_append_place% :   [Processes]
 %log_append_place% :     [Services]
+echo.%language_cleaning_scanning_services%
 
 
 
@@ -25,6 +26,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\processes\services.db) do 
 
 %log_append_place% :   [Processes]
 %log_append_place% :     [Tasks]
+echo.%language_cleaning_scanning_tasks%
 
 
 
@@ -44,6 +46,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\processes\tasks.db) do (
 
 %log_append_place% :   [Processes]
 %log_append_place% :     [Processes]
+echo.%language_cleaning_scanning_processes%
 
 if "%setting_debug%" == "true" (
   %log_append_line% %log_debug% 1
@@ -69,6 +72,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\processes\processes.db) do
 
 %log_append_place% :   [Registry]
 %log_append_place% :     [Classes]
+echo.%language_cleaning_scanning_registry%
 
 
 
@@ -164,6 +168,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\keys.db) do (
 
 %log_append_place% :   [File System]
 %log_append_place% :     [Temp]
+echo.%language_cleaning_scanning_temp%
 
 
 
@@ -180,6 +185,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\temp.db) do (
 
 %log_append_place% :   [File System]
 %log_append_place% :     [AppData Folders]
+echo.%language_cleaning_scanning_folders%
 
 
 
@@ -271,6 +277,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\folders\winDir.db) do (
 
 %log_append_place% :   [File System]
 %log_append_place% :     [AppData Files]
+echo.%language_cleaning_scanning_files%
 
 
 
@@ -343,6 +350,7 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\files\winDir.db) do (
 
 %log_append_place% :   [File System]
 %log_append_place% :     [Shortcuts]
+echo.%language_cleaning_scanning_shortcuts%
 
 
 
@@ -383,6 +391,7 @@ if "%setting_cleaningRule_heuristic%" == "true" for /f "delims=" %%i in (%dataDi
 
 %log_append_place% :   [File System]
 %log_append_place% :     [AppData Extensions]
+echo.%language_cleaning_scanning_extensions%
 
 
 
