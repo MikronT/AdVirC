@@ -151,6 +151,8 @@ for /f "delims=" %%i in (%dataDir%\databases\rewrited\dirs\keys.db) do (
           if "!errorLevel!" == "0" call :cleaning_scanning_subroutine Key %cleaning_registry% "%%i\%%j\%%k\%%l\%%m"
           if "%setting_logging_advanced%" == "true" if "!errorLevel!" NEQ "" if "!errorLevel!" NEQ "0" echo.Not Found - %%i\%%j\%%k\%%l\%%m>>%log_debug%
           echo.!counter_foundObjects!>temp\counter_foundObjects
+        )
+      )
     )
   )
 )
