@@ -124,7 +124,7 @@ if exist "%appData%\Mozilla\Firefox\Profiles" for /f "delims=" %%i in ('dir "%ap
 
 
 
-for /f "delims=" %%i in (%dataDir%\databases\rewrited\folders\extensions.db) do echo.Software\Google\Chrome\Extensions\%%i>>%dataDir%\databases\rewrited\registry\keys.db
+for /f "delims=" %%i in (%dataDir%\databases\rewrited\folders\extensions.db) do echo.Google\Chrome\Extensions\%%i>>%dataDir%\databases\rewrited\registry\keys-software.db
 %loadingUpdate% 1
 
 
