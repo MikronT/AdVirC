@@ -89,6 +89,6 @@ if exist update\setupEnd.cmd copy /y "update\setupEnd.cmd" "%key_target%\setupEn
 
 pushd "%key_target%"
 set key_target=4417
-start /wait cmd /c setupEnd.cmd
+call setupEnd.cmd
 start starter.cmd --wait=1
 exit
