@@ -79,17 +79,12 @@ exit
 pushd "%key_target%"
 %module_unZip% -o "%~dp0update.zip" -d "%~dp0update"
 
-for /f "eol=# delims=" %%i in (files\fileList.db) do if exist %%i if "%%i" NEQ "files\filelist.db" del /q %%i
-timeout /nobreak /t 1 >nul
-
 pushd "%~dp0"
-for /f "delims=" %%i in ('dir /b update') do (
-  if exist "%key_target%"\%%i (
-    rd /s /q "%key_target%"\%%i>nul 2>nul
-    del /q "%key_target%"\%%i>nul 2>nul
-  )
-  move /y "update\%%i" "%key_target%">nul
-)
+for /f "delims=" %%i in ('dir /a:d /b update') do if exist "%key_target%\%%i" rd /s /q "%key_target%\%%i"
+for /f "delims=" %%i in ('dir /a:-d /b update') do if exist "%key_target%\%%i" del /q "%key_target%\%%i"
+
+xcopy /t /e /y "update" "%key_target%"
+for /f "eol=# delims=" %%i in (update\files\fileList.db) do copy /y "update\%%i" "%key_target%\%%i"
 
 pushd "%key_target%"
 set key_target=4417
