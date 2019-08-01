@@ -15,12 +15,12 @@ if exist %cleaning_services% for /f "delims=" %%i in (%cleaning_services%) do (
   sc delete "%%i">>%log_debug%
   if "!errorLevel!" == "0" (
     echo.    - %%i>>%log%
-    echo.[Service] %%i
+    echo.[%language_cleaning_label_service%] %%i
     set /a counter_deletedObjects+=1
   ) else (
     echo.sc delete "%%i">>%cleaning_rebootScript%
     echo.    [Error] Not Found/Access Denied - %%i>>%log%
-    echo.[Error] [Service] %%i
+    echo.[%language_cleaning_label_error%] [%language_cleaning_label_service%] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
 )
@@ -41,12 +41,12 @@ if exist %cleaning_tasks% for /f "delims=" %%i in (%cleaning_tasks%) do (
   schtasks /delete /tn "%%i" /f>>%log_debug%
   if "!errorLevel!" == "0" (
     echo.    - %%i>>%log%
-    echo.[Task] %%i
+    echo.[%language_cleaning_label_task%] %%i
     set /a counter_deletedObjects+=1
   ) else (
     echo.schtasks /delete /tn "%%i" /f>>%cleaning_rebootScript%
     echo.    [Error] Not Found/Access Denied - %%i>>%log%
-    echo.[Error] [Task] %%i
+    echo.[%language_cleaning_label_error%] [%language_cleaning_label_task%] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
 )
@@ -67,11 +67,11 @@ if exist %cleaning_processes% for /f "delims=" %%i in (%cleaning_processes%) do 
   taskkill /f /t /im "%%i">>%log_debug%
   if "!errorLevel!" == "0" (
     echo.    - %%i>>%log%
-    echo.[Process] %%i
+    echo.[%language_cleaning_label_process%] %%i
     set /a counter_deletedObjects+=1
   ) else (
     echo.    [Error] Not Found/Access Denied - %%i>>%log%
-    echo.[Error] [Process] %%i
+    echo.[%language_cleaning_label_error%] [%language_cleaning_label_process%] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
 )
@@ -96,12 +96,12 @@ if exist %cleaning_registry% for /f "delims=" %%i in (%cleaning_registry%) do (
   reg delete %%i /f>>%log_debug%
   if "!errorLevel!" == "0" (
     echo.    - %%i>>%log%
-    echo.[Key] %%i
+    echo.[%language_cleaning_label_key%] %%i
     set /a counter_deletedObjects+=1
   ) else (
     echo.reg delete %%i /f>>%cleaning_rebootScript%
     echo.    [Error] Not Found/Access Denied - %%i>>%log%
-    echo.[Error] [Key] %%i
+    echo.[%language_cleaning_label_error%] [%language_cleaning_label_key%] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
 )
@@ -125,14 +125,14 @@ if exist %cleaning_temp% for /f "delims=" %%i in (%cleaning_temp%) do (
       dir /a:-d /s /b "%%i">>%cleaning_filesToRemove%
       echo.rd /s /q "%%i\">>%cleaning_rebootScript%
       echo.    [Error] Access Denied - %%i>>%log%
-      echo.[Error] [Temp] %%i
+      echo.[%language_cleaning_label_error%] [%language_cleaning_label_temp%] %%i
     ) else (
       echo.    - %%i>>%log%
-      echo.[Temp] %%i
+      echo.[%language_cleaning_label_temp%] %%i
     )
   ) else (
     echo.    [Warning] Not Found - %%i>>%log%
-    echo.[Warning] [Temp] %%i
+    echo.[%language_cleaning_label_warning%] [%language_cleaning_label_temp%] %%i
   )
   md "%%i">nul 2>nul
 )
@@ -155,15 +155,15 @@ if exist %cleaning_folders% for /f "delims=" %%i in (%cleaning_folders%) do (
       dir /a:-d /s /b "%%i">>%cleaning_filesToRemove%
       echo.rd /s /q "%%i">>%cleaning_rebootScript%
       echo.    [Error] Access Denied - %%i>>%log%
-      echo.[Error] [Folder] %%i
+      echo.[%language_cleaning_label_error%] [%language_cleaning_label_folder%] %%i
     ) else (
       echo.    - %%i>>%log%
-      echo.[Folder] %%i
+      echo.[%language_cleaning_label_folder%] %%i
       set /a counter_deletedObjects+=1
     )
   ) else (
     echo.    [Warning] Not Found - %%i>>%log%
-    echo.[Warning] [Folder] %%i
+    echo.[%language_cleaning_label_warning%] [%language_cleaning_label_folder%] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
 )
@@ -186,15 +186,15 @@ if exist %cleaning_files% for /f "delims=" %%i in (%cleaning_files%) do (
       echo.%%i>>%cleaning_filesToRemove%
       echo.del /q "%%i">>%cleaning_rebootScript%
       echo.    [Error] Access Denied - %%i>>%log%
-      echo.[Error] [File] %%i
+      echo.[%language_cleaning_label_error%] [%language_cleaning_label_file%] %%i
     ) else (
       echo.    - %%i>>%log%
-      echo.[File] %%i
+      echo.[%language_cleaning_label_file%] %%i
       set /a counter_deletedObjects+=1
     )
   ) else (
     echo.    [Warning] Not Found - %%i>>%log%
-    echo.[Warning] [File] %%i
+    echo.[%language_cleaning_label_warning%] [%language_cleaning_label_file%] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
 )
@@ -217,15 +217,15 @@ if exist %cleaning_shortcuts% for /f "delims=" %%i in (%cleaning_shortcuts%) do 
       echo.%%i>>%cleaning_filesToRemove%
       echo.del /q "%%i">>%cleaning_rebootScript%
       echo.    [Error] Access Denied - %%i>>%log%
-      echo.[Error] [Shortcut] %%i
+      echo.[%language_cleaning_label_error%] [%language_cleaning_label_shortcut%] %%i
     ) else (
       echo.    - %%i>>%log%
-      echo.[Shortcut] %%i
+      echo.[%language_cleaning_label_shortcut%] %%i
       set /a counter_deletedObjects+=1
     )
   ) else (
     echo.    [Warning] Not Found - %%i>>%log%
-    echo.[Warning] [Shortcut] %%i
+    echo.[%language_cleaning_label_warning%] [%language_cleaning_label_shortcut%] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
 )
@@ -248,15 +248,15 @@ if exist %cleaning_extensions% for /f "delims=" %%i in (%cleaning_extensions%) d
       dir /a:-d /s /b "%%i">>%cleaning_filesToRemove%
       echo.rd /s /q "%%i">>%cleaning_rebootScript%
       echo.    [Error] Access Denied - %%i>>%log%
-      echo.[Error] [Extension] %%i
+      echo.[%language_cleaning_label_error%] [%language_cleaning_label_extension%] %%i
     ) else (
       echo.    - %%i>>%log%
-      echo.[Extension] %%i
+      echo.[%language_cleaning_label_extension%] %%i
       set /a counter_deletedObjects+=1
     )
   ) else (
     echo.    [Warning] Not Found - %%i>>%log%
-    echo.[Warning] [Extension] %%i
+    echo.[%language_cleaning_label_warning%] [%language_cleaning_label_extension%] %%i
   )
   echo.!counter_deletedObjects!>temp\counter_deletedObjects
 )

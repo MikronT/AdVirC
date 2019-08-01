@@ -275,6 +275,19 @@ databases_rewriting_success=  ^(i^) Базы данных переписаны.
 
 
 
+cleaning_label_warning=Предупреждение
+cleaning_label_error=Ошибка
+cleaning_label_service=Служба
+cleaning_label_task=Заданине
+cleaning_label_process=Процесс
+cleaning_label_class=Класс
+cleaning_label_key=Ключ
+cleaning_label_temp=Каталог
+cleaning_label_folder=Папка
+cleaning_label_file=Файл
+cleaning_label_shortcut=Ярлык
+cleaning_label_extension=Расширение
+
 cleaning_scanning_services=^(i^) Поиск служб...
 cleaning_scanning_tasks=^(i^) Поиск запланированных заданий...
 cleaning_scanning_processes=^(i^) Поиск процессов...

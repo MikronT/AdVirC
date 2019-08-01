@@ -278,6 +278,19 @@ databases_rewriting_success=  ^(i^) Databases rewrited.
 
 
 
+cleaning_label_warning=Warning
+cleaning_label_error=Error
+cleaning_label_service=Service
+cleaning_label_task=Task
+cleaning_label_process=Process
+cleaning_label_class=Class
+cleaning_label_key=Key
+cleaning_label_temp=Directory
+cleaning_label_folder=Folder
+cleaning_label_file=File
+cleaning_label_shortcut=Shortcut
+cleaning_label_extension=Extension
+
 cleaning_scanning_services=^(i^) Search for services...
 cleaning_scanning_tasks=^(i^) Search for tasks...
 cleaning_scanning_processes=^(i^) Search for processes...
